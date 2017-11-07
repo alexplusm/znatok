@@ -1,34 +1,19 @@
-{% load static %}<!DOCTYPE html>
+{% extends "base.html" %}
 
-<html>
-	<head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> 
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+{% block title %}Регистрация Знаток ПДД{% endblock %}
 
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-
-	<!-- (Optional) Latest compiled and minified JavaScript translation files -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
-		<title>Знаток ПДД</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<link href="css/sitestyle.css" rel="stylesheet">
-	</head>
-	
-
-	<body>
-		<div class="conteiner">
+{% block register %}
+    <div class="conteiner">
+    {%  if user.is_active %}
+        <p>You are already login</p>
+        {% else %}
+        <div class="conteiner">
 			<div class="row">
 			<form>
 				<div class="col-md-6 col-md-offset-2">
+                    <h3>Пожалуйста, зарегестрируйтесь</h3>
+
 			<div class="form-table">
-				<br>
-				<br>
 				<label for="inputLogin" class="ccontrol-label">Логин</label>
 				<div class="">
 					<input type="login" class="form-control" id="inputLogin" placeholder="Введите логин">
@@ -52,10 +37,11 @@
 					<input type="password2" class="form-control" id="inputPassword2" placeholder="Подтвердите пароль">
 				</div>
 			</div>
-			<a class="btn btn-default" href="">asd</a>
+			<a class="btn btn-success" href="">Зарегестрируйтесь</a>
 		</form>
 	</div>
 	</div>
 </div>
-	</body>
-</html>
+    {% endif %}
+    </div>
+{% endblock %}

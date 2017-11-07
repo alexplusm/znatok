@@ -5820,33 +5820,33 @@ td.visible-print {
 }
 /*серый фон страницы*/
 #panel .panel-heading {
-  background: #222;
+  background: lightgrey;
 }
-#panel .panel-heading .w {
-  padding-top: 5px;
-  padding-bottom: 7px;
+#panel .panel-heading .w2 {
+  background: white;
+}
+#panel .panel-heading .w6 {
+  background: white;
 }
 #panel .panel-heading a {
-  color: white;
-  font-size: 10px;
+  color: black;
+  font-size: 15px;
   cursor: pointer;
+  text-align: left;
+}
+#panel .panel-heading a:active {
+  color: blue;
 }
 #panel .logo {
   height: 55px;
   width: 150px;
 }
 #panel .panel-body {
-  background: #f2f2f2;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-#panel .panel-body .w1 p {
-  font-size: 25px;
-  color: blue;
-  font-family: sans-serif;
-  font-style: italic;
+  background: white;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 #panel .panel-body .w1 button.enter {
-  color: black;
+  color: white;
   margin-left: 15px;
   margin-bottom: 8px;
   padding-left: 35px;
@@ -5854,15 +5854,12 @@ td.visible-print {
   padding-bottom: 8px;
   padding-right: 10px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 2px;
   transition: .2s linear;
-  border: 2px solid green;
-}
-#panel .panel-body .w1 button.enter {
-  background: #fff;
 }
 #panel .panel-body .w1 button.enter:hover {
   box-shadow: 200px 0 0 0 rgba(0, 0, 0, 0.3) inset;
+  border-radius: 2px;
 }
 #panel .panel-body .w1 a {
   color: blue;
@@ -5874,20 +5871,35 @@ td.visible-print {
 .right {
   text-align: right;
 }
-#myCarousel {
-  width: 100%;
-}
-#myCarousel .carousel-indicators {
-  top: 30px;
-}
 #myCarousel .carousel-indicators li {
   background-color: #ffffe6;
+  margin-right: 10px;
+  padding: 5px;
 }
 #myCarousel .carousel-indicators .active {
   background-color: #ffff99;
+  padding: 7px;
+}
+#myCarousel .carousel {
+  height: 700px !important;
+  width: 100%;
 }
 #myCarousel .carousel-inner img {
-  height: auto !important;
+  height: 500px !important;
   width: 100%;
   margin: 0 auto;
+}
+#bonus .panel-primary {
+  padding-top: 10px;
+  background: blue;
+  padding-bottom: 10px;
+}
+#bonus .panel-primary label {
+  color: white;
+  font-size: 15px;
+  margin-right: 10px;
+}
+#bonus .panel-primary input {
+  border-radius: 5px;
+  width: 80px;
 }
