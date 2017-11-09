@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'spelsapp@gmail.com'
+EMAIL_HOST_PASSWORD = '1spelsapp1'
+EMAIL_PORT = 587
 
 # Application definition
 
@@ -38,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'widget_tweaks',
+
+    'accounts',
     'mainframe',
 ]
 
