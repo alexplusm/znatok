@@ -1,10 +1,248 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block breadcrumb %}
-  <li class="breadcrumb-item active">Boards</li>
-{% endblock %}
+{% block main %}
+<div class="panel-body panel-default">
+			<div class="conteiner">
+				<div class="row1">
+					<div class="col-lg-9 col-lg-offset-1">
+						<div class="row2">
+							<div class="col-lg-3">
+								<div class="row">
+									<div class="col-lg-12">
+										<a>Теория</a>
+									</div>
+									<div class="col-lg-12">
+										<a>Билеты</a>
+									</div>
+									<div class="col-lg-12">
+										<a>Экзамен</a>
+									</div>
+									<div class="col-lg-12">
+										<a>По темам</a>
+									</div>
+									<div class="col-lg-12">
+										<a>Марафон</a>
+									</div>
+									<div class="col-lg-12">
+										<a>ошибки</a>
+									</div>
+								</div>
+							</div>
 
-{% block content %}
-  <img src="https://im0-tub-ru.yandex.net/i?id=299cdbc2808c802115e2daa877470977-l&n=13"
-           alt="проблемс?" width="600" height="600" >
+							<div class="col-lg-6">
+								<div class="row3">
+									<div class="col-lg-6">
+										<a>Категории <strong>A,B,M</strong></a>
+									</div>
+									<div class="col-lg-6">
+										<a>Категории <strong>C,D</strong></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-2">
+
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock%}
+
+{% block online %}
+<div id="online">
+	<div class="conteiner">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="row">
+					<div class="col-md-12">
+								<div class="text-center text-uppercase ">
+									<p style="color: blue; font-size: 20px;"><em><strong>Примите участие в ON-LINE состязаниях <br>с другими пользователями сайта</strong></em></p>
+								</div>
+					</div>
+					<div class="conteiner">
+								<div class="row">
+									<div class="col-md-4">
+										<nav class="navbar navbar-inner">
+											<ul class="navbar-nav nav full">
+												<li class="nav-item"><a class="nav-link text-uppercase text-center" href="#">знания пдд</a></li>
+											</ul>
+										</nav>
+									</div>
+									<div class="col-md-4">
+										<nav class="navbar navbar-inner">
+											<ul class="navbar-nav nav">
+												<li class="nav-item nav-item-cast"><a class="nav-link text-uppercase text-center" href="#">дорожные знаки</a></li>
+											</ul>
+										</nav>
+									</div>
+									<div class="col-md-4">
+										<nav class="navbar navbar-inner">
+											<ul class="navbar-nav nav">
+												<li class="nav-item nav-item-cast"><a class="nav-link text-uppercase text-center" href="#">штрафы</a></li>
+											</ul>
+										</nav>
+									</div>
+								</div>
+					</div>
+				</div>
+
+				<div class="body">
+							<div class="conteiner-fluid">
+								<div class="row">
+									<div class="col-md-12">
+										<select class="form-control form-control-sm">
+											<option>select</option>
+										</select>
+									</div>
+									<div class="col-md-12 col-md-offset-2 btn">
+										<div class="col-md-1">
+											<button class="btn btn-default border">
+												0	
+											</button>
+										</div>
+										<div class="col-md-1">
+											<button class="btn btn-default">
+												50
+											</button>
+										</div>
+										<div class="col-md-1">
+											<button class="btn btn-default">
+												100
+											</button>
+										</div>
+										<div class="col-md-1">
+											<button class="btn btn-default">
+												250	
+											</button>
+										</div>
+										<div class="col-md-1">
+											<button class="btn btn-default">
+												500	
+											</button>
+										</div>
+										<div class="col-md-1">
+											<button class="btn btn-default">
+												1000	
+											</button>
+										</div>
+										<div class="col-md-1">
+											<button class="btn btn-default border">
+												СТАРТ	
+											</button>
+										</div>
+									</div>
+									
+									<div class="col-md-12">
+										<div class="col-md-3 box">
+											<table class="table">
+												<thead>
+													<tr colspan="2">
+														<p class="text-center text-uppercase">Статистика</p>
+													</tr>
+												</thead>
+													<tbody>
+														<tr>
+															<td>
+																<p>Выиграно</p><p>% побед</p>
+															</td>
+															<td>
+																<p class="text-right">11/15</p><p class="text-right">73</p>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<p>В рейтинге</p>
+															</td>
+															<td>
+																<p class="text-right">1000+</p>
+															</td>
+														</tr>
+													</tbody>
+											</table>
+										</div>
+										
+										<div class="col-md-5 main">
+											<p>asda</p>
+										</div>
+
+										<div class="col-md-3 box1 pull-right">
+											<table class="table">
+												<thead>
+													<tr colspan="2">
+														<p class="text-center text-uppercase">Статистика</p>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															<p>Выиграно</p><p>% побед</p>
+														</td>
+														<td>
+															<p class="text-right">-</p><p class="text-right">-</p>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<p>В рейтинге</p>
+														</td>
+														<td>
+															<p class="text-right">-</p>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+
+									<div class="col-md-12">
+										<div class="col-md-3 box2">
+											<p class="text-center text-uppercase">Равный соперник</p>
+										</div>
+									</div>
+								</div>
+							</div>
+				</div>
+				<br>
+				<br>
+				<div class="text-center text-uppercase">
+					<p style="color: blue; font-size: 20px;"><strong><em>Присоединяйтесь к командной гонке за баллами</em></strong></p>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="panellamb">
+		<div class="panel panel-default">
+			<div class="conteiner-fluid">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<select class="form-control form-control-sm">
+							<option>select</option>
+						</select>
+						<div class="col-md-9">
+							<div class="col-md-4">
+								<img src="http://st.motortrend.com/uploads/sites/10/2016/06/2016-lamborghini-huracan-lp6104-coupe-angular-front.png" style="height: 150px; width:220px;" />
+							</div>
+							<div class="col-md-4">
+								<img src="http://st.motortrend.com/uploads/sites/10/2016/06/2016-lamborghini-huracan-lp6104-coupe-angular-front.png" style="height: 150px; width:220px;" />
+							</div>
+							<div class="col-md-4">
+								<img src="http://st.motortrend.com/uploads/sites/10/2016/06/2016-lamborghini-huracan-lp6104-coupe-angular-front.png" style="height: 150px; width:220px;" />
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="pull-right">
+								<p class="text-uppercase asd">Осталось <strong style="font-size: 16px; color: blue;">12312</strong> <i class="glyphicon glyphicon-bullhorn" aria-hidden="true"></i>
+								</p>
+								<button class="btn btn-default menu text-uppercase">Выбрать команду</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
 {% endblock %}

@@ -61,7 +61,7 @@ def login_view(request):
         return redirect('home')
     else:
         form = AuthenticationForm()
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'home.html', {'form': form})
 
 
 # class LoginFormView(FormView):

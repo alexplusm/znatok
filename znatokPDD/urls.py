@@ -18,9 +18,8 @@ from django.contrib import admin
 from accounts import views
 
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
+    url(r'^$', views.home and views.login_view, name='home'),
     url(r'^signup/', views.signup, name='signup'),
-    url(r'^login/', views.login_view, name='login'),
     url(r'^logout/', views.logout_view, name='logout'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
