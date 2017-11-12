@@ -45,7 +45,7 @@
             </div>
             <div class="col-md-2">
                 {% if user.is_authenticated %}
-                
+
                   <ul class="nav navbar-nav profile">
                     <li class="dropdown">
                       <a id="drop1" href="#" class="dropdown-toggle text-uppercase" data-toggle="dropdown">
@@ -54,6 +54,7 @@
                       </a>
                       <ul class="dropdown-menu">
                         <li><a href="#">Мой профиль</a></li>
+                          <li><a href="{% url 'password_change' %}">Изменение пароля</a></li>
                         <li class="divider"></li>
                         <li><a href="{% url 'logout' %}">Выход <i class="glyphicon glyphicon-log-out" aria-hidden="true"></i></a></li>
                       </ul>
@@ -67,7 +68,7 @@
                   <a href="{% url 'signup' %}" class="btn btn-default">Регистрация</a>
                 {% endblock %}
               {% endif %}
-              
+
             </div>
 
           </div>
@@ -170,6 +171,9 @@
     </div>
 {% endblock %}
   </div>
+
+    {% block content %}
+    {%  endblock %}
 
   <div id="online">
     {% block online %}

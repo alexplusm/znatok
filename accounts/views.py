@@ -1,6 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, logout, authenticate
 from .forms import RegistrationForm
 from django.core.mail import send_mail
 from django.http import HttpResponse
@@ -9,7 +7,6 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
-from django.views.generic.edit import FormView
 
 
 def home(request):
@@ -50,31 +47,3 @@ def activate(request, uidb64, token):
         return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
         return HttpResponse('Activation link is invalid!')
-
-
-def login_view(request):
-    username = request.POST.get('username', False)
-    password = request.POST.get('password', False)
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        return redirect('home')
-    else:
-        form = AuthenticationForm()
-    return render(request, 'home.html', {'form': form})
-
-
-# class LoginFormView(FormView):
-#     form_class = AuthenticationForm
-#     template_name = "login.html"
-#     success_url = 'home'
-#
-#     def form_valid(self, form):
-#         self.user = form.get_user()
-#         login(self.request, self.user)
-#         return super(LoginFormView, self).form_valid(form)
-
-
-def logout_view(request):
-    logout(request)
-    return redirect('home')

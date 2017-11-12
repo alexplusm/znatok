@@ -60,6 +60,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'znatokPDD.urls'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 TEMPLATES = [
     {
