@@ -1,5 +1,64 @@
 {% extends "base.html" %}
 
+
+{% block panelbody %}
+<div class="panel-body">
+    <div class="conteiner">
+        <div class="row" >
+          {% block coins %}
+            <form class="form-inline">
+                <div class="form-group col-lg-2 col-lg-offset-2">
+                    <label for="bonus">БАЛЛЫ</label>
+                    <input type="bonus" class="form-control" id="bonus" readonly="12345">
+                </div>
+
+                <div class="form-group col-lg-3 col-lg-offset-1">
+                    <label for="team">КОМАНДНЫЕ</label>
+                    <input type="team" class="form-control" id="team" readonly="123">
+                </div>
+
+                <div class="form-group col-lg-2">
+                    <label for="coins">BEEPCOIN</label>
+                    <input type="coins" class="form-control" id="coins" readonly="123">
+                </div>
+            </form>
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block panela %}
+<div class="col-md-2">
+                {% if user.is_authenticated %}
+
+                  <ul class="nav profile text-center">
+                    <li class="dropdown">
+                      <a id="drop1" href="#" class="dropdown-toggle text-uppercase" data-toggle="dropdown">
+                        {{ user.username }}
+                        <i class="glyphicon glyphicon-user" aria-hidden="true"></i>
+                      </a>
+                      <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#">Мой профиль</a></li>
+                          <li><a href="{% url 'password_change' %}">Изменение пароля</a></li>
+                        <li class="h-divider"></li>
+                        <li><a href="{% url 'logout' %}">Выход <i class="glyphicon glyphicon-log-out" aria-hidden="true"></i></a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  </ul>
+                {% else %}
+
+                {% block button %}
+                  <button data-toggle="modal" data-target="#modalLogin" class="btn btn-primary">ВХОД</button>
+                  <a href="{% url 'signup' %}" class="btn btn-default">Регистрация</a>
+                {% endblock %}
+              {% endif %}
+
+            </div>
+            {% endblock %}
+
+
 {% block main %}
 <div class="panel-body panel-default">
 			<div class="conteiner">
@@ -47,12 +106,12 @@
 				</div>
 			</div>
 		</div>
-{% endblock%}
+{% endblock %}
 
 {% block online %}
 <div id="online">
 	<div class="conteiner">
-		<div class="row">
+		<div class="row"  style="margin-right: 15px;">
 			<div class="col-md-8 col-md-offset-2">
 				<div class="row">
 					<div class="col-md-12">
@@ -63,7 +122,7 @@
 					<div class="conteiner">
 								<div class="row">
 									<div class="col-md-4">
-										<nav class="navbar navbar-inner">
+										<nav class="navbar navbar-inner" >
 											<ul class="navbar-nav nav full">
 												<li class="nav-item"><a class="nav-link text-uppercase text-center" href="#">знания пдд</a></li>
 											</ul>

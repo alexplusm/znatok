@@ -18,12 +18,16 @@ from django.contrib import admin
 from accounts import views
 from django.contrib.auth import views as auth_views
 
+from django.views.generic import TemplateView
+
 urlpatterns = [
     url(r'^$', auth_views.LoginView.as_view(template_name='home.html'), name='home'),
     url(r'^signup/', views.signup, name='signup'),
     url(r'^logout/', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
+    url(r'^confirm', TemplateView.as_view(template_name='confirm_email.html'), name='confirm'),
+    url(r'^done', TemplateView.as_view(template_name='confirm_done.html'), name='confirm_done'),
     url(r'^reset/$',
         auth_views.PasswordResetView.as_view(
             template_name='password_reset.html',

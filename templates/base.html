@@ -3,6 +3,7 @@
 <html>
   <head>
         <link href="{% static 'css/sitestyle.css' %}" rel="stylesheet">
+         <link href="{% static 'css/app.css' %}" rel="stylesheet">
       <meta charset="utf-8">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -19,7 +20,7 @@
       <div class="container-fluid">
         <div class="row">
           <nav class="navbar navbar-inner navbar-static-top">
-            <ul class="nav navbar-nav bdev">
+            <ul class="nav navbar-nav bdev dev">
               <li class="nav-item"><a class="nav-link vdev text-uppercase text-center" href="/">главная</a></li>
               <li class="nav-item"><a class="nav-link vdev text-uppercase text-center" href="#">автошколы</a></li>
               <li class="nav-item"><a class="nav-link vdev text-uppercase text-center" href="#">автоинструкторы</a></li>
@@ -36,40 +37,16 @@
       {% block panelheader %}
       <div class="panel-header">
         <div class="conteiner-fluid w1">
-          <div class="row">
+          <div class="row"  style="margin-right: 15px;">
             <div class="col-md-2 col-md-offset-1">
-              <img src="../static/img/logo.gif" href="/" alt="" class="logo"/>
+              <img src="{% static 'img/logo.gif' %}" href="/" alt="" class="logo"/>
             </div>
 
             <div class="col-md-5 col-md-offset-1">
             </div>
-            <div class="col-md-2">
-                {% if user.is_authenticated %}
-
-                  <ul class="nav navbar-nav profile">
-                    <li class="dropdown">
-                      <a id="drop1" href="#" class="dropdown-toggle text-uppercase" data-toggle="dropdown">
-                        {{ user.username }}
-                        <i class="glyphicon glyphicon-user" aria-hidden="true"></i>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">Мой профиль</a></li>
-                          <li><a href="{% url 'password_change' %}">Изменение пароля</a></li>
-                        <li class="divider"></li>
-                        <li><a href="{% url 'logout' %}">Выход <i class="glyphicon glyphicon-log-out" aria-hidden="true"></i></a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                  </ul>
-                {% else %}
-
-                {% block button %}
-                  <button data-toggle="modal" data-target="#modalLogin" class="btn btn-primary">ВХОД</button>
-                  <a href="{% url 'signup' %}" class="btn btn-default">Регистрация</a>
-                {% endblock %}
-              {% endif %}
-
-            </div>
+            {% block panela %}
+            
+            {% endblock %}
 
           </div>
         </div>
@@ -78,33 +55,13 @@
 
       <div id="panel2">
         {% block panelbody %}
-        <div class="panel-body">
-    <div class="conteiner">
-        <div class="row">
-          {% block coins %}
-            <form class="form-inline">
-                <div class="form-group col-lg-2 col-lg-offset-2">
-                    <label for="bonus">БАЛЛЫ</label>
-                    <input type="bonus" class="form-control" id="bonus" readonly="12345">
-                </div>
-
-                <div class="form-group col-lg-3 col-lg-offset-1">
-                    <label for="team">КОМАНДНЫЕ</label>
-                    <input type="team" class="form-control" id="team" readonly="123">
-                </div>
-
-                <div class="form-group col-lg-2">
-                    <label for="coins">BEEPCOIN</label>
-                    <input type="coins" class="form-control" id="coins" readonly="123">
-                </div>
-            </form>
-            {% endblock %}
-        </div>
-    </div>
-</div>
+        
         {% endblock %}
       </div>
     </div>
+    {% block divider %}
+
+  {% endblock %}
 
   <div class="modal fade" id="modalLogin" role="dialog">
     <div class="modal-dialog modal-sm">
@@ -115,7 +72,7 @@
         </div>
 
         <div class="modal-body">
-          <div class="row">
+          <div class="row" >
             <div class="col-lg-12">
                   <form method="post" novalidate>
                     {% csrf_token %}
@@ -123,7 +80,7 @@
                     <small>
                       <a href="" class="text-muted">Забыли пароль?</a>
                     </small>
-                    <button type="submit" class="btn btn-success">ВОЙТИ</button>
+                    <button type="submit" class="btn btn-success pull-right">ВОЙТИ</button>
                   </form>
                 </div>
               </div>
@@ -149,13 +106,16 @@
     {% endblock %}
   </div>
 
+    {% block content %}
+    {%  endblock %}
+
   <div id="panel-reno">
     {% block panelreno %}
 <div class="panel panel-default">
       <div class="conteiner">
-        <div class="row">
+        <div class="row" style="margin-right: 15px;">
           <div class="col-md-1 col-md-offset-2">
-            <img src="../" class="logoreno" />
+            <img src="https://vevents.ru/img/reno.png" class="logoreno" />
           </div>
           <div class="col-md-6">
             <p>Renault (Рено) - французская автомобильная компания, производит легковые, грузовые и спортивные автомобили. Совместно с румынской компанией Dacia выпускался недорогой и очень популярный Renault Logan.</p>
@@ -164,7 +124,7 @@
             </div>
           </div>
           <div class="col-md-2">
-            <img src="" class="logan" />
+            <img src="https://www.auto-mgn.ru/resources/images/upload/00002752884458056b23.jpg" class="logan" />
           </div>
         </div>
       </div>
@@ -172,15 +132,155 @@
 {% endblock %}
   </div>
 
-    {% block content %}
-    {%  endblock %}
+
 
   <div id="online">
     {% block online %}
     {% endblock %}
   </div>
 
+  <div id="panel-footer">
+   <div class="panel panel-default">
+    <div class="panel-header">
+      <div class="conteiner">
+        <div class="row" style="margin-right: 15px;">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12">
+              <p class="text-center">Отзывы пользователей</p>
+            </div>
+            <div class="col-md-2">
+              asd
+            </div>
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-md-7 col-md-offset-2">
+                  Second name for user 
+                </div>
+                <div class="col-md-3">
+                  <p class="text-right">city for user</p>
+                </div>
+              </div>
+                <div class="h-divider">
+                </div>
+                <div class="row" style="margin-bottom:40px;">
+                  <div class="col-md-9 col-md-offset-2">
+                  <i>Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва.</i>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+              asd
+            </div>
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-md-7 col-md-offset-2">
+                  Second name for user 
+                </div>
+                <div class="col-md-3">
+                  <p class="text-right">city for user</p>
+                </div>
+              </div>
+                <div class="h-divider">
+                </div>
+                <div class="row" style="margin-bottom:40px;">
+                  <div class="col-md-9 col-md-offset-2">
+                  <i>Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва.</i>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+              asd
+            </div>
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-md-7 col-md-offset-2">
+                  Second name for user 
+                </div>
+                <div class="col-md-3">
+                  <p class="text-right">city for user</p>
+                </div>
+              </div>
+                <div class="h-divider">
+                </div>
+                <div class="row" style="margin-bottom:40px;">
+                  <div class="col-md-9 col-md-offset-2">
+                  <i>Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва.</i>
+                </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body gradient">
+     <div class="conteiner">
+      <div class="row">
+       <div class="col-md-8 col-md-offset-2">
+        <div class="col-xs-6 col-md-6">
+         <a href="#" class="btn text-uppercase">
+          о проекте
+         </a>
+        </div>
+        <div class="col-xs-6 col-md-6">
+         <a href="#" class="btn text-uppercase" >
+          сотруднечество
+         </a>
+        </div>
+       </div>
+      </div>
+      <div class="row">
+       <div class="h-divider">
+       </div>
+      </div>
+      <div class="row">
+       <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-6">
+         <ul class="list-unstyled text-uppercase">
+          <li><a href="">миссия</a></li>
+          <li><a href="">наша команда</a></li>
+          <li><a href="">благодарности</a></li>
+          <li><a href="">розыгрыши призов</a></li>
+          <li><a href="">часто задаваемые вопросы</a></li>
+          <li><a href="">вакансии</a></li>
+          <li><a href="">контакты</a></li>
+          <li><a href="">мы в соцсетях</a></li>
+         </ul>
+        </div>
+        <div class="col-md-6">
+         <ul class="list-unstyled text-uppercase">
+          <li><a href="">вход для партнеров</a></li>
+          <br>
+          <li><a href="">автошколам</a></li>
+          <li><a href="">автоинструкторам</a></li>
+          <li><a href="">автодиллерам</a></li>
+          <li><a href="">юридическим лицам</a></li>
+          <li><a href="">реклама на сайте</a></li>
+          <li><a href="">партнерская программа</a></li>
+         </ul>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="panel-footer">
+     <div class="conteiner">
+      <div class="row">
+       <div class="col-md-12 text-center">
+        <ul class="list-inline">
+         <li><strong>@ ZNATOK-PDD.RU 2017</strong></li>
+         <li><strong>НКО "Безопасные дороги"</strong></li>
+         <li style="color: rgb(92, 86, 81);">Все права защищены.</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
   </body>
+
+
   <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <!-- Latest compiled and minified CSS -->

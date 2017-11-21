@@ -13,7 +13,7 @@
     {{ field.label_tag }}
     {% render_field field class=field|input_class %}
     {% for error in field.errors %}
-      <div class="invalid-feedback">
+      <div class="invalid-feedback" style="color: red;">
         {{ error }}
       </div>
     {% endfor %}
