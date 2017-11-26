@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+
 from accounts import views
 from django.contrib.auth import views as auth_views
+from exam import views as exam_views
 
 from django.views.generic import TemplateView
 
@@ -49,4 +53,21 @@ urlpatterns = [
     url(r'^settings/password/done/$', auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html'),
         name='password_change_done'),
     url(r'^admin/', admin.site.urls),
-]
+
+
+    # urls for exam app
+
+        # for ajax query
+    url(r'load_ticket/$', exam_views.load_ticket, name='load_ticket'),
+        # cookie
+    # url(r'testcookie/$', testofpdd_views.testcookie, name='testcookie'),
+
+    # urls for exam app
+
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+
+
