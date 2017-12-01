@@ -1,0 +1,49 @@
+ <!-- <div id="result" class="result"> -->	
+		<p>{{obj.question}}</p>
+		
+		<img src="{{ obj.picture.url }}">
+		
+		<p><button class="answbtn" id="answbtn">{{obj.answer1}}</button></p>
+
+		<p><button class="answbtn" id="answbtn">{{obj.answer2}}</button></p>
+
+		{% if obj.answer3 %}
+		<p><button class="answbtn" id="answbtn">{{obj.answer3}}</button></p>
+		{% endif %}
+
+		{% if obj.answer4 %}
+		<p><button class="answbtn">{{obj.answer4}}</button></p>
+		{% endif %}
+
+		{% if obj.answer5 %}
+		<p><button class="answbtn">{{obj.answer5}}</button></p>
+		{% endif %}
+<!--   </div> -->
+
+<script> 
+
+	$(".answbtn").click(function () {
+
+	        $.ajax({
+
+            type: "GET",
+
+            url: "next_question/",
+
+            data: {'number_of_ticket': number_of_ticket,
+        		  'number_of_question': number_of_question},
+            
+            cache: false,
+
+            success: function(data){
+            	console.log(data);
+            	$('.result').html(data);
+            	number_of_question++;
+
+
+
+            }
+       });
+	});        
+
+</script> 

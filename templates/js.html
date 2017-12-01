@@ -1,0 +1,40 @@
+{% load static %}
+<script type="text/javascript" src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
+
+<script>
+
+var number_of_ticket = 0;
+var number_of_question = 0;
+
+$('.btnticket').click(function(){
+number_of_ticket = $(this).attr("value");
+});
+
+$('.btnquest').click(function(){
+number_of_question = $(this).attr("value");
+});
+
+// загрузка вопроса 
+$(".btnquest").click(function () {
+
+	        $.ajax({
+
+            type: "GET",
+
+            url: "load_ticket/",
+
+            data: {'number_of_ticket': number_of_ticket,
+        		  'number_of_question': number_of_question},
+            
+            cache: false,
+
+            success: function(data){
+            	console.log(data);
+            	$('.result').html(data);
+            	$('#result').show();
+
+            }
+       });
+	});        
+
+</script>

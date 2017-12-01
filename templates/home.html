@@ -87,205 +87,6 @@
 									</div>
 								</div>
 							</div>
-
-<!-- ГОвнокод by Саня -->
-
-
-
-
-<!-- Не подрубается из папаши.html - подботать -->
-{% load static%}
-<script type="text/javascript" src="{% static '/js/jquery-3.2.1.min.js' %}"></script>script>
-
-
-<div class="byAlex" id="byAlex">
-
-	<h5>HELLLLOOO</h5>
-
-
-<script> 
-	var number_of_ticket = 0;
-	var number_of_question = 0;
-
-	// попробовать хранить в массиве(в json'e)
-	// var numbers = new Array();
-	// numbers[0] = number_of_ticket;
-	// numbers[1] = number_of_question;
-	// var data_to_json = {'data': data}
-
-	// var count_cookie = 0;
-	// var count_cookie = parseInt($.cookie('count'));
-
-
-
-
-	// $.ajax({
-
- //    type: "GET",
-
- //    url: "testcookie/",
-
- //    data: { },
-            
- //    cache: false,
-
- //    success: function(data){
-
- //        console.log(data);
- //    }
-// });
-
-</script> 
-
-
-
-<!-- <p>тест куки</p>
-
-
-    	<form>  
-        	<input class="cookie" id="cookie" type="button" value="cookie">  
-    	</form>  
-
-
-    	<script>
-    		$('.cookie').click(function(){
-    			// window.count_cookie ++;
-
-    		$.ajax({
-
-            type: "GET",
-
-            url: "testcookie/",
-
-            data: { },
-            
-            cache: false,
-
-            success: function(data){
-            	console.log(data);
-            	// $('.result').html(data);
-
-            }
-       });
-    		});
-    	</script>
-
-
-
-<p>тест куки</p> -->
-
-
-	<p>Выбирите билет</p>  
-    	<form>  
-        	<!-- <input id="btn1" type="button" value="1" onclick="(alert(this.value));">    -->
-        	<input class="btnticket" id="btnticket1" type="button" value="1">  
-        	<input class="btnticket" id="btnticket2" type="button" value="2"> 
-        	<input class="btnticket" id="btnticket3" type="button" value="3">   
-    	</form>  
-
-	<p>------------------</p>
-
-	<p>Выбирите вопрос</p>  
-    	<form>  
-        	<!-- <input id="btn1" type="button" value="1" onclick="(alert(this.value));">    -->
-        	<input class="btnquest" id="btnquest1" type="button" value="1">  
-        	<input class="btnquest" id="btnquest2" type="button" value="2"> 
-        	<input class="btnquest" id="btnquest3" type="button" value="3">  
-    	</form>  
-
-
-
-<script>
-	$('.btnticket').click(function(){
-	// alert($(this).attr("value"));
-	number_of_ticket = $(this).attr("value");
-
-	// numbers[0] = number_of_ticket;
-	});
-</script>
-
-<script>
-	$('.btnquest').click(function(){
-	// alert($(this).attr("value"));
-	number_of_question = $(this).attr("value");
-	
-	// numbers[1] = number_of_question;
-	});
-</script>
-
-
-
-
-<script>
-	// {% block jqueryajax %}
-	// var data_to_json = {'data': data}
-
-	$(".btnquest").click(function () {
-
-	        $.ajax({
-
-            type: "GET",
-
-            url: "load_ticket/",
-
-            data: {'number_of_ticket': number_of_ticket,
-        		  'number_of_question': number_of_question},
-            
-            cache: false,
-
-            success: function(data){
-            	console.log(data);
-            	$('.result').html(data);
-
-            }
-       });
-	});        
-
-	// {% endblock %}
-</script>
-
-
- <div id="result" class="result">
-	{% block question1 %}
-
-		{{obj.question}}
-		
-		<img src="{{ obj.picture.url }}">
-		
-		<p><button>{{obj.answer1}}</button></p>
-
-		<p><button>{{obj.answer2}}</button></p>
-
-		{% if obj.answer3 %}
-		<p><button>{{obj.answer3}}</button></p>
-		{% endif %}
-
-		{% if obj.answer4 %}
-		<p><button>{{obj.answer4}}</button></p>
-		{% endif %}
-
-		{% if obj.answer5 %}
-		<p><button>{{obj.answer5}}</button></p>
-		{% endif %}
-
-	{% endblock %} 
-</div>
-
-
-
-
-</div>
-
-<!-- ^^^^^
-     ||||| -->
-<!-- ГОвнокод by Саня -->
-
-
-
-
-
-
-
 							<div class="col-lg-6">
 								<div class="row3">
 									<div class="col-lg-6">
@@ -296,8 +97,36 @@
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
+
+<!-- ГОвнокод by Саня -->
+<div class="conteiner">
+<div class="byAlex row text-center" id="byAlex">
+
+	<p>Выбирите билет</p>  
+    	<form>  
+        	<input class="btnticket" id="btnticket1" type="button" value="1">  
+        	<input class="btnticket" id="btnticket2" type="button" value="2"> 
+        	<input class="btnticket" id="btnticket3" type="button" value="3">   
+    	</form>  
+
+	<p>Выбирите вопрос</p>  
+    	<form>  
+        	<input class="btnquest" id="btnquest1" type="button" value="1">  
+        	<input class="btnquest" id="btnquest2" type="button" value="2"> 
+        	<input class="btnquest" id="btnquest3" type="button" value="3">  
+        	<input class="btnquest" id="btnquest4" type="button" value="4"> 
+        	<input class="btnquest" id="btnquest5" type="button" value="5"> 
+    	</form>  
+
+ <div id="result" class="result"></div>
+
+</div>
+</div>
+
+{% include   "js.html" %}
+<!-- ^^^^^
+     ||||| -->
+<!-- ГОвнокод by Саня -->
 					<div class="col-lg-2">
 
 					</div>
