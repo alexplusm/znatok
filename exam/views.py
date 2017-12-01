@@ -45,7 +45,7 @@ def load_ticket(request):
     if (request.method == "GET" and request.is_ajax()):
         number_of_ticket = request.GET["number_of_ticket"]
         number_of_question = request.GET["number_of_question"]
-        
+
         obj = Question.objects.filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question)[0]
         print(obj)
 
@@ -57,24 +57,32 @@ def load_ticket(request):
         return HttpResponse(html)   
 
 
+def check_answer(request):
+    if (request.method == "GET" and request.is_ajax()):
+        answer_by_user = request.GET["answer_by_user"]
+        number_of_ticket = request.GET["number_of_ticket"]
+        number_of_question = request.GET["number_of_question"]
+
+        obj = Question.objects.filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question)[0]
+        true_answer = obj.answer1
+
+        true_of_false = (answer_by_user == true_answer)
+        return render(request, 'question_true.html', {'obj':obj, 'bool': true_of_false})
+
+
 def next_question(request):
     if (request.method == "GET" and request.is_ajax()):
         number_of_ticket = request.GET["number_of_ticket"]
         number_of_question = request.GET["number_of_question"]
         
-
         buf = int(number_of_question) + 1
         number_of_question = str(buf)
 
         obj = Question.objects.filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question)[0]
-        print(obj)
-
-        html = render_to_string('home.html', {'obj': obj})
+        
         return render(request, 'question.html', {'obj': obj})
-        # return HttpResponse(html)
-
     else:
-        return HttpResponse(html)
+        return render(request, 'home.html')
 
 
 

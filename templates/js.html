@@ -8,6 +8,26 @@ var number_of_question = 0;
 
 $('.btnticket').click(function(){
 number_of_ticket = $(this).attr("value");
+number_of_question = 1;
+
+$.ajax({
+
+            type: "GET",
+
+            url: "load_ticket/",
+
+            data: {'number_of_ticket': number_of_ticket,
+                  'number_of_question': number_of_question},
+            
+            cache: false,
+
+            success: function(data){
+                console.log(data);
+                $('.result').html(data);
+                $('#result').show();
+
+            }
+       });
 });
 
 $('.btnquest').click(function(){

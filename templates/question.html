@@ -3,44 +3,51 @@
 		
 		<img src="{{ obj.picture.url }}">
 		
-		<p><button class="answbtn" id="answbtn">{{obj.answer1}}</button></p>
+		<p><button class="answbtn" id="answbtn1" value="">{{obj.answer1}}</button></p>
 
-		<p><button class="answbtn" id="answbtn">{{obj.answer2}}</button></p>
+		<p><button class="answbtn" id="answbtn2">{{obj.answer2}}</button></p>
 
 		{% if obj.answer3 %}
-		<p><button class="answbtn" id="answbtn">{{obj.answer3}}</button></p>
+		<p><button class="answbtn" id="answbtn3">{{obj.answer3}}</button></p>
 		{% endif %}
 
 		{% if obj.answer4 %}
-		<p><button class="answbtn">{{obj.answer4}}</button></p>
+		<p><button class="answbtn" id="answbtn4">{{obj.answer4}}</button></p>
 		{% endif %}
 
 		{% if obj.answer5 %}
-		<p><button class="answbtn">{{obj.answer5}}</button></p>
+		<p><button class="answbtn" id="answbtn5">{{obj.answer5}}</button></p>
 		{% endif %}
+
+
 <!--   </div> -->
 
 <script> 
 
+
+	
+
 	$(".answbtn").click(function () {
+
+			var id = $(this).attr("id");
+			var e = document.getElementById(id);
+			var txt = e.textContent || e.innerText;
 
 	        $.ajax({
 
             type: "GET",
 
-            url: "next_question/",
+            url: "check_answer/",
 
             data: {'number_of_ticket': number_of_ticket,
-        		  'number_of_question': number_of_question},
+        		  'number_of_question': number_of_question,
+        		  'answer_by_user': txt},
             
             cache: false,
 
             success: function(data){
             	console.log(data);
             	$('.result').html(data);
-            	number_of_question++;
-
-
 
             }
        });

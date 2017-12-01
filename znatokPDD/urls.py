@@ -60,7 +60,8 @@ urlpatterns = [
         # for ajax query
     url(r'load_ticket/$', exam_views.load_ticket, name='load_ticket'),
     url(r'next_question/$', exam_views.next_question, name='next_question'),
-        # cookie
+    url(r'check_answer/$', exam_views.check_answer, name='check_answer'),
+            # cookie
     # url(r'testcookie/$', testofpdd_views.testcookie, name='testcookie'),
 
     # urls for exam app
