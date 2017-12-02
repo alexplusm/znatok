@@ -6,18 +6,18 @@
     <div class="conteiner">
         <div class="row" >
           {% block coins %}
-            <form class="form-inline">
-                <div class="form-group col-lg-2 col-lg-offset-2">
+            <form class="form-inline col-12">
+                <div class="form-group ml-auto">
                     <label for="bonus">БАЛЛЫ</label>
                     <input type="bonus" class="form-control" id="bonus" readonly="12345">
                 </div>
 
-                <div class="form-group col-lg-3 col-lg-offset-1">
+                <div class="form-group ml-auto">
                     <label for="team">КОМАНДНЫЕ</label>
                     <input type="team" class="form-control" id="team" readonly="123">
                 </div>
 
-                <div class="form-group col-lg-2">
+                <div class="form-group ml-auto mr-auto">
                     <label for="coins">BEEPCOIN</label>
                     <input type="coins" class="form-control" id="coins" readonly="123">
                 </div>
@@ -60,85 +60,222 @@
 
 
 {% block main %}
-<div class="panel-body panel-default">
-			<div class="conteiner">
-				<div class="row1">
-					<div class="col-lg-9 col-lg-offset-1">
-						<div class="row2">
-							<div class="col-lg-3">
-								<div class="row">
-									<div class="col-lg-12">
-										<a>Теория</a>
-									</div>
-									<div class="col-lg-12">
-										<a>Билеты</a>
-									</div>
-									<div class="col-lg-12">
-										<a>Экзамен</a>
-									</div>
-									<div class="col-lg-12">
-										<a>По темам</a>
-									</div>
-									<div class="col-lg-12">
-										<a>Марафон</a>
-									</div>
-									<div class="col-lg-12">
-										<a>ошибки</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="row3">
-									<div class="col-lg-6">
-										<a>Категории <strong>A,B,M</strong></a>
-									</div>
-									<div class="col-lg-6">
-										<a>Категории <strong>C,D</strong></a>
-									</div>
-								</div>
-							</div>
+<div id="navbartheory">
+     <div class="conteiner text-center">
+      <div class="row" style="margin-right: auto;">
+       <div class="col-2 ml-auto text-uppercase">
+        <div class="row">
+         <ul class="navleft nav flex-column">
+        <li class="nav-item2">
+          <a class="nav-link" href="#">Теория</a>
+        </li>
+      <li class="nav-item2 top">
+          <a class="nav-link" href="#">Билеты</a>
+        </li>
+        <li class="nav-item2 top">
+          <a class="nav-link" href="#">Экзамен</a>
+        </li>
+        <li class="nav-item2 top">
+          <a class="nav-link" href="#">по темам</a>
+        </li>
+        <li class="nav-item2 top">
+          <a class="nav-link" href="#">марафон</a>
+        </li>
+        <li class="nav-item2 top">
+          <a class="nav-link" href="#">ошибки</a>
+        </li>
+      </ul>
+        </div>
+       </div>
+       <div class="col-6 text-uppercase">
+        <div class="row">
+         <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Категории <strong>A, B, M</strong></a>
+        </li>
+        <li class="nav-item ml-auto">
+          <a class="nav-link" href="#">Категории <strong>C, D</strong></a>
+        </li>
+      </ul>
+     </div>
+     <div class="row" style="margin-left: 5px;">
+      <div class="col-12 bordering text-center">
+       <div class="row">
+        <div class="col-12">
+	         <select class="select" style="width: 100%">asd</select>
+	        </div>
+	       </div>
+	       <div class="row boxing top5">
+		          <button class="btnticket btn btn-default ml-auto" id="btnticket1" type="button" value="1">1</button>
+		          <button class="btnticket btn btn-default" id="btnticket2" type="button" value="2">2</button>
+		          <button class="btnticket btn btn-default" id="btnticket3" type="button" value="3">3</button>
+		          <button class="btnticket btn btn-default" id="btnticket4" type="button" value="4">4</button>
+		          <button class="btnticket btn btn-default" id="btnticket5" type="button" value="5">5</button>
+		          <button class="btnticket btn btn-default" id="btnticket6" type="button" value="6">6</button>
+		          <button class="btnticket btn btn-default" id="btnticket7" type="button" value="7">7</button>
+		          <button class="btnticket btn btn-default mr-auto" id="btnticket8" type="button" value="8">8</button>
+		 	</div>
+		 	<div class="row boxing top5">
+		          <button class="btnticket btn btn-default ml-auto" id="btnticket9" type="button" value="9">9</button>
+		          <button class="btnticket btn btn-default" id="btnticket10" type="button" value="10">10</button>
+		          <button class="btnticket btn btn-default" id="btnticket11" type="button" value="11">11</button>
+		          <button class="btnticket btn btn-default" id="btnticket12" type="button" value="12">12</button>
+		          <button class="btnticket btn btn-default" id="btnticket13" type="button" value="13">13</button>
+		          <button class="btnticket btn btn-default" id="btnticket14" type="button" value="14">14</button>
+		          <button class="btnticket btn btn-default" id="btnticket15" type="button" value="15">15</button>
+		          <button class="btnticket btn btn-default mr-auto" id="btnticket16" type="button" value="16">16</button>
+		 	</div>
+		 	<div class="row boxing top5">
+		          <button class="btnticket btn btn-default ml-auto" id="btnticket17" type="button" value="17">17</button>
+		          <button class="btnticket btn btn-default" id="btnticket18" type="button" value="18">18</button>
+		          <button class="btnticket btn btn-default" id="btnticket19" type="button" value="19">19</button>
+		          <button class="btnticket btn btn-default" id="btnticket20" type="button" value="20">20</button>
+		          <button class="btnticket btn btn-default" id="btnticket21" type="button" value="21">21</button>
+		          <button class="btnticket btn btn-default" id="btnticket22" type="button" value="22">22</button>
+		          <button class="btnticket btn btn-default" id="btnticket23" type="button" value="23">23</button>
+		          <button class="btnticket btn btn-default mr-auto" id="btnticket24" type="button" value="24">24</button>
+		 	</div>
+		 	<div class="row boxing top5">
+		          <button class="btnticket btn btn-default ml-auto" id="btnticket25" type="button" value="25">25</button>
+		          <button class="btnticket btn btn-default" id="btnticket26" type="button" value="26">26</button>
+		          <button class="btnticket btn btn-default" id="btnticket27" type="button" value="27">27</button>
+		          <button class="btnticket btn btn-default" id="btnticket28" type="button" value="28">28</button>
+		          <button class="btnticket btn btn-default" id="btnticket29" type="button" value="29">29</button>
+		          <button class="btnticket btn btn-default" id="btnticket30" type="button" value="30">30</button>
+		          <button class="btnticket btn btn-default" id="btnticket31" type="button" value="31">31</button>
+		          <button class="btnticket btn btn-default mr-auto" id="btnticket32" type="button" value="32">32</button>
+		 	</div>
+		 	<div class="row boxing top5">
+		          <button class="btnticket btn btn-default ml-auto" id="btnticket33" type="button" value="33">33</button>
+		          <button class="btnticket btn btn-default" id="btnticket34" type="button" value="34">34</button>
+		          <button class="btnticket btn btn-default" id="btnticket35" type="button" value="35">35</button>
+		          <button class="btnticket btn btn-default" id="btnticket36" type="button" value="36">36</button>
+		          <button class="btnticket btn btn-default" id="btnticket37" type="button" value="37">37</button>
+		          <button class="btnticket btn btn-default" id="btnticket38" type="button" value="38">38</button>
+		          <button class="btnticket btn btn-default" id="btnticket39" type="button" value="39">39</button>
+		          <button class="btnticket btn btn-default mr-auto" id="btnticket40" type="button" value="40">40</button>
+		 	</div>
 
-<!-- ГОвнокод by Саня -->
-<div class="conteiner">
-<div class="byAlex row text-center" id="byAlex">
+			<h5 class="text-left quest" style="margin-top: -40px;">Здесь вы можете перейти на другой вопрос</h5>
+		 	<div class="row boxing" style="">
+		          <button class="btnquest btn btn-default ml-auto" id="btnquest1" value="1">1</button>
+		          <button class="btnquest btn btn-default" id="btnquest2" type="button" value="2">2</button>
+		          <button class="btnquest btn btn-default" id="btnquest3" type="button" value="3">3</button>
+		          <button class="btnquest btn btn-default" id="btnquest4" type="button" value="4">4</button>
+		          <button class="btnquest btn btn-default" id="btnquest5" type="button" value="5">5</button>
+		          <button class="btnquest btn btn-default" id="btnquest6" value="6">6</button>
+		          <button class="btnquest btn btn-default" id="btnquest7" type="button" value="7">7</button>
+		          <button class="btnquest btn btn-default mr-auto" id="btnquest8" type="button" value="8">8</button>
+	      </div>
+     {% include   "js.html" %}
+			 <div id="result" class="result row boxing top5"></div>
+	      </div>
+     </div>
+       </div>
+       <div class="col-2 mr-auto">
+        <div class="row">
+         <div class="col-12 w2">
+          <p class="text-uppercase" style="color: blue; font-size: 20px;">Лидеры недели</p>
+          <div class="row padb" style="border-top: 1px solid lightgrey;">
+           <div class="col-4">
+            img
+           </div>
+           <div class="col-4">
+            <div class="row">
+             <div class="col-12 text3">
+              <p style="font-size: 17px;">Имя</p>
+              <small>Город</small>
+             </div>
+            </div>
+           </div>
+           <div class="col-4">
+            <div class="row" style="margin-left: 0px;">
+             <img src="img/gold.png" id="gold"/>
+            </div>
+           </div>
+           <div class="col-12 ml-auto" style="margin-top: 5px;">
+            <div class="row">
+             <div class="col-4 ml-auto text-right">
+              БАЛЛЫ
+             </div>
+             <div class="col-4" style="border: 1px solid black;">
+              12345
+             </div>
+            </div>
+           </div>
+          </div>
 
-	<p>Выбирите билет</p>  
-    	<form>  
-        	<input class="btnticket" id="btnticket1" type="button" value="1">  
-        	<input class="btnticket" id="btnticket2" type="button" value="2"> 
-        	<input class="btnticket" id="btnticket3" type="button" value="3">   
-    	</form>  
+          <div class="row padb">
+           <div class="col-4">
+            img
+           </div>
+           <div class="col-4">
+            <div class="row">
+             <div class="col-12 text3">
+              <p style="font-size: 17px;">Имя</p>
+              <small>Город</small>
+             </div>
+            </div>
+           </div>
+           <div class="col-4">
+            <div class="row" >
+             <img src="img/silver.png" id="gold"/>
+            </div>
+           </div>
+           <div class="col-12 ml-auto" style="margin-top: 5px;">
 
-	<p>Выбирите вопрос</p>  
-    	<form>  
-        	<input class="btnquest" id="btnquest1" type="button" value="1">  
-        	<input class="btnquest" id="btnquest2" type="button" value="2"> 
-        	<input class="btnquest" id="btnquest3" type="button" value="3">  
-        	<input class="btnquest" id="btnquest4" type="button" value="4"> 
-        	<input class="btnquest" id="btnquest5" type="button" value="5"> 
-    	</form>  
+            <div class="row">
+             <div class="col-4 ml-auto text-right">
+              БАЛЛЫ
+             </div>
+             <div class="col-4" style="border: 1px solid black;">
+              12345
+             </div>
+            </div>
+           </div>
+          </div>
 
- <div id="result" class="result"></div>
+          <div class="row padb">
+           <div class="col-4">
+            img
+           </div>
+           <div class="col-4">
+            <div class="row">
+             <div class="col-12 text3">
+              <p style="font-size: 17px;">Имя</p>
+              <small>Город</small>
+             </div>
+            </div>
+           </div>
+           <div class="col-4">
+            <div class="row" style="margin-left: 0px;">
+             <img src="img/bronze.png" id="gold"/>
+            </div>
+           </div>
+           <div class="col-12 ml-auto" style="margin-top: 5px;">
 
-</div>
-</div>
-
-{% include   "js.html" %}
-<!-- ^^^^^
-     ||||| -->
-<!-- ГОвнокод by Саня -->
-					<div class="col-lg-2">
-
-					</div>
-				</div>
-			</div>
-		</div>
+            <div class="row">
+             <div class="col-4 ml-auto text-right">
+              БАЛЛЫ
+ </div>
+             <div class="col-4" style="border: 1px solid black;">
+              12345
+             </div>
+            </div>
+           </div>
+          </div>
+      </div>
+        </div>
+       </div>
+   </div>
+     </div>
+ </div>
 {% endblock %}
 
 {% block online %}
 <div id="online">
 	<div class="conteiner">
-		<div class="row"  style="margin-right: 15px;">
+		<div class="row"  style="margin-right: 0px;">
 			<div class="col-md-8 col-md-offset-2">
 				<div class="row">
 					<div class="col-md-12">
@@ -146,42 +283,23 @@
 									<p style="color: blue; font-size: 20px;"><em><strong>Примите участие в ON-LINE состязаниях <br>с другими пользователями сайта</strong></em></p>
 								</div>
 					</div>
-					<div class="conteiner">
-								<div class="row">
-									<div class="col-md-4">
-										<nav class="navbar navbar-inner" >
-											<ul class="navbar-nav nav full">
-												<li class="nav-item"><a class="nav-link text-uppercase text-center" href="#">знания пдд</a></li>
-											</ul>
-										</nav>
-									</div>
-									<div class="col-md-4">
-										<nav class="navbar navbar-inner">
-											<ul class="navbar-nav nav">
-												<li class="nav-item nav-item-cast"><a class="nav-link text-uppercase text-center" href="#">дорожные знаки</a></li>
-											</ul>
-										</nav>
-									</div>
-									<div class="col-md-4">
-										<nav class="navbar navbar-inner">
-											<ul class="navbar-nav nav">
-												<li class="nav-item nav-item-cast"><a class="nav-link text-uppercase text-center" href="#">штрафы</a></li>
-											</ul>
-										</nav>
-									</div>
-								</div>
-					</div>
-				</div>
+						<nav class="navbar navbar-inner">
+				            <ul class="nav">
+				              <li class="nav-item mr-auto"><a class="nav-link text-uppercase text-center" href="/">Знания ПДД</a></li>
+				              <li class="nav-item mr-auto"><a class="nav-link text-uppercase text-center" href="#">дорожные знаки</a></li>
+				              <li class="nav-item"><a class="nav-link text-uppercase text-center" href="#">штрафы</a></li>
+				            </ul>
+				          </nav>
 
 				<div class="body">
 							<div class="conteiner-fluid">
 								<div class="row">
 									<div class="col-md-12">
 										<select class="form-control form-control-sm">
-											<option>select</option>
+											
 										</select>
 									</div>
-									<div class="col-md-12 col-md-offset-2 btn">
+									<div class="col-md-12 col-md-offset-2">
 										<div class="col-md-1">
 											<button class="btn btn-default border">
 												0	
@@ -219,7 +337,7 @@
 										</div>
 									</div>
 									
-									<div class="col-md-12">
+									<div class="col-12">
 										<div class="col-md-3 box">
 											<table class="table">
 												<thead>

@@ -1,31 +1,17 @@
- <!-- <div id="result" class="result"> -->	
-		<p>{{obj.question}}</p>
-		
-		<img src="{{ obj.picture.url }}">
-		
-		<p><button class="answbtn" id="answbtn">{{obj.answer1}}</button></p>
+{% extends "question.html" %}
 
-		<p><button class="answbtn" id="answbtn">{{obj.answer2}}</button></p>
-
-		{% if obj.answer3 %}
-		<p><button class="answbtn" id="answbtn">{{obj.answer3}}</button></p>
-		{% endif %}
-
-		{% if obj.answer4 %}
-		<p><button class="answbtn">{{obj.answer4}}</button></p>
-		{% endif %}
-
-		{% if obj.answer5 %}
-		<p><button class="answbtn">{{obj.answer5}}</button></p>
-		{% endif %}
+	{% block endif %}
+				
         {% if bool %}
 		<strong class="primary">Правильно</strong>
 		{% else %}
 		<strong class="primary">ti daun</strong>
 		{% endif %}
 		<p><button class="nextbtn">Далее</button></p>
-<!--   </div> -->
+		
+{% endblock %}
 
+{% block script %}
 <script> 
 
 	$(".nextbtn").click(function () {
@@ -45,9 +31,9 @@
             	console.log(data);
             	$('.result').html(data);
             	number_of_question++;
-
             }
        });
 	});        
 
-</script> 
+</script>
+{% endblock %}

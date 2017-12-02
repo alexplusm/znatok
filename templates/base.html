@@ -6,8 +6,9 @@
          <link href="{% static 'css/app.css' %}" rel="stylesheet">
       <meta charset="utf-8">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+{% block link %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+{% endblock %}
 
     <title>Знаток ПДД</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,19 +18,15 @@
   <body>
     <div id="navbar">
       {% block navbar %}
-      <div class="container-fluid">
-        <div class="row">
-          <nav class="navbar navbar-inner navbar-static-top">
-            <ul class="nav navbar-nav bdev dev">
-              <li class="nav-item"><a class="nav-link vdev text-uppercase text-center" href="/">главная</a></li>
-              <li class="nav-item"><a class="nav-link vdev text-uppercase text-center" href="#">автошколы</a></li>
-              <li class="nav-item"><a class="nav-link vdev text-uppercase text-center" href="#">автоинструкторы</a></li>
-              <li class="nav-item"><a class="nav-link vdev text-uppercase text-center" href="#">страхование</a></li>
+          <nav class="navbar">
+            <ul class="nav">
+              <li class="nav-item" style="border-left: 1px solid lightgrey;"><a class="nav-link text-uppercase text-center" href="/">главная</a></li>
+              <li class="nav-item"><a class="nav-link text-uppercase text-center" href="#">автошколы</a></li>
+              <li class="nav-item"><a class="nav-link text-uppercase text-center" href="#">автоинструкторы</a></li>
+              <li class="nav-item"><a class="nav-link text-uppercase text-center" href="#">страхование</a></li>
               <li class="nav-item"><a class="nav-link text-uppercase text-center" href="#">каталог</a></li>
             </ul>
           </nav>
-        </div>
-      </div>
       {% endblock %}
     </div>
 
@@ -286,7 +283,9 @@
 
   <script type="text/javascript" src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
   <!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <!-- Подключаем Bootstrap JS -->    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified CSS -->
 
   <!-- Latest compiled and minified JavaScript -->

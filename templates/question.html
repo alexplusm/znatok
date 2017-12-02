@@ -1,32 +1,63 @@
- <!-- <div id="result" class="result"> -->	
-		<p>{{obj.question}}</p>
-		
-		<img src="{{ obj.picture.url }}">
-		
-		<p><button class="answbtn" id="answbtn1" value="">{{obj.answer1}}</button></p>
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+	ul {
+		margin-left: 40px;
+	}
+</style>
 
-		<p><button class="answbtn" id="answbtn2">{{obj.answer2}}</button></p>
+<body>
+ 	<div class="conteiner">
+ 		<div class="row">
+ 			<div class="col-12">
+	 				<h2>{%block header%}{{obj.question}}{%endblock%}</h2>
+					<img src="{{ obj.picture.url }}" style="height: 200px; width: 500px;" />
+ 			</div>
+ 		</div>
+		<div class="row">
+			<div class="col-12 text-left">
+				{% block check %}
+				<ul class="list-unstyled">
+					<li>
+						<input class="answbtn" type="checkbox" id="answbtn1"/>
+						<label>{{obj.answer1}}</label>
+					</li>
+					<li>
+						<input class="answbtn" type="checkbox" id="answbtn2"/>
+						<label>{{obj.answer2}}</label>
+					</li>
+					{% if obj.answer3 %}
+					<li>
+						<input class="answbtn" type="checkbox" id="answbtn3"/>
+						<label>{{obj.answer3}}</label>
+					</li>
+					{% endif %}
 
-		{% if obj.answer3 %}
-		<p><button class="answbtn" id="answbtn3">{{obj.answer3}}</button></p>
-		{% endif %}
+					{% if obj.answer4 %}
+					<li>
+					<input class="answbtn" type="checkbox" id="answbtn4"/>
+						<label>{{obj.answer4}}</label>
+					</li>
+					{% endif %}
 
-		{% if obj.answer4 %}
-		<p><button class="answbtn" id="answbtn4">{{obj.answer4}}</button></p>
-		{% endif %}
+					{% if obj.answer5 %}
+					<li>
+						<input class="answbtn" type="checkbox" id="answbtn5"/>
+						<label>{{obj.answer5}}</label>
+					</li>
+					{% endif %}
+				</ul>
+				{% endblock %}
 
-		{% if obj.answer5 %}
-		<p><button class="answbtn" id="answbtn5">{{obj.answer5}}</button></p>
-		{% endif %}
+				{% block endif %}
+				{% endblock %}
 
-
-<!--   </div> -->
-
+			</div>
+		</div>
+	</div>
+</body>
+{% block script %}
 <script> 
-
-
-	
-
 	$(".answbtn").click(function () {
 
 			var id = $(this).attr("id");
@@ -52,5 +83,6 @@
             }
        });
 	});        
-
 </script> 
+{% endblock %}
+</html>
