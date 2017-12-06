@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 
 {% block panelbody %}
 <div class="panel-body">
@@ -151,7 +151,7 @@
 		          <button class="btnticket btn btn-default" id="btnticket39" type="button" value="39">39</button>
 		          <button class="btnticket btn btn-default mr-auto" id="btnticket40" type="button" value="40">40</button>
 		 	</div>
-		 	<div class="row boxing">
+		 	<div class="row boxing btnquest-box" style="display:none">
 		          <button class="btnquest btn btn-default" id="btnquest1" value="1">1</button>
 		          <button class="btnquest btn btn-default" id="btnquest2" type="button" value="2">2</button>
 		          <button class="btnquest btn btn-default" id="btnquest3" type="button" value="3">3</button>
@@ -172,7 +172,7 @@
 		          <button class="btnquest btn btn-default mr-auto" id="btnquestnext" type="button" value="next">...</button>
 	      </div>
 			
-     {% include   "js.html" %}
+
 			 <div id="result" class="result row boxing top5"></div>
 	      </div>
 	      {% endblock %}
@@ -457,3 +457,81 @@
 		</div>
 </div>
 {% endblock %}
+
+{% block javascript%}
+
+
+
+  <script type="text/javascript" src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
+
+<script>
+
+var number_of_ticket = 0;
+var number_of_question = 0;
+
+$('.btnticket').click(function(){
+number_of_ticket = $(this).attr("value");
+number_of_question = 1;
+
+$.ajax({
+
+            type: "GET",
+
+            url: "load_ticket/",
+
+            data: {'number_of_ticket': number_of_ticket,
+                  'number_of_question': number_of_question},
+            
+            cache: false,
+            
+            success: function(data){
+                console.log(data);
+                $('.result').html(data);
+                $('.btnticket').hide();
+                $('.btnquest-box').show();
+
+            }
+       });
+});
+
+// загрузка вопроса 
+$(".btnquest").click(function () {
+
+          number_of_question = $(this).attr("value");
+
+          $.ajax({
+
+            type: "GET",
+
+            url: "load_ticket/",
+
+            data: {'number_of_ticket': number_of_ticket,
+              'number_of_question': number_of_question},
+            
+            cache: false,
+
+            success: function(data){
+              console.log(data);
+              $('.result').html(data);
+              
+            }
+       });
+  });   
+</script> 
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

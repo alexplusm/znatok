@@ -6,44 +6,56 @@
 				</div>
 			</div>
  			<div class="col-xs-12 col-md-12 col-lg-6 text-left objquestion">
-	 				<p>{%block header%}{{obj.question}}{%endblock%}</p>
+	 				<p>{{obj.question}}</p>
 	 			</div>
 
  			</div>
  			<div class="">
-				{% block check %}
 				<ul class="list-unstyled">
 					<li>
-						<button class="answbtn text-left btn btn-default" type="checkbox" id="answbtn1">{{obj.answer1}}</button>
+						<button class="answbtn text-left btn btn-default" type="checkbox" id="{{obj.answer1}}">{{obj.answer1}}</button>
 					</li>
 					<li>
-						<button class="answbtn text-left btn btn-default" type="checkbox" id="answbtn2">{{obj.answer2}}</button>
+						<button class="answbtn text-left btn btn-default" type="checkbox" id="{{obj.answer2}}">{{obj.answer2}}</button>
 					</li>
 					{% if obj.answer3 %}
 					<li>
-						<button class="answbtn text-left btn btn-default" type="checkbox" id="answbtn3">{{obj.answer3}}</button>
+						<button class="answbtn text-left btn btn-default" type="checkbox" id="{{obj.answer3}}">{{obj.answer3}}</button>
 					</li>
 					{% endif %}
 
 					{% if obj.answer4 %}
 					<li>
-						<button class="answbtn text-left btn btn-default" type="checkbox" id="answbtn4">{{obj.answer4}}</button>
+						<button class="answbtn text-left btn btn-default" type="checkbox" id="{{obj.answer4}}">{{obj.answer4}}</button>
 					</li>
 					{% endif %}
 
 					{% if obj.answer5 %}
 					<li>
-						<button class="answbtn text-left btn btn-default" type="checkbox" id="answbtn5">{{obj.answer5}}</button>
+						<button class="answbtn text-left btn btn-default" type="checkbox" id="{{obj.answer5}}">{{obj.answer5}}</button>
 					</li>
 					{% endif %}
 				</ul>
-				{% endblock %}
-
-				{% block endif %}
-
-				{% endblock %}
 			</div>
-{% block script %}
+
+
+
+			<div class="conteiner help-box" style="display: none">
+				    <div class="row">
+				        <ul class="list-inline">{{obj.comment_for_question}}
+				        </ul>
+				    </div>
+				    <div class="row">
+				        <div class="col-12 text-left">
+				            <ul class="list-inline">
+				                <li><button class="helpbtn btn btn-default">ПОЯСНЕНИЕ</button></li>
+				                <li><button class="penaltybtn btn btn-default">ШТРАФЫ</button></li>
+				          		<li><button class="nextbtn btn btn-success">Далее</button></li>
+				            </ul>
+				        </div>
+				    </div>
+</div>
+
 <!--  <script type="text/javascript">
       var div1 = document.getElementById("btnquest3");
       $(div1).addClass('btn-success');
@@ -54,6 +66,8 @@
 			var id = $(this).attr("id");
 			var e = document.getElementById(id);
 			var txt = e.textContent || e.innerText;
+			var id_of_btn = "btnquest" + number_of_question;
+			var btn_object = document.getElementById(id_of_btn);
 
 	        $.ajax({
 
@@ -64,14 +78,58 @@
             data: {'number_of_ticket': number_of_ticket,
         		  'number_of_question': number_of_question,
         		  'answer_by_user': txt},
+        	dataType: 'json',	  
+            
+            cache: false,
+
+            success: function(data){
+            	console.log(data);
+            	// $('.result').html(data);
+            	$('.help-box').show();
+            	if (data.bool)
+            	{
+            		console.log(data.bool)
+            		$(e).addClass("btn-success");
+            		$(btn_object).addClass("btn-success");
+
+
+            	}
+            	else {
+            		$(e).addClass("btn-danger");
+            		var ee = document.getElementById(data.true_answer);
+            		$(ee).addClass("btn-success");
+            		$(btn_object).addClass("btn-danger");
+            	}
+
+
+
+
+
+            }
+       });
+	});  
+</script> 
+
+<script> 
+	$(".nextbtn").click(function () {
+
+	        $.ajax({
+
+            type: "GET",
+
+            url: "next_question/",
+
+            data: {'number_of_ticket': number_of_ticket,
+        		  'number_of_question': number_of_question},
             
             cache: false,
 
             success: function(data){
             	console.log(data);
             	$('.result').html(data);
+            	number_of_question++;
             }
        });
-	});  
-</script> 
-{% endblock %}
+	});        
+
+</script>

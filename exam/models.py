@@ -13,6 +13,7 @@ class Question(models.Model):
 	answer5 = models.CharField(max_length=250, blank=True)
 	comment_for_question = models.TextField(max_length=4000)
 	theme = models.IntegerField()
+	# section = models.IntegerField()
 
 	def __str__(self):
 		return "Ticket %d question %d" % (self.number_of_ticket, self.number_of_question)
