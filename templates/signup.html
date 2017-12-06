@@ -11,18 +11,16 @@
 {% endblock %}
 
 {% block signup %}
-  <div class="row justify-content-center"  style="margin-right: 15px;">
-    <div class="col-lg-6 col-lg-offset-3">
-      <div class="card">
-        <div class="card-body">
+<div id="signup">
+  <div class="row justify-content-center" style="margin-right: 0px;">
+    <div class="col-6">
           <h3 class="card-title">Регистрация</h3>
           <form method="post" novalidate>
             {% csrf_token %}
             {% include 'includes/form.html' %}
             <button type="submit" class="btn btn-primary btn-block">Создать профиль</button>
           </form>
-        </div>
-      </div>
     </div>
   </div>
+</div>
 {% endblock %}

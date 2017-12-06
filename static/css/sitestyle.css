@@ -5823,6 +5823,12 @@ body {
   min-width: 1280px;
   max-width: 1920px;
   width: 100%;
+  font-family: 'Ubuntu', sans-serif !important;
+}
+#signup {
+  font-size: 15px;
+  margin-top: 30px;
+  margin-bottom: 70px;
 }
 #navbar {
   margin-top: -6px;

@@ -29,7 +29,7 @@
 {% endblock %}
 
 {% block panela %}
-<div class="col-md-2">
+<div class="col-2">
                 {% if user.is_authenticated %}
 
                   <ul class="nav profile text-center">
@@ -51,7 +51,7 @@
 
                 {% block button %}
                   <button data-toggle="modal" data-target="#modalLogin" class="btn btn-primary">ВХОД</button>
-                  <a href="{% url 'signup' %}" class="btn btn-default">Регистрация</a>
+                  <a href="{% url 'signup' %}" class="btn btn-secondary">Регистрация</a>
                 {% endblock %}
               {% endif %}
 
@@ -446,9 +446,8 @@
 						</div>
 						<div class="col-md-3">
 							<div class="pull-right">
-								<p class="text-uppercase asd">Осталось <strong style="font-size: 16px; color: blue;">12312</strong> <i class="glyphicon glyphicon-bullhorn" aria-hidden="true"></i>
-								</p>
-								<button class="btn btn-default menu text-uppercase">Выбрать команду</button>
+								<p class="text-uppercase asd">Осталось <strong style="font-size: 16px; color: blue;">12312</strong></p>
+								<button class="btn btn-secondary menu text-uppercase">Выбрать команду</button>
 							</div>
 						</div>
 					</div>
