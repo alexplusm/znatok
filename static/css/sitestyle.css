@@ -5842,13 +5842,13 @@ body {
   width: 20%;
 }
 .background2 {
-  background: url(https://previews.123rf.com/images/leungchopan/leungchopan1012/leungchopan101200092/8433767-modern-city-at-night-Stock-Photo.jpg);
+  background: url(/static/img/backonline.png);
   background-size: 100% 100%;
 }
 #navbartheory {
   font-size: 15px;
   padding-top: 20px;
-  background: url(http://elitefon.ru/images/201211/elitefon.ru_12737.jpg);
+  background: url(/static/img/backmain.png);
   background-size: 100% 100%;
 }
 #navbartheory .nav-item2 {
@@ -5888,8 +5888,8 @@ body {
   padding-bottom: 10px;
 }
 #navbartheory .btnticket {
-  font-family: Calibri;
-  font-size: 15px;
+  font-family: fantasy;
+  font-size: 25px;
   font-weight: bold;
   color: darkblue;
   min-width: 50px;
@@ -6045,6 +6045,7 @@ body {
   background: white;
 }
 #online .body {
+  background: white;
   padding: 5px;
   padding-bottom: 10px;
   border: 2px solid lightgrey;
@@ -6100,6 +6101,12 @@ body {
   padding: 10px;
   height: auto;
   border-radius: 3px;
+}
+#panel-footer .panel-header {
+  background: url(/static/img/russia.png);
+  background-size: auto auto;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 #panel-footer .panel-body .btn {
   background: #0a6fff;
