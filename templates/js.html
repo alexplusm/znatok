@@ -7,14 +7,12 @@ var number_of_ticket = 0;
 var number_of_question = 0;
 
 $('.btnquest').hide();
-$('.quest').hide();
 
 $('.btnticket').click(function(){
 number_of_ticket = $(this).attr("value");
 number_of_question = 1;
 $('.btnticket').hide();
 $('.btnquest').show();
-$('.quest').show();
 
 $.ajax({
 

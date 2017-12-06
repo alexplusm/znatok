@@ -5819,6 +5819,11 @@ td.visible-print {
   }
 }
 /*серый фон страницы*/
+body {
+  min-width: 1280px;
+  max-width: 1920px;
+  width: 100%;
+}
 #navbar {
   margin-top: -6px;
 }
@@ -5836,12 +5841,19 @@ td.visible-print {
   display: inline-block;
   width: 20%;
 }
+.background2 {
+  background: url(https://previews.123rf.com/images/leungchopan/leungchopan1012/leungchopan101200092/8433767-modern-city-at-night-Stock-Photo.jpg);
+  background-size: 100% 100%;
+}
 #navbartheory {
   font-size: 15px;
   padding-top: 20px;
+  background: url(http://elitefon.ru/images/201211/elitefon.ru_12737.jpg);
+  background-size: 100% 100%;
 }
 #navbartheory .nav-item2 {
   border: 1px solid lightgrey;
+  background: white;
   width: 100%;
 }
 #navbartheory .top5 {
@@ -5866,6 +5878,7 @@ td.visible-print {
 #navbartheory .nav-item {
   margin-left: 20px;
   border: 1px solid lightgrey;
+  background: white;
   width: 46%;
 }
 #navbartheory .bordering {
@@ -5875,17 +5888,50 @@ td.visible-print {
   padding-bottom: 10px;
 }
 #navbartheory .btnticket {
+  font-family: Calibri;
+  font-size: 15px;
+  font-weight: bold;
+  color: darkblue;
   min-width: 50px;
   max-width: 500px !important;
   height: 50px !important;
-  background: lightgrey;
-  margin-left: 20px;
+  background: lightblue;
+  margin-left: 25px;
 }
 #navbartheory .btnquest {
-  width: 50px;
-  height: 50px !important;
-  background: lightgrey;
-  margin-left: 20px;
+  font-style: italic;
+  font-weight: bold;
+  width: 30px;
+  height: 30px !important;
+  margin-left: 4px;
+  margin-top: -20px;
+  border: 1px solid lightgrey;
+}
+#navbartheory .blockmain {
+  background: #f3f3f3;
+}
+#navbartheory .imgquestion {
+  border: 1px solid blue;
+  margin-top: 20px;
+  height: auto;
+  min-width: 300px;
+  max-width: 370px;
+  max-height: 130px;
+  min-height: 100px;
+  width: auto;
+}
+#navbartheory .answbtn {
+  font-size: 10px;
+  width: 100%;
+  border: 1px solid lightgrey;
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#navbartheory .objquestion {
+  padding-top: 20px;
+  color: blue;
+  font-style: italic;
 }
 #navbartheory #gold {
   height: 100px;
@@ -5895,6 +5941,8 @@ td.visible-print {
   margin-left: 20px;
   border: 1px solid lightgrey;
   padding-top: 10px;
+  margin-bottom: 70px;
+  background: white;
 }
 #navbartheory .padb {
   border-top: 1px solid lightgrey;
@@ -5994,6 +6042,7 @@ td.visible-print {
 #online .nav-item {
   width: 30%;
   border: 1px solid lightgrey;
+  background: white;
 }
 #online .body {
   padding: 5px;

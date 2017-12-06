@@ -1,19 +1,28 @@
-{% extends "question.html" %}
-
-	{% block endif %}
-				
-        {% if bool %}
-		<strong class="primary">Правильно</strong>
-		{% else %}
-		<strong class="primary">ti daun</strong>
-		{% endif %}
-		<p><button class="nextbtn">Далее</button></p>
-		
+<div class="conteiner">
+{% block endif %}
+    <div class="row">
+        <ul class="list-inline">
+            {% if bool %}
+            <li><p>Правильно!</p></li>
+            {% else %}
+            <li><p>Не правильно!</p></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-12 text-left">
+            <ul class="list-inline">
+                <li><button class="helpbtn btn btn-default">ПОЯСНЕНИЕ</button></li>
+                <li><button class="penaltybtn btn btn-default">ШТРАФЫ</button></li>
+          		<li><button class="nextbtn btn btn-success">Далее</button></li>
+            </ul>
+        </div>
+    </div>
 {% endblock %}
-
+</div>
 {% block script %}
-<script> 
 
+<script> 
 	$(".nextbtn").click(function () {
 
 	        $.ajax({

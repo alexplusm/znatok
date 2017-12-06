@@ -67,6 +67,9 @@ def check_answer(request):
         true_answer = obj.answer1
 
         true_of_false = (answer_by_user == true_answer)
+        print(true_of_false)
+        print(true_answer)
+        print(answer_by_user)
         return render(request, 'question_true.html', {'obj':obj, 'bool': true_of_false})
 
 

@@ -99,21 +99,17 @@
       </ul>
      </div>
      <div class="row" style="margin-left: 5px;">
-      <div class="col-12 bordering text-center">
-       <div class="row">
-        <div class="col-12">
-	         <select class="select" style="width: 100%">asd</select>
-	        </div>
-	       </div>
+     	{% block ticketmain %}
+      <div class="col-12 bordering text-center blockmain">
 	       <div class="row boxing top5">
-		          <button class="btnticket btn btn-default ml-auto" id="btnticket1" type="button" value="1">1</button>
-		          <button class="btnticket btn btn-default" id="btnticket2" type="button" value="2">2</button>
-		          <button class="btnticket btn btn-default" id="btnticket3" type="button" value="3">3</button>
-		          <button class="btnticket btn btn-default" id="btnticket4" type="button" value="4">4</button>
-		          <button class="btnticket btn btn-default" id="btnticket5" type="button" value="5">5</button>
-		          <button class="btnticket btn btn-default" id="btnticket6" type="button" value="6">6</button>
-		          <button class="btnticket btn btn-default" id="btnticket7" type="button" value="7">7</button>
-		          <button class="btnticket btn btn-default mr-auto" id="btnticket8" type="button" value="8">8</button>
+		          <button class="btnticket btn btn-default ml-auto" id="btnticket1" type="button" value="1"><p>1</p></button>	
+		          <button class="btnticket btn btn-default" id="btnticket2" type="button" value="2"><p>2</p></button>
+		          <button class="btnticket btn btn-default" id="btnticket3" type="button" value="3"><p>3</p></button>
+		          <button class="btnticket btn btn-default" id="btnticket4" type="button" value="4"><p>4</p></button>
+		          <button class="btnticket btn btn-default" id="btnticket5" type="button" value="5"><p>5</p></button>
+		          <button class="btnticket btn btn-default" id="btnticket6" type="button" value="6"><p>6</p></button>
+		          <button class="btnticket btn btn-default" id="btnticket7" type="button" value="7"><p>7</p></button>
+		          <button class="btnticket btn btn-default mr-auto" id="btnticket8" type="button" value="8"><p>8</p></button>
 		 	</div>
 		 	<div class="row boxing top5">
 		          <button class="btnticket btn btn-default ml-auto" id="btnticket9" type="button" value="9">9</button>
@@ -155,21 +151,31 @@
 		          <button class="btnticket btn btn-default" id="btnticket39" type="button" value="39">39</button>
 		          <button class="btnticket btn btn-default mr-auto" id="btnticket40" type="button" value="40">40</button>
 		 	</div>
-
-			<h5 class="text-left quest" style="margin-top: -40px;">Здесь вы можете перейти на другой вопрос</h5>
-		 	<div class="row boxing" style="">
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest1" value="1">1</button>
+		 	<div class="row boxing">
+		          <button class="btnquest btn btn-default" id="btnquest1" value="1">1</button>
 		          <button class="btnquest btn btn-default" id="btnquest2" type="button" value="2">2</button>
 		          <button class="btnquest btn btn-default" id="btnquest3" type="button" value="3">3</button>
 		          <button class="btnquest btn btn-default" id="btnquest4" type="button" value="4">4</button>
 		          <button class="btnquest btn btn-default" id="btnquest5" type="button" value="5">5</button>
 		          <button class="btnquest btn btn-default" id="btnquest6" value="6">6</button>
 		          <button class="btnquest btn btn-default" id="btnquest7" type="button" value="7">7</button>
-		          <button class="btnquest btn btn-default mr-auto" id="btnquest8" type="button" value="8">8</button>
+		          <button class="btnquest btn btn-default" id="btnquest8" type="button" value="8">8</button>
+		          <button class="btnquest btn btn-default" id="btnquest9" type="button" value="9">9</button>
+		          <button class="btnquest btn btn-default" id="btnquest10" type="button" value="10">10</button>
+		          <button class="btnquest btn btn-default" id="btnquest11" type="button" value="11">11</button>
+		          <button class="btnquest btn btn-default" id="btnquest12" type="button" value="12">12</button>
+		          <button class="btnquest btn btn-default" id="btnquest13" type="button" value="13">13</button>
+		          <button class="btnquest btn btn-default" id="btnquest14" type="button" value="14">14</button>
+		          <button class="btnquest btn btn-default" id="btnquest15" type="button" value="15">15</button>
+		          <button class="btnquest btn btn-default" id="btnquest16" type="button" value="16">16</button>
+
+		          <button class="btnquest btn btn-default mr-auto" id="btnquestnext" type="button" value="next">...</button>
 	      </div>
+			
      {% include   "js.html" %}
 			 <div id="result" class="result row boxing top5"></div>
 	      </div>
+	      {% endblock %}
      </div>
        </div>
        <div class="col-2 mr-auto">
@@ -273,9 +279,9 @@
 {% endblock %}
 
 {% block online %}
-<div id="online">
-	<div class="conteiner">
-		<div class="row"  style="margin-right: 0px;">
+<div id="online" class="background2">
+	<div class="conteiner opacity1">
+		<div class="row"  style="margin-right: 0px; padding-top: 40px;">
 			<div class="col-md-8 col-md-offset-2">
 				<div class="row">
 					<div class="col-md-12">
@@ -409,8 +415,9 @@
 				</div>
 				<br>
 				<br>
-				<div class="text-center text-uppercase">
-					<p style="color: blue; font-size: 20px;"><strong><em>Присоединяйтесь к командной гонке за баллами</em></strong></p>
+				<div class="text-uppercase ml-auto mr-auto">
+					<br>
+					<p style="color: blue; font-size: 20px; padding-bottom: 20px;"><strong><em>Присоединяйтесь к командной гонке за баллами</em></strong></p>
 				</div>
 				<br>
 			</div>
