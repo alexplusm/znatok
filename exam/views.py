@@ -50,7 +50,6 @@ def load_ticket(request):
         return render(request, 'question.html', {'obj': obj})
         
 
-
 def check_answer(request):
     if (request.method == "GET" and request.is_ajax()):
         answer_by_user = request.GET["answer_by_user"]
@@ -63,35 +62,27 @@ def check_answer(request):
 
         true_of_false = (answer_by_user == true_answer)
         if true_of_false:
+            if request.user.is_authenticated:
+                request.user.profile.points += 1
+                request.user.save()
             return JsonResponse({'bool': true_of_false})
         else:
-            return JsonResponse({'true_answer':true_answer ,'bool': true_of_false})    
+            return JsonResponse({'true_answer':true_answer ,'bool': true_of_false})
+
+
+def check_points(request):
+    if (request.method == "GET" and request.is_ajax()):
+        if request.user.is_authenticated:
+            points = request.user.profile.points
+            return JsonResponse({'points': points})
 
 
 def next_question(request):
     if (request.method == "GET" and request.is_ajax()):
         number_of_ticket = request.GET["number_of_ticket"]
         number_of_question = request.GET["number_of_question"]
-        
-        buf = int(number_of_question) + 1
-        number_of_question = str(buf)
-
         obj = Question.objects.filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question)[0]
         
         return render(request, 'question.html', {'obj': obj})
     else:
         return render(request, 'home.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-

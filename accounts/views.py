@@ -7,6 +7,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
+from .models import Profile
 
 
 def home(request):
@@ -20,6 +21,9 @@ def signup(request):
             user = form.save()
             user.is_active = False
             user.save()
+            profile = Profile()
+            profile.user = user
+            profile.save()
             message = render_to_string('active_email.html', {
                 'user': user,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),

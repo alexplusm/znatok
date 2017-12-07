@@ -9,7 +9,8 @@
             <form class="form-inline col-12">
                 <div class="form-group ml-auto">
                     <label for="bonus">БАЛЛЫ</label>
-                    <input type="bonus" class="form-control" id="bonus" readonly="12345">
+                    <div class="card card-body justify-content-center align-items-center" id="bonus" style="height: 35px; width: 80px">
+                    </div>
                 </div>
 
                 <div class="form-group ml-auto">
@@ -64,10 +65,10 @@
         <div class="row">
          <ul class="navleft nav flex-column">
         <li class="nav-item2">
-          <a class="nav-link active" href="#">Теория</a>
+          <a class="nav-link" href="#">Теория</a>
         </li>
       <li class="nav-item2 top">
-          <a class="nav-link" href="#">Билеты</a>
+          <a class="nav-link active" href="#">Билеты</a>
         </li>
         <li class="nav-item2 top">
           <a class="nav-link" href="#">Экзамен</a>
@@ -88,10 +89,10 @@
         <div class="row">
          <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" href="#">Категории <strong>A, B, M</strong></a>
+          <a class="nav-link active" href="#" id="cat1">Категории <strong>A, B, M</strong></a>
         </li>
         <li class="nav-item ml-auto">
-          <a class="nav-link" href="#">Категории <strong>C, D</strong></a>
+          <a class="nav-link" href="#" id="cat2">Категории <strong>C, D</strong></a>
         </li>
       </ul>
      </div>
@@ -464,8 +465,23 @@
 
 <script>
 
+
+var category = 1;
 var number_of_ticket = 0;
 var number_of_question = 0;
+
+$("#cat1").click(function () {
+    category = 1;
+    $(this).addClass("active");
+    $('#cat2').removeClass("active");
+  });
+
+$("#cat2").click(function () {
+    category = 2;
+    $(this).addClass("active");
+    $('#cat1').removeClass("active");
+  });
+
 
 $('.btnticket').click(function(){
 number_of_ticket = $(this).attr("value");
@@ -514,7 +530,23 @@ $(".btnquest").click(function () {
               
             }
        });
-  });   
+  });
+
+$(document).ready(function() {
+      $.ajax({
+
+                    type: "GET",
+
+                    url: "check_points/",
+
+                    cache: false,
+
+                    success: function(data){
+                        document.getElementById('bonus').innerHTML = data.points;
+                    }
+                 });
+    });
+
 </script> 
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>

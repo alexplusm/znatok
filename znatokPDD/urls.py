@@ -61,6 +61,7 @@ urlpatterns = [
     url(r'load_ticket/$', exam_views.load_ticket, name='load_ticket'),
     url(r'next_question/$', exam_views.next_question, name='next_question'),
     url(r'check_answer/$', exam_views.check_answer, name='check_answer'),
+    url(r'check_points/$', exam_views.check_points, name='check_points'),
             # cookie
     # url(r'testcookie/$', testofpdd_views.testcookie, name='testcookie'),
 

@@ -48,7 +48,6 @@ INSTALLED_APPS = [
 
     'exam',
     'accounts',
-    'mainframe',
 ]
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
