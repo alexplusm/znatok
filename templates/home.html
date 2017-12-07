@@ -49,7 +49,7 @@
                 {% else %}
 
                 {% block button %}
-                  <button data-toggle="modal" data-target="#modalLogin" class="btn btn-primary" style="font-size: 15px;">ВХОД</button>
+                  <button id="modalbtn" class="btn btn-primary" style="font-size: 15px;">ВХОД</button>
                   <a href="{% url 'signup' %}" class="btn btn-secondary" style="font-size: 15px;">Регистрация</a>
                 {% endblock %}
               {% endif %}
@@ -286,11 +286,11 @@
 									<p style="color: blue; font-size: 20px;"><em><strong>Примите участие в ON-LINE состязаниях <br>с другими пользователями сайта</strong></em></p>
 								</div>
 					</div>
-						<nav class="navbar navbar-inner">
-				            <ul class="nav">
+						<nav class="navbar navbar-inner" style="border: 1px solid black;">
+				            <ul class="nav" style="border: 1px solid black;">
 				              <li class="nav-item mr-auto"><a class="nav-link text-uppercase text-center" href="/">Знания ПДД</a></li>
-				              <li class="nav-item mr-auto"><a class="nav-link text-uppercase text-center" href="#">дорожные знаки</a></li>
-				              <li class="nav-item"><a class="nav-link text-uppercase text-center" href="#">штрафы</a></li>
+				              <li class="nav-item mr-auto ml-auto"><a class="nav-link text-uppercase text-center" href="#">дорожные знаки</a></li>
+				              <li class="nav-item mr-auto"><a class="nav-link text-uppercase text-center" href="#">штрафы</a></li>
 				            </ul>
 				          </nav>
 
@@ -517,6 +517,15 @@ $(".btnquest").click(function () {
   });   
 </script> 
 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+  <script>
+    $(document).ready(function() {
+      $("#modalbtn").click(function() {
+        $("#modalLogin").modal();
+      });
+    });
+  </script>
 {% endblock %}
 
 
