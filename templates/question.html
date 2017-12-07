@@ -90,21 +90,15 @@
             	{
             		console.log(data.bool)
             		$(e).addClass("btn-success");
-            		$(btn_object).addClass("btn-success");
-
-
+            		$(btn_object).addClass("btn-success disabled");
             	}
             	else {
             		$(e).addClass("btn-danger");
             		var ee = document.getElementById(data.true_answer);
             		$(ee).addClass("btn-success");
-            		$(btn_object).addClass("btn-danger");
+            		$(btn_object).addClass("btn-danger disabled");
             	}
-
-
-
-
-
+            	$('.answbtn').addClass("disabled");
             }
        });
 	});  

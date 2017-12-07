@@ -5822,7 +5822,6 @@ td.visible-print {
 body {
   min-width: 1280px;
   max-width: 1920px;
-  width: 100%;
   font-family: 'Ubuntu', sans-serif !important;
 }
 #modalLogin {
@@ -5858,6 +5857,10 @@ body {
 }
 #game .tic {
   width: 25px !important;
+}
+#gold {
+  width: 100%;
+  height: 100%;
 }
 .background2 {
   background: url(/static/img/backonline.png);
@@ -5953,10 +5956,6 @@ body {
   padding-top: 20px;
   color: blue;
   font-style: italic;
-}
-#navbartheory #gold {
-  height: 100px;
-  width: 50px;
 }
 #navbartheory .w2 {
   margin-left: 20px;
