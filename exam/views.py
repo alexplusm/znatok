@@ -47,14 +47,8 @@ def load_ticket(request):
         number_of_question = request.GET["number_of_question"]
 
         obj = Question.objects.filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question)[0]
-        print(obj)
-
-        html = render_to_string('home.html', {'obj': obj})
         return render(request, 'question.html', {'obj': obj})
-        return HttpResponse(html, {'obj': obj})
-
-    else:
-        return HttpResponse(html)   
+        
 
 
 def check_answer(request):
@@ -66,11 +60,12 @@ def check_answer(request):
         obj = Question.objects.filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question)[0]
         true_answer = obj.answer1
 
+
         true_of_false = (answer_by_user == true_answer)
-        print(true_of_false)
-        print(true_answer)
-        print(answer_by_user)
-        return render(request, 'question_true.html', {'obj':obj, 'bool': true_of_false})
+        if true_of_false:
+            return JsonResponse({'bool': true_of_false})
+        else:
+            return JsonResponse({'true_answer':true_answer ,'bool': true_of_false})    
 
 
 def next_question(request):

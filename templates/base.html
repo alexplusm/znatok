@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load staticfiles %}
+{% load static %}
 <html>
   <head>
         <link href="{% static 'css/sitestyle.css' %}" rel="stylesheet">
@@ -37,7 +37,7 @@
         <div class="conteiner-fluid w1">
           <div class="row"  style="margin-right: 15px;">
             <div class="col-md-2 col-md-offset-1">
-              <img src="{% static 'img/logo.gif' %}" href="/" alt="" class="logo"/>
+              <a href="/"><img src="{% static 'img/logo.gif' %}" alt="" class="logo"/></a>
             </div>
 
             <div class="col-md-5 col-md-offset-1">
@@ -277,6 +277,7 @@
   </div>
   </body>
 
+
   <script type="text/javascript" src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
   <!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
@@ -291,11 +292,14 @@
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script> -->
   
   <!-- П0друбка jQuery -->
-  <script type="text/javascript" src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
   <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script> -->
 
   <!-- либа для работы с куками    jquery.cookie.js  -->
   <script type="text/javascript" src="{% static '/js/jquery.cookie.js' %}"></script>
-  
+ 
+  {% block javascript %}
+
+
+  {% endblock %}
 
 </html>
