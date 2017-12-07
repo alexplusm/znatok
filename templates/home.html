@@ -29,7 +29,7 @@
 {% endblock %}
 
 {% block panela %}
-<div class="col-2">
+<div class="col-2 mr-auto">
                 {% if user.is_authenticated %}
 
                   <ul class="nav profile text-center">
@@ -50,8 +50,8 @@
                 {% else %}
 
                 {% block button %}
-                  <button data-toggle="modal" data-target="#modalLogin" class="btn btn-primary">ВХОД</button>
-                  <a href="{% url 'signup' %}" class="btn btn-secondary">Регистрация</a>
+                  <button data-toggle="modal" data-target="#modalLogin" class="btn btn-primary" style="font-size: 15px;">ВХОД</button>
+                  <a href="{% url 'signup' %}" class="btn btn-secondary" style="font-size: 15px;">Регистрация</a>
                 {% endblock %}
               {% endif %}
 

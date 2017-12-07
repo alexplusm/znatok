@@ -35,12 +35,29 @@
       {% block panelheader %}
       <div class="panel-header">
         <div class="conteiner-fluid w1">
-          <div class="row"  style="margin-right: 15px;">
-            <div class="col-md-2 col-md-offset-1">
+          <div class="row"  style="margin-right: 0px;">
+            <div class="col-2 ml-auto">
               <a href="/"><img src="{% static 'img/logo.gif' %}" alt="" class="logo"/></a>
             </div>
 
-            <div class="col-md-5 col-md-offset-1">
+            <div class="col-5" id="game">
+              <div class="row justify-content-center">
+                <div class="ml-auto mr-auto">
+                  <ul class="list-unstyled">
+                    <li><p class="text"></p> </li>
+                    <li><a class="btn btn-primary tic" id="1">#</a>
+                    <a class="btn btn-primary tic" id="2">#</a>
+                    <a class="btn btn-primary tic" id="3">#</a>
+                    <a class="btn btn-primary tic" id="4">#</a>
+                    <a class="btn btn-primary tic" id="5">#</a>
+                    <a class="btn btn-primary tic" id="6">#</a>
+                    <a class="btn btn-primary tic" id="7">#</a>
+                    <a class="btn btn-primary tic" id="8">#</a></li>
+                    <li><a class="btn btn-default" id="Reset">Сброс</a></li>
+                  </ul>
+                </div>
+            </div>
+
             </div>
             {% block panela %}
             
@@ -215,12 +232,12 @@
       <div class="row">
        <div class="col-md-8 col-md-offset-2">
         <div class="col-xs-6 col-md-6">
-         <a href="#" class="btn text-uppercase">
+         <a href="#" class="btn text-uppercase" style="font-size: 15px;">
           о проекте
          </a>
         </div>
         <div class="col-xs-6 col-md-6">
-         <a href="#" class="btn text-uppercase" >
+         <a href="#" class="btn text-uppercase" style="font-size: 15px;">
           сотруднечество
          </a>
         </div>
@@ -297,6 +314,89 @@
   <!-- либа для работы с куками    jquery.cookie.js  -->
   <script type="text/javascript" src="{% static '/js/jquery.cookie.js' %}"></script>
  
+<script>
+  $(document).ready(function(){
+
+    var turn="X";
+    var def = "#";
+    var count=0;
+    var turns=["#","#","#","#","#","#","#","#"];
+    var gameDone1=true;
+    var gameDone2=true;
+    var value = 0;
+    var gameCounter = 0;
+    createGame1();
+
+    $('#Reset').click(function(){
+      reset();
+    });
+    
+    function click() {
+      $(".tic").click(function(){
+        var slot = $(this).attr('id');
+        playerTurn(turn, slot);
+      });
+    }
+
+    function playerTurn(turn, id){
+      var sporTaken= $("#"+id).text();
+      if (sporTaken === "#") {
+        count++;
+        turns[id] = turn;
+        $("#"+id).text(turn);
+
+        if (gameDone1 === true) {
+          winCondition2(turns, turn);
+        } else winCondition(turns, turn);
+        
+      } else if (sporTaken==="X") {
+        count--;
+        turns[id] = def;
+        $("#"+id).text(def);
+        winCondition(turns, turn);
+      }
+    }
+
+    function createGame1() {
+      gameDone1 = false;
+      alert("game1 was create");
+      $(".text").text("Выберите 1 и 2 блок");
+      click();
+    }
+
+    function winCondition(turnRight, currentTurn) {
+      if (turnRight[1] === currentTurn && turnRight[2] === currentTurn && count === 2) {
+        doneGame1();
+        if (gameDone1 == true) {
+          alert("wins!");
+        }
+      } else if (count === 8) {
+        alert("Попробуйте еще раз");
+        reset();
+      }
+      else {
+        gameDone1 = false;
+      }
+    }
+
+    function reset() {
+      turns=["#","#","#","#","#","#","#","#"];
+      count=0;
+      $(".tic").text("#");
+      gameDone1 = false;
+      $(".text").text("Выберите 1 и 2 блок");
+    }
+
+    function doneGame1() {
+      alert("game1 was down!");
+      gameDone1 = true;
+      $(".tic").text("#");
+      gameCounter++;
+      reset();
+    }
+  });
+</script>
+
   {% block javascript %}
 
 

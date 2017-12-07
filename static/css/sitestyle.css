@@ -5825,6 +5825,14 @@ body {
   width: 100%;
   font-family: 'Ubuntu', sans-serif !important;
 }
+#modalLogin {
+  position: absolute;
+  margin-top: 100px;
+  font-size: 15px;
+}
+#modalLogin .modal-header {
+  background: blue;
+}
 #signup {
   font-size: 15px;
   margin-top: 30px;
@@ -5832,6 +5840,7 @@ body {
 }
 #navbar {
   margin-top: -6px;
+  font-size: 15px;
 }
 #navbar .navbar {
   width: 100%;
@@ -5846,6 +5855,9 @@ body {
   border-bottom: 1px solid lightgrey;
   display: inline-block;
   width: 20%;
+}
+#game .tic {
+  width: 25px !important;
 }
 .background2 {
   background: url(/static/img/backonline.png);
@@ -5960,9 +5972,12 @@ body {
 .vdev {
   border-right: 1px solid lightgrey;
 }
+#panel {
+  font-size: 15px;
+}
 #panel .logo {
-  height: 80px;
-  width: 230px;
+  height: auto;
+  width: 100%;
 }
 #panel .panel-header {
   background: white;
@@ -6017,6 +6032,9 @@ body {
   margin-right: 3px;
   margin-left: 3px;
 }
+#panel-reno {
+  font-size: 13px;
+}
 #panel-reno .panel .conteiner {
   border: 1px solid lightgrey;
   margin-top: 5px;
@@ -6038,6 +6056,9 @@ body {
   margin-bottom: 10px;
   height: 120px;
   width: 200px;
+}
+#online {
+  font-size: 15px;
 }
 #online .navbar {
   width: 100%;
