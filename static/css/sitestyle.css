@@ -5869,6 +5869,9 @@ body {
   background: url(/static/img/backmain.png);
   background-size: 100% 100%;
 }
+#navbartheory .active {
+  background: rgba(0, 186, 190, 0.4);
+}
 #navbartheory .nav-item2 {
   border: 1px solid lightgrey;
   background: white;
@@ -6110,10 +6113,41 @@ body {
   margin-top: 10px;
   padding-top: 10px;
 }
+#panellamb .lamb {
+  padding-top: 30px;
+}
+#panellamb .lamb1 {
+  height: 100%;
+  width: 100%;
+}
+#panellamb .lamb1:hover {
+  height: 110%;
+  width: 110%;
+}
+#panellamb .lamb2 {
+  height: 100%;
+  width: 100%;
+}
+#panellamb .lamb2:hover {
+  height: 110%;
+  width: 110%;
+}
+#panellamb .lamb3 {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+#panellamb .lamb3:hover {
+  height: 110%;
+  width: 110%;
+}
 #panellamb .row {
   border: 2px solid lightgrey;
-  padding-top: 10px;
+  padding-top: 20px;
   margin: 10px;
+}
+#panellamb .pull-right {
+  padding-bottom: 40px;
 }
 #panellamb .asd {
   margin-top: 20px;
@@ -6128,9 +6162,10 @@ body {
   padding: 10px;
   height: auto;
   border-radius: 3px;
+  padding-bottom: 30px;
 }
 #panel-footer .panel-header {
-  background: url(/static/img/russia.png);
+  background: url(/static/img/russia20.png);
   background-size: auto auto;
   background-repeat: no-repeat;
   background-position: center;

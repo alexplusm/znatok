@@ -29,7 +29,6 @@
 {% endblock %}
 
 {% block panela %}
-<div class="col-2 mr-auto">
                 {% if user.is_authenticated %}
 
                   <ul class="nav profile text-center">
@@ -54,8 +53,6 @@
                   <a href="{% url 'signup' %}" class="btn btn-secondary" style="font-size: 15px;">Регистрация</a>
                 {% endblock %}
               {% endif %}
-
-            </div>
             {% endblock %}
 
 
@@ -67,7 +64,7 @@
         <div class="row">
          <ul class="navleft nav flex-column">
         <li class="nav-item2">
-          <a class="nav-link" href="#">Теория</a>
+          <a class="nav-link active" href="#">Теория</a>
         </li>
       <li class="nav-item2 top">
           <a class="nav-link" href="#">Билеты</a>
@@ -184,7 +181,7 @@
           <p class="text-uppercase" style="color: blue; font-size: 20px;">Лидеры недели</p>
           <div class="row padb" style="border-top: 1px solid lightgrey;">
            <div class="col-4">
-            img
+            
            </div>
            <div class="col-4">
             <div class="row">
@@ -213,7 +210,7 @@
 
           <div class="row padb">
            <div class="col-4">
-            img
+            
            </div>
            <div class="col-4">
             <div class="row">
@@ -243,7 +240,7 @@
 
           <div class="row padb">
            <div class="col-4">
-            img
+            
            </div>
            <div class="col-4">
             <div class="row">
@@ -433,15 +430,16 @@
 						<select class="form-control form-control-sm">
 							<option>select</option>
 						</select>
-						<div class="col-md-9">
+						<div class="col-md-9 lamb">
+               <form>
 							<div class="col-md-4">
-								<img src="http://st.motortrend.com/uploads/sites/10/2016/06/2016-lamborghini-huracan-lp6104-coupe-angular-front.png" style="height: 150px; width:220px;" />
+								<a href=""><img src="{% static 'img/greenlamb.png' %}" class="lamb1" /></a>
 							</div>
 							<div class="col-md-4">
-								<img src="http://st.motortrend.com/uploads/sites/10/2016/06/2016-lamborghini-huracan-lp6104-coupe-angular-front.png" style="height: 150px; width:220px;" />
+								<a href=""><img src="{% static 'img/yellowlamb.png' %}" class="lamb2" /></a>
 							</div>
 							<div class="col-md-4">
-								<img src="http://st.motortrend.com/uploads/sites/10/2016/06/2016-lamborghini-huracan-lp6104-coupe-angular-front.png" style="height: 150px; width:220px;" />
+								<a href=""><img src="{% static 'img/redlamb.png' %}" class="lamb3" /></a>
 							</div>
 						</div>
 						<div class="col-md-3">
@@ -450,6 +448,7 @@
 								<button class="btn btn-secondary menu text-uppercase">Выбрать команду</button>
 							</div>
 						</div>
+          </form>
 					</div>
 				</div>
 			</div>

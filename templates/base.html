@@ -59,9 +59,11 @@
             </div>
 
             </div>
+            <div class="col-2 mr-auto">
             {% block panela %}
             
             {% endblock %}
+          </div>
 
           </div>
         </div>
@@ -82,8 +84,8 @@
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title text-center text-uppercase">вход на сайт</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
 
         <div class="modal-body">
@@ -95,7 +97,7 @@
                     <small>
                       <a href="" class="text-muted">Забыли пароль?</a>
                     </small>
-                    <button type="submit" class="btn btn-success pull-right">ВОЙТИ</button>
+                    <button type="submit" class="btn btn-success pull-right" style="font-size: 15px;">ВОЙТИ</button>
                   </form>
                 </div>
               </div>
@@ -359,8 +361,7 @@
 
     function createGame1() {
       gameDone1 = false;
-      alert("game1 was create");
-      $(".text").text("Выберите 1 и 2 блок");
+      $(".text").text("Игра. Выберите 1 и 2 блоки");
       click();
     }
 
@@ -368,7 +369,8 @@
       if (turnRight[1] === currentTurn && turnRight[2] === currentTurn && count === 2) {
         doneGame1();
         if (gameDone1 == true) {
-          alert("wins!");
+          alert("Поздравляю, вы указали правильные знаки!");
+          reset();
         }
       } else if (count === 8) {
         alert("Попробуйте еще раз");
@@ -388,11 +390,10 @@
     }
 
     function doneGame1() {
-      alert("game1 was down!");
+      alert("игра окончена!");
       gameDone1 = true;
       $(".tic").text("#");
       gameCounter++;
-      reset();
     }
   });
 </script>
