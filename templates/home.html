@@ -29,33 +29,6 @@
 </div>
 {% endblock %}
 
-{% block panela %}
-                {% if user.is_authenticated %}
-
-                  <ul class="nav profile text-center">
-                    <li class="dropdown">
-                      <a id="drop1" href="#" class="dropdown-toggle text-uppercase" data-toggle="dropdown">
-                        {{ user.username }}
-                        <i class="glyphicon glyphicon-user" aria-hidden="true"></i>
-                      </a>
-                      <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="#">Мой профиль</a></li>
-                          <li><a href="{% url 'password_change' %}">Изменение пароля</a></li>
-                        <li class="h-divider"></li>
-                        <li><a href="{% url 'logout' %}">Выход <i class="glyphicon glyphicon-log-out" aria-hidden="true"></i></a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                  </ul>
-                {% else %}
-
-                {% block button %}
-                  <button id="modalbtn" class="btn btn-primary" style="font-size: 15px;">ВХОД</button>
-                  <a href="{% url 'signup' %}" class="btn btn-secondary" style="font-size: 15px;">Регистрация</a>
-                {% endblock %}
-              {% endif %}
-            {% endblock %}
-
 
 {% block main %}
 <div id="navbartheory">
