@@ -5856,7 +5856,13 @@ body {
   width: 20%;
 }
 #game .tic {
-  width: 25px !important;
+  transition: 0.5s ease;
+  border-radius: 100%;
+  width: calc(11.11111111%);
+  filter: grayscale(0.5) opacity(0.7);
+}
+#game .act {
+  filter: grayscale(0) opacity(1);
 }
 #gold {
   width: 100%;
@@ -5874,6 +5880,9 @@ body {
 }
 #navbartheory .active {
   background: rgba(0, 186, 190, 0.4);
+}
+#navbartheory .disactive {
+  background: white;
 }
 #navbartheory .nav-item2 {
   border: 1px solid lightgrey;
@@ -5916,19 +5925,17 @@ body {
   font-size: 25px;
   font-weight: bold;
   color: darkblue;
-  min-width: 50px;
-  max-width: 500px !important;
-  height: 50px !important;
+  width: calc(10%);
+  height: 120% !important;
   background: lightblue;
-  margin-left: 25px;
 }
 #navbartheory .btnquest {
   font-style: italic;
   font-weight: bold;
-  width: 30px;
-  height: 30px !important;
-  margin-left: 4px;
+  width: calc(4.76190476%);
   margin-top: -20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   border: 1px solid lightgrey;
 }
 #navbartheory .blockmain {
@@ -5978,7 +5985,6 @@ body {
   font-size: 15px;
 }
 #panel .logo {
-  height: auto;
   width: 100%;
 }
 #panel .panel-header {
@@ -5986,9 +5992,9 @@ body {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-#panel .panel-header .w1 button {
+#panel .panel-header .w1 .btn-prof {
   height: auto;
-  width: 150px;
+  width: 80%;
   margin-bottom: 8px;
 }
 #panel .panel-header .w1 a {
@@ -6112,35 +6118,19 @@ body {
   margin-top: 10px;
   padding-top: 10px;
 }
-#panellamb .lamb {
+#panellamb .lambpanel {
   padding-top: 30px;
 }
-#panellamb .lamb1 {
-  height: 100%;
+#panellamb .lamb {
+  cursor: pointer;
   width: 100%;
+  transition: 0.6s ease;
+  filter: grayscale(0.2) opacity(0.7);
 }
-#panellamb .lamb1:hover {
-  height: 110%;
-  width: 110%;
+#panellamb .lambact {
+  filter: grayscale(0) opacity(1);
 }
-#panellamb .lamb2 {
-  height: 100%;
-  width: 100%;
-}
-#panellamb .lamb2:hover {
-  height: 110%;
-  width: 110%;
-}
-#panellamb .lamb3 {
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-#panellamb .lamb3:hover {
-  height: 110%;
-  width: 110%;
-}
-#panellamb .row {
+#panellamb .row1 {
   border: 2px solid lightgrey;
   padding-top: 20px;
   margin: 10px;
@@ -6151,13 +6141,12 @@ body {
 #panellamb .asd {
   margin-top: 20px;
 }
-#panellamb .menu {
+#panellamb .confirm {
   margin-top: 10px;
-  margin-right: -15px;
   padding-bottom: 10px;
   padding-top: 10px;
 }
-#panellamb .menu .btn {
+#panellamb .confirm .btn {
   padding: 10px;
   height: auto;
   border-radius: 3px;
