@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     'exam',
     'accounts',
+    'game',
 ]
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True

@@ -1,0 +1,29 @@
+<p class="text-center">{{ question }}</p>
+<img src="{{ obj1.Picture_for_mini_game.url }}" class="tic btn btn-default" id="1"/>
+<img src="{{ obj2.Picture_for_mini_game.url }}" class="tic btn btn-default" id="2"/>
+<img src="{{ obj3.Picture_for_mini_game.url }}" class="tic btn btn-default" id="3"/>
+<img src="{{ obj4.Picture_for_mini_game.url }}" class="tic btn btn-default" id="4"/>
+<img src="{{ obj5.Picture_for_mini_game.url }}" class="tic btn btn-default" id="5"/>
+<img src="{{ obj6.Picture_for_mini_game.url }}" class="tic btn btn-default" id="6"/>
+<img src="{{ obj7.Picture_for_mini_game.url }}" class="tic btn btn-default" id="7"/>
+<img src="{{ obj8.Picture_for_mini_game.url }}" class="tic btn btn-default" id="8"/>
+<div class="text-right"><a class="btn btn-default skipGame" style="font-size: 15px;">Пропуск вопроса</a></div>
+
+<script>
+	$(document).ready(function(){
+	    
+	    $(".tic").click(function(){
+	      var id = $(this).attr("id");
+	      var e = document.getElementById(id);
+	      playerAction(e, id);
+	    });
+	    
+	    function playerAction(elem, id) {
+	      if ($(elem).hasClass("act")) {
+	        $(elem).removeClass("act");
+	      } else {
+	        $(elem).addClass("act");
+	      }
+	    }
+	});
+</script>

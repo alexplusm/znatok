@@ -50,20 +50,8 @@
                   <ul class="list-unstyled">
                     <li><p class="text text-center"></p></li>
                     <li>
-                      <div class="game">
-                        <img class="tic btn btn-default" id="1" src="{% static 'img/dog.png' %}" />
-                        <img class="tic btn btn-default" id="2" src="{% static 'img/dog.png' %}" />
-                        <img class="tic btn btn-profdefault" id="3" src="{% static 'img/dog.png' %}" />
-                        <img class="tic btn btn-default" id="4" src="{% static 'img/dog.png' %}" />
-                        <img class="tic btn btn-default" id="5" src="{% static 'img/dog.png' %}" />
-                        <img class="tic btn btn-default" id="6" src="{% static 'img/dog.png' %}" />
-                        <img class="tic btn btn-default" id="7" src="{% static 'img/dog.png' %}" />
-                        <img class="tic btn btn-default" id="8" src="{% static 'img/dog.png' %}" />
-                      </div>
-                      <div id="content"></div> 
+                      <div class="gameresult"></div>
                     </li>
-                    <li class="text-right"><a class="btn btn-default skipGame" style="font-size: 15px;">Пропуск вопроса</a>
-                  </li>
                   </ul>
                 </div>
             </div>
@@ -178,7 +166,7 @@
     <div class="panel-header">
       <div class="conteiner">
         <div class="row" style="margin-right: 15px;">
-          <div class="col-md-8 col-md-offset-2">
+          <div class="col-8 mr-auto ml-auto">
             <div class="col-md-12">
               <p class="text-center">Отзывы пользователей</p>
             </div>
@@ -334,186 +322,28 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
   <script type="text/javascript" src="{% static '/js/jquery.cookie.js' %}"></script>
- 
-<script>
-  $(document).ready(function(){
 
-    var turn="X";
-    var def = "#";
-    var count=0;
-    var turns=["#","#","#","#","#","#","#","#"];
-    var gameDone1=true;
-    var gameDone2=true;
-    var gameDone3=true;
-    var gameDone4=true;
-    var att = 5;
-    var userIsReady=true;
+ <script>
+    $(document).ready(function() {
+      var number_of_game = 1;
+      $.ajax({
 
-    if (userIsReady) {
-      createGame1();
-    } else {
-      //timer;
-    }
-    
-    function click(){
-      $(".tic").click(function(){
-        var id = $(this).attr("id");
-        var e = document.getElementById(id);
-        playerAction(e, id);
-      });
-    }
-    
-    function playerAction(elem, id) {
-      if ($(elem).hasClass("act")) {
-        $(elem).removeClass("act");
-        count--;
-        turns[id] = def;
-        winCondition(turns, turn);
-      } else {
-        $(elem).addClass("act");
-        count++;
-        turns[id] = turn;
-        winCondition(turns, turn);
-      }
-    }
+            type: "GET",
 
-    function winCondition(turnRight, currentTurn) {
-      if (gameDone1 === false) {
-        if (turnRight[1] === currentTurn && turnRight[2] === currentTurn && turnRight[3] === currentTurn && count === 3) {
-        doneGame();
-        if (gameDone1 == true) {
-          alert("Поздравляю, вы указали правильные знаки!");
-          reset();
-          createGame2();
-        }
-      } else if (count > 3) {
-        alert("Выберите только 3 знака");
-      } else if (count == 3) {
-        alert("Вы ошиблись!");
-        att--;
-        testAttempts();
-      }
-    }
+            url: "load_picture/",
 
-    else if (gameDone2 === false) {
-      if (turnRight[2] === currentTurn && turnRight[3] === currentTurn && turnRight[4] === currentTurn && count === 3) {
-        doneGame();
-        if (gameDone2 == true) {
-          alert("Поздравляю, вы указали правильные знаки!");
-          reset();
-          createGame3();
-        }
-      } else if (count > 3) {
-        alert("Выберите только 3 знака");
-      } else if (count == 3) {
-        alert("Вы ошиблись!");
-        att--;
-        testAttempts();
-      }
-    }
+            data: {'number_of_game': number_of_game},
+            
+            cache: false,
+            
+            success: function(data){
+                console.log(data);
+                $('.gameresult').html(data);
 
-    else if (gameDone3 === false) {
-      if (turnRight[2] === currentTurn && turnRight[3] === currentTurn && turnRight[4] === currentTurn && count === 3) {
-        doneGame();
-        if (gameDone4 == true) {
-          alert("Поздравляю, вы указали правильные знаки!");
-          reset();
-          createGame4();
-        }
-      } else if (count > 3) {
-        alert("Выберите только 3 знака");
-      } else if (count == 3) {
-        alert("Вы ошиблись!");
-        att--;
-        testAttempts();
-      }
-    }
-
-    else if (gameDone4 === false) {
-      if (turnRight[2] === currentTurn && turnRight[3] === currentTurn && turnRight[4] === currentTurn && count === 3) {
-        doneGame();
-        if (gameDone4 == true) {
-          alert("Поздравляю, вы указали правильные знаки!");
-          reset();
-        }
-      } else if (count > 3) {
-        alert("Выберите только 3 знака");
-      } else if (count == 3) {
-        alert("Вы ошиблись!");
-        att--;
-        testAttempts();
-      }
-    }
-      
-    }
-
-    function doneGame() {
-      reset();
-      count = 0;
-      gameDone1 = true;
-      gameDone2 = true;
-      gameDone3 = true;
-      gameDone4 = true;
-    }
-
-    function createGame1() {
-      gameDone1 = false;
-      $(".text").text("Выберите 3 предупреждающие знака");
-      click();
-    }
-
-    function createGame2() {
-      gameDone2 = false;
-      $(".text").text("Выберите 3 запрещающие знака");
-    }
-
-    function createGame3() {
-      gameDone3 = false;
-      $(".text").text("Выберите 3 знака приоритета");
-    }
-
-    function createGame4() {
-      gameDone4 = false;
-      $(".text").text("Выберите 3 предписывающие знака");
-    }
-
-    function reset() {
-      turns=["#","#","#","#","#","#","#","#"];
-      count=0;
-      $(".tic").removeClass("act");
-    }
-
-    
-    $(".skipGame").click(function(){
-      skipGame();
+            }
+       });
     });
-
-    function skipGame(){
-      if (gameDone1 === false) {
-        doneGame();
-        createGame2();
-      } else if (gameDone2 === false) {
-        doneGame();
-        createGame3();
-      } else if (gameDone3 === false) {
-        doneGame();
-        createGame4();
-      } else if (gameDone4 === false) {
-        doneGame();
-        createGame1();
-      } else {
-        doneGame();
-      }
-    }
-
-    function testAttempts() {
-      if (att == 0) {
-        doneGame();
-      }
-    }
-
-  });
-</script>
+  </script>
 
   <script>
   $(document).ready(function(){
