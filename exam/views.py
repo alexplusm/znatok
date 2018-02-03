@@ -80,13 +80,3 @@ def check_points(request):
             points = request.session['points']
         return JsonResponse({'points': points})
 
-
-def next_question(request):
-    if request.method == "GET" and request.is_ajax():
-        number_of_ticket = request.GET["number_of_ticket"]
-        number_of_question = request.GET["number_of_question"]
-        obj = Question.objects.filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question)[0]
-        
-        return render(request, 'question.html', {'obj': obj})
-    else:
-        return render(request, 'home.html')

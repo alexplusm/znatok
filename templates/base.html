@@ -101,7 +101,7 @@
                     {% csrf_token %}
                     {% include 'includes/form.html' %}
                     <small>
-                      <a href="" class="text-muted">Забыли пароль?</a>
+                      <a href="{% url 'password_reset' %}" class="text-muted">Забыли пароль?</a>
                     </small>
                     <button type="submit" class="btn btn-success pull-right" style="font-size: 15px;">ВОЙТИ</button>
                   </form>

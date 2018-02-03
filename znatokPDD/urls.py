@@ -38,8 +38,7 @@ urlpatterns = [
             template_name='password_reset.html',
             email_template_name='password_reset_email.html',
             subject_template_name='password_reset_subject.txt'
-        ),
-        name='password_reset'),
+        ), name='password_reset'),
     url(r'^reset/done/$',
         auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'),
         name='password_reset_done'),
@@ -60,7 +59,6 @@ urlpatterns = [
 
         # for ajax query
     url(r'load_ticket/$', exam_views.load_ticket, name='load_ticket'),
-    url(r'next_question/$', exam_views.next_question, name='next_question'),
     url(r'check_answer/$', exam_views.check_answer, name='check_answer'),
     url(r'check_points/$', exam_views.check_points, name='check_points'),
 
