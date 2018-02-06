@@ -1,29 +1,130 @@
-<p class="text-center">{{ question }}</p>
-<img src="{{ obj1.Picture_for_mini_game.url }}" class="tic btn btn-default" id="1"/>
-<img src="{{ obj2.Picture_for_mini_game.url }}" class="tic btn btn-default" id="2"/>
-<img src="{{ obj3.Picture_for_mini_game.url }}" class="tic btn btn-default" id="3"/>
-<img src="{{ obj4.Picture_for_mini_game.url }}" class="tic btn btn-default" id="4"/>
-<img src="{{ obj5.Picture_for_mini_game.url }}" class="tic btn btn-default" id="5"/>
-<img src="{{ obj6.Picture_for_mini_game.url }}" class="tic btn btn-default" id="6"/>
-<img src="{{ obj7.Picture_for_mini_game.url }}" class="tic btn btn-default" id="7"/>
-<img src="{{ obj8.Picture_for_mini_game.url }}" class="tic btn btn-default" id="8"/>
-<div class="text-right"><a class="btn btn-default skipGame" style="font-size: 15px;">Пропуск вопроса</a></div>
-
+<div class="conteiner">
+	<div class="col-12">
+		<div class="row">
+			<div class="col-1 ml-auto" style="font-size: 20px; color: blue;">{{ number_of_try }}</div>
+			<div class="col-8">
+				<div class="text-center" style="font-size: 18px; color: blue;"><i>{{ question }}</i></div>
+			</div>
+			<div class="col-1 mr-auto">
+				<div class="skipGame btn btn-default">SKIP</div>
+			</div>
+		</div>
+	</div>
+</div>
+<img src="{{ obj1.Picture_for_mini_game.url }}" class="tic btn btn-default" id="1" />
+<img src="{{ obj2.Picture_for_mini_game.url }}" class="tic btn btn-default" id="2" />
+<img src="{{ obj3.Picture_for_mini_game.url }}" class="tic btn btn-default" id="3" />
+<img src="{{ obj4.Picture_for_mini_game.url }}" class="tic btn btn-default" id="4" />
+<img src="{{ obj5.Picture_for_mini_game.url }}" class="tic btn btn-default" id="5" />
+<img src="{{ obj6.Picture_for_mini_game.url }}" class="tic btn btn-default" id="6" />
+<img src="{{ obj7.Picture_for_mini_game.url }}" class="tic btn btn-default" id="7" />
+<img src="{{ obj8.Picture_for_mini_game.url }}" class="tic btn btn-default" id="8" />
 <script>
+	var number_of_game = {{ number_of_game }}
+	var number_of_try = {{ number_of_try }}
 	$(document).ready(function(){
-	    
+	    var counter = 0;
+        var user_answer = ['0', '0', '0'];
 	    $(".tic").click(function(){
 	      var id = $(this).attr("id");
 	      var e = document.getElementById(id);
-	      playerAction(e, id);
+	      playerAction(e,id);
 	    });
-	    
+
 	    function playerAction(elem, id) {
-	      if ($(elem).hasClass("act")) {
-	        $(elem).removeClass("act");
-	      } else {
-	        $(elem).addClass("act");
-	      }
+	        if ($(elem).hasClass("act")) {
+	            $(elem).removeClass("act");
+	            user_answer[counter] = '0';
+	            counter--;
+
+	        } else if (counter < 3) {
+	            $(elem).addClass("act");
+	            user_answer[counter] = id;
+	            counter++;
+	        }
+
+            if (counter === 3) {
+                $.ajax({
+
+                    type: "GET",
+
+                    url: "check_answer_for_game/",
+
+                    data: {'user_answer1': user_answer[0],
+                		   'user_answer2': user_answer[1],
+                		   'user_answer3': user_answer[2]},
+
+                    dataType: 'json',
+
+                    cache: false,
+
+                    success: function (data) {
+                        if (data.bool) {
+		                    $.ajax({
+		                        type: "GET",
+
+		                        url: "check_points_for_game/",
+
+		                        cache: false,
+
+		                        success: function(data){
+		                            document.getElementById('bonus').innerHTML = data.points;
+		                            nextGame();
+		                        }
+		                    });
+		            	} else {
+		            		number_of_try--;
+		            		if (number_of_try == 0) {
+		            			$('.gameresult').text("30:00");
+		            		} else {
+			            		$.ajax({
+
+						            type: "GET",
+
+						            url: "load_picture/",
+
+						            data: {'number_of_game': number_of_game,
+						        		   'number_of_try': number_of_try},
+
+						            cache: false,
+
+						            success: function(data){
+						                $('.gameresult').html(data);
+						            }
+						       });
+			            	}
+		            	}
+                    }
+                });
+            }
 	    }
 	});
+
+	$(".skipGame").click(function () {
+		if ((number_of_game === 4) && number_of_try != 0) {
+			number_of_game = 0;
+		}
+		nextGame();
+	});
+
+	function nextGame() {
+		number_of_game++;
+		if ((number_of_game <= 4) && number_of_try != 0) {
+			$.ajax({
+
+	            type: "GET",
+
+	            url: "load_picture/",
+
+	            data: {'number_of_game': number_of_game,
+	        		   'number_of_try': number_of_try},
+
+	            cache: false,
+
+	            success: function(data){
+	                $('.gameresult').html(data);
+	            }
+	       });
+		}
+	}
 </script>
