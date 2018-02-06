@@ -5858,11 +5858,14 @@ body {
 #game .tic {
   transition: 0.5s ease;
   border-radius: 20%;
-  width: calc(11.11111111%);
-  filter: grayscale(0.6) opacity(0.5);
+  width: calc(11.76470588%);
+  filter: grayscale(0.6);
 }
 #game .act {
   filter: grayscale(0) opacity(1);
+}
+#game .skipGame {
+  border-radius: 50%;
 }
 #gold {
   width: 100%;
@@ -5879,14 +5882,16 @@ body {
   background-size: 100% 100%;
 }
 #navbartheory .active {
-  background: rgba(0, 186, 190, 0.4);
+  background: white;
+  border: 1px solid blue;
+  color: blue;
 }
 #navbartheory .disactive {
   background: white;
 }
 #navbartheory .nav-item2 {
   border: 1px solid lightgrey;
-  background: white;
+  background: #f0f0f0;
   width: 100%;
 }
 #navbartheory .top5 {
@@ -5911,7 +5916,7 @@ body {
 #navbartheory .nav-item {
   margin-left: 20px;
   border: 1px solid lightgrey;
-  background: white;
+  background: #f0f0f0;
   width: 46%;
 }
 #navbartheory .bordering {
@@ -5924,6 +5929,8 @@ body {
   font-family: fantasy;
   font-size: 25px;
   font-weight: bold;
+  padding-top: 2%;
+  padding-bottom: 2%;
   color: darkblue;
   width: calc(10%);
   height: 120% !important;
@@ -5964,16 +5971,23 @@ body {
   color: blue;
   font-style: italic;
 }
+#navbartheory .coinslid {
+  border: 1px solid blue;
+  border-radius: 3px;
+  background: white;
+}
 #navbartheory .w2 {
   margin-left: 20px;
   border: 1px solid lightgrey;
   padding-top: 10px;
   margin-bottom: 70px;
-  background: white;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 #navbartheory .padb {
   border-top: 1px solid lightgrey;
   padding-bottom: 20px;
+  padding-right: 20px;
+  margin-top: 20px;
 }
 #navbartheory .text3 {
   margin-top: 20px;
@@ -5985,17 +5999,16 @@ body {
   font-size: 15px;
 }
 #panel .logo {
-  width: 100%;
+  width: 120%;
+  margin-top: 10%;
 }
 #panel .panel-header {
   background: white;
-  padding-top: 20px;
   padding-bottom: 20px;
 }
 #panel .panel-header .w1 .btn-prof {
   height: auto;
-  width: 80%;
-  margin-bottom: 8px;
+  width: 100%;
 }
 #panel .panel-header .w1 a {
   width: 150px;
