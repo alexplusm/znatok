@@ -1,8 +1,7 @@
 <div class="conteiner">
 	<div class="col-12">
 		<div class="row">
-			<div class="col-1 ml-auto" style="font-size: 20px; color: blue;">{{ number_of_try }}</div>
-			<div class="col-8">
+			<div class="col-8 ml-auto">
 				<div class="text-center" style="font-size: 18px; color: blue;"><i>{{ question }}</i></div>
 			</div>
 			<div class="col-1 mr-auto">
@@ -19,6 +18,7 @@
 <img src="{{ obj6.Picture_for_mini_game.url }}" class="tic btn btn-default" id="6" />
 <img src="{{ obj7.Picture_for_mini_game.url }}" class="tic btn btn-default" id="7" />
 <img src="{{ obj8.Picture_for_mini_game.url }}" class="tic btn btn-default" id="8" />
+<div class="col-12 text-right" style="color: grey;">Попыток осталось: <span style="color: black;">{{ number_of_try }}</span></div>
 <script>
 	var number_of_game = {{ number_of_game }}
 	var number_of_try = {{ number_of_try }}
@@ -109,22 +109,27 @@
 
 	function nextGame() {
 		number_of_game++;
-		if ((number_of_game <= 4) && number_of_try != 0) {
-			$.ajax({
+		number_of_try--;
+		if (number_of_try == 0) {
+		    $('.gameresult').text("30:00");
+		} else {
+			if ((number_of_game <= 4) && number_of_try != 0) {
+				$.ajax({
 
-	            type: "GET",
+		            type: "GET",
 
-	            url: "load_picture/",
+		            url: "load_picture/",
 
-	            data: {'number_of_game': number_of_game,
-	        		   'number_of_try': number_of_try},
+		            data: {'number_of_game': number_of_game,
+		        		   'number_of_try': number_of_try},
 
-	            cache: false,
+		            cache: false,
 
-	            success: function(data){
-	                $('.gameresult').html(data);
-	            }
-	       });
+		            success: function(data){
+		                $('.gameresult').html(data);
+		            }
+		       });
+			}
 		}
 	}
 </script>

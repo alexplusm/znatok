@@ -1,59 +1,30 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block panelbody %}
-<div class="panel-body">
-    <div class="conteiner">
-        <div class="row" >
-          {% block coins %}
-            <form class="form-inline col-12">
-                <div class="form-group ml-auto">
-                    <label for="bonus">БАЛЛЫ</label>
-                    <div class="card card-body justify-content-center align-items-center" id="bonus" style="height: 35px; width: 80px">
-                    </div>
-                </div>
-
-                <div class="form-group ml-auto">
-                    <label for="team">КОМАНДНЫЕ</label>
-                    <input type="team" class="form-control" id="team" readonly="123">
-                </div>
-
-                <div class="form-group ml-auto mr-auto">
-                    <label for="coins">BEEPCOIN</label>
-                    <input type="coins" class="form-control" id="coins" readonly="123">
-                </div>
-            </form>
-            {% endblock %}
-        </div>
-    </div>
-</div>
-{% endblock %}
-
 
 {% block main %}
-<div id="navbartheory">
      <div class="conteiner text-center">
       <div class="row" style="margin-right: auto;">
        <div class="col-2 ml-auto text-uppercase">
         <div class="row">
          <ul class="navleft nav flex-column">
         <li class="nav-item2">
-          <a class="nav-link" href="#">Теория</a>
+          <a class="nav-link navitem1" id="block1">Теория</a>
         </li>
       <li class="nav-item2 top">
-          <a class="nav-link active" href="#">Билеты</a>
+          <a class="nav-link navitem1" id="block2">Билеты</a>
         </li>
         <li class="nav-item2 top">
-          <a class="nav-link" href="#">Экзамен</a>
+          <a class="nav-link navitem1" id="block3">Экзамен</a>
         </li>
         <li class="nav-item2 top">
-          <a class="nav-link" href="#">по темам</a>
+          <a class="nav-link navitem1" id="block4">по темам</a>
         </li>
         <li class="nav-item2 top">
-          <a class="nav-link" href="#">марафон</a>
+          <a class="nav-link navitem1" id="block5">марафон</a>
         </li>
         <li class="nav-item2 top">
-          <a class="nav-link" href="#">ошибки</a>
+          <a class="nav-link navitem1" id="block6">ошибки</a>
         </li>
       </ul>
         </div>
@@ -62,10 +33,10 @@
         <div class="row">
          <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link active" href="#" id="cat1">Категории <strong>A, B, M</strong></a>
+          <a class="nav-link" id="cat1">Категории <strong>A, B, M</strong></a>
         </li>
         <li class="nav-item ml-auto">
-          <a class="nav-link" href="#" id="cat2">Категории <strong>C, D</strong></a>
+          <a class="nav-link" id="cat2">Категории <strong>C, D</strong></a>
         </li>
       </ul>
      </div>
@@ -176,7 +147,7 @@
            </div>
            <div class="col-12 ml-auto text3" >
             <div class="row">
-             <div class="col-4 ml-auto text-right">
+             <div class="col-4 ml-auto">
               БАЛЛЫ
              </div>
              <div class="col-4 coinslid">
@@ -249,185 +220,160 @@
         </div>
        </div>
    </div>
-     </div>
  </div>
 {% endblock %}
 
 {% block online %}
 <div id="online" class="background2">
-	<div class="conteiner opacity1">
-		<div class="row"  style="margin-right: 0px; padding-top: 40px;">
-			<div class="col-md-8 col-md-offset-2">
-				<div class="row">
-					<div class="col-md-12">
-								<div class="text-center text-uppercase ">
-									<p style="color: blue; font-size: 20px;"><em><strong>Примите участие в ON-LINE состязаниях <br>с другими пользователями сайта</strong></em></p>
-								</div>
+	<div class="conteiner onlinecontent">
+		<div class="col-6 mr-auto ml-auto text-center text-uppercase titletext">
+			<p>Примите участие в ON-LINE состязаниях с другими пользователями сайта	</p>
+		</div>
+		<div class="col-8 mr-auto ml-auto">
+			<div class="row">
+				<nav class="navbar">
+					<ul class="nav">
+						<li class="nav-item navonlineitem" id="navonline1"><a class="nav-link text-uppercase text-center">знания пдд</a></li>
+						<li class="nav-item ml-auto mr-auto navonlineitem" id="navonline2"><a class="nav-link text-uppercase text-center">дорожные знаки</a></li>
+						<li class="nav-item navonlineitem" id="navonline3"><a class="nav-link text-uppercase text-center">штрафы</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<div class="col-8 mr-auto ml-auto back">
+			<select class="form-control form-control-sm">
+				<option>select</option>
+			</select>
+			<div class="col-10 ml-auto mr-auto">
+				<div class="row btnrow">
+					<div class="btn btn-default ml-auto">
+						0
 					</div>
-						<nav class="navbar navbar-inner">
-				            <ul class="nav">
-				              <li class="nav-item mr-auto"><a class="nav-link text-uppercase text-center" href="/">Знания ПДД</a></li>
-				              <li class="nav-item mr-auto ml-auto"><a class="nav-link text-uppercase text-center" href="#">дорожные знаки</a></li>
-				              <li class="nav-item mr-auto"><a class="nav-link text-uppercase text-center" href="#">штрафы</a></li>
-				            </ul>
-				          </nav>
+					<div class="btn btn-default ml-auto">
+						50
+					</div>
+					<div class="btn btn-default ml-auto">
+						100
+					</div>
+					<div class="btn btn-default ml-auto">
+						250
+					</div>
+					<div class="btn btn-default ml-auto">
+						500
+					</div>
+					<div class="btn btn-default ml-auto">
+						1000
+					</div>
+					<div class="btn btn-default ml-auto mr-auto">
+						Старт
+					</div>
+				</div>
+			</div>
+			<div class="col-12">
+				<div class="row">
+					<div class="col-3">
+						<ul class="list-unstyled block">
+							<li class="text-center text-uppercase f1" style="color: blue;">статистика</li>
+							<li>
+								<table class="table text">
+									<tbody>
+										<tr>
+											<td>
+												<p class="text1">Выиграно</p><p class="text1">% побед</p>
+											</td>
+											<td class= "text-right">
+												<p class="text2">
+													<span style="color: green;">11</span>/<span style="color: green;">15</span>
+												</p>
+												<p class="text2" style="color: green;">73</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span class="text1">В рейтинге</span>
+											</td>
+											<td class="text-right">
+												<span class="text2" style="color: green;">1000+</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</li>
+						</ul>
+						<div class="block text-uppercase text-center f1" style="font-size: 15px;">равный соперник</div>
+					</div>
+					<div class="col-6">
+						asd
+					</div>
+					<div class="col-3">
+						<ul class="list-unstyled block">
+							<li class="text-center text-uppercase f1" style="color: blue;">статистика</li>
+							<li>
+								<table class="table text">
+									<tbody>
+										<tr>
+											<td>
+												<p class="text1">Выиграно</p><p class="text1">% побед</p>
+											</td>
+											<td class= "text-right">
+												<p class="text2">
+													<span style="color: green;">-</span>
+												</p>
+												<p class="text2" style="color: green;">-</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span class="text1">В рейтинге</span>
+											</td>
+											<td class="text-right">
+												<span class="text2" style="color: green;">-</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-				<div class="body">
-							<div class="conteiner-fluid">
-								<div class="row">
-									<div class="col-md-12">
-										<select class="form-control form-control-sm">
-											
-										</select>
-									</div>
-									<div class="col-md-12 col-md-offset-2">
-										<div class="col-md-1">
-											<button class="btn btn-default border">
-												0	
-											</button>
-										</div>
-										<div class="col-md-1">
-											<button class="btn btn-default">
-												50
-											</button>
-										</div>
-										<div class="col-md-1">
-											<button class="btn btn-default">
-												100
-											</button>
-										</div>
-										<div class="col-md-1">
-											<button class="btn btn-default">
-												250	
-											</button>
-										</div>
-										<div class="col-md-1">
-											<button class="btn btn-default">
-												500	
-											</button>
-										</div>
-										<div class="col-md-1">
-											<button class="btn btn-default">
-												1000	
-											</button>
-										</div>
-										<div class="col-md-1">
-											<button class="btn btn-default border">
-												СТАРТ	
-											</button>
-										</div>
-									</div>
-									
-									<div class="col-12">
-										<div class="col-md-3 box">
-											<table class="table">
-												<thead>
-													<tr colspan="2">
-														<p class="text-center text-uppercase">Статистика</p>
-													</tr>
-												</thead>
-													<tbody>
-														<tr>
-															<td>
-																<p>Выиграно</p><p>% побед</p>
-															</td>
-															<td>
-																<p class="text-right">11/15</p><p class="text-right">73</p>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																<p>В рейтинге</p>
-															</td>
-															<td>
-																<p class="text-right">1000+</p>
-															</td>
-														</tr>
-													</tbody>
-											</table>
-										</div>
-										
-										<div class="col-md-5 main">
-											<p>asda</p>
-										</div>
 
-										<div class="col-md-3 box1 pull-right">
-											<table class="table">
-												<thead>
-													<tr colspan="2">
-														<p class="text-center text-uppercase">Статистика</p>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>
-															<p>Выиграно</p><p>% побед</p>
-														</td>
-														<td>
-															<p class="text-right">-</p><p class="text-right">-</p>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															<p>В рейтинге</p>
-														</td>
-														<td>
-															<p class="text-right">-</p>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-
-									<div class="col-md-12">
-										<div class="col-md-3 box2">
-											<p class="text-center text-uppercase">Равный соперник</p>
-										</div>
-									</div>
-								</div>
+	<div id="panellamb">
+		<div class="col-6 mr-auto ml-auto text-center text-uppercase titletext">
+			<p>присоединяйтесь к командной гонке за баллами</p>
+		</div>
+		<div class="panel panel-default">
+			<div class="conteiner-fluid">
+				<div class="row1 row">
+					<div class="col-8  ml-auto mr-auto">
+						<select class="form-control form-control-lg">
+							<option>select</option>
+						</select>
+						<div class="row btnrow">
+							<div class="col-3">
+								<img src="{% static 'img/greenlamb.png' %}" class="lamb" id="lamb1" />
 							</div>
+							<div class="col-3">
+								<img src="{% static 'img/yellowlamb.png' %}" class="lamb" id="lamb2" />
+							</div>
+							<div class="col-3">
+								<img src="{% static 'img/redlamb.png' %}" class="lamb" id="lamb3" />
+							</div>
+							<div class="col-3 text-center">
+								<a class="btn btn-secondary text-uppercase confirm">Выбрать команду</a>
+							</div>
+						</div>
+					</div>
 				</div>
-				<br>
-				<br>
-				<div class="text-uppercase ml-auto mr-auto">
-					<br>
-					<p style="color: blue; font-size: 20px; padding-bottom: 20px;"><strong><em>Присоединяйтесь к командной гонке за баллами</em></strong></p>
-				</div>
-				<br>
 			</div>
 		</div>
 	</div>
 </div>
-
-<div id="panellamb">
-		<div class="panel panel-default">
-			<div class="conteiner-fluid">
-				<div class="row1 row">
-					<div class="col-8 ml-auto mr-auto">
-						<select class="form-control form-control-sm">
-							<option>select</option>
-						</select>
-						<div class="row">
-						<div class="col-3">
-						<img src="{% static 'img/greenlamb.png' %}" class=" lamb" id="lamb1" />
-					</div>
-					<div class="col-3">
-						<img src="{% static 'img/yellowlamb.png' %}" class=" lamb" id="lamb2" />
-					</div>
-					<div class="col-3">
-						<img src="{% static 'img/redlamb.png' %}" class="lamb" id="lamb3" />
-					</div>
-					<div class="col-3 text-center">
-						<a class="btn btn-secondary text-uppercase confirm">Выбрать команду</a>
-					</div>
-				</div>
-					</div>
-				</div>
-			</div>
-		</div>
-</div>
 {% endblock %}
+
 {% block javascript%}
 
 
@@ -441,6 +387,15 @@ var category = 1;
 var number_of_ticket = 0;
 var number_of_question = 0;
 
+$("#navonline1").addClass("active");
+
+$(".navonlineitem").click(function(){
+	var id = $(this).attr("id");
+	var e = document.getElementById(id);
+    $(".navonlineitem").removeClass("active");
+    $(e).addClass("active");
+});
+
 $("#cat1").click(function () {
     category = 1;
     $(this).addClass("active");
@@ -452,9 +407,6 @@ $("#cat2").click(function () {
     $(this).addClass("active");
     $('#cat1').removeClass("active");
   });
-
-
-
 
 $('.btnticket').click(function(){
 number_of_ticket = $(this).attr("value");

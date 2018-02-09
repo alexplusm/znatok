@@ -73,15 +73,25 @@ def load_picture(request):
         else:
             question = 'ноуп'
 
+        
+        m1 = list(range(1, 30))
+        random.shuffle(m1)
+        m2 = list(range(1,10))
+        random.shuffle(m2)
+        m3 = list(range(1, 14))
+        random.shuffle(m3)
+        m4 = list(range(1,33))
+        random.shuffle(m4)
+
         while i != 5:
             if main[i] == 1:
-                picture[i + 3] = random.randint(1, 29)
+                picture[i + 3] = m1[i]
             elif main[i] == 2:
-                picture[i + 3] = random.randint(1, 9)
+                picture[i + 3] = m2[i]
             elif main[i] == 3:
-                picture[i + 3] = random.randint(1, 13)
+                picture[i + 3] = m3[i]
             elif main[i] == 4:
-                picture[i + 3] = random.randint(1, 32)
+                picture[i + 3] = m4[i]
             i += 1
 
         obj1 = PickForMiniGame.objects.filter(number_of_section=number_of_section, number_of_pic=picture[0])[0]

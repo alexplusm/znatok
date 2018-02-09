@@ -25,11 +25,11 @@
       {% block navbar %}
           <nav class="navbar">
             <ul class="nav">
-              <li class="nav-item" style="border-left: 1px solid lightgrey;"><a class="nav-link text-uppercase text-center" href="/">главная</a></li>
-              <li class="nav-item"><a class="nav-link text-uppercase text-center" href="#">автошколы</a></li>
-              <li class="nav-item"><a class="nav-link text-uppercase text-center" href="#">автоинструкторы</a></li>
-              <li class="nav-item"><a class="nav-link text-uppercase text-center" href="#">страхование</a></li>
-              <li class="nav-item"><a class="nav-link text-uppercase text-center" href="#">каталог</a></li>
+              <li class="nav-item" style="border-left: 1px solid lightgrey;"><a class="nav-link text-uppercase text-center navitem" href="/" id="nav1">главная</a></li>
+              <li class="nav-item"><a class="nav-link text-uppercase text-center navitem" id="nav2">автошколы</a></li>
+              <li class="nav-item"><a class="nav-link text-uppercase text-center navitem" id="nav3">автоинструкторы</a></li>
+              <li class="nav-item"><a class="nav-link text-uppercase text-center navitem" id="nav4">страхование</a></li>
+              <li class="nav-item"><a class="nav-link text-uppercase text-center navitem" id="nav5">каталог</a></li>
             </ul>
           </nav>
       {% endblock %}
@@ -60,11 +60,11 @@
             {% block panela %}
             {% if user.is_authenticated %}
             <a class="btn-prof btn btn-primary" style="font-size: 15px; margin-bottom: 3px; margin-top: 10%;">Мой профиль</a>
-            <a href="{% url 'logout' %}" class="btn btn-prof btn-secondary" style="font-size: 15px;">Выход</a>
+            <a href="{% url 'logout' %}" class="btn btn-prof btn-sec" style="font-size: 15px;">Выход</a>
                 {% else %}
                 {% block button %}
-                  <button id="modalbtn" class="btn btn-prof btn-primary" style="font-size: 15px;">ВХОД</button>
-                  <a href="{% url 'signup' %}" class="btn btn-prof btn-secondary" style="font-size: 15px;">Регистрация</a>
+                  <button id="modalbtn" class="btn btn-prof btn-primary" style="font-size: 15px; margin-top: 10%;">ВХОД</button>
+                  <a href="{% url 'signup' %}" class="btn btn-prof btn-sec" style="font-size: 15px;">Регистрация</a>
                 {% endblock %}
               {% endif %}
             {% endblock %}
@@ -77,7 +77,54 @@
 
       <div id="panel2">
         {% block panelbody %}
+        <div class="panel-body" id="panelbody">
+    <div class="conteiner">
+        <div class="row" >
+          {% block coins %}
+            <form class="form-inline col-12">
+                <div class="form-group ml-auto">
+                    <label for="bonus">БАЛЛЫ</label>
+                    <div class="card card-body justify-content-center align-items-center" id="bonus" style="height: 35px; width: 80px">
+                    </div>
+                </div>
 
+                <div class="form-group ml-auto">
+                    <label for="team">КОМАНДНЫЕ</label>
+                    <input type="team" class="form-control" id="team" readonly="123">
+                </div>
+
+                <div class="form-group ml-auto mr-auto">
+                    <label for="coins">BEEPCOIN</label>
+                    <input type="coins" class="form-control" id="coins" readonly="123">
+                </div>
+            </form>
+            {% endblock %}
+        </div>
+    </div>
+</div>
+<!-- <div class="panel-body fixed-top" id="panelbody1" style="display: none;">
+    <div class="conteiner">
+        <div class="row" >
+            <form class="form-inline col-12">
+                <div class="form-group ml-auto">
+                    <label for="bonus1">БАЛЛЫ</label>
+                    <div class="card card-body justify-content-center align-items-center" id="bonus1" style="height: 35px; width: 80px">
+                    </div>
+                </div>
+
+                <div class="form-group ml-auto">
+                    <label for="team">КОМАНДНЫЕ</label>
+                    <input type="team" class="form-control" id="team" readonly="123">
+                </div>
+
+                <div class="form-group ml-auto mr-auto">
+                    <label for="coins">BEEPCOIN</label>
+                    <input type="coins" class="form-control" id="coins" readonly="123">
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->
         {% endblock %}
       </div>
     </div>
@@ -120,7 +167,7 @@
 <!-- Блок с экзаменом и тестами -->
 
   </div>
-
+  <div id="maincontent">
     {% block main %}
     {% endblock %}
 
@@ -132,30 +179,37 @@
 
   <div id="panel-reno" style="margin-bottom: -20px;">
     {% block panelreno %}
-  <div class="panel panel-default">
+    <div class="panel panel-default">
       <div class="conteiner">
-        <div class="row" style="margin-right: 0px;">
-          <div class="col-md-1 col-md-offset-2">
-            <img src="https://vevents.ru/img/reno.png" class="logoreno" />
-          </div>
-          <div class="col-md-6">
-            <p>Renault (Рено) - французская автомобильная компания, производит легковые, грузовые и спортивные автомобили. Совместно с румынской компанией Dacia выпускался недорогой и очень популярный Renault Logan.</p>
-            <div class="text-right" >
-              <a href="">Официальный диллер <strong>Renault</strong></a>
+        <div class="col-12">
+          <div class="row back">
+            <div class="col-1 ml-auto">
+              <img src="https://vevents.ru/img/reno.png" class="logoreno" />
             </div>
-          </div>
-          <div class="col-md-2" >
-            <img src="https://www.auto-mgn.ru/resources/images/upload/00002752884458056b23.jpg" class="logan" />
+            <div class="col-6">
+              <div class="col-12 text">
+                <p>Renault (Рено) - французская автомобильная компания, производит легковые, грузовые и спортивные автомобили. Совместно с румынской компанией Dacia выпускался недорогой и очень популярный Renault Logan.</p>
+              </div>
+              <div class="col-12 text-right">
+                <a href="">Официальный диллер <strong>Renault</strong></a>
+              </div>
+            </div>
+            <div class="col-2 mr-auto">
+              <img src="https://www.auto-mgn.ru/resources/images/upload/00002752884458056b23.jpg" class="logan" />
+            </div>
           </div>
         </div>
       </div>
     </div>
-{% endblock %}
+    {% endblock %}
   </div>
+  </div>
+  
+
+            
 
 
-
-  <div id="online" >
+  <div id="online">
     {% block online %}
     {% endblock %}
   </div>
@@ -166,69 +220,74 @@
       <div class="conteiner">
         <div class="row" style="margin-right: 15px;">
           <div class="col-8 mr-auto ml-auto">
-            <div class="col-md-12">
+            <div class="col-12">
               <p class="text-center">Отзывы пользователей</p>
             </div>
-            <div class="col-md-2">
-              asd
-            </div>
-            <div class="col-md-10">
-              <div class="row">
-                <div class="col-md-7 col-md-offset-2">
-                  Second name for user
-                </div>
-                <div class="col-md-3">
-                  <p class="text-right">city for user</p>
-                </div>
+            <div class="row align-items-center">
+              <div class="col-2 text-center">
+                asd
               </div>
-                <div class="h-divider">
+              <div class="col-10">
+                <div class="row">
+                  <div class="col-7 ml-auto">
+                    Second name for user
+                  </div>
+                  <div class="col-3">
+                    <p class="text-right">city for user</p>
+                  </div>
                 </div>
-                <div class="row" style="margin-bottom:40px;">
-                  <div class="col-md-9 col-md-offset-2">
-                  <i>Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва.</i>
-                </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-              asd
-            </div>
-            <div class="col-md-10">
-              <div class="row">
-                <div class="col-md-7 col-md-offset-2">
-                  Second name for user
-                </div>
-                <div class="col-md-3">
-                  <p class="text-right">city for user</p>
-                </div>
+                  <div class="h-divider">
+                  </div>
+                  <div class="row">
+                    <div class="col-8 ml-auto mr-auto usercomment">
+                    <i>Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва.</i>
+                  </div>
+                  </div>
               </div>
-                <div class="h-divider">
-                </div>
-                <div class="row" style="margin-bottom:40px;">
-                  <div class="col-md-9 col-md-offset-2">
-                  <i>Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва.</i>
-                </div>
-                </div>
             </div>
-
-            <div class="col-md-2">
-              asd
-            </div>
-            <div class="col-md-10">
-              <div class="row">
-                <div class="col-md-7 col-md-offset-2">
-                  Second name for user
-                </div>
-                <div class="col-md-3">
-                  <p class="text-right">city for user</p>
-                </div>
+            <div class="row align-items-center">
+              <div class="col-2 text-center">
+                asd
               </div>
-                <div class="h-divider">
+              <div class="col-10">
+                <div class="row">
+                  <div class="col-7 ml-auto">
+                    Second name for user
+                  </div>
+                  <div class="col-3">
+                    <p class="text-right">city for user</p>
+                  </div>
                 </div>
-                <div class="row" style="margin-bottom:40px;">
-                  <div class="col-md-9 col-md-offset-2">
-                  <i>Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва.</i>
+                  <div class="h-divider">
+                  </div>
+                  <div class="row">
+                    <div class="col-8 ml-auto mr-auto usercomment">
+                    <i>Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва.</i>
+                  </div>
+                  </div>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col-2 text-center">
+                asd
+              </div>
+              <div class="col-10">
+                <div class="row">
+                  <div class="col-7 ml-auto">
+                    Second name for user
+                  </div>
+                  <div class="col-3">
+                    <p class="text-right">city for user</p>
+                  </div>
                 </div>
-                </div>
+                  <div class="h-divider">
+                  </div>
+                  <div class="row">
+                    <div class="col-8 ml-auto mr-auto usercomment">
+                    <i>Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва.</i>
+                  </div>
+                  </div>
+              </div>
             </div>
           </div>
         </div>
@@ -237,19 +296,23 @@
     <div class="panel-body gradient">
      <div class="conteiner">
       <div class="row">
-       <div class="col-md-8 col-md-offset-2">
-        <div class="col-xs-6 col-md-6">
-         <a href="#" class="btn text-uppercase" style="font-size: 15px;">
-          о проекте
-         </a>
+       <div class="col-8 ml-auto mr-auto">
+        <div class="row">
+          <div class="col-6">
+           <a href="#" class="btn text-uppercase" style="font-size: 15px;">
+            о проекте
+           </a>
+          </div>
+          <div class="col-6">
+           <a href="#" class="btn text-uppercase" style="font-size: 15px;">
+            сотруднечество
+           </a>
+          </div>
         </div>
-        <div class="col-xs-6 col-md-6">
-         <a href="#" class="btn text-uppercase" style="font-size: 15px;">
-          сотруднечество
-         </a>
-        </div>
+        
        </div>
       </div>
+      <div class="h-dividerw"></div>
       <div class="row">
        <div class="h-divider">
        </div>
@@ -287,8 +350,7 @@
      </div>
     </div>
     <div class="panel-footer">
-     <div class="conteiner" >
-      <div class="row">
+     <div class="conteiner">
        <div class="col-12 text-center">
         <ul class="list-inline">
          <li><strong>@ ZNATOK-PDD.RU 2017</strong></li>
@@ -319,6 +381,7 @@
   {% endif %}
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+  
 
   <script type="text/javascript" src="{% static '/js/jquery.cookie.js' %}"></script>
 
@@ -345,7 +408,41 @@
   </script>
 
   <script>
+ //    jQuery(document).ready(function($) {
+ //  var
+ //    $window = $(window),
+ //    $target = $("#panelbody"),
+ //    $h = $target.offset().top;
+ //  $window.on('scroll', function() {
+ //    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+ //    if (scrollTop > $h + 26) {
+ //      $("#panelbody1").addClass("show_block");
+ //    } else {
+ //      $("#panelbody1").removeClass("show_block");
+ //    }
+ //  });
+ // });
+  $(".navitem").click(function(){
+    var id = $(this).attr("id");
+    var e = document.getElementById(id);
+    $(".navitem").removeClass("active");
+    $(e).addClass("active");
+  });
+
+  $(".navitem1").click(function(){
+    var id = $(this).attr("id");
+    var e = document.getElementById(id);
+    $(".navitem1").removeClass("active");
+    $(e).addClass("active");
+  });
+
+
   $(document).ready(function(){
+
+    $("#cat1").addClass("active");
+    $("#block2").addClass("active");
+    $("#nav1").addClass("active");
+
     var l1 = document.getElementById("lamb1");
     var l2 = document.getElementById("lamb2");
     var l3 = document.getElementById("lamb3");
