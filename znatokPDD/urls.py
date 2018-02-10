@@ -40,7 +40,8 @@ urlpatterns = [
             template_name='password_reset.html',
             email_template_name='password_reset_email.html',
             subject_template_name='password_reset_subject.txt'
-        ), name='password_reset'),
+        ),
+        name='password_reset'),
     url(r'^reset/done/$',
         auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'),
         name='password_reset_done'),
@@ -66,11 +67,9 @@ urlpatterns = [
     url(r'check_points/$', exam_views.check_points, name='check_points'),
 
     url(r'load_picture/$', game_views.load_picture, name='load_picture'),
-    url(r'next_game/$', game_views.next_game, name='next_game'),
     url(r'check_answer_for_game/$', game_views.check_answer_for_game, name='check_answer_for_game'),
     url(r'check_points_for_game/$', game_views.check_points_for_game, name='check_points_for_game'),
-            # cookie
-    # url(r'testcookie/$', testofpdd_views.testcookie, name='testcookie'),
+
 
     # urls for exam app
 

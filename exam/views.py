@@ -84,4 +84,3 @@ def check_points(request):
             if not request.session.get('points'):
                 request.session['points'] = 0
             points = request.session['points']
-        return JsonResponse({'points': points}, safe=False)
