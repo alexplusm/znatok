@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm
 from django.core.mail import send_mail
+from django.contrib.sites.shortcuts import get_current_site
 from django.http import HttpResponse
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile, Result
+from exam.models import Question
 
 
 def home(request):
@@ -18,21 +20,29 @@ def signup(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
             user.is_active = False
             user.save()
+            questions = Question.objects.all()
+            for question in questions:
+                result = Result(user=user, question=question)
+                result.save()
             profile = Profile()
             profile.user = user
             profile.save()
+            domain = get_current_site(request).domain
+            protocol = 'https' if request.is_secure() else 'http'
             message = render_to_string('active_email.html', {
+                'domain': domain,
+                'protocol': protocol,
                 'user': user,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
             })
             subject = 'Активация аккаунта'
             to_email = form.cleaned_data.get('email')
-            send_mail(subject, message, 'spelsapp@gmail.com', [to_email], fail_silently=False)
-            return redirect('home')
+            send_mail(subject, message, 'znatokPDD', [to_email], fail_silently=False)
+            return redirect('confirm')
     else:
         form = RegistrationForm()
     return render(request, 'signup.html', {'form': form})
@@ -47,7 +57,6 @@ def activate(request, uidb64, token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-        # return redirect('home')
-        return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+        return redirect('confirm_done')
     else:
-        return HttpResponse('Activation link is invalid!')
+        return redirect('confirm_fail')

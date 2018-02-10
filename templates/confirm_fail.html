@@ -2,9 +2,10 @@
 
 {% block title %}Подтверждение регистрации{% endblock %}
 
+
 {% block content %}
-  <div class="alert alert-success" role="alert">
-    <strong>Успех!</strong> Для подтверждения регистрации пройдите по ссылке, отправленной на Вашу почту
+  <div class="alert alert-danger" role="alert">
+    <strong>Неудачно!</strong> Ссылка недействительна. Пожалуйста, попробуйте еще раз.
   </div>
   <a href="{% url 'home' %}" class="btn btn-secondary">Вернутся на домашную страницу</a>
 {% endblock %}

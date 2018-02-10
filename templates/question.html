@@ -84,13 +84,8 @@
 
             success: function(data){
             	console.log(data);
-            	// $('.result').html(data);
             	$('.help-box').show();
-            	if (data.bool)
-            	{
-            		console.log(data.bool)
-            		$(e).addClass("btn-success");
-            		$(btn_object).addClass("btn-success disabled");
+
                     $.ajax({
 
                         type: "GET",
@@ -101,16 +96,27 @@
 
                         success: function(data){
                             document.getElementById('bonus').innerHTML = data.points;
+                            if (data.results[number_of_question].state === 1)
+                            {
+                                    $(e).addClass("btn-success");
+            		                $(btn_object).addClass("btn-success disabled");
+
+                            }
+                            else if (data.results[number_of_question].state === 2)
+                            {
+                                $(e).addClass("btn-danger");
+                                var ee = document.getElementById(data.true_answer);
+            		            $(ee).addClass("btn-success");
+            		            $(btn_object).addClass("btn-danger disabled");
+                            }
+
                         }
                     });
-            	}
-            	else {
-            		$(e).addClass("btn-danger");
-            		var ee = document.getElementById(data.true_answer);
-            		$(ee).addClass("btn-success");
-            		$(btn_object).addClass("btn-danger disabled");
-            	}
-            	$('.answbtn').addClass("disabled");
+            		{#$(e).addClass("btn-danger");#}
+            		{#var ee = document.getElementById(data.true_answer);#}
+            		{#$(ee).addClass("btn-success");#}
+            		{#$(btn_object).addClass("btn-danger disabled");#}
+            	    $('.answbtn').addClass("disabled");
 
             }
        });

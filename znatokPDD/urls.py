@@ -31,8 +31,10 @@ urlpatterns = [
     url(r'^logout/', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
-    url(r'^confirm', TemplateView.as_view(template_name='confirm_email.html'), name='confirm'),
-    url(r'^done', TemplateView.as_view(template_name='confirm_done.html'), name='confirm_done'),
+    url(r'^confirm/$', TemplateView.as_view(template_name='confirm_email.html'), name='confirm'),
+    url(r'^confirm/done', TemplateView.as_view(template_name='confirm_done.html'), name='confirm_done'),
+    url(r'^confirm/fail', TemplateView.as_view(template_name='confirm_fail.html'), name='confirm_fail'),
+
     url(r'^reset/$',
         auth_views.PasswordResetView.as_view(
             template_name='password_reset.html',
@@ -59,6 +61,7 @@ urlpatterns = [
 
         # for ajax query
     url(r'load_ticket/$', exam_views.load_ticket, name='load_ticket'),
+    url(r'load_question/$', exam_views.load_question, name='load_question'),
     url(r'check_answer/$', exam_views.check_answer, name='check_answer'),
     url(r'check_points/$', exam_views.check_points, name='check_points'),
 

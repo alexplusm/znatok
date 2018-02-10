@@ -148,8 +148,58 @@
 	      </div>
 			
 
-			 <div id="result" class="result row boxing top5"></div>
+			 <div id="result" class="result row boxing top5" style="display: none">
+                 <div class="conteiner" style="width: 100%;">
+ 		<div class="row boxing">
+ 			<div class="col-xs-12 col-md-12 col-lg-6">
+ 				<div class="row">
+					<img src="" class="imgquestion" />
+				</div>
+			</div>
+ 			<div class="col-xs-12 col-md-12 col-lg-6 text-left objquestion">
+	 				<p id="quest"></p>
+	 			</div>
+
+ 			</div>
+ 			<div class="">
+				<ul class="list-unstyled">
+					<li>
+						<button class="answbtn text-left btn btn-default" id="answer1"></button>
+					</li>
+					<li>
+						<button class="answbtn text-left btn btn-default" id="answer2"></button>
+					</li>
+					<li>
+						<button class="answbtn text-left btn btn-default" id="answer3"></button>
+					</li>
+                    <li>
+						<button class="answbtn text-left btn btn-default" id="answer4"></button>
+					</li>
+					<li>
+						<button class="answbtn text-left btn btn-default" id="answer5"></button>
+					</li>
+				</ul>
+			</div>
+
+
+
+			<div class="conteiner help-box" style="display: none">
+				    <div class="row">
+				        <ul class="list-inline" id="help-text"></ul>
+				    </div>
+				    <div class="row">
+				        <div class="col-12 text-left">
+				            <ul class="list-inline">
+				                <li><button class="helpbtn btn btn-default">ПОЯСНЕНИЕ</button></li>
+				                <li><button class="penaltybtn btn btn-default">ШТРАФЫ</button></li>
+				          		<li><button class="nextbtn btn btn-success">Далее</button></li>
+				            </ul>
+				        </div>
+				    </div>
+            </div>
+                 </div>
 	      </div>
+      </div>
 	      {% endblock %}
      </div>
        </div>
@@ -430,122 +480,236 @@
 {% endblock %}
 {% block javascript%}
 
-
-
-  <script type="text/javascript" src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
 <script>
 
-
 var category = 1;
-var number_of_ticket = 0;
-var number_of_question = 0;
+var number_of_ticket = 1;
+var number_of_question = 1;
+var res = [];
+
+
+
+$(document).ready(function() {
+    $("#modalbtn").click(function () {
+        $("#modalLogin").modal();
+    });
+});
+
+$(document).ready(function() {
+    $.ajax({
+
+        type: "GET",
+
+        url: "check_points/",
+
+        cache: false,
+
+        success: function (data) {
+            document.getElementById('bonus').innerHTML = data.points;
+        }
+    });
+});
 
 $("#cat1").click(function () {
     category = 1;
     $(this).addClass("active");
     $('#cat2').removeClass("active");
-  });
+});
 
 $("#cat2").click(function () {
     category = 2;
     $(this).addClass("active");
     $('#cat1').removeClass("active");
-  });
+});
+
+function changeData(data) {
+
+    $(".answbtn").removeClass("btn-success btn-danger");
+    document.getElementById('quest').innerHTML = data.questions[0].question;
+    $('.imgquestion').attr("src", "/media/" + data.questions[0].picture);
+    document.getElementById('help-text').innerHTML = data.questions[0].comment_for_question;
+    document.getElementById('answer1').innerHTML = data.answers[0];
+    document.getElementById('answer2').innerHTML = data.answers[1];
+    if (data.answers[2]) {
+        document.getElementById('answer3').innerHTML = data.answers[2];
+        $('#answer3').show();
+    }
+    else $('#answer3').hide();
+    if (data.answers[3]) {
+        document.getElementById('answer4').innerHTML = data.answers[3];
+        $('#answer4').show();
+    }
+    else $('#answer4').hide();
+    if (data.answers[4]) {
+        document.getElementById('answer5').innerHTML = data.answers[4];
+        $('#answer5').show();
+    }
+    else $('#answer5').hide();
 
 
+    if (res[number_of_question - 1].user_answer) {
+        var t_answ = getElementByClassAndInnerHtml("answbtn", res[number_of_question - 1].true_answer);
+        $(t_answ).addClass('btn-success');
+        if (res[number_of_question - 1].true_answer !== res[number_of_question -1].user_answer) {
+            var u_answ = getElementByClassAndInnerHtml("answbtn", res[number_of_question - 1].user_answer);
+            $(u_answ).addClass('btn-danger');
+        }
+        $('.answbtn').addClass('disabled');
+        $('.help-box').show();
+    } else {
+        $('.answbtn').removeClass('disabled');
+        $('.help-box').hide();
+    }
+}
 
+function getElementByClassAndInnerHtml(className, text) {
+    var elements = document.getElementsByClassName(className);
+    for (var i = 0; i < elements.length; i++) {
+        if (elements[i].innerHTML === text)
+            return elements[i];
+    }
+}
 
-$('.btnticket').click(function(){
-number_of_ticket = $(this).attr("value");
-number_of_question = 1;
+$('.btnticket').click(function() {
+    number_of_ticket = $(this).attr("value");
+    number_of_question = 1;
+    $.ajax({
 
-$.ajax({
+        type: "GET",
 
-            type: "GET",
+        url: "load_ticket/",
 
-            url: "load_ticket/",
+        data: {'number_of_ticket': number_of_ticket},
 
-            data: {'number_of_ticket': number_of_ticket,
-                  'number_of_question': number_of_question},
-            
-            cache: false,
-            
-            success: function(data){
-                console.log(data);
-                $('.result').html(data);
-                $('.btnticket').hide();
-                $('.btnquest-box').show();
+        cache: false,
 
+        success: function (data) {
+            console.log(data);
+            $('.btnticket').hide();
+            $('.result').show();
+            $('.btnquest-box').show();
+
+            res = data.results;
+
+            changeData(data);
+
+            for (var i = 0; i <= 7; i++) {
+                var btnquest = document.getElementById("btnquest" + (i + 1));
+                $(btnquest).removeClass('btn-danger btn-success');
+                if (res[i].user_answer) {
+                    if (res[i].user_answer === res[i].true_answer) {
+                        $(btnquest).addClass('btn-success');
+                    } else $(btnquest).addClass('btn-danger');
+                }
             }
-       });
+        }
+    });
 });
 
 // загрузка вопроса 
 $(".btnquest").click(function () {
+    number_of_question = $(this).attr("value");
+    $.ajax({
 
-          number_of_question = $(this).attr("value");
+        type: "GET",
 
-          $.ajax({
+        url: "load_question/",
 
-            type: "GET",
+        data: {
+            'number_of_ticket': number_of_ticket,
+            'number_of_question': number_of_question
+        },
 
-            url: "load_ticket/",
+        cache: false,
 
-            data: {'number_of_ticket': number_of_ticket,
-              'number_of_question': number_of_question},
-            
-            cache: false,
-
-            success: function(data){
-              console.log(data);
-              $('.result').html(data);
-              
-            }
-       });
-  });
-
-$(document).ready(function() {
-      $.ajax({
-
-                    type: "GET",
-
-                    url: "check_points/",
-
-                    cache: false,
-
-                    success: function(data){
-                        document.getElementById('bonus').innerHTML = data.points;
-                    }
-                 });
+        success: function (data) {
+            console.log(data);
+            changeData(data);
+        }
     });
+});
+
+$(".nextbtn").click(function () {
+    number_of_question++;
+    $.ajax({
+
+        type: "GET",
+
+        url: "load_question/",
+
+        data: {
+            'number_of_ticket': number_of_ticket,
+            'number_of_question': number_of_question
+        },
+
+        cache: false,
+
+        success: function (data) {
+            console.log(data);
+            changeData(data);
+        }
+    });
+});
+
+$(".answbtn").click(function () {
+    var answbtn_id = $(this).attr("id");
+    var answbtn = document.getElementById(answbtn_id);
+    var user_answ = answbtn.textContent || answbtn.innerText;
+    var questbtn_id = "btnquest" + number_of_question;
+    var questbtn = document.getElementById(questbtn_id);
+
+    $.ajax({
+
+        type: "GET",
+
+        url: "check_answer/",
+
+        data: {
+            'number_of_ticket': number_of_ticket,
+            'number_of_question': number_of_question,
+            'answer_by_user': user_answ
+        },
+        dataType: 'json',
+
+        cache: false,
+
+        success: function (data) {
+            console.log(data);
+            $('.help-box').show();
+
+            $.ajax({
+
+                type: "GET",
+
+                url: "check_points/",
+
+                cache: false,
+
+                success: function (data) {
+                    document.getElementById('bonus').innerHTML = data.points;
+                }
+            });
+
+            if (user_answ === data.true_answer) {
+                $(answbtn).addClass("btn-success");
+                $(questbtn).addClass("btn-success");
+            } else {
+                $(answbtn).addClass("btn-danger");
+                var true_answbtn = getElementByClassAndInnerHtml("answbtn", data.true_answer);
+                $(true_answbtn).addClass("btn-success");
+                $(questbtn).addClass("btn-danger");
+            }
+            $('.answbtn').addClass("disabled");
+            res[number_of_question - 1].user_answer = user_answ;
+            res[number_of_question - 1].true_answer = data.true_answer;
+
+        }
+    });
+});
 
 </script>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-
-  <script>
-    $(document).ready(function() {
-      $("#modalbtn").click(function() {
-        $("#modalLogin").modal();
-      });
-    });
-  </script>
-
-
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
