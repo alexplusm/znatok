@@ -50,7 +50,7 @@ def load_picture(request):
                 counter += 1
 
         elif number_of_game == '3':
-            question = 'Выделите три предупреждающих знака'
+            question = 'Выделите три предписывающих знака'
             picture = list(range(1, 14))
             random.shuffle(picture)
             number_of_section = 3
@@ -62,7 +62,7 @@ def load_picture(request):
                 counter += 1
 
         elif number_of_game == '4':
-            question = 'Выделите три угадай каких знака'
+            question = 'Выделите три предупреждающих знака'
             picture = list(range(1, 33))
             random.shuffle(picture)
             number_of_section = 4

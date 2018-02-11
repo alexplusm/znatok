@@ -44,7 +44,7 @@
      	{% block ticketmain %}
       <div class="col-12 bordering text-center blockmain">
 	       <div class="row boxing top5">
-		          <button class="btnticket btn btn-default ml-auto" id="btnticket1" type="button" value="1">1</button>	
+		          <button class="btnticket btn btn-default ml-auto" id="btnticket1" type="button" value="1">1</button>
 		          <button class="btnticket btn btn-default ml-auto" id="btnticket2" type="button" value="2">2</button>
 		          <button class="btnticket btn btn-default ml-auto" id="btnticket3" type="button" value="3">3</button>
 		          <button class="btnticket btn btn-default ml-auto" id="btnticket4" type="button" value="4">4</button>
@@ -117,7 +117,6 @@
 
 		          <button class="btnquest btn btn-default mr-auto" id="btnquestnext" type="button" value="next">...</button>
 	      </div>
-			
 
 			 <div id="result" class="result row boxing top5" style="display: none">
                  <div class="conteiner" style="width: 100%;">
@@ -547,15 +546,14 @@ function changeData(data) {
 
     for (var i = 0; i <= 7; i++) {
         var btnquest = document.getElementById("btnquest" + (i + 1));
-        $(btnquest).removeClass('btn-danger btn-success btn-primary');
+        $(btnquest).removeClass('btn-danger btn-success btn-primary disabled');
         if (i + 1 === number_of_question) {
-            $(btnquest).addClass('btn-primary');
+            $(btnquest).addClass('btn-primary disabled');
         } else if (res[i].user_answer) {
             if (res[i].user_answer === res[i].true_answer) {
                 $(btnquest).addClass('btn-success');
             } else $(btnquest).addClass('btn-danger');
         }
-
     }
 }
 
