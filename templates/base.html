@@ -102,7 +102,7 @@
         </div>
     </div>
 </div>
-<!-- <div class="panel-body fixed-top" id="panelbody1" style="display: none;">
+<div class="panel-body" id="panelbody1" style="display: none;">
     <div class="conteiner">
         <div class="row" >
             <form class="form-inline col-12">
@@ -124,7 +124,7 @@
             </form>
         </div>
     </div>
-</div> -->
+</div>
         {% endblock %}
       </div>
     </div>
@@ -408,20 +408,20 @@
   </script>
 
   <script>
- //    jQuery(document).ready(function($) {
- //  var
- //    $window = $(window),
- //    $target = $("#panelbody"),
- //    $h = $target.offset().top;
- //  $window.on('scroll', function() {
- //    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
- //    if (scrollTop > $h + 26) {
- //      $("#panelbody1").addClass("show_block");
- //    } else {
- //      $("#panelbody1").removeClass("show_block");
- //    }
- //  });
- // });
+    jQuery(document).ready(function($) {
+  var
+    $window = $(window),
+    $target = $("#panelbody"),
+    $h = $target.offset().top;
+  $window.on('scroll', function() {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > $h + 26) {
+      $("#panelbody1").addClass("show_block");
+    } else {
+      $("#panelbody1").removeClass("show_block");
+    }
+  });
+ });
   $(".navitem").click(function(){
     var id = $(this).attr("id");
     var e = document.getElementById(id);

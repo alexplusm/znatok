@@ -96,6 +96,7 @@
 
                         success: function(data){
                             document.getElementById('bonus').innerHTML = data.points;
+                            document.getElementById('bonus1').innerHTML = data.points;
                             if (data.results[number_of_question].state === 1)
                             {
                                     $(e).addClass("btn-success");

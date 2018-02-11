@@ -280,50 +280,57 @@
 			<p>Примите участие в ON-LINE состязаниях с другими пользователями сайта	</p>
 		</div>
 		<div class="col-8 mr-auto ml-auto">
-			<div class="row">
-				<nav class="navbar">
-					<ul class="nav">
-						<li class="nav-item navonlineitem" id="navonline1"><a class="nav-link text-uppercase text-center">знания пдд</a></li>
-						<li class="nav-item ml-auto mr-auto navonlineitem" id="navonline2"><a class="nav-link text-uppercase text-center">дорожные знаки</a></li>
-						<li class="nav-item navonlineitem" id="navonline3"><a class="nav-link text-uppercase text-center">штрафы</a></li>
-					</ul>
-				</nav>
+			<div class="row navigation text-center">
+				<div class="col-3 navigation-item navonlineitem" id="navonlineitem1">
+					<a class="text-uppercase">знания пдд</a>
+				</div>
+				<div class="col-3 mr-auto ml-auto navigation-item navonlineitem" id="navonlineitem2">
+					<a class="text-uppercase">дорожные знаки</a>
+				</div>
+				<div class="col-3 navigation-item navonlineitem" id="navonlineitem3">
+					<a class="text-uppercase">штрафы</a>
+				</div>
 			</div>
 		</div>
+		
+		
+		
 		<div class="col-8 mr-auto ml-auto back">
-			<select class="form-control form-control-sm">
-				<option>select</option>
-			</select>
+			<div class="btn btn-default" style="width: 100%;">
+				<p style="font-size: 0.1em;">Выберите ставку. Нажмите СТАРТ. Дождитесь готовности соперника.
+				 Побеждает тот, кто первый и без ошибок ответит на 20 вопросов из билетов ПДД. Баллы по ставке от проигравшего переходят победителю. Удачи!</p>
+			</div>
+					
 			<div class="col-10 ml-auto mr-auto">
 				<div class="row btnrow">
-					<div class="btn btn-default ml-auto">
+					<div class="btn btn-default btn_for_online ml-auto" id="btn_for_online_1">
 						0
 					</div>
-					<div class="btn btn-default ml-auto">
+					<div class="btn btn-default btn_for_online ml-auto" id="btn_for_online_2">
 						50
 					</div>
-					<div class="btn btn-default ml-auto">
+					<div class="btn btn-default btn_for_online ml-auto" id="btn_for_online_3">
 						100
 					</div>
-					<div class="btn btn-default ml-auto">
+					<div class="btn btn-default btn_for_online ml-auto" id="btn_for_online_4">
 						250
 					</div>
-					<div class="btn btn-default ml-auto">
+					<div class="btn btn-default btn_for_online ml-auto" id="btn_for_online_5">
 						500
 					</div>
-					<div class="btn btn-default ml-auto">
+					<div class="btn btn-default btn_for_online ml-auto" id="btn_for_online_6">
 						1000
 					</div>
-					<div class="btn btn-default ml-auto mr-auto">
+					<div class="btn btn-default btn_for_online_active ml-auto mr-auto" id="btn_for_online_7">
 						Старт
 					</div>
 				</div>
 			</div>
 			<div class="col-12">
 				<div class="row">
-					<div class="col-3">
+					<div class="col-2">
 						<ul class="list-unstyled block">
-							<li class="text-center text-uppercase f1" style="color: blue;">статистика</li>
+							<li class="text-center text-uppercase f1 b">статистика</li>
 							<li>
 								<table class="table text">
 									<tbody>
@@ -333,9 +340,9 @@
 											</td>
 											<td class= "text-right">
 												<p class="text2">
-													<span style="color: green;">11</span>/<span style="color: green;">15</span>
+													<span class="g">11</span>/<span class="g">15</span>
 												</p>
-												<p class="text2" style="color: green;">73</p>
+												<p class="text2 g">73</p>
 											</td>
 										</tr>
 										<tr>
@@ -343,21 +350,31 @@
 												<span class="text1">В рейтинге</span>
 											</td>
 											<td class="text-right">
-												<span class="text2" style="color: green;">1000+</span>
+												<span class="text2 g">1000+</span>
 											</td>
 										</tr>
 									</tbody>
 								</table>
 							</li>
 						</ul>
-						<div class="block text-uppercase text-center f1" style="font-size: 15px;">равный соперник</div>
+						<div class="block text-uppercase text-center f1 s">равный соперник</div>
 					</div>
-					<div class="col-6">
-						asd
+					<div class="col-8">
+						<div class="row" id="profile">
+							<div class="col-4 text-right ml-auto" id="first_profile">
+								<img src="{% static 'img/21.png' %}" id="img_profile"/>
+							</div>
+							<div class="col-4">
+								<img src="{% static 'img/vs.png' %}" id="img_profile"/>
+							</div>
+							<div class="col-4 mr-auto" id="second_profile">
+								<img src="{% static 'img/21.png' %}" id="img_profile"/>
+							</div>
+						</div>
 					</div>
-					<div class="col-3">
+					<div class="col-2">
 						<ul class="list-unstyled block">
-							<li class="text-center text-uppercase f1" style="color: blue;">статистика</li>
+							<li class="text-center text-uppercase f1 b">статистика</li>
 							<li>
 								<table class="table text">
 									<tbody>
@@ -367,9 +384,9 @@
 											</td>
 											<td class= "text-right">
 												<p class="text2">
-													<span style="color: green;">-</span>
+													<span class="g">-</span>
 												</p>
-												<p class="text2" style="color: green;">-</p>
+												<p class="text2 g">-</p>
 											</td>
 										</tr>
 										<tr>
@@ -377,7 +394,7 @@
 												<span class="text1">В рейтинге</span>
 											</td>
 											<td class="text-right">
-												<span class="text2" style="color: green;">-</span>
+												<span class="text2 g">-</span>
 											</td>
 										</tr>
 									</tbody>
@@ -392,7 +409,7 @@
 
 
 	<div id="panellamb">
-		<div class="col-6 mr-auto ml-auto text-center text-uppercase titletext">
+		<div class="col-10 mr-auto ml-auto text-center text-uppercase titletext">
 			<p>присоединяйтесь к командной гонке за баллами</p>
 		</div>
 		<div class="panel panel-default">
@@ -455,17 +472,25 @@ $(document).ready(function() {
 
         success: function (data) {
             document.getElementById('bonus').innerHTML = data.points;
+            document.getElementById('bonus1').innerHTML = data.points;
         }
     });
 });
 
-$("#navonline1").addClass("active");
+$("#navonlineitem1").addClass("active");
 
 $(".navonlineitem").click(function(){
 	var id = $(this).attr("id");
 	var e = document.getElementById(id);
     $(".navonlineitem").removeClass("active");
     $(e).addClass("active");
+});
+
+$(".btn_for_online").click(function(){
+	var id = $(this).attr("id");
+	var e = document.getElementById(id);
+    $(".btn_for_online").removeClass("btn_for_online_active");
+    $(e).addClass("btn_for_online_active");
 });
 
 $("#cat1").click(function () {
@@ -645,6 +670,7 @@ $(".answbtn").click(function () {
 
                 success: function (data) {
                     document.getElementById('bonus').innerHTML = data.points;
+                    document.getElementById('bonus1').innerHTML = data.points;
                 }
             });
 
