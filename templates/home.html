@@ -543,6 +543,20 @@ function changeData(data) {
         $('.answbtn').removeClass('disabled');
         $('.help-box').hide();
     }
+
+
+    for (var i = 0; i <= 7; i++) {
+        var btnquest = document.getElementById("btnquest" + (i + 1));
+        $(btnquest).removeClass('btn-danger btn-success btn-primary');
+        if (i + 1 === number_of_question) {
+            $(btnquest).addClass('btn-primary');
+        } else if (res[i].user_answer) {
+            if (res[i].user_answer === res[i].true_answer) {
+                $(btnquest).addClass('btn-success');
+            } else $(btnquest).addClass('btn-danger');
+        }
+
+    }
 }
 
 function getElementByClassAndInnerHtml(className, text) {
@@ -573,25 +587,16 @@ $('.btnticket').click(function() {
             $('.btnquest-box').show();
 
             res = data.results;
-
             changeData(data);
 
-            for (var i = 0; i <= 7; i++) {
-                var btnquest = document.getElementById("btnquest" + (i + 1));
-                $(btnquest).removeClass('btn-danger btn-success');
-                if (res[i].user_answer) {
-                    if (res[i].user_answer === res[i].true_answer) {
-                        $(btnquest).addClass('btn-success');
-                    } else $(btnquest).addClass('btn-danger');
-                }
-            }
+
         }
     });
 });
 
 // загрузка вопроса 
 $(".btnquest").click(function () {
-    number_of_question = $(this).attr("value");
+    number_of_question = Number($(this).attr("value"));
     $.ajax({
 
         type: "GET",
@@ -638,8 +643,6 @@ $(".answbtn").click(function () {
     var answbtn_id = $(this).attr("id");
     var answbtn = document.getElementById(answbtn_id);
     var user_answ = answbtn.textContent || answbtn.innerText;
-    var questbtn_id = "btnquest" + number_of_question;
-    var questbtn = document.getElementById(questbtn_id);
 
     $.ajax({
 
@@ -676,12 +679,10 @@ $(".answbtn").click(function () {
 
             if (user_answ === data.true_answer) {
                 $(answbtn).addClass("btn-success");
-                $(questbtn).addClass("btn-success");
             } else {
                 $(answbtn).addClass("btn-danger");
                 var true_answbtn = getElementByClassAndInnerHtml("answbtn", data.true_answer);
                 $(true_answbtn).addClass("btn-success");
-                $(questbtn).addClass("btn-danger");
             }
             $('.answbtn').addClass("disabled");
             res[number_of_question - 1].user_answer = user_answ;

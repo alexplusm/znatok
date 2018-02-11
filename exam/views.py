@@ -45,12 +45,21 @@ def load_ticket(request):
         answers = random_answers(question)
         if request.user.is_authenticated:
             results = request.user.result_set.\
-                raw('SELECT accounts_result.id, accounts_result.user_answer, accounts_result.true_answer FROM accounts_result WHERE question_id IN (SELECT exam_question.id FROM exam_question WHERE number_of_ticket = %s)'% number_of_ticket)
+                raw('SELECT accounts_result.id, accounts_result.user_answer, accounts_result.true_answer FROM accounts_result WHERE question_id IN (SELECT exam_question.id FROM exam_question WHERE number_of_ticket = %s) AND user_id = %s' % (number_of_ticket, request.user.pk))
             res_list = []
             for result in results:
                 res_list.append({'id': result.id, 'user_answer': result.user_answer, 'true_answer': result.true_answer})
-            return JsonResponse({'questions': list(question.values()), 'results': res_list,  "answers": answers}, safe=False)
-        return JsonResponse({'questions': list(question.values()), "answers": answers}, safe=False)
+        else:
+            if not request.session.get('results'):
+                request.session['results'] = []
+                for i in range(0, 7):
+                    request.session['results'].append({'user_answer': 'qwer', 'true_answer': 'qwer'})
+            else:
+                for res in request.session['results']:
+                    res['user_answer'] = None
+                    res['true_answer'] = None
+            res_list = request.session['results']
+        return JsonResponse({'questions': list(question.values()), 'results': res_list,  'answers': answers}, safe=False)
 
 
 def check_answer(request):
@@ -67,6 +76,8 @@ def check_answer(request):
             result.user_answer = answer_by_user
             result.true_answer = true_answer
             result.save()
+        else:
+            request.session['results'][int(number_of_question) - 1] = {'user_answer': answer_by_user, 'true_answer': true_answer}
         if true_of_false:
             if user.is_authenticated:
                 user.profile.points += 1
