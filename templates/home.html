@@ -1,31 +1,49 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block main %}
      <div class="conteiner text-center">
       <div class="row" style="margin-right: auto;">
        <div class="col-2 ml-auto text-uppercase">
         <div class="row">
          <ul class="navleft nav flex-column">
-        <li class="nav-item2">
+        <li class="nav-item2 ml-auto">
           <a class="nav-link navitem1" id="block1">Теория</a>
         </li>
-      <li class="nav-item2 top">
-          <a class="nav-link navitem1" id="block2">Билеты</a>
+      <li class="nav-item2 ml-auto top b1">
+          <a class="nav-link navitem1 active" id="block2">Билеты</a>
         </li>
-        <li class="nav-item2 top">
+        <li class="nav-item2 ml-auto top b1">
           <a class="nav-link navitem1" id="block3">Экзамен</a>
         </li>
-        <li class="nav-item2 top">
+        <li class="nav-item2 ml-auto top b1">
           <a class="nav-link navitem1" id="block4">по темам</a>
         </li>
-        <li class="nav-item2 top">
+        <li class="nav-item2 ml-auto top b1">
           <a class="nav-link navitem1" id="block5">марафон</a>
         </li>
-        <li class="nav-item2 top">
+        <li class="nav-item2 ml-auto top b1">
           <a class="nav-link navitem1" id="block6">ошибки</a>
         </li>
+        <li class="nav-item2 ml-auto top b2 hide">
+          <a class="nav-link navitem1 active" id="block7">Правила дорожного движения</a>
+        </li>
+        <li class="nav-item2 ml-auto top b2 hide">
+          <a class="nav-link navitem1" id="block8">Дорожные знаки</a>
+        </li>
+        <li class="nav-item2 ml-auto top b2 hide">
+          <a class="nav-link navitem1" id="block9">Дорожная разметка и её характеристики</a>
+        </li>
+        <li class="nav-item2 ml-auto top b2 hide">
+          <a class="nav-link navitem1" id="block10">основные положения по допуску транспортных средств к эксплуатации и обязанности должностных лиц по обеспечению безопасности дорожного движения</a>
+        </li>
+        <li class="nav-item2 ml-auto top b2 hide">
+          <a class="nav-link navitem1" id="block11">перечень неисправностей и условий, при которых запрещается эксплуатация транспортных средств</a>
+        </li>
+        <li class="nav-item2 ml-auto top b2 hide">
+          <a class="nav-link navitem1" id="block12">перечень штрафных санкций в соответствии с коап <br>глава 12. Административные правонарушения в области дорожного движения</a>
+        </li>
+        <br>
       </ul>
         </div>
        </div>
@@ -117,19 +135,21 @@
 
 		          <button class="btnquest btn btn-default mr-auto" id="btnquestnext" type="button" value="next">...</button>
 	      </div>
-
+	      <div class="row boxing top6 hide">
+            	билеты по теории
+            </div>
 			 <div id="result" class="result row boxing top5" style="display: none">
                  <div class="conteiner" style="width: 100%;">
  		<div class="row boxing">
- 			<div class="col-xs-12 col-md-12 col-lg-6">
- 				<div class="row">
-					<img src="" class="imgquestion" />
-				</div>
-			</div>
- 			<div class="col-xs-12 col-md-12 col-lg-6 text-left objquestion">
+ 			<div class="col-12">
+ 				<div class="col-12 text-left objquestion">
 	 				<p id="quest"></p>
 	 			</div>
-
+ 				<div class="row">
+					<img class="imgquestion" />
+				</div>
+			</div>
+ 			
  			</div>
  			<div class="">
 				<ul class="list-unstyled">
@@ -179,7 +199,6 @@
           <div class="text-uppercase" style="color: blue; font-size: 15px;">Лидеры недели</div>
           <div class="row padb" style="border-top: 1px solid lightgrey;">
            <div class="col-4">
-
            </div>
            <div class="col-4">
             <div class="row">
@@ -258,7 +277,7 @@
             <div class="row">
              <div class="col-4 ml-auto text-right">
               БАЛЛЫ
- </div>
+ 			</div>
              <div class="col-4 coinslid">
               12345
              </div>

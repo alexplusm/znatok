@@ -27,6 +27,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^$', auth_views.LoginView.as_view(template_name='home.html'), name='home'),
+    url(r'^ourteam', TemplateView.as_view(template_name='our_team.html'), name='our_team'),
     url(r'^signup/', views.signup, name='signup'),
     url(r'^logout/', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
@@ -69,7 +70,6 @@ urlpatterns = [
     url(r'load_picture/$', game_views.load_picture, name='load_picture'),
     url(r'check_answer_for_game/$', game_views.check_answer_for_game, name='check_answer_for_game'),
     url(r'check_points_for_game/$', game_views.check_points_for_game, name='check_points_for_game'),
-
 
     # urls for exam app
 

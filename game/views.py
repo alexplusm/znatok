@@ -19,6 +19,8 @@ def load_picture(request):
     if request.method == "GET" and request.is_ajax():
         number_of_game = request.GET["number_of_game"]
         number_of_try = request.GET["number_of_try"]
+        skip_game = request.GET["skip_game"]
+        
         counter = 0
         i = 0
         main = [0, 0, 0, 0, 0]
@@ -118,7 +120,8 @@ def load_picture(request):
                                                   'obj8': obj[7],
                                                   'question': question,
                                                   'number_of_game': number_of_game,
-                                                  'number_of_try': number_of_try})
+                                                  'number_of_try': number_of_try,
+                                                  'skip_game': skip_game})
 
 
 def check_answer_for_game(request):

@@ -28,7 +28,7 @@
               <li class="nav-item" style="border-left: 1px solid lightgrey;"><a class="nav-link text-uppercase text-center navitem" href="/" id="nav1">главная</a></li>
               <li class="nav-item"><a class="nav-link text-uppercase text-center navitem" id="nav2">автошколы</a></li>
               <li class="nav-item"><a class="nav-link text-uppercase text-center navitem" id="nav3">автоинструкторы</a></li>
-              <li class="nav-item"><a class="nav-link text-uppercase text-center navitem" id="nav4">наша команда</a></li>
+              <li class="nav-item"><a class="nav-link text-uppercase text-center navitem" href="/ourteam/" id="nav4">наша команда</a></li>
               <li class="nav-item"><a class="nav-link text-uppercase text-center navitem" id="nav5">каталог</a></li>
             </ul>
           </nav>
@@ -43,8 +43,9 @@
             <div class="col-2 mr-auto ml-auto" >
               <a href="/"><img src="{% static 'img/logo.gif' %}" class="logo"/></a>
             </div>
-
+            
             <div class="col-5 ml-auto" id="game">
+              {% block game %}
               <div class="row">
                 <div class="">
                   <ul class="list-unstyled">
@@ -52,10 +53,12 @@
                     <li class="gameresult">
                     </li>
                   </ul>
+                 
                 </div>
             </div>
-
+            {% endblock %}
             </div>
+             
             <div class="col-2 mr-auto ml-auto">
             {% block panela %}
             {% if user.is_authenticated %}
@@ -79,7 +82,7 @@
         {% block panelbody %}
         <div class="panel-body" id="panelbody">
     <div class="conteiner">
-        <div class="row" >
+        <div class="row">
           {% block coins %}
             <form class="form-inline col-12">
                 <div class="form-group ml-auto">
@@ -102,6 +105,7 @@
         </div>
     </div>
 </div>
+{% block coins1 %}
 <div class="panel-body" id="panelbody1" style="display: none;">
     <div class="conteiner">
         <div class="row" >
@@ -125,6 +129,7 @@
         </div>
     </div>
 </div>
+{% endblock %}
         {% endblock %}
       </div>
     </div>
@@ -369,9 +374,6 @@
   <script type="text/javascript" src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
   <!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <!-- Подключаем Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-
     {% if form.errors %}
   <script>
     $(document).ready(function() {
@@ -388,6 +390,7 @@
  <script>
   var number_of_game = 1;
   var number_of_try = 5;
+  var skip_game = 0;
     $(document).ready(function() {
       $.ajax({
 
@@ -396,7 +399,8 @@
             url: "load_picture/",
 
             data: {'number_of_game': number_of_game,
-                   'number_of_try': number_of_try},
+                   'number_of_try': number_of_try,
+                   'skip_game': skip_game},
 
             cache: false,
 
@@ -434,14 +438,40 @@
     var e = document.getElementById(id);
     $(".navitem1").removeClass("active");
     $(e).addClass("active");
-  });
 
+    if (id === "block1") {
+      $(".btnquest").addClass("hide");
+      $(".top5").addClass("hide");
+      $(".top6").removeClass("hide");
+      $(".b1").addClass("hide");
+      $(".b2").removeClass("hide");
+    }
+
+    if (id === "block1_team") {
+      $(".img_team").addClass("hide");
+      $("#activity").removeClass("hide");
+    } else if (id === "block2_team") {
+      $(".img_team").addClass("hide");
+      $("#volunteers").removeClass("hide");
+    } else if (id === "block3_team") {
+      $(".img_team").addClass("hide");
+      $("#business").removeClass("hide");
+    } else if (id === "block4_team") {
+      $(".img_team").addClass("hide");
+      $("#investors").removeClass("hide");
+    } else if (id === "block5_team") {
+      $(".img_team").addClass("hide");
+      $("#developers").removeClass("hide");
+    } else if (id === "block6_team") {
+      $(".img_team").addClass("hide");
+      $("#agencies").removeClass("hide");
+    }
+  });
 
   $(document).ready(function(){
 
     $("#cat1").addClass("active");
     $("#block2").addClass("active");
-    $("#nav1").addClass("active");
 
     var l1 = document.getElementById("lamb1");
     var l2 = document.getElementById("lamb2");

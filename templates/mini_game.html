@@ -70,7 +70,17 @@
 		                        success: function(data){
 		                            document.getElementById('bonus').innerHTML = data.points;
 		                            document.getElementById('bonus1').innerHTML = data.points;
-		                            nextGame();
+		                            
+		                            if ((number_of_game === 4) && (number_of_try != 0) && (skip_game === 0)) {
+										alert("вы успешно прошли все задания");
+										$('.gameresult').text("30:00");
+									}
+									else if ((number_of_game === 4) && (number_of_try != 0) && (skip_game != 0)) {
+		                            	next_game_after_first_loop();
+		                            }
+		                            else {
+		                            	nextGame();
+		                            }
 		                        }
 		                    });
 		            	} else {
@@ -85,7 +95,8 @@
 						            url: "load_picture/",
 
 						            data: {'number_of_game': number_of_game,
-						        		   'number_of_try': number_of_try},
+						        		   'number_of_try': number_of_try,
+						        		   'skip_game': skip_game},
 
 						            cache: false,
 
@@ -102,14 +113,43 @@
 	});
 
 	$(".skipGame").click(function () {
-		if ((number_of_game === 4) && number_of_try != 0) {
+		skip_game = number_of_game;
+		if ((number_of_game === 4) && (number_of_try != 0) && (skip_game === 0)) {
 			number_of_game = 0;
+			next_game_after_first_loop();
 		}
 		nextGame();
 	});
 
 	function nextGame() {
+		console.log(skip_game);
 		number_of_game++;
+		if (number_of_try == 0) {
+		    $('.gameresult').text("30:00");
+		} else {
+			if ((number_of_game <= 4) && number_of_try != 0) {
+				$.ajax({
+
+		            type: "GET",
+
+		            url: "load_picture/",
+
+		            data: {'number_of_game': number_of_game,
+		        		   'number_of_try': number_of_try - 1,
+		        		   'skip_game': skip_game},
+
+		            cache: false,
+
+		            success: function(data){
+		                $('.gameresult').html(data);
+		            }
+		       });
+			}
+		}
+	}
+
+	function next_game_after_first_loop() {
+		number_of_game = skip_game;
 		number_of_try--;
 		if (number_of_try == 0) {
 		    $('.gameresult').text("30:00");
@@ -122,7 +162,8 @@
 		            url: "load_picture/",
 
 		            data: {'number_of_game': number_of_game,
-		        		   'number_of_try': number_of_try},
+		        		   'number_of_try': number_of_try,
+		        		   'skip_game': skip_game},
 
 		            cache: false,
 
