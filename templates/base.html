@@ -62,7 +62,7 @@
             <div class="col-2 mr-auto ml-auto">
             {% block panela %}
             {% if user.is_authenticated %}
-            <a class="btn-prof btn btn-primary" style="font-size: 15px; margin-bottom: 3px; margin-top: 10%;">Мой профиль</a>
+            <a class="btn-prof btn btn-primary" href="/profile/" style="font-size: 15px; margin-bottom: 3px; margin-top: 10%;">Мой профиль</a>
             <a href="{% url 'logout' %}" class="btn btn-prof btn-sec" style="font-size: 15px;">Выход</a>
                 {% else %}
                 {% block button %}
@@ -405,6 +405,7 @@
   </script>
 
   <script>
+    var counter_for_theory = 0;
     jQuery(document).ready(function($) {
   var
     $window = $(window),
@@ -432,12 +433,22 @@
     $(".navitem1").removeClass("active");
     $(e).addClass("active");
 
-    if (id === "block1") {
+    if ((id === "block1") && (counter_for_theory === 0)) {
+      counter_for_theory++;
       $(".btnquest").addClass("hide");
       $(".top5").addClass("hide");
       $(".top6").removeClass("hide");
       $(".b1").addClass("hide");
       $(".b2").removeClass("hide");
+    } else if((id === "block1") && (counter_for_theory === 1)) {
+      $(".btnquest").removeClass("hide");
+      $(".top5").removeClass("hide");
+      $(".top6").addClass("hide");
+      $(".b1").removeClass("hide");
+      $(".b2").addClass("hide");
+      counter_for_theory = 0;
+      $("#block2").addClass("active");
+      $("#block1").removeClass("active");
     }
 
     if (id === "block1_team") {
@@ -462,6 +473,16 @@
   });
 
   $(document).ready(function(){
+    var temp1 = 1;
+    var temp2 = 10;
+    temp3 = temp2 / temp1;
+    right = temp3 + '%';
+    var pr1 = right;
+    var pr2 = '50%';
+    var pr3 = '40%';
+    $(".pr1").css('width', pr1);
+    $(".pr2").css('width', pr2);
+    $(".pr3").css('width', pr3);
 
     $("#cat1").addClass("active");
     $("#block2").addClass("active");

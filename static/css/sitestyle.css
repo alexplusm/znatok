@@ -5958,10 +5958,9 @@ body {
   font-size: 25px;
   font-weight: bold;
   padding-top: 2%;
-  padding-bottom: 2%;
   color: darkblue;
   width: calc(10%);
-  height: 120% !important;
+  height: auto;
   background: lightblue;
 }
 #maincontent .btnquest {
@@ -6314,4 +6313,10 @@ body {
   /* IE10+ */
   background-image: linear-gradient(to bottom, #006cf4 0%, #030092 100%);
   background-image: -ms-linear-gradient(top, #006cf4 0%, #030092 100%);
+}
+.progress {
+  height: 1em;
+}
+.progress-bar {
+  height: 100% !important;
 }
