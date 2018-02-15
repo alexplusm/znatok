@@ -44,8 +44,9 @@
               <a href="/"><img src="{% static 'img/logo.gif' %}" class="logo"/></a>
             </div>
             
-            <div class="col-5 ml-auto" id="game">
+            
               {% block game %}
+              <div class="col-5 ml-auto" id="game">
               <div class="row">
                 <div class="">
                   <ul class="list-unstyled">
@@ -56,8 +57,9 @@
                  
                 </div>
             </div>
-            {% endblock %}
             </div>
+            {% endblock %}
+            
              
             <div class="col-2 mr-auto ml-auto">
             {% block panela %}
@@ -133,9 +135,6 @@
         {% endblock %}
       </div>
     </div>
-    {% block divider %}
-
-  {% endblock %}
 
   <div class="modal fade" id="modalLogin" role="dialog">
     <div class="modal-dialog modal-sm">
@@ -210,10 +209,6 @@
   </div>
   </div>
   
-
-            
-
-
   <div id="online">
     {% block online %}
     {% endblock %}
