@@ -73,11 +73,11 @@
 	       <div class="row boxing top5">
 		          <button class="btnticket btn btn-default ml-auto" id="btnticket1" type="button" value="1">1
 			          <div class="progress">
-			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success pr1">
+			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" id="success1" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
 			          	</div>
-			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger pr2">
+			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" id="danger1" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
 			          	</div>
-			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary pr3">
+			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" id="secondary1" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
 			          	</div>
 			          </div>
 			      </button>
@@ -583,7 +583,41 @@ $(document).ready(function() {
         }
     });
 });
+</script>
 
+{% if user.is_authenticated %}
+<script>
+$(document).ready(function() {
+    $.ajax({
+
+        type: "GET",
+
+        url: "check_results/",
+
+        cache: false,
+
+        success: function (data) {
+            console.log(data);
+            for (var i = 0; i <= 40; i++) {
+                if (data.results[i]) {
+                    var success = document.getElementById('success' + (i + 1));
+                    console.log(data.results[i].true * 2.5);
+                    $(success).attr("style", "width: " + (data.results[i].true * 2.5) + '%');
+                    var danger = document.getElementById('danger' + (i + 1));
+                    console.log(data.results[i].false * 2.5);
+                    $(danger).attr("style", "width: " + (data.results[i].false * 2.5) + '%');
+                    var secondary = document.getElementById('secondary' + (i + 1));
+                    console.log(100 - (data.results[i].true + data.results[i].false) * 2.5);
+                    $(secondary).attr("style", "width: " + (100 - (data.results[i].true + data.results[i].false) * 2.5) + '%');
+                }
+            }
+        }
+    });
+});
+</script>
+{% endif %}
+
+<script>
 $("#navonlineitem1").addClass("active");
 
 $(".navonlineitem").click(function(){
@@ -652,7 +686,7 @@ function changeData(data) {
     }
 
 
-    for (var i = 0; i <= 7; i++) {
+    for (var i = 0; i <= 20; i++) {
         var btnquest = document.getElementById("btnquest" + (i + 1));
         $(btnquest).removeClass('btn-danger btn-success btn-primary disabled');
         if (i + 1 === number_of_question) {

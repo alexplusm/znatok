@@ -66,6 +66,7 @@ urlpatterns = [
     url(r'load_question/$', exam_views.load_question, name='load_question'),
     url(r'check_answer/$', exam_views.check_answer, name='check_answer'),
     url(r'check_points/$', exam_views.check_points, name='check_points'),
+    url(r'check_results/$', exam_views.check_results, name='check_results'),
 
     url(r'load_picture/$', game_views.load_picture, name='load_picture'),
     url(r'check_answer_for_game/$', game_views.check_answer_for_game, name='check_answer_for_game'),

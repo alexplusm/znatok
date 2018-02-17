@@ -11,10 +11,7 @@ def random_answers(question):
         quest_list.append(question[0].answer4)
     if question[0].answer5:
         quest_list.append(question[0].answer5)
-    print(quest_list)
     shuffle(quest_list)
-    print(quest_list)
-    print(question[0])
     question[0].answer1 = quest_list[0]
     question[0].answer2 = quest_list[1]
     if question[0].answer3:
@@ -53,7 +50,7 @@ def load_ticket(request):
             if not request.session.get('results'):
                 request.session['results'] = []
                 for i in range(0, 7):
-                    request.session['results'].append({'user_answer': 'qwer', 'true_answer': 'qwer'})
+                    request.session['results'].append({'user_answer': None, 'true_answer': None})
             else:
                 for res in request.session['results']:
                     res['user_answer'] = None
@@ -96,3 +93,18 @@ def check_points(request):
                 request.session['points'] = 0
             points = request.session['points']
         return JsonResponse({'points': points}, safe=False)
+
+
+def check_results(request):
+    if request.method == "GET" and request.is_ajax():
+        results = request.user.result_set.all()
+        res_list = [None] * 39
+        for result in results:
+            ticket = result.question.number_of_ticket
+            if not res_list[ticket - 1]:
+                res_list.insert(ticket - 1, {'true': 0, 'false': 0})
+            if result.true_answer == result.user_answer != None:
+                res_list[ticket - 1]['true'] += 1
+            if result.true_answer != result.user_answer:
+                res_list[ticket - 1]['false'] += 1
+        return JsonResponse({'results': res_list}, safe=False)
