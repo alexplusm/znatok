@@ -213,33 +213,7 @@
 		          <button class="btnquest btn btn-default ml-auto" id="btnquest18" type="button" value="18">18</button>
 		          <button class="btnquest btn btn-default ml-auto" id="btnquest19" type="button" value="19">19</button>
 		          <button class="btnquest btn btn-default ml-auto mr-auto" id="btnquest20" type="button" value="20">20</button>
-
-		          <button class="btnquest btn btn-default mr-auto" id="btnquestnext1" type="button" value="next">...</button>
 	      </div>
-	      <div class="row boxing btnquest-box2" style="display:none">
-	      	<button class="btnquest btn btn-default mr-auto" id="btnquestnext2" type="button" value="next">...</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest21" value="21">21</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest22" type="button" value="22">22</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest23" type="button" value="23">23</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest24" type="button" value="24">24</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest25" type="button" value="25">25</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest26" value="26">26</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest27" type="button" value="27">27</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest28" type="button" value="28">28</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest29" type="button" value="29">29</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest30" type="button" value="30">30</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest31" type="button" value="31">31</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest32" type="button" value="32">32</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest33" type="button" value="33">33</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest34" type="button" value="34">34</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest35" type="button" value="35">35</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest36" type="button" value="36">36</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest37" type="button" value="37">37</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest38" type="button" value="38">38</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest39" type="button" value="39">39</button>
-		          <button class="btnquest btn btn-default ml-auto mr-auto" id="btnquest40" type="button" value="40">40</button>
-	      </div>
-
 	      <div class="row boxing top6 hide">
             	билеты по теории
             </div>
@@ -615,7 +589,7 @@ $(document).ready(function() {
         success: function (data) {
         	$(".progress").show();
             console.log(data);
-            for (var i = 0; i <= 40; i++) {
+            for (var i = 0; i <= 21; i++) {
                 if (data.results[i]) {
                     var success = document.getElementById('success' + (i + 1));
                     console.log(data.results[i].true * 2.5);
@@ -649,16 +623,6 @@ $(".btn_for_online").click(function(){
 	var e = document.getElementById(id);
     $(".btn_for_online").removeClass("btn_for_online_active");
     $(e).addClass("btn_for_online_active");
-});
-
-$("#btnquestnext1").click(function() {
-	$(".btnquest-box1").hide();
-	$(".btnquest-box2").show();
-});
-
-$("#btnquestnext2").click(function() {
-	$(".btnquest-box2").hide();
-	$(".btnquest-box1").show();
 });
 
 $("#cat1").click(function () {
