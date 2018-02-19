@@ -72,7 +72,7 @@
       	</div>
 	       <div class="row boxing top5">
 		          <button class="btnticket btn btn-default ml-auto" id="btnticket1" type="button" value="1">1
-			          <div class="progress">
+			          <div class="progress" style="display: none;">
 			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" id="success1" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
 			          	</div>
 			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" id="danger1" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
@@ -82,7 +82,7 @@
 			          </div>
 			      </button>
 		          <button class="btnticket btn btn-default ml-auto" id="btnticket2" type="button" value="2">2
-		          	<div class="progress">
+		          	<div class="progress" style="display: none;">
 			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success pr1">
 			          	</div>
 			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger pr2">
@@ -92,7 +92,7 @@
 			          </div>
 			      </button>
 		          <button class="btnticket btn btn-default ml-auto" id="btnticket3" type="button" value="3">3
-		          	<div class="progress">
+		          	<div class="progress" style="display: none;">
 			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success pr1">
 			          	</div>
 			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger pr2">
@@ -102,7 +102,7 @@
 			          </div>
 			      </button>
 		          <button class="btnticket btn btn-default ml-auto" id="btnticket4" type="button" value="4">4
-		          	<div class="progress">
+		          	<div class="progress" style="display: none;">
 			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success pr1">
 			          	</div>
 			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger pr2">
@@ -112,7 +112,7 @@
 			          </div>
 			      </button>
 		          <button class="btnticket btn btn-default ml-auto" id="btnticket5" type="button" value="5">5
-		          	<div class="progress">
+		          	<div class="progress" style="display: none;">
 			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success pr1">
 			          	</div>
 			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger pr2">
@@ -122,7 +122,7 @@
 			          </div>
 			      </button>
 		          <button class="btnticket btn btn-default ml-auto" id="btnticket6" type="button" value="6">6
-		          	<div class="progress">
+		          	<div class="progress" style="display: none;">
 			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success pr1">
 			          	</div>
 			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger pr2">
@@ -132,7 +132,7 @@
 			          </div>
 			      </button>
 		          <button class="btnticket btn btn-default ml-auto" id="btnticket7" type="button" value="7">7
-		          	<div class="progress">
+		          	<div class="progress" style="display: none;">
 			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success pr1">
 			          	</div>
 			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger pr2">
@@ -142,7 +142,7 @@
 			          </div>
 			      </button>
 		          <button class="btnticket btn btn-default ml-auto mr-auto" id="btnticket8" type="button" value="8">8
-		          	<div class="progress">
+		          	<div class="progress" style="display: none;">
 			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success pr1">
 			          	</div>
 			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger pr2">
@@ -613,6 +613,7 @@ $(document).ready(function() {
         cache: false,
 
         success: function (data) {
+        	$(".progress").show();
             console.log(data);
             for (var i = 0; i <= 40; i++) {
                 if (data.results[i]) {
