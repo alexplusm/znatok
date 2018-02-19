@@ -83,11 +83,11 @@
 			      </button>
 		          <button class="btnticket btn btn-default ml-auto" id="btnticket2" type="button" value="2">2
 		          	<div class="progress" style="display: none;">
-			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success pr1">
+			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" id="success2">
 			          	</div>
-			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger pr2">
+			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" id="danger2">
 			          	</div>
-			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary pr3">
+			          	<div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" id="secondary2">
 			          	</div>
 			          </div>
 			      </button>
@@ -589,17 +589,17 @@ $(document).ready(function() {
         success: function (data) {
         	$(".progress").show();
             console.log(data);
-            for (var i = 0; i <= 21; i++) {
+            for (var i = 0; i <= 39; i++) {
                 if (data.results[i]) {
                     var success = document.getElementById('success' + (i + 1));
-                    console.log(data.results[i].true * 2.5);
-                    $(success).attr("style", "width: " + (data.results[i].true * 2.5) + '%');
+                    console.log(data.results[i].true * 5);
+                    $(success).attr("style", "width: " + (data.results[i].true * 5) + '%');
                     var danger = document.getElementById('danger' + (i + 1));
-                    console.log(data.results[i].false * 2.5);
-                    $(danger).attr("style", "width: " + (data.results[i].false * 2.5) + '%');
+                    console.log(data.results[i].false * 5);
+                    $(danger).attr("style", "width: " + (data.results[i].false * 5) + '%');
                     var secondary = document.getElementById('secondary' + (i + 1));
-                    console.log(100 - (data.results[i].true + data.results[i].false) * 2.5);
-                    $(secondary).attr("style", "width: " + (100 - (data.results[i].true + data.results[i].false) * 2.5) + '%');
+                    console.log(100 - (data.results[i].true + data.results[i].false) * 5);
+                    $(secondary).attr("style", "width: " + (100 - (data.results[i].true + data.results[i].false) * 5) + '%');
                 }
             }
         }
@@ -677,7 +677,7 @@ function changeData(data) {
     }
 
 
-    for (var i = 0; i <= 40; i++) {
+    for (var i = 0; i <= 19; i++) {
         var btnquest = document.getElementById("btnquest" + (i + 1));
         $(btnquest).removeClass('btn-danger btn-success btn-primary disabled');
         if (i + 1 === number_of_question) {
