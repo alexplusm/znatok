@@ -28,7 +28,7 @@
               <li class="nav-item" style="border-left: 1px solid lightgrey;"><a class="nav-link text-uppercase text-center navitem" href="/" id="nav1">главная</a></li>
               <li class="nav-item"><a class="nav-link text-uppercase text-center navitem" id="nav2">автошколы</a></li>
               <li class="nav-item"><a class="nav-link text-uppercase text-center navitem" id="nav3">автоинструкторы</a></li>
-              <li class="nav-item"><a class="nav-link text-uppercase text-center navitem" href="/ourteam/" id="nav4">наша команда</a></li>
+              <li class="nav-item"><a class="nav-link text-uppercase text-center navitem" href="{% url 'our_team' %}" id="nav4">наша команда</a></li>
               <li class="nav-item"><a class="nav-link text-uppercase text-center navitem" id="nav5">каталог</a></li>
             </ul>
           </nav>
@@ -62,7 +62,7 @@
             <div class="col-2 mr-auto ml-auto">
             {% block panela %}
             {% if user.is_authenticated %}
-            <a class="btn-prof btn btn-primary" href="/profile/" style="font-size: 15px; margin-bottom: 3px; margin-top: 10%;">Мой профиль</a>
+            <a class="btn-prof btn btn-primary" href="{% url 'profile' %}" style="font-size: 15px; margin-bottom: 3px; margin-top: 10%;">Мой профиль</a>
             <a href="{% url 'logout' %}" class="btn btn-prof btn-sec" style="font-size: 15px;">Выход</a>
                 {% else %}
                 {% block button %}

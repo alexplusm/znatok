@@ -5904,7 +5904,7 @@ body {
   font-size: 15px;
   padding-top: 20px;
   background: url(/static/img/backmain.png);
-  background-size: 100% 100%;
+  background-size: fixed;
 }
 #maincontent .active {
   background: white;
@@ -5967,17 +5967,17 @@ body {
   font-style: italic;
   font-weight: bold;
   width: calc(4.76190476%);
-  margin-top: -20px;
+  margin-top: -3em;
   padding-top: 8px;
   padding-bottom: 8px;
   border: 1px solid lightgrey;
 }
 #maincontent .blockmain {
   background: #f3f3f3;
+  margin-bottom: 1em;
 }
 #maincontent .imgquestion {
   border: 1px solid blue;
-  margin-top: 20px;
   width: 100%;
   height: 50%;
 }
@@ -5985,7 +5985,6 @@ body {
   font-size: 10px;
   width: 100%;
   border: 1px solid lightgrey;
-  margin-top: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -6014,6 +6013,11 @@ body {
 }
 #maincontent .text3 {
   margin-top: 20px;
+}
+#maincontent #help-text {
+  font-size: 0.8em;
+  border: 1px solid lightgrey;
+  padding: 0.5em;
 }
 .vdev {
   border-right: 1px solid lightgrey;
