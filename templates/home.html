@@ -371,11 +371,19 @@
 
 {% block online %}
 <div id="online" class="background2">
-	<div class="conteiner onlinecontent">
+	<div id="onlinecontent" class="conteiner onlinecontent">
 		<div class="col-6 mr-auto ml-auto text-center text-uppercase titletext">
 			<p>Примите участие в ON-LINE состязаниях с другими пользователями сайта	</p>
 		</div>
-		<div class="col-8 mr-auto ml-auto">
+
+
+
+<!-- Блок онлайн игры -->
+{% include "online_game/online_game_place.html" %}
+
+
+<!-- 		<div class="online-game-place-1">
+		<div class="col-8 mr-auto ml-auto" style="border: 1px solid black">
 			<div class="row navigation text-center">
 				<div class="col-3 navigation-item navonlineitem" id="navonlineitem1">
 					<a class="text-uppercase">знания пдд</a>
@@ -506,6 +514,8 @@
 				</div>
 			</div>
 		</div>
+		</div> -->
+
 	</div>
 
 

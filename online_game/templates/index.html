@@ -1,0 +1,157 @@
+<!-- {% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<input type="hidden" id="userID" name="variable" value="{{ request.user.id }}">
+
+<div id="notifies"></div>
+
+<div class="container-fluid">
+	<div class="row justify-content-md-center">
+		<div class="align-self-center">
+			<div class="col-sm-12 col-lg-12">
+				<div class="alert alert-dark" role="alert">You - {{ request.user }}</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container-fluid">
+	<div class="row justify-content-md-center">
+		<div class="align-self-center">
+			<div class="col-sm-12 col-lg-12 left-cnt">
+				<button type="button" class="btn btn-dark btn-lg" onclick="tryConnect()">Начать игру</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container-fluid">
+	<div class="row justify-content-md-center">
+		<div class="align-self-center">
+			<div class="col-sm-12 col-lg-12 left-cnt">
+				<button type="button" class="btn btn-dark btn-lg" onclick="trySendMes()">Отправить мессадж</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="container" id="questBody1">
+	<div class="row justify-content-md-center">
+		<div class="row">
+			  <p class="lead fig-img">Можно ли Вам остановиться в указанном месте для посадки пассажира?</p>
+		</div>
+
+		<img class="fig-img" src="{% static "images/pdd-01-03.jpg" %}" alt="Какая-то картинка">
+				<ul class="list-unstyled">
+					
+					<li>
+						<button onclick="ff()" type="button" class="btn btn-primary ">1</button>
+						<p>Можно, если Вы управляете такси</p>
+					</li>
+					
+					<li>
+						<button onclick="tt()" type="button" class="btn btn-success ">2</button>
+						<p>Можно +</p>
+					</li>
+					
+					<li>
+						<button onclick="ff()" type="button" class="btn btn-warning">3</button>
+						<p>Нельзя</p>
+					</li>
+
+				</ul>
+			</div>	
+</div>
+
+<div class="container" id="questBody2" style="display: none">
+	<div class="row justify-content-md-center">
+		<div class="row">
+			  <p class="lead fig-img">Разрешена ли Вам стоянка в указанном месте?</p>
+		</div>
+
+		<img class="fig-img" src="{% static "images/pdd-05-03.jpg" %}" alt="Какая-то картинка">
+				<ul class="list-unstyled">
+					
+					<li>
+						<button onclick="tt()" type="button" class="btn btn-primary ">1</button>
+						<p>Разрешена +</p>
+					</li>
+					
+					<li>
+						<button onclick="ff()" type="button" class="btn btn-success">2</button>
+						<p>Разрешена только в светлое время суток</p>
+					</li>
+					
+					<li>
+						<button onclick="ff()" type="button" class="btn btn-warning">3</button>
+						<p>Запрещена</p>
+					</li>
+
+				</ul>
+			</div>	
+</div>
+
+<div class="container" id="questBody3" style="display: none">
+	<div class="row justify-content-md-center">
+		<div class="row">
+			  <p class="lead fig-img">Сколько полос для движения имеет данная дорога?</p>
+		</div>
+
+		<img class="fig-img" src="{% static "images/pdd-02-01.jpg" %}" alt="Какая-то картинка">
+				<ul class="list-unstyled">
+					
+					<li>
+						<button onclick="ff()" type="button" class="btn btn-primary ">1</button>
+						<p>Две</p>
+					</li>
+					
+					<li>
+						<button onclick="ff()" type="button" class="btn btn-success">2</button>
+						<p>Пять</p>
+					</li>
+					
+					<li>
+						<button onclick="tt()" type="button" class="btn btn-warning">3</button>
+						<p>Четыре +</p>
+					</li>
+
+				</ul>
+			</div>	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="display: none">
+<div class="container">
+
+	<h2>{{ quest.question }}</h2>
+	<input type="hidden" id="questID" name="variable" value="{{ quest.id }}">
+
+	<button id="1" type="button" class="btn btn-primary btn-lg" value="{{quest.answer1}}">{{quest.answer1}}</button>
+	<button id="2" type="button" class="btn btn-primary btn-lg" value="{{quest.answer2}}">{{quest.answer2}}</button>
+	<button id="3" type="button" class="btn btn-primary btn-lg" value="{{quest.answer3}}">{{quest.answer3}}</button>
+
+</div>
+</div>
+
+{% endblock %}
+ -->

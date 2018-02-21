@@ -1,0 +1,135 @@
+{% load static %}
+
+<div class="online-game-place-1">
+		<div class="col-8 mr-auto ml-auto">
+			<div class="row navigation text-center">
+				<div class="col-3 navigation-item navonlineitem" id="navonlineitem1">
+					<a class="text-uppercase">знания пдд</a>
+				</div>
+				<div class="col-3 mr-auto ml-auto navigation-item navonlineitem" id="navonlineitem2">
+					<a class="text-uppercase">дорожные знаки</a>
+				</div>
+				<div class="col-3 navigation-item navonlineitem" id="navonlineitem3">
+					<a class="text-uppercase">штрафы</a>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<div class="col-8 mr-auto ml-auto back">
+			<div class="dropdown">
+				<button class="btn btn-default dropdown-toggle text-right" type="button" id="drop_for_online_game_info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;">
+				  </button>
+				<div class="dropdown-menu text-center" aria-labelledby="drop_for_online_game_info" style="width: 100%;">
+				  	Выберите ставку. Нажмите СТАРТ. Дождитесь готовности соперника.<br>
+					Побеждает тот, кто первый и без ошибок ответит на 20 вопросов из билетов ПДД.<br>Баллы по ставке от проигравшего переходят победителю. Удачи!
+				</div>
+			</div>
+					
+			<div class="col-10 ml-auto mr-auto">
+				<div class="row btnrow">
+					<div class="btn btn-default btn_for_online ml-auto" id="btn_for_online_1">
+						0
+					</div>
+					<div class="btn btn-default btn_for_online ml-auto" id="btn_for_online_2">
+						50
+					</div>
+					<div class="btn btn-default btn_for_online ml-auto" id="btn_for_online_3">
+						100
+					</div>
+					<div class="btn btn-default btn_for_online ml-auto" id="btn_for_online_4">
+						250
+					</div>
+					<div class="btn btn-default btn_for_online ml-auto" id="btn_for_online_5">
+						500
+					</div>
+					<div class="btn btn-default btn_for_online ml-auto" id="btn_for_online_6">
+						1000
+					</div>
+					<div class="btn btn-default btn_for_online_active ml-auto mr-auto" id="btn_for_online_7">
+						Старт
+					</div>
+				</div>
+			</div>
+			<div class="col-12">
+				<div class="row">
+					<div class="col-2">
+						<ul class="list-unstyled block">
+							<li class="text-center text-uppercase f1 b">статистика</li>
+							<li>
+								<table class="table text">
+									<tbody>
+										<tr>
+											<td>
+												<p class="text1">Выиграно</p><p class="text1">% побед</p>
+											</td>
+											<td class= "text-right">
+												<p class="text2">
+													<span class="g">11</span>/<span class="g">15</span>
+												</p>
+												<p class="text2 g">73</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span class="text1">В рейтинге</span>
+											</td>
+											<td class="text-right">
+												<span class="text2 g">1000+</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</li>
+						</ul>
+						<div class="block text-uppercase text-center f1 s">равный соперник</div>
+					</div>
+					<div class="col-8">
+						<div class="row" id="profile">
+							<div class="col-4 text-center ml-auto" id="first_profile">
+								<img src="{% static 'img/21.png' %}" id="img_profile"/>
+								{{ user.username }}
+							</div>
+							<div class="col-4">
+								<img src="{% static 'img/vs.png' %}" id="img_profile"/>
+							</div>
+							<div class="col-4 mr-auto" id="second_profile">
+								<img src="{% static 'img/21.png' %}" id="img_profile"/>
+							</div>
+						</div>
+					</div>
+					<div class="col-2">
+						<ul class="list-unstyled block">
+							<li class="text-center text-uppercase f1 b">статистика</li>
+							<li>
+								<table class="table text">
+									<tbody>
+										<tr>
+											<td>
+												<p class="text1">Выиграно</p><p class="text1">% побед</p>
+											</td>
+											<td class= "text-right">
+												<p class="text2">
+													<span class="g">-</span>
+												</p>
+												<p class="text2 g">-</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span class="text1">В рейтинге</span>
+											</td>
+											<td class="text-right">
+												<span class="text2 g">-</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

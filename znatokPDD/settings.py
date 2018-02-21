@@ -43,12 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'channels',
     'widget_tweaks',
     'import_export',
 
     'exam',
     'accounts',
     'game',
+    'online_game',
 ]
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
@@ -140,6 +142,31 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+
+# redis_host = os.environ.get('REDIS_HOST', 'localhost')
+
+# Channel layer definitions
+# http://channels.readthedocs.org/en/latest/deploying.html#setting-up-a-channel-backend
+# CHANNEL_LAYERS = {
+#     "default": {
+#         # This example app uses the Redis channel layer implementation asgi_redis
+#         "BACKEND": "asgi_redis.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [(redis_host, 6379)],
+#         },
+#        "ROUTING": "znatokPDD.routing.channel_routing", # We will create it in a moment
+#     },
+# }
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        "ROUTING": "znatokPDD.routing.channel_routing",
+    },
+}
+
+
+
 
 
 MEDIA_URL = '/media/'
