@@ -49,7 +49,7 @@ def load_ticket(request):
         else:
             if not request.session.get('results'):
                 request.session['results'] = []
-                for i in range(0, 7):
+                for i in range(0, 20):
                     request.session['results'].append({'user_answer': None, 'true_answer': None})
             else:
                 for res in request.session['results']:

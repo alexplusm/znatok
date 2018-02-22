@@ -389,7 +389,7 @@
 
             type: "GET",
 
-            url: "load_picture/",
+            url: "/load_picture/",
 
             data: {'number_of_game': number_of_game,
                    'number_of_try': number_of_try,
@@ -473,16 +473,19 @@
   });
 
   $(document).ready(function(){
-    var temp1 = 1;
-    var temp2 = 10;
-    temp3 = temp2 / temp1;
-    right = temp3 + '%';
-    var pr1 = right;
-    var pr2 = '50%';
-    var pr3 = '40%';
-    $(".pr1").css('width', pr1);
-    $(".pr2").css('width', pr2);
-    $(".pr3").css('width', pr3);
+    $.ajax({
+
+        type: "GET",
+
+        url: "/check_points/",
+
+        cache: false,
+
+        success: function (data) {
+          document.getElementById('bonus').innerHTML = data.points;
+          document.getElementById('bonus1').innerHTML = data.points;
+        }
+    });
 
     $("#cat1").addClass("active");
     $("#block2").addClass("active");

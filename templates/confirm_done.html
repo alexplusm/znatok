@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Подтверждение регистрации{% endblock %}
 
 
@@ -8,4 +8,9 @@
     <strong>Успех!</strong> Ваша учетная запись успешно создана! Теперь вы можете авторизаваться используя форму входа.
   </div>
   <a href="{% url 'home' %}" class="btn btn-secondary">Вернутся на домашную страницу</a>
+{% endblock %}
+
+{% block javascript %}
+  <script type="text/javascript" src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 {% endblock %}

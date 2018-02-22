@@ -34,7 +34,7 @@ urlpatterns = [
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
     url(r'^confirm/$', TemplateView.as_view(template_name='confirm_email.html'), name='confirm'),
-    url(r'^confirm/done', TemplateView.as_view(template_name='confirm_done.html'), name='confirm_done'),
+    url(r'^confirm/done', auth_views.LoginView.as_view(template_name='confirm_done.html'), name='confirm_done'),
     url(r'^confirm/fail', TemplateView.as_view(template_name='confirm_fail.html'), name='confirm_fail'),
 
     url(r'^reset/$',

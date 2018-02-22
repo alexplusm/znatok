@@ -45,6 +45,7 @@ def signup(request):
             return redirect('confirm')
     else:
         form = RegistrationForm()
+
     return render(request, 'signup.html', {'form': form})
 
 
