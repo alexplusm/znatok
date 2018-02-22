@@ -709,6 +709,7 @@
 
     <script type="text/javascript" src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static '/js/onlineGame.js' %}"></script>
+    <script src="{% static "channels/js/websocketbridge.js" %}" type="text/javascript"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
 <script>
@@ -731,17 +732,13 @@ $(document).ready(function() {
 
         success: function (data) {
         	$(".progress").show();
-            console.log(data);
             for (var i = 0; i <= 39; i++) {
                 if (data.results[i]) {
                     var success = document.getElementById('success' + (i + 1));
-                    console.log(data.results[i].true * 5);
                     $(success).attr("style", "width: " + (data.results[i].true * 5) + '%');
                     var danger = document.getElementById('danger' + (i + 1));
-                    console.log(data.results[i].false * 5);
                     $(danger).attr("style", "width: " + (data.results[i].false * 5) + '%');
                     var secondary = document.getElementById('secondary' + (i + 1));
-                    console.log(100 - (data.results[i].true + data.results[i].false) * 5);
                     $(secondary).attr("style", "width: " + (100 - (data.results[i].true + data.results[i].false) * 5) + '%');
                 }
             }
