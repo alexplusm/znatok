@@ -1,18 +1,14 @@
-# from channels import include
-
-
 from channels.routing import route
 #  изменить импорт !
 from online_game.consumers import ws_connect, ws_message, ws_disconnect
 
-# from testchennals.consumers import game_start, game_end, game_proc
+# from online_game.consumers import game_start, game_end, game_proc
 
 channel_routing = [
     route("websocket.connect", ws_connect),
     route("websocket.receive", ws_message),
     route("websocket.disconnect", ws_disconnect),
 ]
-
 
 # на будущееее
 

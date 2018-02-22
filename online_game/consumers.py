@@ -39,14 +39,13 @@ json_resp = {"command": '', "room": ' ', }
 # json_resp.setdefault(12,12) - добавляем (ключ, значение)
 
 
-
-
 # Connected to websocket.connect
 @channel_session_user_from_http
 # @channel_session_user - постоянно дает юзера - анонимуса
 def ws_connect(message):
     # Accept the incoming connection
     message.reply_channel.send({"accept": True})
+
 
     print('List of users in WS - ', users_queue.list_of_users)
 

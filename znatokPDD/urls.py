@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,6 +24,8 @@ from exam import views as exam_views
 from game import views as game_views
 
 from django.views.generic import TemplateView
+
+# from online_game import urls
 
 urlpatterns = [
     url(r'^$', auth_views.LoginView.as_view(template_name='home.html'), name='home'),
@@ -75,10 +77,13 @@ urlpatterns = [
 
     # urls for exam app
 
-    # urls for game app
+    # urls for online_game app
+    url(r'online_game/', include('online_game.urls')),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
 
 
 
