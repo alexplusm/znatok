@@ -1,6 +1,6 @@
 {% load static %}
 
-<div class="online-game-place-1">
+<div id="online-game-place-1">
 		<div class="col-8 mr-auto ml-auto">
 			<div class="row navigation text-center">
 				<div class="col-3 navigation-item navonlineitem" id="navonlineitem1">
@@ -93,6 +93,7 @@
 							</div>
 							<div class="col-4">
 								<img src="{% static 'img/vs.png' %}" id="img_profile"/>
+								<div class="text-center" id="waitconnection" style="display:none;">Ожидание...</div>
 							</div>
 							<div class="col-4 mr-auto" id="second_profile">
 								<img src="{% static 'img/21.png' %}" id="img_profile"/>
@@ -133,3 +134,34 @@
 			</div>
 		</div>
 	</div>
+
+<div id="online-game-place-2" style="">
+	<div class="conteiner">
+		<div class="col-8 mr-auto ml-auto back">
+			<div class="col-12 text-left objquestion">
+	 			<p id="game-quest"></p>
+	 		</div>
+ 			<div class="col-12">
+				<img class="game-img" />
+			</div>
+			<div class="col-12">
+				<ul class="list-unstyled" style="padding-top: 0.5em;">
+					<li>
+						<button class="game_answbtn text-left btn btn-default" id="game-answer1"></button>
+					</li>
+					<li>
+						<button class="game_answbtn text-left btn btn-default" id="game-answer2"></button>
+					</li>
+					<li>
+						<button class="game_answbtn text-left btn btn-default" id="game-answer3"></button>
+					</li>
+	                <li>
+						<button class="game_answbtn text-left btn btn-default" id="game-answer4"></button>
+					</li>
+					<li>
+						<button class="game_answbtn text-left btn btn-default" id="game-answer5"></button>
+					</li>
+			</div>
+		</div>
+	</div>
+</div>

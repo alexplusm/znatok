@@ -5981,7 +5981,19 @@ body {
   width: 100%;
   height: 50%;
 }
+#maincontent .game-img {
+  border: 1px solid blue;
+  width: 100%;
+  height: 50%;
+}
 #maincontent .answbtn {
+  font-size: 10px;
+  width: 100%;
+  border: 1px solid lightgrey;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#maincontent .game_answbtn {
   font-size: 10px;
   width: 100%;
   border: 1px solid lightgrey;
