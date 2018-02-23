@@ -28,8 +28,9 @@ def load_question(request):
     if request.method == "GET" and request.is_ajax():
         number_of_ticket = request.GET["number_of_ticket"]
         number_of_question = request.GET["number_of_question"]
+        category = request.GET["category"]
         question = Question.objects.\
-            filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question)
+            filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question, category=category)
         answers = random_answers(question)
         return JsonResponse({'questions': list(question.values()), "answers": answers}, safe=False)
 
@@ -37,12 +38,13 @@ def load_question(request):
 def load_ticket(request):
     if request.method == "GET" and request.is_ajax():
         number_of_ticket = request.GET["number_of_ticket"]
+        category = request.GET["category"]
         question = Question.objects.\
-            filter(number_of_ticket=number_of_ticket, number_of_question=1)
+            filter(number_of_ticket=number_of_ticket, number_of_question=1, category=category)
         answers = random_answers(question)
         if request.user.is_authenticated:
             results = request.user.result_set.\
-                raw('SELECT accounts_result.id, accounts_result.user_answer, accounts_result.true_answer FROM accounts_result WHERE question_id IN (SELECT exam_question.id FROM exam_question WHERE number_of_ticket = %s) AND user_id = %s' % (number_of_ticket, request.user.pk))
+                raw('SELECT accounts_result.id, accounts_result.user_answer, accounts_result.true_answer FROM accounts_result WHERE question_id IN (SELECT exam_question.id FROM exam_question WHERE number_of_ticket = %s AND category = %s) AND user_id = %s' % (number_of_ticket, category, request.user.pk))
             res_list = []
             for result in results:
                 res_list.append({'id': result.id, 'user_answer': result.user_answer, 'true_answer': result.true_answer})
@@ -64,10 +66,11 @@ def check_answer(request):
         answer_by_user = request.GET["answer_by_user"]
         number_of_ticket = request.GET["number_of_ticket"]
         number_of_question = request.GET["number_of_question"]
+        category = request.GET["category"]
         user = request.user
-        obj = Question.objects.filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question)[0]
+        obj = Question.objects.filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question, category=category)[0]
         true_answer = obj.answer1
-        true_of_false = (answer_by_user == true_answer)
+        true_of_false = answer_by_user == true_answer
         if user.is_authenticated:
             result = user.result_set.get(question_id=obj.pk)
             result.user_answer = answer_by_user
@@ -97,7 +100,8 @@ def check_points(request):
 
 def check_results(request):
     if request.method == "GET" and request.is_ajax():
-        results = request.user.result_set.all()
+        category = request.GET["category"]
+        results = request.user.result_set.filter(question__category=category)
         res_list = [None] * 39
         for result in results:
             ticket = result.question.number_of_ticket

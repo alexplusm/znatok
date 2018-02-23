@@ -713,20 +713,25 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
 <script>
-var category = 1;
-var number_of_ticket = 1;
+var category = 0;
+var number_of_ticket = 0;
 var number_of_question = 1;
 var res = [];
 </script>
 
 {% if user.is_authenticated %}
+
 <script>
-$(document).ready(function() {
-    $.ajax({
+function checkResult () {
+ $.ajax({
 
         type: "GET",
 
         url: "check_results/",
+
+        data: {
+            'category': category
+        },
 
         cache: false,
 
@@ -744,8 +749,56 @@ $(document).ready(function() {
             }
         }
     });
+}
+
+$(document).ready(function() {
+    checkResult();
 });
+
+$("#cat1").click(function () {
+    if (number_of_ticket === 0) {
+        category = 0;
+        $(this).addClass("active");
+        $('#cat2').removeClass("active");
+        checkResult();
+    }
+});
+
+$("#cat2").click(function () {
+    if (number_of_ticket === 0) {
+        category = 1;
+        $(this).addClass("active");
+        $('#cat1').removeClass("active");
+        checkResult();
+    }
+});
+
+
 </script>
+
+{% else %}
+
+<script>
+
+$("#cat1").click(function () {
+    if (number_of_ticket === 0) {
+        category = 0;
+        $(this).addClass("active");
+        $('#cat2').removeClass("active");
+    }
+});
+
+$("#cat2").click(function () {
+    if (number_of_ticket === 0) {
+        category = 1;
+        $(this).addClass("active");
+        $('#cat1').removeClass("active");
+    }
+});
+
+
+</script>
+
 {% endif %}
 
 <script>
@@ -763,18 +816,6 @@ $(".btn_for_online").click(function(){
 	var e = document.getElementById(id);
     $(".btn_for_online").removeClass("btn_for_online_active");
     $(e).addClass("btn_for_online_active");
-});
-
-$("#cat1").click(function () {
-    category = 1;
-    $(this).addClass("active");
-    $('#cat2').removeClass("active");
-});
-
-$("#cat2").click(function () {
-    category = 2;
-    $(this).addClass("active");
-    $('#cat1').removeClass("active");
 });
 
 function changeData(data) {
@@ -847,7 +888,10 @@ $('.btnticket').click(function() {
 
         url: "load_ticket/",
 
-        data: {'number_of_ticket': number_of_ticket},
+        data: {
+            'number_of_ticket': number_of_ticket,
+            'category': category
+        },
 
         cache: false,
 
@@ -876,7 +920,8 @@ $(".btnquest").click(function () {
 
         data: {
             'number_of_ticket': number_of_ticket,
-            'number_of_question': number_of_question
+            'number_of_question': number_of_question,
+            'category': category
         },
 
         cache: false,
@@ -898,7 +943,8 @@ $(".nextbtn").click(function () {
 
         data: {
             'number_of_ticket': number_of_ticket,
-            'number_of_question': number_of_question
+            'number_of_question': number_of_question,
+            'category': category
         },
 
         cache: false,
@@ -924,6 +970,7 @@ $(".answbtn").click(function () {
         data: {
             'number_of_ticket': number_of_ticket,
             'number_of_question': number_of_question,
+            'category': category,
             'answer_by_user': user_answ
         },
         dataType: 'json',
