@@ -935,26 +935,61 @@ $(".btnquest").click(function () {
 });
 
 $(".nextbtn").click(function () {
-    number_of_question++;
-    $.ajax({
+    if (number_of_question === 20) {
+        console.log(number_of_ticket);
+        if (number_of_ticket != 40) {
+            number_of_question = 1;
+            number_of_ticket++;
 
-        type: "GET",
+            $.ajax({
 
-        url: "load_question/",
+                type: "GET",
 
-        data: {
-            'number_of_ticket': number_of_ticket,
-            'number_of_question': number_of_question,
-            'category': category
-        },
+                url: "load_ticket/",
 
-        cache: false,
+                data: {
+                    'number_of_ticket': number_of_ticket,
+                    'category': category
+                },
 
-        success: function (data) {
-            console.log(data);
-            changeData(data);
+                cache: false,
+
+                success: function (data) {
+                    console.log(data);
+                    $('.btnticket').hide();
+                    $('.result').show();
+                    $('.btnquest-box1').show();
+
+                    number_of_question = data.questions[0].number_of_question
+                    res = data.results;
+                    changeData(data);
+
+
+                }
+            });
         }
-    });
+    } else {
+        number_of_question++;
+        $.ajax({
+
+            type: "GET",
+
+            url: "load_question/",
+
+            data: {
+                'number_of_ticket': number_of_ticket,
+                'number_of_question': number_of_question,
+                'category': category
+            },
+
+            cache: false,
+
+            success: function (data) {
+                console.log(data);
+                changeData(data);
+            }
+        });
+    }
 });
 
 $(".answbtn").click(function () {
@@ -1006,6 +1041,10 @@ $(".answbtn").click(function () {
             $('.answbtn').addClass("disabled");
             res[number_of_question - 1].user_answer = user_answ;
             res[number_of_question - 1].true_answer = data.true_answer;
+
+            if (number_of_ticket == 40) {
+                $(".nextbtn").addClass('disabled')
+            }
 
         }
     });
