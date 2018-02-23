@@ -39,15 +39,9 @@ def load_ticket(request):
     if request.method == "GET" and request.is_ajax():
         number_of_ticket = request.GET["number_of_ticket"]
         category = request.GET["category"]
-        question = Question.objects.\
-            filter(number_of_ticket=number_of_ticket, number_of_question=1, category=category)
-        answers = random_answers(question)
         if request.user.is_authenticated:
-            results = request.user.result_set.\
-                raw('SELECT accounts_result.id, accounts_result.user_answer, accounts_result.true_answer FROM accounts_result WHERE question_id IN (SELECT exam_question.id FROM exam_question WHERE number_of_ticket = %s AND category = %s) AND user_id = %s' % (number_of_ticket, category, request.user.pk))
-            res_list = []
-            for result in results:
-                res_list.append({'id': result.id, 'user_answer': result.user_answer, 'true_answer': result.true_answer})
+            results = request.user.result_set.filter(question__number_of_ticket=number_of_ticket, question__category=category)
+            res_list = list(results.values('user_answer', 'true_answer'))
         else:
             if not request.session.get('results'):
                 request.session['results'] = []
@@ -58,6 +52,14 @@ def load_ticket(request):
                     res['user_answer'] = None
                     res['true_answer'] = None
             res_list = request.session['results']
+        r = results.filter(true_answer=None)
+        if r:
+            number_of_question = r[0].question.number_of_question
+        else:
+            number_of_question = 1
+        question = Question.objects. \
+            filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question, category=category)
+        answers = random_answers(question)
         return JsonResponse({'questions': list(question.values()), 'results': res_list,  'answers': answers}, safe=False)
 
 
