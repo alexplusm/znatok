@@ -1,14 +1,5 @@
-from django.shortcuts import render
-from django.template import loader, Context
-
-from django.template.loader import render_to_string
-
 import random
-import json
-from django.http import HttpResponse
-
 from .models import PickForMiniGame
-
 from django.http import JsonResponse
 
 true_answer = 0
@@ -21,13 +12,12 @@ def load_picture(request):
         number_of_try = request.GET["number_of_try"]
         skip_game = request.GET["skip_game"]
         
-        counter = 0
-        i = 0
+        counter, i, number_of_section, = 0, 0, 0
         main = [0, 0, 0, 0, 0]
-        number_of_section = 0
         picture = [0, 0, 0]
         global true_answer, new_obj
         question = 'Мини-Игра'
+        result, true_result = [], []
 
         if number_of_game == '1':
             picture = list(range(1, 30))
@@ -110,18 +100,9 @@ def load_picture(request):
         obj = [obj1, obj2, obj3, obj4, obj5, obj6, obj7, obj8]
         random.shuffle(obj)
         new_obj = obj
-        return render(request, 'mini_game.html', {'obj1': obj[0],
-                                                  'obj2': obj[1],
-                                                  'obj3': obj[2],
-                                                  'obj4': obj[3],
-                                                  'obj5': obj[4],
-                                                  'obj6': obj[5],
-                                                  'obj7': obj[6],
-                                                  'obj8': obj[7],
-                                                  'question': question,
-                                                  'number_of_game': number_of_game,
-                                                  'number_of_try': number_of_try,
-                                                  'skip_game': skip_game})
+        for i in new_obj:
+            result.append({'url': str(i.Picture_for_mini_game)})
+        return JsonResponse({'pictures': result, 'quest': question, 'number_of_try': number_of_try}, safe=False)
 
 
 def check_answer_for_game(request):
@@ -130,7 +111,6 @@ def check_answer_for_game(request):
         user_answer2 = request.GET["user_answer2"]
         user_answer3 = request.GET["user_answer3"]
         global true_answer, new_obj
-
         user_answ = [new_obj[int(user_answer1) - 1], new_obj[int(user_answer2) - 1], new_obj[int(user_answer3) - 1]]
 
         true_of_false = (

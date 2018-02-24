@@ -778,7 +778,7 @@ $("#cat2").click(function () {
 });
 
 function changeData(data) {
-
+	
     $(".answbtn").removeClass("btn-success btn-danger");
     document.getElementById('quest').innerHTML = data.questions[0].question;
     $('.imgquestion').attr("src", "/media/" + data.questions[0].picture);
@@ -856,7 +856,6 @@ $('.btnticket').click(function() {
             $('.btnticket').hide();
             $('.result').show();
             $('.btnquest-box1').show();
-
             res = data.results;
             changeData(data);
 
