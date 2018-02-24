@@ -713,20 +713,25 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
 <script>
-var category = 1;
-var number_of_ticket = 1;
+var category = 0;
+var number_of_ticket = 0;
 var number_of_question = 1;
 var res = [];
 </script>
 
 {% if user.is_authenticated %}
+
 <script>
-$(document).ready(function() {
-    $.ajax({
+function checkResult () {
+ $.ajax({
 
         type: "GET",
 
         url: "check_results/",
+
+        data: {
+            'category': category
+        },
 
         cache: false,
 
@@ -744,8 +749,56 @@ $(document).ready(function() {
             }
         }
     });
+}
+
+$(document).ready(function() {
+    checkResult();
 });
+
+$("#cat1").click(function () {
+    if (number_of_ticket === 0) {
+        category = 0;
+        $(this).addClass("active");
+        $('#cat2').removeClass("active");
+        checkResult();
+    }
+});
+
+$("#cat2").click(function () {
+    if (number_of_ticket === 0) {
+        category = 1;
+        $(this).addClass("active");
+        $('#cat1').removeClass("active");
+        checkResult();
+    }
+});
+
+
 </script>
+
+{% else %}
+
+<script>
+
+$("#cat1").click(function () {
+    if (number_of_ticket === 0) {
+        category = 0;
+        $(this).addClass("active");
+        $('#cat2').removeClass("active");
+    }
+});
+
+$("#cat2").click(function () {
+    if (number_of_ticket === 0) {
+        category = 1;
+        $(this).addClass("active");
+        $('#cat1').removeClass("active");
+    }
+});
+
+
+</script>
+
 {% endif %}
 
 <script>
@@ -763,18 +816,6 @@ $(".btn_for_online").click(function(){
 	var e = document.getElementById(id);
     $(".btn_for_online").removeClass("btn_for_online_active");
     $(e).addClass("btn_for_online_active");
-});
-
-$("#cat1").click(function () {
-    category = 1;
-    $(this).addClass("active");
-    $('#cat2').removeClass("active");
-});
-
-$("#cat2").click(function () {
-    category = 2;
-    $(this).addClass("active");
-    $('#cat1').removeClass("active");
 });
 
 function changeData(data) {
@@ -847,7 +888,10 @@ $('.btnticket').click(function() {
 
         url: "load_ticket/",
 
-        data: {'number_of_ticket': number_of_ticket},
+        data: {
+            'number_of_ticket': number_of_ticket,
+            'category': category
+        },
 
         cache: false,
 
@@ -856,6 +900,11 @@ $('.btnticket').click(function() {
             $('.btnticket').hide();
             $('.result').show();
             $('.btnquest-box1').show();
+<<<<<<< HEAD
+=======
+
+            number_of_question = data.questions[0].number_of_question
+>>>>>>> 5e8138401178ad97629e88765ffc09c2cde69d7f
             res = data.results;
             changeData(data);
 
@@ -875,7 +924,8 @@ $(".btnquest").click(function () {
 
         data: {
             'number_of_ticket': number_of_ticket,
-            'number_of_question': number_of_question
+            'number_of_question': number_of_question,
+            'category': category
         },
 
         cache: false,
@@ -888,25 +938,61 @@ $(".btnquest").click(function () {
 });
 
 $(".nextbtn").click(function () {
-    number_of_question++;
-    $.ajax({
+    if (number_of_question === 20) {
+        console.log(number_of_ticket);
+        if (number_of_ticket != 40) {
+            number_of_question = 1;
+            number_of_ticket++;
 
-        type: "GET",
+            $.ajax({
 
-        url: "load_question/",
+                type: "GET",
 
-        data: {
-            'number_of_ticket': number_of_ticket,
-            'number_of_question': number_of_question
-        },
+                url: "load_ticket/",
 
-        cache: false,
+                data: {
+                    'number_of_ticket': number_of_ticket,
+                    'category': category
+                },
 
-        success: function (data) {
-            console.log(data);
-            changeData(data);
+                cache: false,
+
+                success: function (data) {
+                    console.log(data);
+                    $('.btnticket').hide();
+                    $('.result').show();
+                    $('.btnquest-box1').show();
+
+                    number_of_question = data.questions[0].number_of_question
+                    res = data.results;
+                    changeData(data);
+
+
+                }
+            });
         }
-    });
+    } else {
+        number_of_question++;
+        $.ajax({
+
+            type: "GET",
+
+            url: "load_question/",
+
+            data: {
+                'number_of_ticket': number_of_ticket,
+                'number_of_question': number_of_question,
+                'category': category
+            },
+
+            cache: false,
+
+            success: function (data) {
+                console.log(data);
+                changeData(data);
+            }
+        });
+    }
 });
 
 $(".answbtn").click(function () {
@@ -923,6 +1009,7 @@ $(".answbtn").click(function () {
         data: {
             'number_of_ticket': number_of_ticket,
             'number_of_question': number_of_question,
+            'category': category,
             'answer_by_user': user_answ
         },
         dataType: 'json',
@@ -957,6 +1044,10 @@ $(".answbtn").click(function () {
             $('.answbtn').addClass("disabled");
             res[number_of_question - 1].user_answer = user_answ;
             res[number_of_question - 1].true_answer = data.true_answer;
+
+            if (number_of_ticket == 40) {
+                $(".nextbtn").addClass('disabled')
+            }
 
         }
     });
