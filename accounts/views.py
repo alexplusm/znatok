@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from .forms import RegistrationForm
 from django.core.mail import send_mail
 from django.contrib.sites.shortcuts import get_current_site
-from django.http import HttpResponse
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
@@ -10,10 +9,6 @@ from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from .models import Profile, Result
 from exam.models import Question
-
-
-def home(request):
-    return render(request, 'home.html')
 
 
 def signup(request):
@@ -27,8 +22,7 @@ def signup(request):
             for question in questions:
                 result = Result(user=user, question=question)
                 result.save()
-            profile = Profile()
-            profile.user = user
+            profile = Profile(user=user)
             profile.save()
             domain = get_current_site(request).domain
             protocol = 'https' if request.is_secure() else 'http'
