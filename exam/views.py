@@ -75,6 +75,7 @@ def check_answer(request):
         true_of_false = answer_by_user == true_answer
         if user.is_authenticated:
             result = user.result_set.get(question_id=obj.pk)
+            result.is_true = true_of_false
             result.user_answer = answer_by_user
             result.true_answer = true_answer
             result.save()
@@ -103,14 +104,9 @@ def check_points(request):
 def check_results(request):
     if request.method == "GET" and request.is_ajax():
         category = request.GET["category"]
-        results = request.user.result_set.filter(question__category=category)
-        res_list = [None] * 39
-        for result in results:
-            ticket = result.question.number_of_ticket
-            if not res_list[ticket - 1]:
-                res_list.insert(ticket - 1, {'true': 0, 'false': 0})
-            if result.true_answer == result.user_answer != None:
-                res_list[ticket - 1]['true'] += 1
-            if result.true_answer != result.user_answer:
-                res_list[ticket - 1]['false'] += 1
+        res_list = []
+        for i in range(1, 41):
+            true = len(request.user.result_set.filter(question__category=category, is_true=True, question__number_of_ticket=i))
+            false = len(request.user.result_set.filter(question__category=category, is_true=True, question__number_of_ticket=i))
+            res_list.insert(i-1, {'true': true, 'false': false})
         return JsonResponse({'results': res_list}, safe=False)

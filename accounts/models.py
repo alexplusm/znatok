@@ -10,6 +10,7 @@ class Result(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     user_answer = models.CharField(max_length=250, blank=True, null=True)
     true_answer = models.CharField(max_length=250, blank=True, null=True)
+    is_true = models.NullBooleanField(null=True)
 
 
 class Profile(models.Model):

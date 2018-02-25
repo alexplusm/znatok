@@ -592,7 +592,7 @@
     $h = $target.offset().top;
   $window.on('scroll', function() {
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollTop > $h + 26) {
+    if (scrollTop > $h) {
       $("#panelbody1").addClass("show_block");
     } else {
       $("#panelbody1").removeClass("show_block");
