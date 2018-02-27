@@ -6339,3 +6339,13 @@ body {
 .progress-bar {
   height: 100% !important;
 }
+.topp tr {
+  padding-top: 10px;
+}
+.card-grey {
+  background: #e6e6e6 !important;
+}
+.imga i {
+  font-size: 30px;
+  margin-left: 1em;
+}
