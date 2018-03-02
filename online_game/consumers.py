@@ -2,6 +2,9 @@ from django.http import HttpResponse
 from channels.handler import AsgiHandler
 from django.contrib.auth.models import User
 
+from exam.models import Question
+import random
+
 from channels.auth import channel_session_user_from_http, channel_session_user
 from channels import Channel
 
@@ -27,6 +30,10 @@ MSG_GAME_PROCCES = 3
 MSG_END_GAME = 4
 MSG_RESULTS = 5
 
+# лист билетов и лист вопросов
+ticket_list = [x for x in range(1, 41)]
+question_list = [y for y in range(1, 21)]
+
 
 from channels import Group
 import json
@@ -35,7 +42,7 @@ import datetime
 
 users_queue = UsersQueue()
 
-json_resp = {"command": '', "room": ' ', }
+json_resp = {"command": '', "room": '',"quests": '', }
 # json_resp.setdefault(12,12) - добавляем (ключ, значение)
 
 
@@ -85,6 +92,15 @@ def ws_connect(message):
         Group(new_room_name).send({"text": str_to_resp})
         Group('waiting_room').discard(cnannel1)
         Group('waiting_room').discard(cnannel2)
+
+        # start game
+        _j_s_o_n = requestToDB()
+        json_resp['command'] = MSG_START_GAME
+        # print('BEFOR SEND', _j_s_o_n)
+        json_resp['quests'] = _j_s_o_n
+        str_to_resp = json.dumps(json_resp)
+
+        Group(new_room_name).send({"text": str_to_resp})
 
 
         
@@ -214,6 +230,7 @@ def ws_message(message):
     #     "text": "%s" % message.content['text'],
     # })
 
+
 @channel_session_user
 def ws_disconnect(message):
     print('-'*10)
@@ -225,14 +242,21 @@ def ws_disconnect(message):
     print('-'*10)
 
 
-# def game_start(message):
-#     pass
 
-# def game_end(message):
-#     pass
 
-# def game_proc(message):
-#     pass        
+
+from types import MethodType
+
+def requestToDB(theme=None, category=None):
+    pack_of_questions = []
+    while len(pack_of_questions) < 10:
+        rand_ticket = random.choice(ticket_list)
+        rand_question = random.choice(question_list)
+        quest = Question.objects.filter(number_of_ticket=rand_ticket, number_of_question=rand_question)[0]
+        if quest not in pack_of_questions:
+            pack_of_questions.append(quest.to_json())
+    return pack_of_questions
+
 
 
 
