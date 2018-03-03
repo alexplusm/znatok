@@ -1,5 +1,4 @@
 from django.http import HttpResponse
-from channels.handler import AsgiHandler
 from django.contrib.auth.models import User
 
 from exam.models import Question
@@ -7,7 +6,12 @@ import random
 
 from channels.auth import channel_session_user_from_http, channel_session_user
 from channels import Channel
+from channels.handler import AsgiHandler
 
+from channels import Group
+import json
+from .models import UsersQueue
+import datetime
 
 """
 0 connecting
@@ -21,8 +25,8 @@ from channels import Channel
 Got invalid WebSocket reply message on daphne.response.xHSBACIMVU!JBVPyKMtRv - contains 
 unknown keys {'hello'} (looking for either {'accept', 'text', 'bytes', 'close'})
 
-
 """
+
 MSG_CONNECT = 0
 MSG_SUCCESS = 1
 MSG_START_GAME = 2
@@ -35,10 +39,7 @@ ticket_list = [x for x in range(1, 41)]
 question_list = [y for y in range(1, 21)]
 
 
-from channels import Group
-import json
-from .models import UsersQueue
-import datetime
+
 
 users_queue = UsersQueue()
 
@@ -122,17 +123,13 @@ def ws_message(message):
     json_str = message.content['text']
     json_dict_from_front = json.loads(json_str)
 
+    if json_dict_from_front['command'] == 'END_GAME':
+        print('END_GAME')
 
-    if json_dict_from_front['command'] == 'CLIENT SUCCESS':
-        print('CLIIIIIIIENT SUUUUCCEEES')
-        # start game
-
-    # if json_dict_from_front['command'] == 'CLIENT SUCCESS':   процесс игры
-    print('#'*10)
+    print('#'*15, 'CLIENT ANSWER')
     print(json_dict_from_front)
-    print('#'*10)
+    print('#'*20)
 
-    print('ws_message',)
 
     # json_str = message.content['text']
     # json_dict_from_front = json.loads(json_str)
@@ -241,11 +238,6 @@ def ws_disconnect(message):
     print(users_queue.dict_of_channels, users_queue.list_of_users)
     print('-'*10)
 
-
-
-
-
-from types import MethodType
 
 def requestToDB(theme=None, category=None):
     pack_of_questions = []
