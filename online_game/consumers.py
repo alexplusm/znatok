@@ -1,17 +1,21 @@
+import json
+import datetime
+import random
+
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 
 from exam.models import Question
-import random
+
+# структура данных - очередь для юзеров 
+from .models import UsersQueue
 
 from channels.auth import channel_session_user_from_http, channel_session_user
-from channels import Channel
-from channels.handler import AsgiHandler
-
 from channels import Group
-import json
-from .models import UsersQueue
-import datetime
+
+# from channels.handler import AsgiHandler
+# from channels import Channel
+
 
 """
 0 connecting
@@ -34,51 +38,51 @@ MSG_GAME_PROCCES = 3
 MSG_END_GAME = 4
 MSG_RESULTS = 5
 
-# лист билетов и лист вопросов
+# лист номеров билетов и лист номеров вопросов
 ticket_list = [x for x in range(1, 41)]
 question_list = [y for y in range(1, 21)]
 
-
-
-
 users_queue = UsersQueue()
 
-json_resp = {"command": '', "room": '',"quests": '', }
-# json_resp.setdefault(12,12) - добавляем (ключ, значение)
+json_resp = {"command": '',"userId": '', "room": '',"quests": '', }
+# json_resp.setdefault(key, value) - добавляем (ключ, значение)
 
 
-# Connected to websocket.connect
 @channel_session_user_from_http
 # @channel_session_user - постоянно дает юзера - анонимуса
 def ws_connect(message):
+
     # Accept the incoming connection
     message.reply_channel.send({"accept": True})
 
-
     print('List of users in WS - ', users_queue.list_of_users)
 
+    """
+        Ловим коннекш от пользователя по Веб-Сокету
+        Проверям - авторизирован ли он и не сидит ли он уже в очереди
+        Добавляем в очередь и сообщаем ему, что он в очереди (соединение установлено)
+    """
     if (message.user.is_authenticated) and (message.user not in users_queue.list_of_users):
         Group('waiting_room').add(message.reply_channel)
-        # message.reply_channel.send({"text": "You connected to waiting room"})
-        # что делать быстрее - копировать или создавать новый словарь
+
         users_queue.add_user(message.user, message.reply_channel)
 
-
         json_resp['command'] = MSG_CONNECT
+        json_resp['userId'] = message.user.pk
         str_to_resp = json.dumps(json_resp)
         message.reply_channel.send({"text": str_to_resp})
 
         print('add user', users_queue.list_of_users, users_queue.dict_of_channels)
 
-    # str_to_resp = json.dumps(json_resp)
-    # json_resp['command'] = 0
-    # print(json_resp)
-    # Group('waiting_room').send({"text": str_to_resp})
 
-
+    """
+        Пока-что игра создается сразу же после того, как создалась комната
+        В будущем нужно сделать проверку на согласие участников ->
+        -> создание игры нужно будет делать в отдельном блоке
+           (после согласия обоих участников)
+    """
     new_room = users_queue.create_room()
     if new_room is not None:
-        # print('new room is create')
         print('create_room!!!!!', new_room)
         new_room_name = new_room[0]
         cnannel1 = new_room[1]
@@ -94,30 +98,15 @@ def ws_connect(message):
         Group('waiting_room').discard(cnannel1)
         Group('waiting_room').discard(cnannel2)
 
-        # start game
-        _j_s_o_n = requestToDB()
+        # packing the questions and start game
+        quests = retrieve_quests_from_DB()
         json_resp['command'] = MSG_START_GAME
-        # print('BEFOR SEND', _j_s_o_n)
-        json_resp['quests'] = _j_s_o_n
+        json_resp['quests'] = quests
         str_to_resp = json.dumps(json_resp)
 
         Group(new_room_name).send({"text": str_to_resp})
 
 
-        
-
-
-
-
-    # print(' groupee ',dir(Group('waiting_room')))
-    # Group('waiting_room').send({ "hello":"228 (ws_connect)",})
-
-
-
-    # Channel('game.receive').send({'text':'1212(game.recieve)'})
-
-
-# Connected to websocket.receive
 def ws_message(message):
 
     json_str = message.content['text']
@@ -151,83 +140,6 @@ def ws_message(message):
     #     Group('waiting_room').discard(message.reply_channel)
 
 
-
-    
-# def ws_message1(message):
-#     print('def ws_message(message)')
-    # print(userrr)
-    # global cnt
-    # cnt += 1
-    # global listusers
-    # if cnt == 0:
-    #     listusers = []
-    
-
-    # if (cnt == 2) and (len(listusers) == 0):
-    #     # оба ответили не правильно 
-    #     Group("chat").send({ "text":"3",})
-    #     cnt = 0
-    #     print('оба не правильно')
-    # else:
-    #     if answ == 1:
-    #         listusers.append(userrr)
-    #         strr = "user {} answed on {}".format(userrr, datetime.datetime.now())
-    #         print("Правильно")
-    #         # len(listusers)
-    #         print(strr)
-    #         if userrr == listusers[0]:
-    #             Group("chat").send({ "text":"1",})
-    #             print('ответил первым') # первым ответил правильно
-    #         elif userrr == listusers[1]:
-    #             Group("chat").send({ "text":"2",}) 
-    #             print('ответил вторым')# вторым ответил правильно
-    #             listusers = []
-
-    #     elif answ == 0:
-    #         print('-----')
-    #         strr = "user {} answed on {}".format(userrr, datetime.datetime.now())
-    #         print("Не правильно")
-    #         # len(listusers)
-    #         print(strr)
-    #         Group("chat").send({ "text":"0",}) # ответил не правильно
-    #         # listusers = []
-                    
-                
-
-    # print(cnt)
-    # print(listusers)                
-
-
-    # if (cnt == 2) and (len(listusers) == 0):
-    #     Group("chat").send({ "text":"222",})
-    # else: 
-    #     if try_to_answ == quest.answerTrue:
-    #         listusers.append(userrr)
-    #         strr = "user {} answed on {}".format(userrr, datetime.datetime.now())
-    #         print("Pravilno")
-    #         # print(strr)
-    #         if userrr == listusers[0]:
-    #             Group("chat").send({ "text":"111",})
-    #         else:
-    #             Group("chat").send({ "text":"222",})
-                    
-    #     else:
-    #         print("NePraVilNo")
-    #         Group("chat").send({ "text":"222",})
-
-
-    #     print(cnt)
-    #     print(listusers)    
-        
-
-    # print(quest.question)
-    
-    # print(jsonDict)
-    # Group("chat").send({
-    #     "text": "%s" % message.content['text'],
-    # })
-
-
 @channel_session_user
 def ws_disconnect(message):
     print('-'*10)
@@ -239,7 +151,12 @@ def ws_disconnect(message):
     print('-'*10)
 
 
-def requestToDB(theme=None, category=None):
+
+"""
+    Предстоит добавить фильтры по категорям и тема 
+    (Знания ПДД, Штрафы, Дорожные знаки)
+"""
+def retrieve_quests_from_DB(theme=None, category=None):
     pack_of_questions = []
     while len(pack_of_questions) < 10:
         rand_ticket = random.choice(ticket_list)
@@ -248,18 +165,4 @@ def requestToDB(theme=None, category=None):
         if quest not in pack_of_questions:
             pack_of_questions.append(quest.to_json())
     return pack_of_questions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -2,10 +2,12 @@ $(document).ready( function() {
 
 	const ws_path = "/waiting_room/";
 	const webSocketBridge = new channels.WebSocketBridge();
+    let userId = 0;
     let gameIsEnd = false;
     let result = 0;
     var trueAnswer = '';
     var game = '';
+
 
     let requestToServer = {
         command: 'comm',
@@ -40,7 +42,8 @@ $(document).ready( function() {
 
         switch (data.command) {
         	case 0:
-        		console.log('CONNECT');
+                userId = data.userId;
+                console.log('CONNECT id=', userId);
         		break;
         	case 1:
                 console.log('SUCCESS') 

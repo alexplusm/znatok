@@ -26,13 +26,13 @@ class UsersQueue:
             if user_to_remove in self.list_of_users:
                 self.list_of_users.remove(user_to_remove)
                 self.dict_of_channels.pop(user_to_remove)
-            # else: print('user not founded')
 
+        # room_name - id1_id2
         def create_room(self):
             if len(self.list_of_users) > 1:
                 user_1 = self.list_of_users.pop()
                 user_2 = self.list_of_users.pop()
-                room_name = "{}_{}".format(user_1, user_2)
+                room_name = "{}_{}".format(user_1.pk, user_2.pk)
                 channel_1 = self.dict_of_channels.pop(user_1)
                 channel_2 = self.dict_of_channels.pop(user_2)
 
