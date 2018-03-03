@@ -15,8 +15,8 @@ $(document).ready( function() {
     }
 
     /*  
-    *  Список команд на сервер:
-    *
+    *  LIST COMMANDS TO SERVER:
+    *  
     *
     */
 
@@ -27,10 +27,7 @@ $(document).ready( function() {
     // {command: 'comm', user: 'user', group: 'group', result: 'result'}
 
 
-
-
     // Click on 'Start game' button
-
 	$("#btn_for_online_7").click(function () {
 	    $(this).addClass("disabled");
 	    $("#waitconnection").show();
@@ -45,14 +42,13 @@ $(document).ready( function() {
         	case 0:
         		console.log('CONNECT');
         		break;
-        	// case 1:
-         //        console.log('SUCCESS') 
-        	// 	break;
+        	case 1:
+                console.log('SUCCESS') 
+        		break;
         	case 2:
-                console.log('START GAME');
-                var questsData = data.quests;
+                // Start game!
                 game = new Game(data.quests);
-                game.startGame();
+                game.start();
         		break;
         	case 3:
             // END GAME => SHOW RESULTS
@@ -65,159 +61,100 @@ $(document).ready( function() {
         });
 	});
 
-
-
+    // обработчик конопок ответов в игре
     $('.game-answbtn').click(function() {
-        var userAnswer = $(this).html();
-        console.log('game-answbtn');
-        if (game) {
+        let userAnswer = $(this).html();
+        console.log('юзер кликнул на game-answbtn');
+        if (game.isActive) {
             game.checkUserAnswer(userAnswer);    
         }
     });
 
 
+    class Game {
+        /* 
+        *  this.data - json с набором вопрос с бэкенда
+        *  this.count - номер отрендеренного вопроса
+        *  this.trueAnswer - после каждого рендера вопроса тут 
+        *       хранится правильный ответ для актуального вопроса
+        *  this.result - массив с ответами юзера (0 - неправильно, 1 - правильно)
+        */
+        constructor(data) {
+            this.data = data;
+            this.count = 0;
+            this.trueAnswer = data[0].trueAnswer;
+            this.result = [];
+            this.isActive = true;
+        }
 
-    function Game(data) {
-        this.gameData = data;
-        this.gameCNT = 0;
-        this.trueAnswer = this.gameData[this.gameCNT].trueAnswer;
-        this.result = [];
-
-        this.startGame = function() {
-            this.gameCNT = 0;
+        start() {
+            this.count = 0;
             this.renderNextQuestion();
         }
 
-        this.renderNextQuestion = function() {
-            console.log('renderNextQuestion', this.gameData[this.gameCNT], this.gameCNT);
-            document.getElementById('game-quest').innerHTML = this.gameData[this.gameCNT].question;
-            $('.game-img').attr("src", "/media/" + this.gameData[this.gameCNT].picture);
+        renderNextQuestion() {
+            
+            console.log('сработал - renderNextQuestion', this.data[this.count], this.count);
 
-            document.getElementById('game-answer1').innerHTML = this.gameData[this.gameCNT].answer1;
-            document.getElementById('game-answer2').innerHTML = this.gameData[this.gameCNT].answer2;
+            document.getElementById('game-quest').innerHTML = this.data[this.count].question;
+            $('.game-img').attr("src", "/media/" + this.data[this.count].picture);
 
-            if (data[this.gameCNT].answer2) {
-                document.getElementById('game-answer3').innerHTML = this.gameData[this.gameCNT].answer3;
+            document.getElementById('game-answer1').innerHTML = this.data[this.count].answer1;
+            document.getElementById('game-answer2').innerHTML = this.data[this.count].answer2;
+
+            if (this.data[this.count].answer2) {
+                document.getElementById('game-answer3').innerHTML = this.data[this.count].answer3;
                 $('#game-answer3').show();
             }
             else $('#game-answer3').hide();
-            if (data[this.gameCNT].answer4) {
-                document.getElementById('game-answer4').innerHTML = this.gameData[this.gameCNT].answer4;
+            if (this.data[this.count].answer4) {
+                document.getElementById('game-answer4').innerHTML = this.data[this.count].answer4;
                 $('#game-answer4').show();
             }
             else $('#game-answer4').hide();
-            if (data[this.gameCNT].answer5) {
-                document.getElementById('game-answer5').innerHTML = this.gameData[this.gameCNT].answer5;
+            if (this.data[this.count].answer5) {
+                document.getElementById('game-answer5').innerHTML = this.data[this.count].answer5;
                 $('#game-answer5').show();
             }
             else $('#game-answer5').hide();
         }
 
-        this.checkUserAnswer = function(userAnswer) {
-          console.log('checkUserAnswer')
+        checkUserAnswer(userAnswer) {
+
+          console.log('сработал - checkUserAnswer');
+          console.log(this.count);
+
           if (userAnswer === this.trueAnswer) {
             this.result.push(1);
           } else {
             this.result.push(0);
           }
-          if (this.gameCNT < 9) {
-            this.gameCNT += 1;
+
+          if (this.count < 9) {
+            this.count += 1;
+            this.trueAnswer = this.data[this.count].trueAnswer;
             this.renderNextQuestion();
-          } else {
-            this.endGame();
+          } else if (this.count === 9) {
+            this.end();
           }
         }
-        this.endGame = function() {
-            console.log(this.result);
-            console.log('endGame');
-            let countOfRightAnswers = this.result.reduce((count, item) => {
-                if (item === 1) { count += 1; }
-                return count;   
+
+        end() {
+            let countOfRightAnswers = this.result.reduce((cnt, item) => {
+                if (item === 1) { cnt += 1; }
+                return cnt;   
             })
-            console.log('COUNT OF RIGHT ANSWERS', countOfRightAnswers);
-            requestToServer.command = 'END_GAME'
+
+            console.log('Конец игры\nRезультат:', this.result);
+            console.log('COUNT OF RIGHT ANSWERS = ', countOfRightAnswers);
+            
+            this.isActive = false;
+
+            requestToServer.command = 'END_GAME';
             webSocketBridge.send(requestToServer);
+            
+            // рендерить какой нибудь кусок новый станицы с результатом и конгратюлэйшенсом
 
         }
     }
-
-
 });
-
-
-
-
-
-
-
-
-
-
-
-// function insertQuest(data, cnt) {
-//     console.log('insertQuest', data, cnt);
-//     document.getElementById('game-quest').innerHTML = data[cnt].question;
-//     $('.game-img').attr("src", "/media/" + data[cnt].picture);
-
-//     document.getElementById('game-answer1').innerHTML = data[cnt].answer1;
-//     document.getElementById('game-answer2').innerHTML = data[cnt].answer2;
-
-//     if (data[cnt].answer2) {
-//         document.getElementById('game-answer3').innerHTML = data[cnt].answer3;
-//         $('#game-answer3').show();
-//     }
-//     else $('#game-answer3').hide();
-//     if (data[cnt].answer4) {
-//         document.getElementById('game-answer4').innerHTML = data[cnt].answer4;
-//         $('#game-answer4').show();
-//     }
-//     else $('#game-answer4').hide();
-//     if (data[cnt].answer5) {
-//         document.getElementById('game-answer5').innerHTML = data[cnt].answer5;
-//         $('#game-answer5').show();
-//     }
-//     else $('#game-answer5').hide();
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Notify = {              
-    TYPE_INFO: 0,               
-    TYPE_SUCCESS: 1,                
-    TYPE_WARNING: 2,                
-    TYPE_DANGER: 3,                             
-
-    generate: function (aText, aOptHeader, aOptType_int) {                  
-        var lTypeIndexes = [this.TYPE_INFO, this.TYPE_SUCCESS, this.TYPE_WARNING, this.TYPE_DANGER];                    
-        var ltypes = ['alert-info', 'alert-success', 'alert-warning', 'alert-danger'];                                      
-        var ltype = ltypes[this.TYPE_INFO];                 
-
-        if (aOptType_int !== undefined && lTypeIndexes.indexOf(aOptType_int) !== -1) {                      
-            ltype = ltypes[aOptType_int];                   
-        }                                       
-
-        var lText = '';                 
-        if (aOptHeader) {                       
-            lText += "<h4>"+aOptHeader+"</h4>";                 
-        }                   
-        lText += "<p>"+aText+"</p>";                                        
-        var lNotify_e = $("<div class='alert "+ltype+"'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>×</span></button>"+lText+"</div>");                    
-
-        setTimeout(function () {                        
-            lNotify_e.alert('close');                   
-        }, 3000);                   
-        lNotify_e.appendTo($("#notifies"));             
-    }           
-};  
-
