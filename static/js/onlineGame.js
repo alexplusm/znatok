@@ -70,7 +70,7 @@ $(document).ready( function() {
     $('.game-answbtn').click(function() {
       let userAnswer = $(this).html();
       if (game.isActive) {
-        game.checkUserAnswer(answ);    
+        game.checkUserAnswer(userAnswer);
       }
     });
 
