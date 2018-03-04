@@ -5996,13 +5996,6 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-#maincontent .game_answbtn {
-  font-size: 10px;
-  width: 100%;
-  border: 1px solid lightgrey;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
 #maincontent .objquestion {
   padding-top: 20px;
   color: blue;
@@ -6348,4 +6341,40 @@ body {
 .imga i {
   font-size: 30px;
   margin-left: 1em;
+}
+#online-game-place-2 .circle {
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 0.4em;
+  border: 1px solid grey;
+  background: lightblue;
+  display: inline-block;
+}
+#online-game-place-2 .circle-done {
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 0.4em;
+  border: 1px solid grey;
+  background: lightblue;
+  display: inline-block;
+  background: orange;
+}
+#online-game-place-2 .circle-true {
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 0.4em;
+  border: 1px solid grey;
+  background: lightblue;
+  display: inline-block;
+  background: green;
+}
+#online-game-place-2 .circle-false {
+  background: red;
+}
+#online-game-place-2 .game-answbtn {
+  font-size: 10px;
+  width: 100%;
+  border: 1px solid lightgrey;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

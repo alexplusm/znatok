@@ -803,6 +803,17 @@ $("#cat2").click(function () {
 {% endif %}
 
 <script>
+const count_press = (() => {
+  let count = 0;
+  return {
+    set: newValue => {
+      count = newValue;
+    },
+    ret: () => {
+      return count;
+    }
+  }
+})();
 $("#navonlineitem1").addClass("active");
 
 $(".navonlineitem").click(function(){
@@ -904,7 +915,7 @@ $('.btnticket').click(function() {
             number_of_question = data.questions[0].number_of_question
             res = data.results;
             changeData(data);
-
+            count_press.set(0);
 
         }
     });
@@ -930,6 +941,7 @@ $(".btnquest").click(function () {
         success: function (data) {
             console.log(data);
             changeData(data);
+            count_press.set(0);
         }
     });
 });
@@ -963,6 +975,7 @@ $(".nextbtn").click(function () {
                     number_of_question = data.questions[0].number_of_question
                     res = data.results;
                     changeData(data);
+                    count_press.set(0);
 
 
                 }
@@ -987,17 +1000,15 @@ $(".nextbtn").click(function () {
             success: function (data) {
                 console.log(data);
                 changeData(data);
+                count_press.set(0);
             }
         });
     }
 });
 
-$(".answbtn").click(function () {
-    var answbtn_id = $(this).attr("id");
-    var answbtn = document.getElementById(answbtn_id);
-    var user_answ = answbtn.textContent || answbtn.innerText;
-
-    $.ajax({
+function checkAnsw(answbtn) {
+  var user_answ = answbtn.textContent || answbtn.innerText;
+  $.ajax({
 
         type: "GET",
 
@@ -1048,8 +1059,64 @@ $(".answbtn").click(function () {
 
         }
     });
+}
+
+function isHide(elem) {
+  if($(elem).attr("style") === 'display: none;') {
+    return true;
+  } else return false;
+}
+
+$("body").keydown(function(event){
+  if (count_press.ret() === 0) {
+    let elem;
+    switch (event.which) {
+      // right arrow
+      case 39:
+        count_press.set(1);
+        break;
+        // 1
+      case 49:
+        count_press.set(1);
+        checkAnsw(document.getElementById("answer1"));
+        break;
+        // 2
+      case 50:
+        count_press.set(1);
+        checkAnsw(document.getElementById("answer2"));
+        break;
+        // 3
+      case 51:
+        count_press.set(1);
+        checkAnsw(document.getElementById("answer3"));
+        break;
+        // 4
+      case 52:
+        elem = document.getElementById("answer4");
+        if (!(isHide(elem))) {
+          count_press.set(1);
+          checkAnsw(elem);
+        }
+        break;
+      // 5
+      case 53:
+        elem = document.getElementById("answer5");
+        if (!(isHide(elem))) {
+          count_press.set(1);
+          checkAnsw(elem);
+        }
+        break;
+      default:
+        break;
+    }
+  }
 });
 
+$(".answbtn").click(function () {
+    var answbtn_id = $(this).attr("id");
+    var _answbtn = document.getElementById(answbtn_id);
+    checkAnsw(_answbtn);
+});
 </script>
 
 {% endblock %}

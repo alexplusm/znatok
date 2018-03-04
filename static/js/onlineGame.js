@@ -46,10 +46,12 @@ $(document).ready( function() {
                 console.log('CONNECT id=', userId);
         		break;
         	case 1:
-                console.log('SUCCESS') 
+                console.log('SUCCESS'); 
         		break;
         	case 2:
                 // Start game!
+                $("#online-game-place-1").hide();
+                $("#online-game-place-2").show();
                 game = new Game(data.quests);
                 game.start();
         		break;
@@ -66,13 +68,11 @@ $(document).ready( function() {
 
     // обработчик конопок ответов в игре
     $('.game-answbtn').click(function() {
-        let userAnswer = $(this).html();
-        console.log('юзер кликнул на game-answbtn');
-        if (game.isActive) {
-            game.checkUserAnswer(userAnswer);    
-        }
+      let userAnswer = $(this).html();
+      if (game.isActive) {
+        game.checkUserAnswer(answ);    
+      }
     });
-
 
     class Game {
         /* 
@@ -96,7 +96,7 @@ $(document).ready( function() {
         }
 
         renderNextQuestion() {
-            
+
             console.log('сработал - renderNextQuestion', this.data[this.count], this.count);
 
             document.getElementById('game-quest').innerHTML = this.data[this.count].question;
@@ -122,6 +122,18 @@ $(document).ready( function() {
             else $('#game-answer5').hide();
         }
 
+        renderThirdBlock(countTrueAnsw) {
+
+          $("#online-game-place-2").hide();
+          $("#online-game-place-3").show();
+          document.getElementById("you-result-true").innerHTML = "Правильных ответов: " + countTrueAnsw;
+          document.getElementById("you-result-false").innerHTML = "Не правильных: " + (10 - countTrueAnsw);
+          document.getElementById("you-result-time").innerHTML = "Время: ";
+          const text = document.getElementById("try-or-win");
+          text.innerHTML = "Поражение";
+          $(text).addClass("text-danger");
+        }
+
         checkUserAnswer(userAnswer) {
 
           console.log('сработал - checkUserAnswer');
@@ -129,9 +141,12 @@ $(document).ready( function() {
 
           if (userAnswer === this.trueAnswer) {
             this.result.push(1);
+            $(document.getElementById(this.result.length + 'sign')).addClass("circle-done");
           } else {
             this.result.push(0);
+            $(document.getElementById(this.result.length + 'sign')).addClass("circle-done");
           }
+
 
           if (this.count < 9) {
             this.count += 1;
@@ -143,21 +158,20 @@ $(document).ready( function() {
         }
 
         end() {
-            let countOfRightAnswers = this.result.reduce((cnt, item) => {
-                if (item === 1) { cnt += 1; }
-                return cnt;   
-            })
+          let countOfRightAnswers = this.result.reduce((cnt, item) => {
+            if (item === 1) { cnt += 1; }
+            return cnt;   
+          })
 
-            console.log('Конец игры\nRезультат:', this.result);
-            console.log('COUNT OF RIGHT ANSWERS = ', countOfRightAnswers);
+          console.log('Конец игры\nRезультат:', this.result);
+          console.log('COUNT OF RIGHT ANSWERS = ', countOfRightAnswers);
             
-            this.isActive = false;
+          this.isActive = false;
 
-            requestToServer.command = 'END_GAME';
-            webSocketBridge.send(requestToServer);
-            
-            // рендерить какой нибудь кусок новый станицы с результатом и конгратюлэйшенсом
+          requestToServer.command = 'END_GAME';
+          webSocketBridge.send(requestToServer);
 
+          this.renderThirdBlock(countOfRightAnswers);
         }
     }
 });
