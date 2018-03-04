@@ -16,6 +16,9 @@ class Result(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     points = models.IntegerField(default=0)
+    user_avatar = models.ImageField(upload_to='profile_avatar/', default='profile_avatar/default.png', blank=False)
+    birthday = models.CharField(max_length=250, blank=True)
+    city = models.CharField(max_length=250, blank=True)
 
 
 @receiver(post_save, sender=User)

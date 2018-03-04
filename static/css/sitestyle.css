@@ -5893,6 +5893,12 @@ body {
 #our_team #avatar {
   width: 70%;
 }
+#our_team .nav-item3 {
+  border: 1px solid lightgrey;
+  background: #f0f0f0;
+  width: 100%;
+  cursor: pointer;
+}
 #gold {
   width: 100%;
   height: 100%;
