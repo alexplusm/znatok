@@ -1,5 +1,19 @@
 from django.db import models
 
+class GamesList:
+    
+    class __GamesList:
+        pass
+
+
+    # The private class attribute holding the "one and only instance"
+    __instance = __GamesList()
+
+    def __getattr__(self, attr):
+        return getattr(self.__instance, attr)
+
+    def __setattr__(self, attr, value):
+        return setattr(self.__instance, attr, value)    
 
 
 class UsersQueue:

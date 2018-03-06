@@ -13,7 +13,8 @@ $(document).ready( function() {
         command: 'comm',
         user: 'user',
         group: 'group',
-        result: 'result'
+        result: 'result',
+        timeStartGame: ''
     }
 
     /*  
@@ -52,11 +53,13 @@ $(document).ready( function() {
                 // Start game!
                 $("#online-game-place-1").hide();
                 $("#online-game-place-2").show();
+                requestToServer.timeStartGame = data.timeStartGame;
                 game = new Game(data.quests);
                 game.start();
         		break;
         	case 3:
             // END GAME => SHOW RESULTS
+                console.log(data);
         		break;
         	case 4:
         		break;			
@@ -134,6 +137,19 @@ $(document).ready( function() {
           $(text).addClass("text-danger");
         }
 
+        renderWaitBlock(resultTime, countOfRightAnswers) {
+          $("#online-game-place-2").hide();
+          $("#online-game-place-3").show();
+          document.getElementById("you-result-true").innerHTML = "Правильных ответов: " + countOfRightAnswers;
+          document.getElementById("you-result-false").innerHTML = "Не правильных: " + (10 - countOfRightAnswers);
+          document.getElementById("you-result-time").innerHTML = "Время: " + resultTime;
+        }
+
+        // renderResultBlock() {
+
+
+        // }
+
         checkUserAnswer(userAnswer) {
 
           console.log('сработал - checkUserAnswer');
@@ -146,7 +162,6 @@ $(document).ready( function() {
             this.result.push(0);
             $(document.getElementById(this.result.length + 'sign')).addClass("circle-done");
           }
-
 
           if (this.count < 9) {
             this.count += 1;
@@ -169,6 +184,7 @@ $(document).ready( function() {
           this.isActive = false;
 
           requestToServer.command = 'END_GAME';
+          console.log()
           webSocketBridge.send(requestToServer);
 
           this.renderThirdBlock(countOfRightAnswers);

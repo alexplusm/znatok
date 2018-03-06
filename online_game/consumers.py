@@ -1,5 +1,5 @@
 import json
-import datetime
+from datetime import datetime
 import random
 
 from django.http import HttpResponse
@@ -44,7 +44,7 @@ question_list = [y for y in range(1, 21)]
 
 users_queue = UsersQueue()
 
-json_resp = {"command": '',"userId": '', "room": '',"quests": '', }
+json_resp = {"command": '',"userId": '', "room": '',"quests": '',"timeStartGame": '', }
 # json_resp.setdefault(key, value) - добавляем (ключ, значение)
 
 
@@ -102,6 +102,8 @@ def ws_connect(message):
         quests = retrieve_quests_from_DB()
         json_resp['command'] = MSG_START_GAME
         json_resp['quests'] = quests
+        json_resp['timeStartGame'] = str(datetime.now())
+
         str_to_resp = json.dumps(json_resp)
 
         Group(new_room_name).send({"text": str_to_resp})
@@ -115,29 +117,18 @@ def ws_message(message):
     if json_dict_from_front['command'] == 'END_GAME':
         print('END_GAME')
 
+        time_start = datetime.strptime(json_dict_from_front['timeStartGame'], '%Y-%m-%d %H:%M:%S.%f')
+        delta_time = datetime.now() - time_start
+        print(type(delta_time))
+        print(delta_time)
+
+    if json_dict_from_front['command'] == 'RESULT':
+        pass
+        # need gamelist
+
     print('#'*15, 'CLIENT ANSWER')
     print(json_dict_from_front)
     print('#'*20)
-
-
-    # json_str = message.content['text']
-    # json_dict_from_front = json.loads(json_str)
-
-    # if json_dict_from_front['server_answer']:
-
-    #     user_id = json_dict_from_front['user_id']
-    #     user = User.objects.get(pk=user_id)
-        
-    #     users_queue.add_user(user, message.reply_channel)
-
-    #     # print(users_queue.dict_of_channels, users_queue.list_of_users)
-
-    #     # print('disconnect!!!')
-    #     # print(dir(Group('waiting_room')))
-
-    #     # print(Group('waiting_room'))
-
-    #     Group('waiting_room').discard(message.reply_channel)
 
 
 @channel_session_user
