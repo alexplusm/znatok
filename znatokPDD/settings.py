@@ -25,7 +25,7 @@ SECRET_KEY = '0$$0u4eulb*lysajwi&h&b$_&(nmt9-i(1mxa(a_ec!!kbjd@o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
@@ -56,6 +56,7 @@ INSTALLED_APPS = [
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -64,6 +65,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'znatokPDD.urls'
 LOGIN_REDIRECT_URL = 'home'
@@ -95,8 +98,12 @@ WSGI_APPLICATION = 'znatokPDD.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'znatok',
+        'USER': 'znatok',
+        'PASSWORD': '0',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

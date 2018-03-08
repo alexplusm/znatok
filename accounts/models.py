@@ -12,6 +12,9 @@ class Result(models.Model):
     true_answer = models.CharField(max_length=250, blank=True, null=True)
     is_true = models.NullBooleanField(null=True)
 
+    def __str__(self):
+        return "user: {}, quest: {}, is_true: {}".format(self.user, self.question, self.is_true)
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)

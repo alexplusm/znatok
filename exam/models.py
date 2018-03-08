@@ -1,6 +1,7 @@
 from django.db import models
 from random import shuffle
 
+
 class Question(models.Model):
     number_of_ticket = models.IntegerField()
     number_of_question = models.IntegerField()

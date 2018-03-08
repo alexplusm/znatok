@@ -1,6 +1,7 @@
 from .models import Question
 from django.http import JsonResponse
 from random import shuffle
+from django.db.models import Min
 
 
 def random_answers(question):
@@ -40,7 +41,9 @@ def load_ticket(request):
         number_of_ticket = request.GET["number_of_ticket"]
         category = request.GET["category"]
         if request.user.is_authenticated:
-            results = request.user.result_set.filter(question__number_of_ticket=number_of_ticket, question__category=category)
+            results = request.user.result_set\
+                .filter(question__number_of_ticket=number_of_ticket, question__category=category)\
+                .order_by('question__number_of_question')
             res_list = list(results.values('user_answer', 'true_answer'))
         else:
             if not request.session.get('results'):
@@ -54,7 +57,7 @@ def load_ticket(request):
             res_list = request.session['results']
         r = results.filter(true_answer=None)
         if r:
-            number_of_question = r[0].question.number_of_question
+            number_of_question = r.aggregate(Min('question__number_of_question')).get('question__number_of_question__min')
         else:
             number_of_question = 1
         question = Question.objects. \
@@ -107,6 +110,6 @@ def check_results(request):
         res_list = []
         for i in range(1, 41):
             true = len(request.user.result_set.filter(question__category=category, is_true=True, question__number_of_ticket=i))
-            false = len(request.user.result_set.filter(question__category=category, is_true=True, question__number_of_ticket=i))
+            false = len(request.user.result_set.filter(question__category=category, is_true=False, question__number_of_ticket=i))
             res_list.insert(i-1, {'true': true, 'false': false})
         return JsonResponse({'results': res_list}, safe=False)
