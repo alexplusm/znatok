@@ -1,1 +1,1 @@
-web: gunicorn znatokPDD.wsgi --log-file-
+web: gunicorn znatokPDD.wsgi --log-file -
