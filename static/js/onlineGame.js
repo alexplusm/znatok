@@ -1,6 +1,6 @@
 $(document).ready( function() {
-
-	const ws_path = "/waiting_room/";
+    const ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+	const ws_path = ws_scheme + "://" + window.location.host + "/waiting_room/";
 	const webSocketBridge = new channels.WebSocketBridge();
     let userId = 0;
     let gameIsEnd = false;

@@ -1041,7 +1041,7 @@ function loadQuestion() {
         success: function (data) {
             console.log(data);
             changeData(data);
-            count_press.set(0);
+            console.log(res);
         }
     });
 }
@@ -1052,61 +1052,59 @@ function isHide(elem) {
   } else return false;
 }
 
-$("body").keydown(function(event){
-  if (count_press.ret() === 0) {
-    let elem;
+$("body").keydown(function(event) {
+    console.log(!res[number_of_question - 1].user_answer);
+    if (!res[number_of_question - 1].user_answer) {
+        let elem;
+        switch (event.which) {
+            // 1
+            case 49:
+                checkAnsw(document.getElementById("answer1"));
+                break;
+            // 2
+            case 50:
+                checkAnsw(document.getElementById("answer2"));
+                break;
+            // 3
+            case 51:
+                checkAnsw(document.getElementById("answer3"));
+                break;
+            // 4
+            case 52:
+                elem = document.getElementById("answer4");
+                if (!(isHide(elem))) {
+                    checkAnsw(elem);
+                }
+                break;
+            // 5
+            case 53:
+                elem = document.getElementById("answer5");
+                if (!(isHide(elem))) {
+                    checkAnsw(elem);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
     switch (event.which) {
         // left arrow
-      case 37:
-        count_press.set(1);
-        if (number_of_question > 1) {
-            number_of_question--;
-            loadQuestion();
-        }
-        break;
-      // right arrow
-      case 39:
-        count_press.set(1);
-        if (number_of_question < 20) {
-            number_of_question++;
-            loadQuestion();
-        }
-        break;
-        // 1
-      case 49:
-        count_press.set(1);
-        checkAnsw(document.getElementById("answer1"));
-        break;
-        // 2
-      case 50:
-        count_press.set(1);
-        checkAnsw(document.getElementById("answer2"));
-        break;
-        // 3
-      case 51:
-        count_press.set(1);
-        checkAnsw(document.getElementById("answer3"));
-        break;
-        // 4
-      case 52:
-        elem = document.getElementById("answer4");
-        if (!(isHide(elem))) {
-          count_press.set(1);
-          checkAnsw(elem);
-        }
-        break;
-      // 5
-      case 53:
-        elem = document.getElementById("answer5");
-        if (!(isHide(elem))) {
-          count_press.set(1);
-          checkAnsw(elem);
-        }
-        break;
-      default:
-        break;
+        case 37:
+            if (number_of_question > 1) {
+                number_of_question--;
+                loadQuestion();
+            }
+            break;
+        // right arrow
+        case 39:
+            if (number_of_question < 20) {
+                number_of_question++;
+                loadQuestion();
+            }
+            break;
+
     }
-  }
 });
 
 $(".answbtn").click(function () {
