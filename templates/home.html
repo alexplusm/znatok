@@ -802,17 +802,6 @@ $("#cat2").click(function () {
 {% endif %}
 
 <script>
-const count_press = (() => {
-  let count = 0;
-  return {
-    set: newValue => {
-      count = newValue;
-    },
-    ret: () => {
-      return count;
-    }
-  }
-})();
 
 $("#navonlineitem1").addClass("active");
 
@@ -1053,7 +1042,6 @@ function isHide(elem) {
 }
 
 $("body").keydown(function(event) {
-    console.log(!res[number_of_question - 1].user_answer);
     if (!res[number_of_question - 1].user_answer) {
         let elem;
         switch (event.which) {
