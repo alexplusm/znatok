@@ -797,7 +797,6 @@ $("#cat2").click(function () {
     }
 });
 
-
 </script>
 
 {% endif %}
@@ -814,6 +813,7 @@ const count_press = (() => {
     }
   }
 })();
+
 $("#navonlineitem1").addClass("active");
 
 $(".navonlineitem").click(function(){
@@ -924,26 +924,7 @@ $('.btnticket').click(function() {
 // загрузка вопроса 
 $(".btnquest").click(function () {
     number_of_question = Number($(this).attr("value"));
-    $.ajax({
-
-        type: "GET",
-
-        url: "load_question/",
-
-        data: {
-            'number_of_ticket': number_of_ticket,
-            'number_of_question': number_of_question,
-            'category': category
-        },
-
-        cache: false,
-
-        success: function (data) {
-            console.log(data);
-            changeData(data);
-            count_press.set(0);
-        }
-    });
+    loadQuestion();
 });
 
 $(".nextbtn").click(function () {
@@ -983,26 +964,7 @@ $(".nextbtn").click(function () {
         }
     } else {
         number_of_question++;
-        $.ajax({
-
-            type: "GET",
-
-            url: "load_question/",
-
-            data: {
-                'number_of_ticket': number_of_ticket,
-                'number_of_question': number_of_question,
-                'category': category
-            },
-
-            cache: false,
-
-            success: function (data) {
-                console.log(data);
-                changeData(data);
-                count_press.set(0);
-            }
-        });
+        loadQuestion();
     }
 });
 
@@ -1061,6 +1023,29 @@ function checkAnsw(answbtn) {
     });
 }
 
+function loadQuestion() {
+    $.ajax({
+
+        type: "GET",
+
+        url: "load_question/",
+
+        data: {
+            'number_of_ticket': number_of_ticket,
+            'number_of_question': number_of_question,
+            'category': category
+        },
+
+        cache: false,
+
+        success: function (data) {
+            console.log(data);
+            changeData(data);
+            count_press.set(0);
+        }
+    });
+}
+
 function isHide(elem) {
   if($(elem).attr("style") === 'display: none;') {
     return true;
@@ -1071,9 +1056,21 @@ $("body").keydown(function(event){
   if (count_press.ret() === 0) {
     let elem;
     switch (event.which) {
+        // left arrow
+      case 37:
+        count_press.set(1);
+        if (number_of_question > 1) {
+            number_of_question--;
+            loadQuestion();
+        }
+        break;
       // right arrow
       case 39:
         count_press.set(1);
+        if (number_of_question < 20) {
+            number_of_question++;
+            loadQuestion();
+        }
         break;
         // 1
       case 49:
@@ -1114,8 +1111,8 @@ $("body").keydown(function(event){
 
 $(".answbtn").click(function () {
     var answbtn_id = $(this).attr("id");
-    var _answbtn = document.getElementById(answbtn_id);
-    checkAnsw(_answbtn);
+    var answbtn = document.getElementById(answbtn_id);
+    checkAnsw(answbtn);
 });
 </script>
 
