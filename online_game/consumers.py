@@ -49,7 +49,6 @@ json_resp = {"command": '',"userId": '', "room": '',"quests": '',"timeStartGame"
 
 
 @channel_session_user_from_http
-# @channel_session_user - постоянно дает юзера - анонимуса
 def ws_connect(message):
 
     # Accept the incoming connection
