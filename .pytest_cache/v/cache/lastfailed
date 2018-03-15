@@ -1,0 +1,13 @@
+{
+  "online_game/tests/test_games_list.py::test_add_group2": true,
+  "online_game/tests/test_games_list.py::test_add_group3": true,
+  "online_game/tests/test_games_list.py::test_add_user_result6": true,
+  "online_game/tests/test_games_list.py::test_create_room_1": true,
+  "online_game/tests/test_games_list.py::test_g_l_does_not_contain": true,
+  "online_game/tests/test_games_list.py::test_g_l_does_not_contain2": true,
+  "online_game/tests/test_games_list.py::test_g_l_validate_group_name": true,
+  "online_game/tests/test_games_list.py::test_remove_group": true,
+  "online_game/tests/test_games_list.py::test_reverse_group_name1": true,
+  "online_game/tests/test_games_list.py::test_reverse_group_name2": true,
+  "online_game/tests/test_users_queue.py::test_create_room_1": true
+}

@@ -70,7 +70,7 @@ def test_add_group_status3():
 	g_l.add_user_result(group='1_2', user=1, time=42, cnt_of_right_answs=2)
 	g_l.add_user_result(group='1_2', user=2, time=33, cnt_of_right_answs=3)
 	assert g_l.dict_of_games_status['1_2']['status'] == 2 and \
-			g_l.dict_of_games_status['1_2']['winner'] == 2		
+			g_l.dict_of_games_status['1_2']['winner'] == 2
 
 
 

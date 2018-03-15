@@ -49,7 +49,7 @@ class GamesList:
             if not self.does_not_contain(group):
                 keys_of_dict_of_result = self.dict_of_results[group].keys()
                 
-                if len(keys_of_dict_of_result) < 2 and \
+                if len(keys_of_dict_of_result) <= 2 and \
                    user not in keys_of_dict_of_result:
 
                     users_results = [cnt_of_right_answs, time]
@@ -96,8 +96,11 @@ class GamesList:
                 self.dict_of_results.pop(group)
                 self.dict_of_games_status.pop(group)
 
-
-
+        def print_games_list(self):
+            print('list_of_groups : ', self.list_of_groups)
+            print('dict_of_results: ', self.dict_of_results)
+            print('dict_of_games_status: ', self.dict_of_games_status)  
+  
 
     # The private class attribute holding the "one and only instance"
     __instance = __GamesList()
