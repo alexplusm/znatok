@@ -40,11 +40,16 @@ def load_ticket(request):
     if request.method == "GET" and request.is_ajax():
         number_of_ticket = request.GET["number_of_ticket"]
         category = request.GET["category"]
+        number_of_question = 1
         if request.user.is_authenticated:
             results = request.user.result_set\
                 .filter(question__number_of_ticket=number_of_ticket, question__category=category)\
                 .order_by('question__number_of_question')
             res_list = list(results.values('user_answer', 'true_answer'))
+            r = results.filter(true_answer=None)
+            if r:
+                number_of_question = r.aggregate(Min('question__number_of_question')).get(
+                    'question__number_of_question__min')
         else:
             if not request.session.get('results'):
                 request.session['results'] = []
@@ -55,11 +60,6 @@ def load_ticket(request):
                     res['user_answer'] = None
                     res['true_answer'] = None
             res_list = request.session['results']
-        r = results.filter(true_answer=None)
-        if r:
-            number_of_question = r.aggregate(Min('question__number_of_question')).get('question__number_of_question__min')
-        else:
-            number_of_question = 1
         question = Question.objects. \
             filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question, category=category)
         answers = random_answers(question)

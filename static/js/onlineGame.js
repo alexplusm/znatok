@@ -1,12 +1,13 @@
 $(document).ready( function() {
-
-	const ws_path = "/waiting_room/";
+    const ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+	const ws_path = ws_scheme + "://" + window.location.host + "/waiting_room/";
 	const webSocketBridge = new channels.WebSocketBridge();
     let userId = 0;
     let gameIsEnd = false;
     let result = 0;
     var trueAnswer = '';
     var game = '';
+    let group = '';
 
 
     let requestToServer = {
@@ -44,6 +45,7 @@ $(document).ready( function() {
         switch (data.command) {
         	case 0:
                 userId = data.userId;
+
                 console.log('CONNECT id=', userId);
         		break;
         	case 1:
@@ -51,9 +53,12 @@ $(document).ready( function() {
         		break;
         	case 2:
                 // Start game!
+                console.log('Start game!', data)
+                group = data.room
                 $("#online-game-place-1").hide();
                 $("#online-game-place-2").show();
                 requestToServer.timeStartGame = data.timeStartGame;
+                // requestToServer
                 game = new Game(data.quests);
                 game.start();
         		break;
@@ -62,7 +67,11 @@ $(document).ready( function() {
                 console.log(data);
         		break;
         	case 4:
-        		break;			
+                break;
+            case 5:
+                console.log(data.winner);
+                console.log('%%%%Your ID', userId)
+                break;			
         		
         }
 
@@ -126,9 +135,9 @@ $(document).ready( function() {
         }
 
         renderThirdBlock(countTrueAnsw) {
-
           $("#online-game-place-2").hide();
           $("#online-game-place-3").show();
+
           document.getElementById("you-result-true").innerHTML = "Правильных ответов: " + countTrueAnsw;
           document.getElementById("you-result-false").innerHTML = "Не правильных: " + (10 - countTrueAnsw);
           document.getElementById("you-result-time").innerHTML = "Время: ";
@@ -184,7 +193,10 @@ $(document).ready( function() {
           this.isActive = false;
 
           requestToServer.command = 'END_GAME';
-          console.log()
+          requestToServer.result = countOfRightAnswers;
+          requestToServer.user = userId;
+          requestToServer.group = group;
+
           webSocketBridge.send(requestToServer);
 
           this.renderThirdBlock(countOfRightAnswers);

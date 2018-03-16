@@ -797,23 +797,12 @@ $("#cat2").click(function () {
     }
 });
 
-
 </script>
 
 {% endif %}
 
 <script>
-const count_press = (() => {
-  let count = 0;
-  return {
-    set: newValue => {
-      count = newValue;
-    },
-    ret: () => {
-      return count;
-    }
-  }
-})();
+
 $("#navonlineitem1").addClass("active");
 
 $(".navonlineitem").click(function(){
@@ -924,26 +913,7 @@ $('.btnticket').click(function() {
 // загрузка вопроса 
 $(".btnquest").click(function () {
     number_of_question = Number($(this).attr("value"));
-    $.ajax({
-
-        type: "GET",
-
-        url: "load_question/",
-
-        data: {
-            'number_of_ticket': number_of_ticket,
-            'number_of_question': number_of_question,
-            'category': category
-        },
-
-        cache: false,
-
-        success: function (data) {
-            console.log(data);
-            changeData(data);
-            count_press.set(0);
-        }
-    });
+    loadQuestion();
 });
 
 $(".nextbtn").click(function () {
@@ -983,26 +953,7 @@ $(".nextbtn").click(function () {
         }
     } else {
         number_of_question++;
-        $.ajax({
-
-            type: "GET",
-
-            url: "load_question/",
-
-            data: {
-                'number_of_ticket': number_of_ticket,
-                'number_of_question': number_of_question,
-                'category': category
-            },
-
-            cache: false,
-
-            success: function (data) {
-                console.log(data);
-                changeData(data);
-                count_press.set(0);
-            }
-        });
+        loadQuestion();
     }
 });
 
@@ -1061,61 +1012,93 @@ function checkAnsw(answbtn) {
     });
 }
 
+function loadQuestion() {
+    $.ajax({
+
+        type: "GET",
+
+        url: "load_question/",
+
+        data: {
+            'number_of_ticket': number_of_ticket,
+            'number_of_question': number_of_question,
+            'category': category
+        },
+
+        cache: false,
+
+        success: function (data) {
+            console.log(data);
+            changeData(data);
+            console.log(res);
+        }
+    });
+}
+
 function isHide(elem) {
   if($(elem).attr("style") === 'display: none;') {
     return true;
   } else return false;
 }
 
-$("body").keydown(function(event){
-  if (count_press.ret() === 0) {
-    let elem;
-    switch (event.which) {
-      // right arrow
-      case 39:
-        count_press.set(1);
-        break;
-        // 1
-      case 49:
-        count_press.set(1);
-        checkAnsw(document.getElementById("answer1"));
-        break;
-        // 2
-      case 50:
-        count_press.set(1);
-        checkAnsw(document.getElementById("answer2"));
-        break;
-        // 3
-      case 51:
-        count_press.set(1);
-        checkAnsw(document.getElementById("answer3"));
-        break;
-        // 4
-      case 52:
-        elem = document.getElementById("answer4");
-        if (!(isHide(elem))) {
-          count_press.set(1);
-          checkAnsw(elem);
+$("body").keydown(function(event) {
+    if (!res[number_of_question - 1].user_answer) {
+        let elem;
+        switch (event.which) {
+            // 1
+            case 49:
+                checkAnsw(document.getElementById("answer1"));
+                break;
+            // 2
+            case 50:
+                checkAnsw(document.getElementById("answer2"));
+                break;
+            // 3
+            case 51:
+                checkAnsw(document.getElementById("answer3"));
+                break;
+            // 4
+            case 52:
+                elem = document.getElementById("answer4");
+                if (!(isHide(elem))) {
+                    checkAnsw(elem);
+                }
+                break;
+            // 5
+            case 53:
+                elem = document.getElementById("answer5");
+                if (!(isHide(elem))) {
+                    checkAnsw(elem);
+                }
+                break;
+            default:
+                break;
         }
-        break;
-      // 5
-      case 53:
-        elem = document.getElementById("answer5");
-        if (!(isHide(elem))) {
-          count_press.set(1);
-          checkAnsw(elem);
-        }
-        break;
-      default:
-        break;
     }
-  }
+
+    switch (event.which) {
+        // left arrow
+        case 37:
+            if (number_of_question > 1) {
+                number_of_question--;
+                loadQuestion();
+            }
+            break;
+        // right arrow
+        case 39:
+            if (number_of_question < 20) {
+                number_of_question++;
+                loadQuestion();
+            }
+            break;
+
+    }
 });
 
 $(".answbtn").click(function () {
     var answbtn_id = $(this).attr("id");
-    var _answbtn = document.getElementById(answbtn_id);
-    checkAnsw(_answbtn);
+    var answbtn = document.getElementById(answbtn_id);
+    checkAnsw(answbtn);
 });
 </script>
 
