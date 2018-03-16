@@ -6282,6 +6282,28 @@ body {
   margin-top: -20px;
   font-size: 1.4em;
 }
+#panel-footer .item-comment {
+  border: 1px solid lightgrey;
+  background: #f0f0f0;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.5em;
+}
+#panel-footer .comment-avatar {
+  width: 100%;
+}
+#panel-footer .text-comment {
+  text-align: center;
+  font-style: italic;
+  color: blue;
+  font-size: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+#panel-footer .item-comment:hover {
+  background: #dcdcdc;
+}
 #panel-footer .panel-header {
   background: url(/static/img/russia20.png);
   background-size: auto auto;

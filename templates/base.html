@@ -71,7 +71,7 @@
                       <img src="" class="tic btn btn-default" id="8mini" />
                       <div class="col-12 text-right" style="color: grey;">Попыток осталось: <span style="color: black;" id="try-number"></span></div>
                     </li>
-                    <div class="col-6 ml-auto mr-auto game-not-ready text-center js-game-not-ready">
+                    <div class="col-6 ml-auto mr-auto game-not-ready text-center js-game-not-ready" style="display: none;">
                       <div class="text-primary">
                         <i>Следующие задания станут доступны через <strong id="js-timer"></strong></i>
                       </div>
@@ -239,74 +239,94 @@
         <div class="row" style="margin-right: 15px;">
           <div class="col-8 mr-auto ml-auto">
             <div class="col-12">
-              <p class="text-center">Отзывы пользователей</p>
+              <p class="text-comment">Отзывы пользователей</p>
             </div>
             <div class="row align-items-center">
               <div class="col-2 text-center">
-                asd
+                <p id="js-rating0"></p>
+                <i id="js-date0"></i>
               </div>
-              <div class="col-10">
+              <div class="col-2 text-center">
+                <img src="" class="comment-avatar" id="js-avatar0">
+              </div>
+              <div class="col-8">
                 <div class="row">
-                  <div class="col-7 ml-auto">
-                    Second name for user
-                  </div>
+                  <div class="col-7 ml-auto" id="js-user0"></div>
                   <div class="col-3">
-                    <p class="text-right">city for user</p>
+                    <p class="text-right" id="js-city0"></p>
                   </div>
                 </div>
                   <div class="h-divider">
                   </div>
                   <div class="row">
                     <div class="col-8 ml-auto mr-auto usercomment">
-                    <i>Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва.</i>
+                    <i id="js-text0"></i>
                   </div>
                   </div>
               </div>
             </div>
             <div class="row align-items-center">
               <div class="col-2 text-center">
-                asd
+                <p id="js-rating1"></p>
+                <i id="js-date1"></i>
               </div>
-              <div class="col-10">
+              <div class="col-2 text-center">
+                <img src="" class="comment-avatar" id="js-avatar1">
+              </div>
+              <i id="js-date1"></i>
+              <div class="col-8">
                 <div class="row">
-                  <div class="col-7 ml-auto">
-                    Second name for user
-                  </div>
+                  <div class="col-7 ml-auto" id="js-user1"></div>
                   <div class="col-3">
-                    <p class="text-right">city for user</p>
+                    <p class="text-right" id="js-city1"></p>
                   </div>
                 </div>
                   <div class="h-divider">
                   </div>
                   <div class="row">
                     <div class="col-8 ml-auto mr-auto usercomment">
-                    <i>Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва.</i>
+                    <i id="js-text1"></i>
                   </div>
                   </div>
               </div>
             </div>
             <div class="row align-items-center">
               <div class="col-2 text-center">
-                asd
+                <p id="js-rating2"></p>
+                <i id="js-date2"></i>
               </div>
-              <div class="col-10">
+              <div class="col-2 text-center">
+                <img src="" class="comment-avatar" id="js-avatar2">
+              </div>
+              <i id="js-date3"></i>
+              <div class="col-8">
                 <div class="row">
-                  <div class="col-7 ml-auto">
-                    Second name for user
-                  </div>
+                  <div class="col-7 ml-auto" id="js-user2"></div>
                   <div class="col-3">
-                    <p class="text-right">city for user</p>
+                    <p class="text-right" id="js-city2"></p>
                   </div>
                 </div>
                   <div class="h-divider">
                   </div>
                   <div class="row">
                     <div class="col-8 ml-auto mr-auto usercomment">
-                    <i>Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва. Текст отзыва.</i>
+                    <i id="js-text2"></i>
                   </div>
                   </div>
               </div>
             </div>
+            <div class="col-12">
+              <div class="row">
+                <div class="col-2 mr-auto item-comment">
+                  <span>Написать отзыв</span>
+                </div>
+                <div class="col-2 ml-auto item-comment">
+                  <span>Еще отзывы</span>
+                </div>
+              </div>
+            </div>
+            <br>
+            <br>
           </div>
         </div>
       </div>
@@ -406,6 +426,30 @@
   let counter_skip = 0;
   let user_answer = ['0', '0', '0'];
 
+  function commentsData(objects) {
+    for (let i = 0; i < objects.comments.length; i++) {
+      console.log(objects.comments[i]);
+      document.getElementById("js-user" + i).innerText = objects.comments[i].user;
+      document.getElementById("js-text" + i).innerText = objects.comments[i].text;
+      document.getElementById("js-date" + i).innerText = objects.comments[i].date.match(/\d*-\d*-\d*/g);
+      document.getElementById("js-city" + i).innerText = objects.comments[i].city;
+      document.getElementById("js-rating" + i).innerText = objects.comments[i].rating;
+      const element = document.getElementById('js-avatar' + i);
+      $(element).attr("src", objects.comments[i].avatar);
+    }
+  }
+
+  function loadComments() {
+    $.ajax({
+      type: "GET",
+      url: "/get_comments/",
+      cache: false,
+      success: function(data){
+        commentsData(data);
+        }
+    });
+  }
+
   function loadMiniGame() {
     $.ajax({
       type: "GET",
@@ -460,7 +504,7 @@
       let min = tim[0] + tim[1];
       let seconds = tim[3] + tim[4];
 
-      if (seconds === '01') {
+      if (seconds === '00') {
         if (min === '00') {
           checkStageMiniGame();
         }
@@ -691,6 +735,7 @@
 
   $(document).ready(function() {
     checkStageMiniGame();
+    loadComments();
   });
   </script>
 

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'accounts',
     'game',
     'online_game',
+    'comments',
 ]
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
