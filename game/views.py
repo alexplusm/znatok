@@ -1,9 +1,12 @@
-import random
 from .models import PickForMiniGame
 from django.http import JsonResponse
 
-true_answer = 0
-new_obj = 0
+import random
+import datetime
+
+true_answer, new_obj = 0, 0
+game_is_ready_ = True
+timer_ = datetime.datetime.now()
 
 
 def load_picture(request):
@@ -15,7 +18,8 @@ def load_picture(request):
         counter, i, number_of_section, = 0, 0, 0
         main = [0, 0, 0, 0, 0]
         picture = [0, 0, 0]
-        global true_answer, new_obj
+        global true_answer, new_obj, timer_
+        timer_ = datetime.datetime.now()
         question = 'Мини-Игра'
         result, true_result = [], []
 
@@ -65,7 +69,6 @@ def load_picture(request):
         else:
             question = 'ноуп'
 
-        
         m1 = list(range(1, 30))
         random.shuffle(m1)
         m2 = list(range(1,10))
@@ -136,3 +139,31 @@ def check_points_for_game(request):
                 request.session['points'] = 0
             points = request.session['points']
         return JsonResponse({'points': points})
+
+
+def set_timer(request):
+    if request.method == "GET" and request.is_ajax():
+        global timer_, game_is_ready_
+
+        timer_ = datetime.datetime.now() + datetime.timedelta(minutes=30)
+        game_is_ready_ = False
+
+        return JsonResponse({'time': timer_})
+
+
+def game_is_ready(request):
+    if request.method == "GET" and request.is_ajax():
+        global game_is_ready_, timer_
+
+        time_now = datetime.datetime.now()
+
+        if time_now >= timer_:
+            game_is_ready_ = True
+            timer_ = datetime.datetime.now()
+        else:
+            game_is_ready_ = False
+
+        ret_time = timer_ - time_now
+
+        return JsonResponse({'mini_game_is_ready': game_is_ready_,
+                             'time_now': ret_time})

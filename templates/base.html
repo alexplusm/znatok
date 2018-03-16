@@ -46,15 +46,17 @@
               <div class="col-5 ml-auto" id="game">
               {% block game %}
                   <ul class="list-unstyled">
-                    <li class="gameresult">
+                    <li class="gameresult js-game-ready" style="display: none;">
                       <div class="conteiner">
                         <div class="col-12">
                           <div class="row">
                             <div class="col-8 ml-auto">
-                              <div class="text-center" style="font-size: 1em; color: blue;"><i id="mini-question"></i></div>
+                              <div class="text-center mt-2" style="font-size: 1em; color: blue;"><i id="mini-question"></i></div>
                             </div>
                             <div class="col-1 mr-auto">
-                              <div class="skip-game btn btn-default" onclick="skipGame()">SKIP</div>
+                              <div class="btn" onclick="skipGame()">
+                                <img src="{% static 'img/refresh.png' %}" class="btn__skip-game" />
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -69,6 +71,11 @@
                       <img src="" class="tic btn btn-default" id="8mini" />
                       <div class="col-12 text-right" style="color: grey;">Попыток осталось: <span style="color: black;" id="try-number"></span></div>
                     </li>
+                    <div class="col-6 ml-auto mr-auto game-not-ready text-center js-game-not-ready">
+                      <div class="text-primary">
+                        <i>Следующие задания станут доступны через <strong id="js-timer"></strong></i>
+                      </div>
+                    </div>
                   </ul>
             {% endblock %}
             </div>
@@ -227,7 +234,6 @@
   </div>
 
   <div id="panel-footer">
-   <div class="panel panel-default">
     <div class="panel-header">
       <div class="conteiner">
         <div class="row" style="margin-right: 15px;">
@@ -373,7 +379,6 @@
       </div>
      </div>
     </div>
-   </div>
   </div>
   </body>
 
@@ -401,7 +406,84 @@
   let counter_skip = 0;
   let user_answer = ['0', '0', '0'];
 
+  function loadMiniGame() {
+    $.ajax({
+      type: "GET",
+      url: "/load_picture/",
+      data: {'number_of_game': number_of_game,
+             'number_of_try': number_of_try,
+             'skip_game': skip_game},
+      cache: false,
+      success: function(data){
+        $('.game-is-ready').show();
+        miniGame(data);
+        }
+    });
+  }
+
+  function checkStageMiniGame() {
+    $.ajax({
+
+      type: "GET",
+
+      url: "/check_game_is_ready/",
+
+      cache: false,
+
+      success: function(data){
+        if (data.mini_game_is_ready) {
+         loadMiniGame();
+        } else {
+          miniGameNotReady(data.time_now);
+        }
+      }
+    });
+  }
+
+  function miniGameNotReady(time) {
+    let constTime;
+    $('.js-game-ready').hide();
+    $('.js-game-not-ready').show();
+
+    if (Object.prototype.toString.call(time) === '[object Object]') {
+      constTime = '29:59';
+    } else {
+      constTime = time.match(/\d*M\d*/g).toString().replace('M', ':');
+    }
+
+    function startTimer(timer) {
+      if (timer !== undefined) {
+        document.getElementById('js-timer').innerText = timer;
+      }
+      const elem = document.getElementById('js-timer');
+      let tim = elem.innerText;
+      let min = tim[0] + tim[1];
+      let seconds = tim[3] + tim[4];
+
+      if (seconds === '01') {
+        if (min === '00') {
+          checkStageMiniGame();
+        }
+        min -= 1;
+        seconds = '59';
+        if (min < '10') min = '0' + min;
+        console.log(seconds);
+      } else {
+        seconds -= 1;
+      }
+      if (seconds < 10) {
+        seconds = '0' + seconds;
+      }
+      elem.innerHTML = min + ':' + seconds;
+      setTimeout(startTimer, 1000);
+    }
+
+    startTimer(constTime);
+  }
+
   function miniGame(data) {
+    $('.js-game-not-ready').hide();
+    $('.js-game-ready').show();
     counter = 0;
     $(".tic").removeClass("act");
     document.getElementById('mini-question').innerHTML = data.quest;
@@ -426,10 +508,10 @@
     skip_game = number_of_game;
     list_skip_game[counter_skip] = skip_game;
     counter_skip++;
-    if ((skip_game == 4) && (list_skip_game[0] != 4)) {
+    if ((skip_game === 4) && (list_skip_game[0] !== 4)) {
       number_of_game = list_skip_game[0];
       number_of_game -= 1;
-    } else if ((skip_game == 4) && (list_skip_game[0] == 4)) {
+    } else if ((skip_game === 4) && (list_skip_game[0] === 4)) {
       number_of_game -= 1;
     }
     nextGame();
@@ -438,10 +520,21 @@
   function nextGame() {
     number_of_game++;
     number_of_try--;
-    if (number_of_try == 0) {
-        alert("30");
+    if (number_of_try === 0) {
+        $.ajax({
+
+                type: "GET",
+
+                url: "/set_timer_for_mini_game/",
+
+                cache: false,
+
+                success: function(data){
+                  miniGameNotReady(data);
+                }
+              });
     } else {
-      if ((number_of_game <= 4) && (number_of_try != 0)) {
+      if ((number_of_game <= 4) && (number_of_try !== 0)) {
         $.ajax({
           type: "GET",
 
@@ -463,10 +556,21 @@
 
   function next_game_after_first_loop() {
     number_of_game = skip_game;
-    if (number_of_try == 0) {
-        alert("30");
+    if (number_of_try === 0) {
+        $.ajax({
+
+                type: "GET",
+
+                url: "/set_timer_for_mini_game/",
+
+                cache: false,
+
+                success: function(data){
+                  miniGameNotReady(data);
+                }
+              });
     } else {
-      if ((number_of_game <= 4) && number_of_try != 0) {
+      if ((number_of_game <= 4) && (number_of_try !== 0)) {
         $.ajax({
           type: "GET",
 
@@ -496,7 +600,7 @@
       user_answer[counter] = parseInt(id,10);
       counter++;
     }
-    if (counter == 3) {
+    if (counter === 3) {
       $.ajax({
 
         type: "GET",
@@ -524,10 +628,21 @@
               success: function(data){
                 document.getElementById('bonus').innerHTML = data.points;
                 document.getElementById('bonus1').innerHTML = data.points;
-                if ((number_of_game == 4) && (number_of_try != 0) && (skip_game == 0)) {
-                  alert("вы успешно прошли все задания");
+                if ((number_of_game === 4) && (number_of_try !== 0) && (skip_game === 0)) {
+                  $.ajax({
+
+                    type: "GET",
+
+                    url: "/set_timer_for_mini_game/",
+
+                    cache: false,
+
+                    success: function(data){
+                      miniGameNotReady(data);
+                    }
+                  });
                 }
-                else if ((number_of_game == 4) && (number_of_try != 0) && (skip_game != 0)) {
+                else if ((number_of_game === 4) && (number_of_try === 0) && (skip_game !== 0)) {
                   next_game_after_first_loop();
                 }
                 else {
@@ -537,8 +652,19 @@
             });
           } else {
             number_of_try--;
-            if (number_of_try == 0) {
-              alert("30");
+            if (number_of_try === 0) {
+              $.ajax({
+
+                type: "GET",
+
+                url: "/set_timer_for_mini_game/",
+
+                cache: false,
+
+                success: function(data){
+                  miniGameNotReady(data);
+                }
+              });
             } else {
               $.ajax({
 
@@ -564,22 +690,7 @@
   }
 
   $(document).ready(function() {
-    $.ajax({
-
-      type: "GET",
-
-      url: "/load_picture/",
-
-      data: {'number_of_game': number_of_game,
-             'number_of_try': number_of_try,
-             'skip_game': skip_game},
-
-      cache: false,
-
-      success: function(data){
-        miniGame(data);
-      }
-    });
+    checkStageMiniGame();
   });
   </script>
 

@@ -74,6 +74,8 @@ urlpatterns = [
     url(r'load_picture/$', game_views.load_picture, name='load_picture'),
     url(r'check_answer_for_game/$', game_views.check_answer_for_game, name='check_answer_for_game'),
     url(r'check_points_for_game/$', game_views.check_points_for_game, name='check_points_for_game'),
+    url(r'check_game_is_ready/$', game_views.game_is_ready, name='game_is_ready'),
+    url(r'set_timer_for_mini_game/$', game_views.set_timer, name='set_timer'),
 
     # urls for exam app
 

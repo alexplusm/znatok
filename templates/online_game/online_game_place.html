@@ -86,7 +86,7 @@
 					<div class="col-8">
 						<div class="row" id="profile">
 							<div class="col-4 text-center ml-auto" id="first_profile">
-								<img src="{% static 'img/21.png' %}" id="img_profile"/>
+								<img src="/media/{{ user.profile.user_avatar }}" id="img_profile"/>
 								{{ user.username }}
 							</div>
 							<div class="col-4">

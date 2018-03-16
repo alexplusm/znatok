@@ -5887,8 +5887,20 @@ body {
 #game .act {
   filter: grayscale(0) opacity(1);
 }
-#game .skipGame {
-  border-radius: 50%;
+#game .btn__skip-game {
+  width: 2em;
+  filter: grayscale(0.5);
+}
+#game .btn__skip-game:hover {
+  filter: grayscale(0);
+}
+#game .game-not-ready {
+  position: absolute;
+  font-size: 1.2em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: blue;
 }
 #our_team #avatar {
   width: 70%;
@@ -6009,8 +6021,9 @@ body {
 }
 #maincontent .coinslid {
   border: 1px solid blue;
-  border-radius: 3px;
   background: white;
+  border-radius: 10%;
+  padding: 0.3em;
 }
 #maincontent .w2 {
   margin-left: 20px;
@@ -6227,7 +6240,7 @@ body {
   margin-left: -2em;
 }
 #online #img_profile {
-  width: 100%;
+  width: 80%;
 }
 #panellamb .panel {
   background: rgba(255, 255, 255, 0.5);
