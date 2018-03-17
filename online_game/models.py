@@ -49,7 +49,7 @@ class GamesList:
             if not self.does_not_contain(group):
                 keys_of_dict_of_result = self.dict_of_results[group].keys()
                 
-                if len(keys_of_dict_of_result) <= 2 and \
+                if len(keys_of_dict_of_result) < 2 and \
                    user not in keys_of_dict_of_result:
 
                     users_results = [cnt_of_right_answs, time]

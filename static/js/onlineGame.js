@@ -8,6 +8,7 @@ $(document).ready( function() {
     var trueAnswer = '';
     var game = '';
     let group = '';
+    let timeStartGame = '';
 
 
     let requestToServer = {
@@ -15,7 +16,7 @@ $(document).ready( function() {
         user: 'user',
         group: 'group',
         result: 'result',
-        timeStartGame: ''
+        timeStartGame: '',
     }
 
     /*  
@@ -45,34 +46,38 @@ $(document).ready( function() {
         switch (data.command) {
         	case 0:
                 userId = data.userId;
-
                 console.log('CONNECT id=', userId);
         		break;
         	case 1:
                 console.log('SUCCESS'); 
         		break;
         	case 2:
-                // Start game!
-                console.log('Start game!', data)
+            // Start game
                 group = data.room
                 $("#online-game-place-1").hide();
                 $("#online-game-place-2").show();
-                requestToServer.timeStartGame = data.timeStartGame;
+
+                timeStartGame = data.timeStartGame;
+                requestToServer.timeStartGame = timeStartGame;
+
                 // requestToServer
                 game = new Game(data.quests);
                 game.start();
         		break;
         	case 3:
-            // END GAME => SHOW RESULTS
+            // Юзер получает персональные результаты
+                game.
+
                 console.log(data);
         		break;
         	case 4:
                 break;
             case 5:
+            // Рендерим обоим юзерам кто победил и их результаты
                 console.log(data.winner);
                 console.log('%%%%Your ID', userId)
+                game.renderResultBlock(userId, data.winner)
                 break;			
-        		
         }
 
         });
@@ -108,9 +113,6 @@ $(document).ready( function() {
         }
 
         renderNextQuestion() {
-
-            console.log('сработал - renderNextQuestion', this.data[this.count], this.count);
-
             document.getElementById('game-quest').innerHTML = this.data[this.count].question;
             $('.game-img').attr("src", "/media/" + this.data[this.count].picture);
 
@@ -148,21 +150,26 @@ $(document).ready( function() {
 
         renderWaitBlock(resultTime, countOfRightAnswers) {
           $("#online-game-place-2").hide();
-          $("#online-game-place-3").show();
+          $("#online-game-place-wait-results").show();
+
+          console.log('ПОЧЕМУ НЕ РЕНДЕРИТЬСЯФ!!!!')
+
           document.getElementById("you-result-true").innerHTML = "Правильных ответов: " + countOfRightAnswers;
           document.getElementById("you-result-false").innerHTML = "Не правильных: " + (10 - countOfRightAnswers);
           document.getElementById("you-result-time").innerHTML = "Время: " + resultTime;
         }
 
-        // renderResultBlock() {
-
-
-        // }
+        renderResultBlock(userId, winnerId) {
+            console.log('РЕНДЕР ResultBlock')
+            if (userId === winnerId) {
+                document.getElementById("try-or-win").innerHTML = "Победа";
+            } else {
+                document.getElementById("try-or-win").innerHTML = "Поражение";
+            }
+            $("#wait-results").hide();
+        }
 
         checkUserAnswer(userAnswer) {
-
-          console.log('сработал - checkUserAnswer');
-          console.log(this.count);
 
           if (userAnswer === this.trueAnswer) {
             this.result.push(1);
@@ -199,7 +206,7 @@ $(document).ready( function() {
 
           webSocketBridge.send(requestToServer);
 
-          this.renderThirdBlock(countOfRightAnswers);
+          this.renderWaitBlock(timeStartGame, countOfRightAnswers);
         }
     }
 });

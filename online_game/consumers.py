@@ -54,14 +54,13 @@ json_resp = {"command": '',"userId": '', "room": '',"quests": '',"timeStartGame"
 
 @channel_session_user_from_http
 def ws_connect(message):
-
     # Accept the incoming connection
     message.reply_channel.send({"accept": True})
 
     print('List of users in WS - ', users_queue.list_of_users)
 
     """
-        Ловим коннекш от пользователя по Веб-Сокету пидр
+        Ловим коннекш от пользователя по Веб-Сокету
         Проверям - авторизирован ли он и не сидит ли он уже в очереди
         Добавляем в очередь и сообщаем ему, что он в очереди (соединение установлено)
     """
@@ -76,7 +75,6 @@ def ws_connect(message):
         message.reply_channel.send({"text": str_to_resp})
 
         print('add user', users_queue.list_of_users, users_queue.dict_of_channels)
-
 
     """
         Пока-что игра создается сразу же после того, как создалась комната
@@ -116,7 +114,7 @@ def ws_connect(message):
 
 
 def ws_message(message):
-
+    
     json_str = message.content['text']
     json_dict_from_front = json.loads(json_str)
 
@@ -125,13 +123,9 @@ def ws_message(message):
 
         time_start = datetime.strptime(json_dict_from_front['timeStartGame'], '%Y-%m-%d %H:%M:%S.%f')
         delta_time = datetime.now() - time_start
-        print(type(delta_time))
         print(delta_time)
-
         # записываем результат пользователя в games_list
 
-        
-        
         games_list.add_user_result(
             group=json_dict_from_front['group'],
             user=json_dict_from_front['user'],
@@ -140,24 +134,27 @@ def ws_message(message):
             # channel=message.reply_channel,
         ) 
         
-        print('&&&&&&&& --- add user results')
+
         games_list.print_games_list()
+        ggroup = json_dict_from_front['group']
+        
 
-        g = json_dict_from_front['group']
-        print('()()()()()()()()()()', games_list.return_status(g))
-
-        if games_list.return_status(g) == 2:
+        if games_list.return_status(ggroup) == 2:
             print('SATTUS2')
             
             json_resp['command'] = MSG_RESULTS
-            json_resp.setdefault('winner', games_list.return_winner(g))
+            json_resp.setdefault('winner', games_list.return_winner(ggroup))
             # json_str['winner'] = games_list.return_winner(g)
             str_to_resp = json.dumps(json_resp)
-            print('*************', str_to_resp)
-            Group(g).send({"text": str_to_resp})
+            Group(ggroup).send({"text": str_to_resp})
+            
+            print('-'*10)
+            print('Смотрим что происходит в гейм-листе')
+            print(games_list.print_games_list())
+            print('-'*10)
+            games_list.remove_group(ggroup)
 
             
-
     if json_dict_from_front['command'] == 'RESULT':
         pass
         
@@ -165,6 +162,10 @@ def ws_message(message):
     print('#'*15, 'CLIENT ANSWER')
     print(json_dict_from_front)
     print('#'*20)
+
+
+# нужно дискардить каналы
+# Group('waiting_room').discard(cnannel2)
 
 
 @channel_session_user
@@ -176,6 +177,7 @@ def ws_disconnect(message):
     print('-'*10)
     print(users_queue.dict_of_channels, users_queue.list_of_users)
     print('-'*10)
+    print(games_list.print_games_list())
 
 
 
