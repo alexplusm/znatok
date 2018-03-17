@@ -22,6 +22,7 @@ from accounts import views
 from django.contrib.auth import views as auth_views
 from exam import views as exam_views
 from game import views as game_views
+from comments import views as comments_views
 
 from django.views.generic import TemplateView
 
@@ -76,6 +77,8 @@ urlpatterns = [
     url(r'check_points_for_game/$', game_views.check_points_for_game, name='check_points_for_game'),
     url(r'check_game_is_ready/$', game_views.game_is_ready, name='game_is_ready'),
     url(r'set_timer_for_mini_game/$', game_views.set_timer, name='set_timer'),
+
+    url(r'get_comments/$', comments_views.load_comments, name='get_comments'),
 
     # urls for exam app
 
