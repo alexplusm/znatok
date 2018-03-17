@@ -15,7 +15,7 @@
 
 {% endblock %}
 
-    <title>Знаток ПДД</title>
+    <title>{% block title %}Знаток ПДД{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   </head>
@@ -40,7 +40,7 @@
       <div class="panel-header">
         <div class="conteiner-fluid w1">
           <div class="row"  style="margin-right: 0px;">
-            <div class="col-2 mr-auto ml-auto" style="padding-bottom: 1.4em;">
+            <div class="col-2 mr-auto ml-auto">
               <a href="/"><img src="{% static 'img/logo.gif' %}" class="logo"/></a>
             </div>
               <div class="col-5 ml-auto" id="game">
@@ -48,15 +48,13 @@
                   <ul class="list-unstyled">
                     <li class="gameresult js-game-ready" style="display: none;">
                       <div class="conteiner">
-                        <div class="col-12">
+                        <div class="col-12 game__block-quest">
                           <div class="row">
-                            <div class="col-8 ml-auto">
-                              <div class="text-center mt-2" style="font-size: 1em; color: blue;"><i id="mini-question"></i></div>
+                            <div class="col-10 ml-auto">
+                              <div class="text-center mt-2 game__mini-question"><i id="mini-question"></i></div>
                             </div>
-                            <div class="col-1 mr-auto">
-                              <div class="btn" onclick="skipGame()">
-                                <img src="{% static 'img/refresh.png' %}" class="btn__skip-game" />
-                              </div>
+                            <div class="col-1 mr-auto game__skip-game">
+                              <i class="fa fa-refresh" onclick="skipGame()" class="btn__skip-game" aria-hidden="true"></i>
                             </div>
                           </div>
                         </div>
@@ -69,7 +67,7 @@
                       <img src="" class="tic btn btn-default" id="6mini" />
                       <img src="" class="tic btn btn-default" id="7mini" />
                       <img src="" class="tic btn btn-default" id="8mini" />
-                      <div class="col-12 text-right" style="color: grey;">Попыток осталось: <span style="color: black;" id="try-number"></span></div>
+                      <div class="col-12 text-right text-muted">Попыток осталось: <span class="text-dark" id="try-number"></span></div>
                     </li>
                     <div class="col-6 ml-auto mr-auto game-not-ready text-center js-game-not-ready" style="display: none;">
                       <div class="text-primary">
@@ -428,7 +426,6 @@
 
   function commentsData(objects) {
     for (let i = 0; i < objects.comments.length; i++) {
-      console.log(objects.comments[i]);
       document.getElementById("js-user" + i).innerText = objects.comments[i].user;
       document.getElementById("js-text" + i).innerText = objects.comments[i].text;
       document.getElementById("js-date" + i).innerText = objects.comments[i].date.match(/\d*-\d*-\d*/g);

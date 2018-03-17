@@ -23,6 +23,12 @@ class Profile(models.Model):
     birthday = models.CharField(max_length=250, blank=True)
     city = models.CharField(max_length=250, blank=True)
 
+    def __str__(self):
+        return "profile: {}".format(self.user)
+
+    class Meta:
+        ordering = ['-points']
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

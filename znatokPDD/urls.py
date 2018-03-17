@@ -79,6 +79,7 @@ urlpatterns = [
     url(r'set_timer_for_mini_game/$', game_views.set_timer, name='set_timer'),
 
     url(r'get_comments/$', comments_views.load_comments, name='get_comments'),
+    url(r'get_leaders/$', comments_views.get_leaders, name='get_leaders'),
 
     # urls for exam app
 
