@@ -1,5 +1,8 @@
 /.idea/*
 /venv/*
 /.vscode/*
-*__pycache__*
-/alex_sandbox/*
+/.cache/*
+/.pytest_cache/*
+__pycache__/
+*.py[cod]
+/alex_sendbox/*
