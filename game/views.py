@@ -145,7 +145,7 @@ def set_timer(request):
     if request.method == "GET" and request.is_ajax():
         global timer_, game_is_ready_
 
-        timer_ = datetime.datetime.now() + datetime.timedelta(minutes=30)
+        timer_ = datetime.datetime.now() + datetime.timedelta(minutes=0)
         game_is_ready_ = False
 
         return JsonResponse({'time': timer_})

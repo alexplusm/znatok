@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 
 
+from accounts.models import Profile
 from .models import Comment
 from .models import CommentForm
 
@@ -56,3 +57,26 @@ def to_json(comment):
                'avatar': comment.user.profile.user_avatar.url
               }
     return results
+
+
+def to_json_2(leader):
+    # {'1 comment': {'user': asd, 'text': asfasd, 'rating': 1/2/3, 'date': asojd},
+    # '2 comment': {},
+    # '3 comment': {},
+    # '4 comment': {},
+    # '5 comment': {}}
+    results = {'user_leader': leader.user.first_name,
+               'points': leader.points,
+               'city': leader.user.profile.city,
+               'avatar': leader.user.profile.user_avatar.url
+              }
+    return results
+
+
+def get_leaders(request):
+    if request.method == "GET" and request.is_ajax():
+        leaders = Profile.objects.filter()[:3]
+        results_leaders = []
+        for i in leaders:
+            results_leaders.append(to_json_2(i))
+        return JsonResponse({'leaders': results_leaders})
