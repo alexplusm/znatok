@@ -19,9 +19,8 @@ def signup(request):
             user.is_active = False
             user.save()
             questions = Question.objects.all()
-            for question in questions:
-                result = Result(user=user, question=question)
-                result.save()
+            results = (Result(user=user, question=question) for question in questions)
+            Result.objects.bulk_create(results)
             profile = Profile(user=user)
             profile.save()
             domain = get_current_site(request).domain
