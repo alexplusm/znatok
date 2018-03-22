@@ -6456,3 +6456,17 @@ body {
   position: absolute;
   transform: translate(-40%, 50%);
 }
+.js-alert-success {
+  display: none;
+  position: absolute;
+  width: 50%;
+  transform: translateY(-30%);
+  transition: 1s ease-out 0.5s;
+}
+.js-alert-error {
+  display: none;
+  position: absolute;
+  width: 50%;
+  transform: translateY(-30%);
+  transition: 1s ease-out 0.5s;
+}

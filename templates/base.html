@@ -68,17 +68,18 @@
                       <img src="" class="tic btn btn-default" id="6mini" />
                       <img src="" class="tic btn btn-default" id="7mini" />
                       <div class="col-12 text-right text-muted">Попыток осталось: <span class="text-dark" id="try-number"></span></div>
-                      <!-- <div class="alert alert-success js-alert-success" role="alert">
-                        <i>Вы ответили правильно</i>
-                      </div>
-                      <div class="alert alert-danger js-alert-error" role="alert">
-                        <i>Вы ответили не правильно, попробуйте еще раз или пропустите вопрос</i>
-                      </div> -->
+                      
                     </li>
                     <div class="col-6 ml-auto mr-auto game-not-ready text-center js-game-not-ready" style="display: none;">
                       <div class="text-primary">
                         <i>Следующие задания станут доступны через <strong id="js-timer"></strong></i>
                       </div>
+                    </div>
+                    <div class="alert alert-success js-alert-success" role="alert">
+                      <i>Вы ответили правильно</i>
+                    </div>
+                    <div class="alert alert-danger js-alert-error" role="alert">
+                      <i>Вы ответили не правильно</i>
                     </div>
             {% endblock %}
             </div>
@@ -504,6 +505,7 @@
 
         success: function (data) {
           if (data.bool) {
+            $('.js-alert-success').show();
             $.ajax({
 
               type: "GET",
@@ -535,6 +537,7 @@
               }
             });
           } else {
+            $('.js-alert-error').show();
             $.ajax({
 
               type: "GET",

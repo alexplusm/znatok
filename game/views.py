@@ -126,7 +126,6 @@ def load_picture(request):
         return JsonResponse({'pictures': pictures, 'number_of_try': try_number}, safe=False)
             
 
-
 def next_mini_game(request):
     if request.method == "GET" and request.is_ajax():
         bool_next = False
@@ -180,8 +179,10 @@ def check_answer_for_game(request):
         if counter == 3:
             true_of_false = True
             if request.session['true_answers'] == 5:
-                request.session['true_answers'] == 0
+                request.session['true_answers'] = 0
             request.session['true_answers'] += 1
+        else:
+            true_of_false = False
 
         if true_of_false:
             if request.user.is_authenticated:
@@ -205,12 +206,28 @@ def game_is_ready(request):
             request.session['true_answers'] = 0
             request.session['timer_end'] = 0
             request.session['game_ready'] = 1
-            game_is_ready_ = 1
-        
+
+        game_is_ready_ = request.session['game_ready']
+
+        if request.user.is_authenticated:
+            time_now = utc.localize(datetime.datetime.now())
+            time_ = request.user.profile.last_mini_game
+
+            if time_now >= time_:
+                game_is_ready_ = 1
+                request.session['game_ready'] = 1
+                request.session['number_of_game'] = 1
+                request.session['number_of_try'] = 6
+                request.session['skip_game'] = []
+                request.session['true_answers'] = 0
+                request.session['timer_end'] = 0
+            else:
+                game_is_ready_ = 0
+                request.session['game_ready'] = 0
+
         game_skip = request.session['skip_game']
         game_number = request.session['number_of_game']
         game_try = request.session['number_of_try']
-        game_is_ready_ = request.session['game_ready']
 
         # Проверка на количество попыток
         if game_is_ready_ == 1 and game_try == 1:
@@ -236,6 +253,7 @@ def game_is_ready(request):
             if request.user.is_authenticated:
                 request.user.profile.last_mini_game = utc.localize(datetime.datetime.now()) + datetime.timedelta(minutes=30)
                 k = request.session['true_answers']
+                print(k)
                 request.user.profile.points = k * 10
                 request.user.save()
             else:
