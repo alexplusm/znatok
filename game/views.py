@@ -217,7 +217,7 @@ def game_is_ready(request):
             request.session['game_ready'] = 0
             game_is_ready_ = 0
             if request.user.is_authenticated:
-                request.user.profile.last_mini_game = datetime.datetime.now()
+                request.user.profile.last_mini_game = utc.localize(datetime.datetime.now()) + datetime.timedelta(minutes=30)
                 k = request.session['true_answers']
                 request.user.profile.points = k * 10
                 request.user.save()
@@ -234,7 +234,7 @@ def game_is_ready(request):
             request.session['game_ready'] = 0
             request.session['number_of_try'] = 1
             if request.user.is_authenticated:
-                request.user.profile.last_mini_game = datetime.datetime.now()
+                request.user.profile.last_mini_game = utc.localize(datetime.datetime.now()) + datetime.timedelta(minutes=30)
                 k = request.session['true_answers']
                 request.user.profile.points = k * 10
                 request.user.save()
@@ -244,11 +244,11 @@ def game_is_ready(request):
         if not game_is_ready_ == 1:
             time_now = utc.localize(datetime.datetime.now())
             if request.user.is_authenticated:
-                time_ = request.user.profile.last_mini_game + datetime.timedelta(minutes=30)
+                time_ = request.user.profile.last_mini_game
             else:
                 time_last_game = request.session['timer_end']
                 time = re.findall(r'\d*-\d*-\d* \d*:\d*:\d*', time_last_game)
-                time_ = datetime.datetime(int(time[0][0:4]), int(time[0][5:7]), int(time[0][8:10]), int(time[0][11:13]), int(time[0][14:16]), int(time[0][17:19]))
+                time_ = utc.localize(datetime.datetime(int(time[0][0:4]), int(time[0][5:7]), int(time[0][8:10]), int(time[0][11:13]), int(time[0][14:16]), int(time[0][17:19])))
 
             if time_now >= time_:
                 game_is_ready_ = 1
