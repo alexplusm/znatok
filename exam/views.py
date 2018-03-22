@@ -29,7 +29,7 @@ def load_question(request):
     if request.method == "GET" and request.is_ajax():
         number_of_ticket = request.GET["number_of_ticket"]
         number_of_question = request.GET["number_of_question"]
-        category = request.GET["category"]
+        category = int(request.GET["category"])
         question = Question.objects.\
             filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question, category=category)
         answers = random_answers(question)
@@ -42,35 +42,41 @@ def load_ticket(request):
         category = request.GET["category"]
         number_of_question = 1
         if request.user.is_authenticated:
-            results = request.user.result_set\
+            res = request.user.result_set\
                 .filter(question__number_of_ticket=number_of_ticket, question__category=category)\
                 .order_by('question__number_of_question')
-            res_list = list(results.values('user_answer', 'true_answer'))
-            r = results.filter(true_answer=None)
+            results = list(res.values('user_answer', 'true_answer'))
+            r = res.filter(true_answer=None)
             if r:
                 number_of_question = r.aggregate(Min('question__number_of_question')).get(
                     'question__number_of_question__min')
         else:
             if not request.session.get('results'):
-                request.session['results'] = []
-                for i in range(0, 20):
-                    request.session['results'].append({'user_answer': None, 'true_answer': None})
+                print('*')
+                request.session['results'] = {category: {number_of_ticket: [{'user_answer': None, 'true_answer': None} for _ in range(20)]}}
             else:
-                for res in request.session['results']:
-                    res['user_answer'] = None
-                    res['true_answer'] = None
-            res_list = request.session['results']
+                if category in request.session['results']:
+                    print('**')
+                    if number_of_ticket not in request.session['results'][category]:
+                        print('i ebal')
+                        request.session['results'][category][number_of_ticket] = [{'user_answer': None, 'true_answer': None} for _ in range(20)]
+                else:
+                    print('***')
+                    request.session['results'][category] = {number_of_ticket: [{'user_answer': None, 'true_answer': None}  for _ in range(20)]}
+            results = request.session['results'][category][number_of_ticket]
+            print(request.session['results'])
+
         question = Question.objects. \
             filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question, category=category)
         answers = random_answers(question)
-        return JsonResponse({'questions': list(question.values()), 'results': res_list,  'answers': answers}, safe=False)
+        return JsonResponse({'questions': list(question.values()), 'results': results,  'answers': answers}, safe=False)
 
 
 def check_answer(request):
     if request.method == "GET" and request.is_ajax():
         answer_by_user = request.GET["answer_by_user"]
         number_of_ticket = request.GET["number_of_ticket"]
-        number_of_question = request.GET["number_of_question"]
+        number_of_question = int(request.GET["number_of_question"])
         category = request.GET["category"]
         user = request.user
         obj = Question.objects.filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question, category=category)[0]
@@ -83,7 +89,8 @@ def check_answer(request):
             result.true_answer = true_answer
             result.save()
         else:
-            request.session['results'][int(number_of_question) - 1] = {'user_answer': answer_by_user, 'true_answer': true_answer}
+            request.session['results'][category][number_of_ticket][number_of_question - 1] = {'user_answer': answer_by_user, 'true_answer': true_answer}
+            request.session.modified = True
         if true_of_false:
             if user.is_authenticated:
                 user.profile.points += 1
