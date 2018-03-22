@@ -1,334 +1,185 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-</body>
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+<div class="conteiner" id="our_team">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-3 ml-auto text-center">
+            <ul class="list-unstyled nav navleft" style="padding-bottom: 2em;">
+              <li class="nav-item3"><a class="nav-link navitem3 text-uppercase active">настройки</a></li>
+              <li class="nav-item3 top"><a class="nav-link text-uppercase navitem3">достижения</a></li>
+              <li class="nav-item3 top"><a class="nav-link text-uppercase navitem3">сообщения</a></li>
+              <li class="nav-item3 top"><a class="nav-link text-uppercase navitem3">счета</a></li>
+              <li class="nav-item3 top"><a class="nav-link text-uppercase navitem3">покупки</a></li>
+              <li class="nav-item3 top"><a class="nav-link text-uppercase navitem3">розыгрыши</a></li>
+            </ul>
+      </div>
+      <div class="col-7 mr-auto">
+        <div class="row">
+          <div class="col-12 card card-grey text-uppercase text-center cardblock" id="profile">
+            <div class="card-block">
+              <div class="card-title mb-3 mt-3">
+                <span>Личная информация</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <br>
+            <div class="row" id="profile-body">
+              <div class="col-3 text-center">
+                <img src="/media/{{user.profile.user_avatar}}" width="100%" />
+              </div>
+              <div class="col-5">
+                <table class="topp">
+                  <tbody>
+                    <tr>
+                      <th class="text-right" scope="row">Имя:</th>
+                      <td class="card" style="border-radius: 7px;">
+                        <div>{{user.username}}</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="text-right" scope="row">Город:</th>
+                      <td class="card" style="border-radius: 7px;"><div>{{user.profile.city}}</div></td>
+                    </tr>
+                    <tr>
+                      <th class="text-right" scope="row">Дата рождения:</th>
+                      <td class="card" style="border-radius: 7px;"><div>{{user.profile.birthday}}</div></td>
+                    </tr>
+                    <tr>
+                      <th class="text-right" scope="row">E-mail:</th>
+                      <td class="card" style="border-radius: 7px;"><div>{{user.email}}</div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-4 text-center">
+                <p>Для участия в розыгрыше призов вам должно быть не менее 18 лет.</p>
+                <p>При получении приза, указанные здесь данные, должны совпадать с паспортными данными.</p><br>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 card card-grey text-uppercase text-center cardblock" id="social">
+            <div class="card-block">
+              <div class="card-title mb-3 mt-3">
+                <span>Социальные сети</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 text-center imga">
+            <br>
+            <div id="social-body">
+              <p>Привяжите аккаунты своих социальных сетей для быстрого входа</p>
+              <i class="fa fa-vk"></i>
+              <i class="fa fa-facebook-official"></i>
+              <i class="fa fa-odnoklassniki"></i>
+              <i class="fa fa-google-plus"></i>
+              <i class="fa fa-yahoo"></i>
+              <br><br><br>
+            </div>
+          </div>
+          <div class="col-12 card card-grey text-uppercase text-center cardblock" id="security">
+            <div class="card-block">
+              <div class="card-title mb-3 mt-3">
+                <span>Безопасность</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12" style="font-size: 0.8em;">
+            <br>
+            <div class="row" id="security-body">
+              <div class="col-6">
+                <table>
+                  <tbody>
+                    <tr>
+                      <th class="text-right" scope="row">Старый пароль:</th>
+                      <td class="card"><div>пароль</div></td>
+                    </tr>
+                    <tr>
+                      <th class="text-right" scope="row">Новый пароль:</th>
+                      <td class="card"><div>пароль</div></td>
+                    </tr>
+                    <tr>
+                      <th class="text-right" scope="row">Подтвредите новый пароль:</th>
+                      <td class="card"><div>пароль</div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-6">
+                <p>Последний раз пароль менялся <span class="text-danger">12.12.12</span></p>
+                <p>Предыдущее посещение <span class="text-primary">{{user.last_login}}</span></p>
+                <p>Двухкратная аутентификация</p>
+                <br><br>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 card card-grey text-uppercase text-center cardblock" id="other">
+            <div class="card-block">
+              <div class="card-title mb-3 mt-3">
+                <span>Прочее</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 text-center">
+            <br>
+            <div class="row" id="other-body">
+              <div class="col-6">
+                <div class="btn btn-danger text-uppercase">Сброс статистики</div>
+              </div>
+              <div class="col-6">
+                <div class="btn btn-danger text-uppercase">Удалить аккаунт</div>
+              </div>
+            </div>
+          </div>
+          <br><br><br><br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
 <script>
-	  let number_of_game = 1;
-  let number_of_try = 5;
-  let skip_game = 0;
-  let list_skip_game = {};
-  let counter = 0;
-  let counter_skip = 0;
-  let user_answer = ['0', '0', '0'];
-
-
-  function commentsData(objects) {
-    for (let i = 0; i < objects.comments.length; i++) {
-      document.getElementById("js-user" + i).innerText = objects.comments[i].user;
-      document.getElementById("js-text" + i).innerText = objects.comments[i].text;
-      document.getElementById("js-date" + i).innerText = objects.comments[i].date.match(/\d*-\d*-\d*/g);
-      document.getElementById("js-city" + i).innerText = objects.comments[i].city;
-      document.getElementById("js-rating" + i).innerText = objects.comments[i].rating;
-      const element = document.getElementById('js-avatar' + i);
-      $(element).attr("src", objects.comments[i].avatar);
-    }
-  }
-  
-  function loadComments() {
-    $.ajax({
-      type: "GET",
-      url: "/get_comments/",
-      cache: false,
-      success: function(data){
-        commentsData(data);
-        }
-    });
-  }
-
-
-  function loadMiniGame() {
-    $.ajax({
-      type: "GET",
-      url: "/load_picture/",
-      data: {'number_of_game': number_of_game,
-             'number_of_try': number_of_try,
-             'skip_game': skip_game},
-      cache: false,
-      success: function(data){
-        $('.game-is-ready').show();
-        miniGame(data);
-        }
-    });
-  }
-
-  function checkStageMiniGame() {
-    $.ajax({
-
-      type: "GET",
-
-      url: "/check_game_is_ready/",
-
-      cache: false,
-
-      success: function(data){
-        if (data.mini_game_is_ready) {
-         loadMiniGame();
-        } else {
-          miniGameNotReady(data.time_now);
-        }
-      }
-    });
-  }
-
-  function miniGameNotReady(time) {
-    let constTime;
-    $('.js-game-ready').hide();
-    $('.js-game-not-ready').show();
-
-    if (Object.prototype.toString.call(time) === '[object Object]') {
-      constTime = '29:59';
-    } else {
-      constTime = time.match(/\d*M\d*/g).toString().replace('M', ':');
-    }
-
-    function startTimer(timer) {
-      if (timer !== undefined) {
-        document.getElementById('js-timer').innerText = timer;
-      }
-      const elem = document.getElementById('js-timer');
-      let tim = elem.innerText;
-      let min = tim[0] + tim[1];
-      let seconds = tim[3] + tim[4];
-
-      if (seconds === '00') {
-        if (min === '00') {
-          checkStageMiniGame();
-        }
-        min -= 1;
-        seconds = '59';
-        if (min < '10') min = '0' + min;
-        console.log(seconds);
-      } else {
-        seconds -= 1;
-      }
-      if (seconds < 10) {
-        seconds = '0' + seconds;
-      }
-      elem.innerHTML = min + ':' + seconds;
-      setTimeout(startTimer, 1000);
-    }
-
-    startTimer(constTime);
-  }
-
-  function miniGame(data) {
-    $('.js-game-not-ready').hide();
-    $('.js-game-ready').show();
-    counter = 0;
-    $(".tic").removeClass("act");
-    document.getElementById('mini-question').innerHTML = data.quest;
-    $('#1mini').attr("src", "/media/" + data.pictures[0].url);
-    $('#2mini').attr("src", "/media/" + data.pictures[1].url);
-    $('#3mini').attr("src", "/media/" + data.pictures[2].url);
-    $('#4mini').attr("src", "/media/" + data.pictures[3].url);
-    $('#5mini').attr("src", "/media/" + data.pictures[4].url);
-    $('#6mini').attr("src", "/media/" + data.pictures[5].url);
-    $('#7mini').attr("src", "/media/" + data.pictures[6].url);
-    $('#8mini').attr("src", "/media/" + data.pictures[7].url);
-    document.getElementById('try-number').innerHTML = data.number_of_try;
-  }
-
-  $(".tic").click(function(){
-    let id = $(this).attr("id");
-    let e = document.getElementById(id);
-    playerAction(e,id);
-  });
-
-  function skipGame() {
-    skip_game = number_of_game;
-    list_skip_game[counter_skip] = skip_game;
-    counter_skip++;
-    if ((skip_game === 4) && (list_skip_game[0] !== 4)) {
-      number_of_game = list_skip_game[0];
-      number_of_game -= 1;
-    } else if ((skip_game === 4) && (list_skip_game[0] === 4)) {
-      number_of_game -= 1;
-    }
-    nextGame();
-  }
-
-  function nextGame() {
-    number_of_game++;
-    number_of_try--;
-    if (number_of_try === 0) {
-        $.ajax({
-
-                type: "GET",
-
-                url: "/set_timer_for_mini_game/",
-
-                cache: false,
-
-                success: function(data){
-                  miniGameNotReady(data);
-                }
-              });
-    } else {
-      if ((number_of_game <= 4) && (number_of_try !== 0)) {
-        $.ajax({
-          type: "GET",
-
-          url: "/load_picture/",
-
-          data: { 'number_of_game': number_of_game,
-                  'number_of_try': number_of_try,
-                  'skip_game': skip_game},
-
-          cache: false,
-
-          success: function(data){
-            miniGame(data);
-          }
-        });
-      }
-    }
-  }
-
-  function next_game_after_first_loop() {
-    number_of_game = skip_game;
-    if (number_of_try === 0) {
-        $.ajax({
-
-                type: "GET",
-
-                url: "/set_timer_for_mini_game/",
-
-                cache: false,
-
-                success: function(data){
-                  miniGameNotReady(data);
-                }
-              });
-    } else {
-      if ((number_of_game <= 4) && (number_of_try !== 0)) {
-        $.ajax({
-          type: "GET",
-
-          url: "/load_picture/",
-
-          data: { 'number_of_game': number_of_game,
-                  'number_of_try': number_of_try,
-                  'skip_game': skip_game},
-
-          cache: false,
-
-          success: function(data){
-            miniGame(data);
-          }
-        });
-      }
-    }
-  }
-
-  function playerAction(elem, id) {
-    if ($(elem).hasClass("act")) {
-      $(elem).removeClass("act");
-      user_answer[counter] = '0';
-      counter--;
-    } else if (counter < 3) {
-      $(elem).addClass("act");
-      user_answer[counter] = parseInt(id,10);
-      counter++;
-    }
-    if (counter === 3) {
-      $.ajax({
-
-        type: "GET",
-
-        url: "/check_answer_for_game/",
-
-        data: { 'user_answer1': user_answer[0],
-                'user_answer2': user_answer[1],
-                'user_answer3': user_answer[2]},
-
-        dataType: 'json',
-
-        cache: false,
-
-        success: function (data) {
-          if (data.bool) {
-            $.ajax({
-
-              type: "GET",
-
-              url: "/check_points_for_game/",
-
-              cache: false,
-
-              success: function(data){
-                document.getElementById('bonus').innerHTML = data.points;
-                document.getElementById('bonus1').innerHTML = data.points;
-                if ((number_of_game === 4) && (number_of_try !== 0) && (skip_game === 0)) {
-                  $.ajax({
-
-                    type: "GET",
-
-                    url: "/set_timer_for_mini_game/",
-
-                    cache: false,
-
-                    success: function(data){
-                      miniGameNotReady(data);
-                    }
-                  });
-                }
-                else if ((number_of_game === 4) && (number_of_try === 0) && (skip_game !== 0)) {
-                  next_game_after_first_loop();
-                }
-                else {
-                  nextGame();
-                }
-              }
-            });
-          } else {
-            number_of_try--;
-            if (number_of_try === 0) {
-              $.ajax({
-
-                type: "GET",
-
-                url: "/set_timer_for_mini_game/",
-
-                cache: false,
-
-                success: function(data){
-                  miniGameNotReady(data);
-                }
-              });
-            } else {
-              $.ajax({
-
-                type: "GET",
-
-                url: "/load_picture/",
-
-                data: { 'number_of_game': number_of_game,
-                        'number_of_try': number_of_try,
-                        'skip_game': skip_game},
-
-                cache: false,
-
-                success: function(data){
-                  miniGame(data);
-                }
-              });
-            }
-          }
-        }
-      });
-    }
+  function isHide(elem) {
+    if($(elem).attr("style") === 'display: none;') {
+      return true;
+    } else return false;
   }
 
   $(document).ready(function() {
-    checkStageMiniGame();
-    loadComments();
+    $(".cardblock").click(function () {
+      let id = $(this).attr("id");
+      let element;
+      switch(id) {
+        case "profile":
+        element = $(document.getElementById("profile-body"));
+        if (isHide(element)) {
+          element.show();
+        } else element.hide();
+        break;
+        case "security":
+        element = $(document.getElementById("security-body"));
+        if (isHide(element)) {
+          element.show();
+        } else element.hide();
+        break;
+        case "social":
+        element = $(document.getElementById("social-body"));
+        if (isHide(element)) {
+          element.show();
+        } else element.hide();
+        break;
+        case "other":
+        element = $(document.getElementById("other-body"));
+        if (isHide(element)) {
+          element.show();
+        } else element.hide();
+        break;
+      }
+    });
   });
-  </script>
-
 </script>
-</html>
-
+{% endblock %}
