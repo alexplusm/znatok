@@ -5820,8 +5820,8 @@ td.visible-print {
   }
 }
 body {
-  min-width: 1260px;
   max-width: 1920px;
+  min-width: 1260px;
   font-family: 'Open Sans', Arial, sans-serif !important;
   -webkit-font-smoothing: antialiased;
 }

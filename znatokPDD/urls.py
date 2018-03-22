@@ -73,10 +73,11 @@ urlpatterns = [
     url(r'check_results/$', exam_views.check_results, name='check_results'),
 
     url(r'load_picture/$', game_views.load_picture, name='load_picture'),
+    url(r'next_mini_game/$', game_views.next_mini_game, name='next_mini_game'),
+    url(r'reload_mini_game/$', game_views.reload_mini_game, name='reload_mini_game'),
+    url(r'skip_mini_game/$', game_views.skip_mini_game, name='skip_mini_game'),
     url(r'check_answer_for_game/$', game_views.check_answer_for_game, name='check_answer_for_game'),
-    url(r'check_points_for_game/$', game_views.check_points_for_game, name='check_points_for_game'),
     url(r'check_game_is_ready/$', game_views.game_is_ready, name='game_is_ready'),
-    url(r'set_timer_for_mini_game/$', game_views.set_timer, name='set_timer'),
 
     url(r'get_comments/$', comments_views.load_comments, name='get_comments'),
     url(r'get_leaders/$', comments_views.get_leaders, name='get_leaders'),

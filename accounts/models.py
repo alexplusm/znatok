@@ -22,6 +22,7 @@ class Profile(models.Model):
     user_avatar = models.ImageField(upload_to='profile_avatar/', default='profile_avatar/default.png', blank=False)
     birthday = models.CharField(max_length=250, blank=True)
     city = models.CharField(max_length=250, blank=True)
+    last_mini_game = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return "profile: {}".format(self.user)
