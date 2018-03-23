@@ -432,7 +432,7 @@
     $('.js-game-not-ready').hide();
     $('.js-game-ready').show();
     $(".tic").removeClass("act");
-    document.getElementById('mini-question').innerHTML = data.pictures[8].question;
+    document.getElementById('mini-question').textContent = data.pictures[8].question;
     $('#0mini').attr("src", "/media/" + data.pictures[0].url);
     $('#1mini').attr("src", "/media/" + data.pictures[1].url);
     $('#2mini').attr("src", "/media/" + data.pictures[2].url);
@@ -441,7 +441,7 @@
     $('#5mini').attr("src", "/media/" + data.pictures[5].url);
     $('#6mini').attr("src", "/media/" + data.pictures[6].url);
     $('#7mini').attr("src", "/media/" + data.pictures[7].url);
-    document.getElementById('try-number').innerHTML = data.number_of_try - 2;
+    document.getElementById('try-number').textContent = data.number_of_try - 2;
   }
 
   function skipGame() {
@@ -517,8 +517,8 @@
               cache: false,
 
               success: function (data) {
-                document.getElementById('bonus').innerHTML = data.points;
-                document.getElementById('bonus1').innerHTML = data.points;
+                document.getElementById('bonus').textContent = data.points;
+                document.getElementById('bonus1').textContent = data.points;
               }
             });
 
@@ -596,7 +596,7 @@
       if (seconds < 10) {
         seconds = '0' + seconds;
       }
-      elem.innerHTML = min + ':' + seconds;
+      elem.textContent = min + ':' + seconds;
       setTimeout(startTimer, 1000);
     }
     startTimer(constTime);
@@ -753,8 +753,8 @@
         cache: false,
 
         success: function (data) {
-          document.getElementById('bonus').innerHTML = data.points;
-          document.getElementById('bonus1').innerHTML = data.points;
+          document.getElementById('bonus').textContent = data.points;
+          document.getElementById('bonus1').textContent = data.points;
         }
     });
 

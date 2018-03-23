@@ -842,33 +842,33 @@ $(".btn_for_online").click(function(){
 function changeData(data) {
 	
     $(".answbtn").removeClass("btn-success btn-danger");
-    document.getElementById('quest').innerHTML = data.questions[0].question;
+    document.getElementById('quest').textContent = data.questions[0].question;
     $('.imgquestion').attr("src", "/media/" + data.questions[0].picture);
-    document.getElementById('help-text').innerHTML = data.questions[0].comment_for_question;
-    document.getElementById('answer1').innerHTML = data.answers[0];
-    document.getElementById('answer2').innerHTML = data.answers[1];
+    document.getElementById('help-text').textContent = data.questions[0].comment_for_question;
+    document.getElementById('answer1').textContent = data.answers[0];
+    document.getElementById('answer2').textContent = data.answers[1];
     if (data.answers[2]) {
-        document.getElementById('answer3').innerHTML = data.answers[2];
+        document.getElementById('answer3').textContent = data.answers[2];
         $('#answer3').show();
     }
     else $('#answer3').hide();
     if (data.answers[3]) {
-        document.getElementById('answer4').innerHTML = data.answers[3];
+        document.getElementById('answer4').textContent = data.answers[3];
         $('#answer4').show();
     }
     else $('#answer4').hide();
     if (data.answers[4]) {
-        document.getElementById('answer5').innerHTML = data.answers[4];
+        document.getElementById('answer5').textContent = data.answers[4];
         $('#answer5').show();
     }
     else $('#answer5').hide();
 
 
     if (res[number_of_question - 1].user_answer) {
-        var t_answ = getElementByClassAndInnerHtml("answbtn", res[number_of_question - 1].true_answer);
+        var t_answ = getElementByClassAndtextContent("answbtn", res[number_of_question - 1].true_answer);
         $(t_answ).addClass('btn-success');
         if (res[number_of_question - 1].true_answer !== res[number_of_question -1].user_answer) {
-            var u_answ = getElementByClassAndInnerHtml("answbtn", res[number_of_question - 1].user_answer);
+            var u_answ = getElementByClassAndtextContent("answbtn", res[number_of_question - 1].user_answer);
             $(u_answ).addClass('btn-danger');
         }
         $('.answbtn').addClass('disabled');
@@ -892,10 +892,10 @@ function changeData(data) {
     }
 }
 
-function getElementByClassAndInnerHtml(className, text) {
+function getElementByClassAndtextContent(className, text) {
     var elements = document.getElementsByClassName(className);
     for (var i = 0; i < elements.length; i++) {
-        if (elements[i].innerHTML === text)
+        if (elements[i].textContent === text)
             return elements[i];
     }
 }
@@ -1008,8 +1008,8 @@ function checkAnsw(answbtn) {
                 cache: false,
 
                 success: function (data) {
-                    document.getElementById('bonus').innerHTML = data.points;
-                    document.getElementById('bonus1').innerHTML = data.points;
+                    document.getElementById('bonus').textContent = data.points;
+                    document.getElementById('bonus1').textContent = data.points;
                 }
             });
 
@@ -1017,7 +1017,7 @@ function checkAnsw(answbtn) {
                 $(answbtn).addClass("btn-success");
             } else {
                 $(answbtn).addClass("btn-danger");
-                var true_answbtn = getElementByClassAndInnerHtml("answbtn", data.true_answer);
+                var true_answbtn = getElementByClassAndtextContent("answbtn", data.true_answer);
                 $(true_answbtn).addClass("btn-success");
             }
             $('.answbtn').addClass("disabled");
