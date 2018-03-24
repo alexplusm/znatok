@@ -81,7 +81,7 @@ function playerAction(elem, id) {
 
       success: function (data) {
         if (data.bool) {
-          $('.js-alert-success').show();
+          $('.js-alert-success').addClass('game__alert_opacity-1');
           $.ajax({
 
             type: "GET",
@@ -109,14 +109,14 @@ function playerAction(elem, id) {
               cache: false,
 
               success: function (data) {
-                $('.js-alert-success').hide();
+                $('.js-alert-success').removeClass('game__alert_opacity-1');
                 checkStageMiniGame();
               }
             });
-           }, 500)
+           }, 1000)
          
         } else {
-          $('.js-alert-error').show();
+          $('.js-alert-error').addClass('game__alert_opacity-1');
           setTimeout(() => {
             $.ajax({
 
@@ -129,11 +129,11 @@ function playerAction(elem, id) {
               cache: false,
 
               success: function (data) {
-                $('.js-alert-error').hide();
+                $('.js-alert-error').removeClass('game__alert_opacity-1');
                 checkStageMiniGame();
               }
             });
-          }, 500)
+          }, 1000)
           
         }
       }

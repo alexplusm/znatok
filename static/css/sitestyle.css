@@ -5911,14 +5911,25 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: blue;
+  color: #000099;
   font-size: 1.5em;
+  cursor: pointer;
 }
 #game .game__skip-game:hover {
-  color: #000099;
+  color: blue;
 }
 #game .game__block-quest {
   padding-bottom: 2%;
+}
+#game .game__alert_opacity-1 {
+  opacity: 1 !important;
+  transition: 0.2s ease-out;
+}
+#game .game__alert {
+  opacity: 0;
+  position: absolute;
+  width: 50%;
+  transform: translateY(-30%);
 }
 #our_team #avatar {
   width: 70%;
@@ -6458,18 +6469,4 @@ body {
   width: 100%;
   position: absolute;
   transform: translate(-40%, 50%);
-}
-.js-alert-success {
-  display: none;
-  position: absolute;
-  width: 50%;
-  transform: translateY(-30%);
-  transition: 1s ease-out 0.5s;
-}
-.js-alert-error {
-  display: none;
-  position: absolute;
-  width: 50%;
-  transform: translateY(-30%);
-  transition: 1s ease-out 0.5s;
 }

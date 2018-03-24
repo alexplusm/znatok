@@ -43,7 +43,7 @@
             <div class="col-2 mr-auto ml-auto">
               <a href="/"><img src="{% static 'img/logo.gif' %}" class="logo"/></a>
             </div>
-              <div class="col-5 ml-auto" id="game">
+              <div class="col-6 ml-auto" id="game">
               {% block game %}
                   <ul class="list-unstyled">
                     <li class="gameresult js-game-ready" style="display: none;">
@@ -70,15 +70,15 @@
                       <div class="col-12 text-right text-muted">Попыток осталось: <span class="text-dark" id="try-number"></span></div>
                       
                     </li>
-                    <div class="col-6 ml-auto mr-auto game-not-ready text-center js-game-not-ready" style="display: none;">
+                    <div class="col-6 ml-auto mr-auto game-not-ready text-center js-game-not-ready">
                       <div class="text-primary">
                         <i>Следующие задания станут доступны через <strong id="js-timer"></strong></i>
                       </div>
                     </div>
-                    <div class="alert alert-success js-alert-success" role="alert">
+                    <div class="alert alert-success js-alert-success game__alert" role="alert">
                       <i>Вы ответили правильно</i>
                     </div>
-                    <div class="alert alert-danger js-alert-error" role="alert">
+                    <div class="alert alert-danger js-alert-error game__alert" role="alert">
                       <i>Вы ответили не правильно</i>
                     </div>
             {% endblock %}
@@ -211,7 +211,7 @@
         <div class="col-12">
           <div class="row back">
             <div class="col-1 ml-auto">
-              <img src="https://vevents.ru/img/reno.png" class="logoreno" />
+              <img src="http://pluspng.com/img-png/renault-logo-vector-png--1600.png" class="logoreno" />
             </div>
             <div class="col-6">
               <div class="col-12 text">
@@ -419,7 +419,6 @@
   {% endif %}
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-  <script type="text/javascript" src="{% static '/js/jquery.cookie.js' %}"></script>
 
   <script src="{% static 'js/base.js' %}"></script>
 
