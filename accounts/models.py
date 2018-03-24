@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from exam.models import Question
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from time import timezone
+from django.utils import timezone
 
 
 class Result(models.Model):
