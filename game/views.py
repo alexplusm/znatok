@@ -113,12 +113,28 @@ def generatePictures(number_of_game, request):
 def load_picture(request):
     if request.method == "GET" and request.is_ajax():
         if not request.session.get('number_of_game'):
-            request.session['number_of_game'] = 1
-            request.session['number_of_try'] = 6
-            request.session['skip_game'] = []
-            request.session['true_answers'] = 0
-            request.session['timer_end'] = 0
-            request.session['game_ready'] = 1
+            time_now = utc.localize(datetime.datetime.now())
+            if request.user.is_authenticated:
+                time_ = request.user.profile.last_mini_game
+                if time_now >= time_:
+                    request.session['number_of_game'] = 1
+                    request.session['number_of_try'] = 6
+                    request.session['skip_game'] = []
+                    request.session['true_answers'] = 0
+                    request.session['timer_end'] = 0
+                    request.session['game_ready'] = 1
+                    print('shas ochko sgorit')
+                else:
+                    return JsonResponse({'pictures': 0, 'number_of_try': time_ - time_now}, safe=False)
+            else:
+                request.session['number_of_game'] = 1
+                request.session['number_of_try'] = 6
+                request.session['skip_game'] = []
+                request.session['true_answers'] = 0
+                request.session['timer_end'] = 0
+                request.session['game_ready'] = 1
+                print('asdasfnjm')
+
         game_number = request.session['number_of_game']
         try_number = request.session['number_of_try']
         pictures = generatePictures(game_number, request)
@@ -199,44 +215,58 @@ def check_answer_for_game(request):
 def game_is_ready(request):
     if request.method == "GET" and request.is_ajax():
         ret_time = None
+        print(request.user)
         if not request.session.get('number_of_game'):
-            request.session['number_of_game'] = 1
-            request.session['number_of_try'] = 6
-            request.session['skip_game'] = []
-            request.session['true_answers'] = 0
-            request.session['timer_end'] = 0
-            request.session['game_ready'] = 1
-
-        game_is_ready_ = request.session['game_ready']
+            time_now = utc.localize(datetime.datetime.now())
+            print(request.user)
+            if request.user.is_authenticated:
+                time_ = request.user.profile.last_mini_game
+                if time_now >= time_:
+                    request.session['number_of_game'] = 1
+                    request.session['number_of_try'] = 6
+                    request.session['skip_game'] = []
+                    request.session['true_answers'] = 0
+                    request.session['timer_end'] = 0
+                    request.session['game_ready'] = 1
+                    print('shas ochko sgorit2')
+                else:
+                    print('shas ochko sgorit2.3')
+                    return JsonResponse({'mini_game_is_ready': 0, 'timer': time_ - time_now})
+            else:
+                request.session['number_of_game'] = 1
+                request.session['number_of_try'] = 6
+                request.session['skip_game'] = []
+                request.session['true_answers'] = 0
+                request.session['timer_end'] = 0
+                request.session['game_ready'] = 1
+                print('shas ochko sgorit3')
 
         if request.user.is_authenticated:
             time_now = utc.localize(datetime.datetime.now())
             time_ = request.user.profile.last_mini_game
 
-            if time_now >= time_:
+            if time_now >= time_ and request.session['timer_end'] == 0:
                 game_is_ready_ = 1
                 request.session['game_ready'] = 1
                 request.session['number_of_game'] = 1
                 request.session['number_of_try'] = 6
                 request.session['skip_game'] = []
                 request.session['true_answers'] = 0
-                request.session['timer_end'] = 0
-            else:
-                game_is_ready_ = 0
-                request.session['game_ready'] = 0
+                request.session['timer_end'] = 1
 
         game_skip = request.session['skip_game']
         game_number = request.session['number_of_game']
         game_try = request.session['number_of_try']
+        game_is_ready_ = request.session['game_ready']
 
         # Проверка на количество попыток
         if game_is_ready_ == 1 and game_try == 1:
             request.session['game_ready'] = 0
             game_is_ready_ = 0
             if request.user.is_authenticated:
-                request.user.profile.last_mini_game = utc.localize(datetime.datetime.now()) + datetime.timedelta(minutes=30)
+                request.user.profile.last_mini_game = utc.localize(datetime.datetime.now()) + datetime.timedelta(minutes=1)
                 k = request.session['true_answers']
-                request.user.profile.points = k * 10
+                request.user.profile.points += k * 10
                 request.user.save()
             else:
                 request.session['timer_end'] = str(datetime.datetime.now() + datetime.timedelta(minutes=30))
@@ -251,12 +281,12 @@ def game_is_ready(request):
             request.session['game_ready'] = 0
             request.session['number_of_try'] = 1
             if request.user.is_authenticated:
-                request.user.profile.last_mini_game = utc.localize(datetime.datetime.now()) + datetime.timedelta(minutes=30)
+                request.user.profile.last_mini_game = utc.localize(datetime.datetime.now()) + datetime.timedelta(minutes=1)
                 k = request.session['true_answers']
-                print(k)
-                request.user.profile.points = k * 10
+                request.user.profile.points += k * 10
                 request.user.save()
             else:
+                print('asd')
                 request.session['timer_end'] = str(datetime.datetime.now() + datetime.timedelta(minutes=30))
 
         if not game_is_ready_ == 1:
@@ -264,6 +294,7 @@ def game_is_ready(request):
             if request.user.is_authenticated:
                 time_ = request.user.profile.last_mini_game
             else:
+                print(';')
                 time_last_game = request.session['timer_end']
                 time = re.findall(r'\d*-\d*-\d* \d*:\d*:\d*', time_last_game)
                 time_ = utc.localize(datetime.datetime(int(time[0][0:4]), int(time[0][5:7]), int(time[0][8:10]), int(time[0][11:13]), int(time[0][14:16]), int(time[0][17:19])))
@@ -278,56 +309,8 @@ def game_is_ready(request):
             else:
                 game_is_ready_ = 0
                 request.session['game_ready'] = 0
+                request.session['skip_game'] = []
+                request.session['number_of_try'] = 1
                 ret_time = time_ - time_now
 
         return JsonResponse({'mini_game_is_ready': game_is_ready_, 'timer': ret_time})
-
-
-        # time_now = utc.localize(datetime.datetime.now())
-
-        # if request.user.is_authenticated:
-        #     time_ = request.user.profile.last_mini_game
-        # else:
-        #     pass
-        # if not request.session.get('timer'):
-        #     game_is_ready_ = True
-        #     ret_time = 0
-        #     return JsonResponse({'mini_game_is_ready': game_is_ready_})
-        # time_last_game = request.session['timer']
-        # time = re.findall(r'\d*-\d*-\d* \d*:\d*:\d*', time_last_game)
-        # time_ = datetime.datetime(int(time[0][0:4]), int(time[0][5:7]), int(time[0][8:10]), int(time[0][11:13]), int(time[0][14:16]), int(time[0][17:19]))
-
-        # if time_now >= time_ and game_is_ready_:
-        #     request.session['number_of_game'] = 1
-        #     request.session['number_of_try'] = 6
-        #     request.session['skip_game'] = []
-
-        #     if not request.user.is_authenticated:
-        #         request.session['timer'] = 0
-            
-        #     game_is_ready_ = True
-        #     ret_time = 0
-        # else:
-        #     game_is_ready_ = False
-        #     ret_time = time_ - time_now
-        #     return JsonResponse({'timer': ret_time})
-
-
-        
-
-        
-        #     timer_end = datetime.datetime.now() + datetime.timedelta(minutes=30)
-        #     if request.user.is_authenticated:
-        #         request.user.profile.last_mini_game = timer_end
-        #         request.user.save()
-        #     else:
-        #         request.session['timer'] = str(timer_end)
-
-        
-        #     timer_end = datetime.datetime.now() + datetime.timedelta(minutes=30)
-        #     if request.user.is_authenticated:
-        #         request.user.profile.last_mini_game = timer_end
-        #         request.user.save()
-        #     else:
-        #         request.session['timer'] = str(timer_end)
-        

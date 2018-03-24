@@ -559,7 +559,7 @@
        <div class="col-2 mr-auto" id="leadres">
         <div class="row">
          <div class="col-12 w2">
-          <div class="text-uppercase" style="color: blue; font-size: 15px;">Лидеры недели</div>
+          <h4 class="text-uppercase text-primary">Лидеры недели</h4>
           <div class="row padb" style="border-top: 1px solid lightgrey;">
            <div class="col-4">
             <img src="" class="js-leader-avatar0 leader-avatar" />
@@ -603,7 +603,7 @@
            </div>
            <div class="col-4">
             <div class="row">
-             <img src="{% static 'img/silver.png' %}" id="gold"/>
+             <img src="{% static 'img/silver.png' %}" id="gold" style="margin-top: -1px;"/>
             </div>
            </div>
            <div class="col-12 ml-auto text3">
@@ -632,14 +632,14 @@
            </div>
            <div class="col-4">
             <div class="row">
-             <img src="{% static 'img/bronze.png' %}" id="gold" style="margin-top: -4px;"/>
+             <img src="{% static 'img/bronze.png' %}" id="gold" style="margin-top: -3px;"/>
             </div>
            </div>
            <div class="col-12 ml-auto text3">
             <div class="row">
              <div class="col-4 ml-auto text-right">
               <span>Баллы</span>
- 			      </div>
+            </div>
              <div class="col-4">
               <span class="coinslid" id="js-leader-coins2"></span>
              </div>
@@ -756,16 +756,12 @@ function checkResult () {
         cache: false,
 
         success: function (data) {
-            console.log(data)
         	$(".progress").show();
             for (var i = 0; i <= 39; i++) {
                 if (data.results[i]) {
-                    var success = document.getElementById('success' + (i + 1));
-                    $(success).attr("style", "width: " + (data.results[i].true * 5) + '%');
-                    var danger = document.getElementById('danger' + (i + 1));
-                    $(danger).attr("style", "width: " + (data.results[i].false * 5) + '%');
-                    var secondary = document.getElementById('secondary' + (i + 1));
-                    $(secondary).attr("style", "width: " + (100 - (data.results[i].true + data.results[i].false) * 5) + '%');
+                    document.getElementById('success' + (i + 1)).style.width = (data.results[i].true * 5) + '%';
+                    document.getElementById('danger' + (i + 1)).style.width = (data.results[i].false * 5) + '%';
+                    document.getElementById('secondary' + (i + 1)).style.width = (100 - (data.results[i].true + data.results[i].false) * 5) + '%';
                 }
             }
         }
@@ -917,15 +913,12 @@ $('.btnticket').click(function() {
         cache: false,
 
         success: function (data) {
-            console.log(data);
             $('.btnticket').hide();
             $('.result').show();
             $('.btnquest-box1').show();
             number_of_question = data.questions[0].number_of_question
             res = data.results;
             changeData(data);
-            count_press.set(0);
-
         }
     });
 });
@@ -938,7 +931,6 @@ $(".btnquest").click(function () {
 
 $(".nextbtn").click(function () {
     if (number_of_question === 20) {
-        console.log(number_of_ticket);
         if (number_of_ticket != 40) {
             number_of_question = 1;
             number_of_ticket++;
@@ -957,7 +949,6 @@ $(".nextbtn").click(function () {
                 cache: false,
 
                 success: function (data) {
-                    console.log(data);
                     $('.btnticket').hide();
                     $('.result').show();
                     $('.btnquest-box1').show();
@@ -965,9 +956,6 @@ $(".nextbtn").click(function () {
                     number_of_question = data.questions[0].number_of_question
                     res = data.results;
                     changeData(data);
-                    count_press.set(0);
-
-
                 }
             });
         }
@@ -996,7 +984,6 @@ function checkAnsw(answbtn) {
         cache: false,
 
         success: function (data) {
-            console.log(data);
             $('.help-box').show();
 
             $.ajax({
@@ -1048,17 +1035,13 @@ function loadQuestion() {
         cache: false,
 
         success: function (data) {
-            console.log(data);
             changeData(data);
-            console.log(res);
         }
     });
 }
 
 function isHide(elem) {
-  if($(elem).attr("style") === 'display: none;') {
-    return true;
-  } else return false;
+  return (elem.style.display === 'none');
 }
 
 $("body").keydown(function(event) {

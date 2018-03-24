@@ -97,37 +97,44 @@ function playerAction(elem, id) {
               document.getElementById('bonus1').textContent = data.points;
             }
           });
+          setTimeout(() => {
+             $.ajax({
 
-          $.ajax({
+              type: "GET",
 
-            type: "GET",
+              url: "/next_mini_game/",
 
-            url: "/next_mini_game/",
+              dataType: 'json',
 
-            dataType: 'json',
+              cache: false,
 
-            cache: false,
-
-            success: function (data) {
-              checkStageMiniGame();
-            }
-          });
+              success: function (data) {
+                $('.js-alert-success').hide();
+                checkStageMiniGame();
+              }
+            });
+           }, 500)
+         
         } else {
           $('.js-alert-error').show();
-          $.ajax({
+          setTimeout(() => {
+            $.ajax({
 
-            type: "GET",
+              type: "GET",
 
-            url: "/reload_mini_game/",
+              url: "/reload_mini_game/",
 
-            dataType: 'json',
+              dataType: 'json',
 
-            cache: false,
+              cache: false,
 
-            success: function (data) {
-              checkStageMiniGame();
-            }
-          });
+              success: function (data) {
+                $('.js-alert-error').hide();
+                checkStageMiniGame();
+              }
+            });
+          }, 500)
+          
         }
       }
     });
@@ -190,7 +197,11 @@ function loadMiniGame() {
     cache: false,
 
     success: function (data) {
-      contentMiniGame(data);
+      if (data.pictures === 0) {
+        miniGameNotReady(data.number_of_try);
+      } else {
+        contentMiniGame(data);
+      }
     }
   });
 }
@@ -246,7 +257,9 @@ function checkStageMiniGame() {
 //     *****************************************
   $(document).ready(function() {
     loadComments();
-    checkStageMiniGame();
+    setTimeout(() => {
+      checkStageMiniGame();
+    }, 1000)
   });
   
   var counter_for_theory = 0;
