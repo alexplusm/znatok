@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import ugettext_lazy as _
+from .models import Profile
 
 
 User = get_user_model()
@@ -34,5 +35,23 @@ class RegistrationForm(UserCreationForm):
         ]
 
 
+class UserUpdateForm(forms.ModelForm):
+    first_name = forms.CharField(label='Имя', required=False)
+    last_name = forms.CharField(label='Фамилия', required=False)
+    username = forms.CharField(label='Логин', disabled=True)
+    email = forms.EmailField(disabled=True)
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email', 'username')
 
 
+class ProfileForm(forms.ModelForm):
+    birthday = forms.DateField(label='Дата рождения', widget=forms.DateInput(format='%d.%m.%Y'),
+                               help_text='Введите дату в формате дд.мм.гггг', required=False)#=forms.SelectDateWidget(years=range(1940, 2010)))
+    city = forms.CharField(label='Город', required=False)
+    user_avatar = forms.FileField(label='Изменить аватар', widget=forms.FileInput)
+
+    class Meta:
+        model = Profile
+        exclude = ('user', 'points',)

@@ -31,28 +31,16 @@
 								<img src="/media/{{user.profile.user_avatar}}" width="100%" />
 							</div>
 							<div class="col-5">
-								<table class="topp">
-									<tbody>
-										<tr>
-											<th class="text-right" scope="row">Имя:</th>
-											<td class="card" style="border-radius: 7px;">
-												<div>{{user.username}}</div>
-											</td>
-										</tr>
-										<tr>
-											<th class="text-right" scope="row">Город:</th>
-											<td class="card" style="border-radius: 7px;"><div>{{user.profile.city}}</div></td>
-										</tr>
-										<tr>
-											<th class="text-right" scope="row">Дата рождения:</th>
-											<td class="card" style="border-radius: 7px;"><div>{{user.profile.birthday}}</div></td>
-										</tr>
-										<tr>
-											<th class="text-right" scope="row">E-mail:</th>
-											<td class="card" style="border-radius: 7px;"><div>{{user.email}}</div></td>
-										</tr>
-									</tbody>
-								</table>
+								<div class="topp">
+                                    <form method="post" enctype="multipart/form-data" novalidate>
+                                        {% csrf_token %}
+                                        {% for form in forms %}
+                                            {% include 'includes/form.html' %}
+                                        {% endfor %}
+                                        <button type="submit" class="btn btn-primary btn-block">Сохранить профиль</button>
+                                    </form>
+                                <br>
+                                </div>
 							</div>
 							<div class="col-4 text-center">
 								<p>Для участия в розыгрыше призов вам должно быть не менее 18 лет.</p>
