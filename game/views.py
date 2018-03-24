@@ -123,7 +123,6 @@ def load_picture(request):
                     request.session['true_answers'] = 0
                     request.session['timer_end'] = 0
                     request.session['game_ready'] = 1
-                    print('shas ochko sgorit')
                 else:
                     return JsonResponse({'pictures': 0, 'number_of_try': time_ - time_now}, safe=False)
             else:
@@ -133,7 +132,6 @@ def load_picture(request):
                 request.session['true_answers'] = 0
                 request.session['timer_end'] = 0
                 request.session['game_ready'] = 1
-                print('asdasfnjm')
 
         game_number = request.session['number_of_game']
         try_number = request.session['number_of_try']
@@ -215,10 +213,9 @@ def check_answer_for_game(request):
 def game_is_ready(request):
     if request.method == "GET" and request.is_ajax():
         ret_time = None
-        print(request.user)
+        
         if not request.session.get('number_of_game'):
             time_now = utc.localize(datetime.datetime.now())
-            print(request.user)
             if request.user.is_authenticated:
                 time_ = request.user.profile.last_mini_game
                 if time_now >= time_:
@@ -228,9 +225,7 @@ def game_is_ready(request):
                     request.session['true_answers'] = 0
                     request.session['timer_end'] = 0
                     request.session['game_ready'] = 1
-                    print('shas ochko sgorit2')
                 else:
-                    print('shas ochko sgorit2.3')
                     return JsonResponse({'mini_game_is_ready': 0, 'timer': time_ - time_now})
             else:
                 request.session['number_of_game'] = 1
@@ -239,7 +234,6 @@ def game_is_ready(request):
                 request.session['true_answers'] = 0
                 request.session['timer_end'] = 0
                 request.session['game_ready'] = 1
-                print('shas ochko sgorit3')
 
         if request.user.is_authenticated:
             time_now = utc.localize(datetime.datetime.now())
@@ -253,6 +247,9 @@ def game_is_ready(request):
                 request.session['skip_game'] = []
                 request.session['true_answers'] = 0
                 request.session['timer_end'] = 1
+            elif request.session['timer_end'] == 0:
+                game_is_ready_ = 0
+                request.session['game_ready'] = 0
 
         game_skip = request.session['skip_game']
         game_number = request.session['number_of_game']
@@ -264,7 +261,7 @@ def game_is_ready(request):
             request.session['game_ready'] = 0
             game_is_ready_ = 0
             if request.user.is_authenticated:
-                request.user.profile.last_mini_game = utc.localize(datetime.datetime.now()) + datetime.timedelta(minutes=1)
+                request.user.profile.last_mini_game = utc.localize(datetime.datetime.now()) + datetime.timedelta(minutes=30)
                 k = request.session['true_answers']
                 request.user.profile.points += k * 10
                 request.user.save()
@@ -281,12 +278,11 @@ def game_is_ready(request):
             request.session['game_ready'] = 0
             request.session['number_of_try'] = 1
             if request.user.is_authenticated:
-                request.user.profile.last_mini_game = utc.localize(datetime.datetime.now()) + datetime.timedelta(minutes=1)
+                request.user.profile.last_mini_game = utc.localize(datetime.datetime.now()) + datetime.timedelta(minutes=30)
                 k = request.session['true_answers']
                 request.user.profile.points += k * 10
                 request.user.save()
             else:
-                print('asd')
                 request.session['timer_end'] = str(datetime.datetime.now() + datetime.timedelta(minutes=30))
 
         if not game_is_ready_ == 1:
@@ -294,7 +290,6 @@ def game_is_ready(request):
             if request.user.is_authenticated:
                 time_ = request.user.profile.last_mini_game
             else:
-                print(';')
                 time_last_game = request.session['timer_end']
                 time = re.findall(r'\d*-\d*-\d* \d*:\d*:\d*', time_last_game)
                 time_ = utc.localize(datetime.datetime(int(time[0][0:4]), int(time[0][5:7]), int(time[0][8:10]), int(time[0][11:13]), int(time[0][14:16]), int(time[0][17:19])))

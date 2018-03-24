@@ -257,9 +257,7 @@ function checkStageMiniGame() {
 //     *****************************************
   $(document).ready(function() {
     loadComments();
-    setTimeout(() => {
-      checkStageMiniGame();
-    }, 1000)
+    checkStageMiniGame();
   });
   
   var counter_for_theory = 0;
