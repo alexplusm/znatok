@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from exam.models import Question
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from time import timezone
 
 
 class Result(models.Model):
@@ -22,6 +23,7 @@ class Profile(models.Model):
     user_avatar = models.ImageField(upload_to='profile_avatar/', default='profile_avatar/default.png', blank=True)
     birthday = models.DateField(blank=True, null=True)
     city = models.CharField(max_length=50, blank=True, null=True)
+    last_mini_game = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return "profile: {}".format(self.user)
