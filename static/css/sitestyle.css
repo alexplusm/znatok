@@ -5820,8 +5820,8 @@ td.visible-print {
   }
 }
 body {
-  min-width: 1260px;
   max-width: 1920px;
+  min-width: 1260px;
   font-family: 'Open Sans', Arial, sans-serif !important;
   -webkit-font-smoothing: antialiased;
 }
@@ -5911,14 +5911,25 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: blue;
+  color: #000099;
   font-size: 1.5em;
+  cursor: pointer;
 }
 #game .game__skip-game:hover {
-  color: #000099;
+  color: blue;
 }
 #game .game__block-quest {
   padding-bottom: 2%;
+}
+#game .game__alert_opacity-1 {
+  opacity: 1 !important;
+  transition: 0.2s ease-out;
+}
+#game .game__alert {
+  opacity: 0;
+  position: absolute;
+  width: 50%;
+  transform: translateY(-30%);
 }
 #our_team #avatar {
   width: 70%;
@@ -5930,13 +5941,16 @@ body {
   cursor: pointer;
 }
 #gold {
-  opacity: 0.8;
-  transform: translateX(1em);
+  position: relative;
   width: 100%;
-  height: 80%;
+  height: 100%;
+  transform: translateX(25%);
+  padding-right: 1em;
+  opacity: 0.6;
 }
 #gold:hover {
   opacity: 1;
+  transition: 1s;
 }
 .background2 {
   background: url(/static/img/backonline.png);
@@ -5999,7 +6013,7 @@ body {
 }
 #maincontent .btnticket {
   min-width: calc(10%);
-  max-height: calc(10%);
+  min-height: calc(10%);
   padding-bottom: 1%;
   padding-top: 1%;
   background: #b4e6ff;
@@ -6065,9 +6079,9 @@ body {
 }
 #maincontent .padb {
   border-top: 1px solid lightgrey;
-  padding-bottom: 20px;
+  padding-bottom: 0.55em;
   padding-right: 20px;
-  margin-top: 20px;
+  margin-top: 17px;
 }
 #maincontent .text3 {
   margin-top: 20px;

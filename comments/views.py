@@ -10,7 +10,7 @@ import datetime
 
 
 def load_comments(request):
-    if request.method == "GET" and request.is_ajax():
+    if request.method == "GET":
         result, comment_4, comment_3, comment_2, comment_1 = [], [], [], [], []
         comment_5 = Comment.objects.filter(rating=5)[:3]
         for i in comment_5:
