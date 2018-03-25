@@ -31,7 +31,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     url(r'^$', auth_views.LoginView.as_view(template_name='home.html'), name='home'),
     url(r'^ourteam', TemplateView.as_view(template_name='our_team.html'), name='our_team'),
-    url(r'^profile', TemplateView.as_view(template_name='profile.html'), name='profile'),
+    url(r'^profile', views.profile, name='profile'),
     url(r'^signup/', views.signup, name='signup'),
     url(r'^logout/', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',

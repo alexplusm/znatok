@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import RegistrationForm
+from .forms import RegistrationForm, ProfileForm, UserUpdateForm
 from django.core.mail import send_mail
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
@@ -21,8 +21,6 @@ def signup(request):
             questions = Question.objects.all()
             results = (Result(user=user, question=question) for question in questions)
             Result.objects.bulk_create(results)
-            profile = Profile(user=user)
-            profile.save()
             domain = get_current_site(request).domain
             protocol = 'https' if request.is_secure() else 'http'
             message = render_to_string('active_email.html', {
@@ -54,3 +52,18 @@ def activate(request, uidb64, token):
         return redirect('confirm_done')
     else:
         return redirect('confirm_fail')
+
+
+def profile(request):
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('home')
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+
+    return render(request, 'profile.html', {'forms': [user_form, profile_form]})
