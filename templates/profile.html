@@ -143,10 +143,9 @@
 
 {% block javascript %}
 <script>
+
   function isHide(elem) {
-    if($(elem).attr("style") === 'display: none;') {
-      return true;
-    } else return false;
+    return elem.style.display === 'none';
   }
 
   $(document).ready(function() {
@@ -155,28 +154,28 @@
       let element;
       switch(id) {
         case "profile":
-        element = $(document.getElementById("profile-body"));
+        element = document.getElementById("profile-body");
         if (isHide(element)) {
-          element.show();
-        } else element.hide();
+          $(element).show();
+        } else $(element).hide();
         break;
         case "security":
-        element = $(document.getElementById("security-body"));
+        element = document.getElementById("security-body");
         if (isHide(element)) {
-          element.show();
-        } else element.hide();
+          $(element).show();
+        } else $(element).hide();
         break;
         case "social":
-        element = $(document.getElementById("social-body"));
+        element = document.getElementById("social-body");
         if (isHide(element)) {
-          element.show();
-        } else element.hide();
+          $(element).show();
+        } else $(element).hide();
         break;
         case "other":
-        element = $(document.getElementById("other-body"));
+        element = document.getElementById("other-body");
         if (isHide(element)) {
-          element.show();
-        } else element.hide();
+          $(element).show();
+        } else $(element).hide();
         break;
       }
     });

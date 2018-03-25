@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 
 
@@ -26,21 +26,23 @@ def load_comments(request):
         return JsonResponse({'comments': result}, safe=False)
 
 
-# def add_comments(request):
-#     if request.method == "POST" and request.is_ajax():
-#         comment_form = CommentForm(request.POST)
-#         if request.method == 'POST':
-#             formset = comment_form
-#             if formset.is_valid():
-#                 author = formset.save(commit=False)
-#                 comment = Comment(user=author.user)
-#                 comment.comment_text = author.comment_text
-#                 comment.pub_date = datetime.datetime.now()
-#                 comment.rating = author.rating
-#                 comment.save()
-#         else:
-#             formset = comment_form
-#         return render(request, "add_comment.html", {"formset": formset})
+def add_comments(request):
+    if request.method == "POST":
+      print(request.POST)
+        # comment_form = CommentForm(request.POST)
+        # if request.method == 'POST':
+        #     formset = comment_form
+        #     if formset.is_valid():
+        #         author = formset.save(commit=False)
+        #         comment = Comment(user=author.user)
+        #         comment.comment_text = author.comment_text
+        #         comment.pub_date = datetime.datetime.now()
+        #         comment.rating = author.rating
+        #         comment.save()
+        # else:
+        #     formset = comment_form
+        # return render(request, "add_comment.html", {"formset": formset})
+      return redirect('home')
 
 
 def to_json(comment):

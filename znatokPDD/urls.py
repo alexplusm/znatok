@@ -80,6 +80,7 @@ urlpatterns = [
     url(r'check_game_is_ready/$', game_views.game_is_ready, name='game_is_ready'),
 
     url(r'get_comments/$', comments_views.load_comments, name='get_comments'),
+    url(r'add_comments/$', comments_views.add_comments, name='add_comments'),
     url(r'get_leaders/$', comments_views.get_leaders, name='get_leaders'),
 
     # urls for exam app

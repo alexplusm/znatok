@@ -5825,12 +5825,12 @@ body {
   font-family: 'Open Sans', Arial, sans-serif !important;
   -webkit-font-smoothing: antialiased;
 }
-#modalLogin {
+.modal {
   position: absolute;
   margin-top: 100px;
   font-size: 15px;
 }
-#modalLogin .modal-header {
+.modal .modal-header {
   background: blue;
 }
 #signup {
@@ -6469,4 +6469,34 @@ body {
   width: 100%;
   position: absolute;
   transform: translate(-40%, 50%);
+}
+.cardblock {
+  cursor: pointer;
+}
+.form__star {
+  position: relative;
+  border: 0px;
+  height: 32px;
+  width: 160px;
+  background: url(/static/img/star.png);
+  cursor: pointer;
+}
+.form__star_yellow {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  position: absolute;
+  transform: translateX(-163px);
+  border: 0px;
+  width: 32px;
+  height: 32px;
+  background: url(/static/img/star.png);
+  filter: invert(100%) sepia() saturate(10000%) hue-rotate(0deg);
+  cursor: pointer;
+}
+.form__star_yellow:active:focus {
+  border: 0px;
+}
+.form__star:active:focus {
+  border: 0px;
 }

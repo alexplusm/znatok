@@ -232,49 +232,53 @@ function checkStageMiniGame() {
 //     *****************************************
 //     СКРИПТ ДЛЯ КОММЕНТАРИЕВ
 //     *****************************************
-  function commentsData(objects) {
-    for (let i = 0; i < objects.comments.length; i++) {
-      document.getElementById("js-user" + i).innerText = objects.comments[i].user;
-      document.getElementById("js-text" + i).innerText = objects.comments[i].text;
-      document.getElementById("js-date" + i).innerText = objects.comments[i].date.match(/\d*-\d*-\d*/g);
-      document.getElementById("js-city" + i).innerText = objects.comments[i].city;
-      document.getElementById("js-rating" + i).innerText = objects.comments[i].rating;
-      const element = document.getElementById('js-avatar' + i);
-      $(element).attr("src", objects.comments[i].avatar);
+function commentsData(objects) {
+  for (let i = 0; i < objects.comments.length; i++) {
+    document.getElementById("js-user" + i).innerText = objects.comments[i].user;
+    document.getElementById("js-text" + i).innerText = objects.comments[i].text;
+    document.getElementById("js-date" + i).innerText = objects.comments[i].date.match(/\d*-\d*-\d*/g);
+    document.getElementById("js-city" + i).innerText = objects.comments[i].city;
+    document.getElementById("js-rating" + i).innerText = objects.comments[i].rating;
+    const element = document.getElementById('js-avatar' + i);
+    $(element).attr("src", objects.comments[i].avatar);
+  }
+}
+
+function loadComments() {
+  $.ajax({
+    type: "GET",
+    url: "/get_comments/",
+    cache: false, 
+    success: function(data){
+      commentsData(data);
     }
-  }
-  
-  function loadComments() {
-    $.ajax({
-      type: "GET",
-      url: "/get_comments/",
-      cache: false,
-      success: function(data){
-        commentsData(data);
-      }
-    });
-  }
-//     *****************************************
-  $(document).ready(function() {
-    loadComments();
-    checkStageMiniGame();
   });
-  
-  var counter_for_theory = 0;
-  jQuery(document).ready(function($) {
-var
-  $window = $(window),
-  $target = $("#panelbody"),
-  $h = $target.offset().top;
-$window.on('scroll', function() {
-  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  if (scrollTop > $h) {
-    $("#panelbody1").addClass("show_block");
-  } else {
-    $("#panelbody1").removeClass("show_block");
-  }
-});
-});
+}
+
+function addComment() {
+  $("#modalComment").modal();
+}
+
+
+//     *****************************************
+function checkPoints() {
+  $.ajax({
+
+      type: "GET",
+
+      url: "/check_points/",
+
+      cache: false,
+
+      success: function (data) {
+        document.getElementById('bonus').textContent = data.points;
+        document.getElementById('bonus1').textContent = data.points;
+      }
+  });
+}
+
+var counter_for_theory = 0;
+
 $(".navitem").click(function(){
   var id = $(this).attr("id");
   var e = document.getElementById(id);
@@ -327,20 +331,7 @@ $(".navitem1").click(function(){
   }
 });
 
-$(document).ready(function(){
-  $.ajax({
 
-      type: "GET",
-
-      url: "/check_points/",
-
-      cache: false,
-
-      success: function (data) {
-        document.getElementById('bonus').textContent = data.points;
-        document.getElementById('bonus1').textContent = data.points;
-      }
-  });
 
   $("#cat1").addClass("active");
   $("#block2").addClass("active");
@@ -358,48 +349,64 @@ $(document).ready(function(){
     userAction(e, id, l1, l2, l3);
 });
 
-  function userAction(elem, id, l1, l2, l3) {
-    if ($(elem).hasClass("lambact")) {
-      $(elem).removeClass("lambact");
-      select = 0;
-      $(".confirm").addClass("disabled");
+function userAction(elem, id, l1, l2, l3) {
+  if ($(elem).hasClass("lambact")) {
+    $(elem).removeClass("lambact");
+    select = 0;
+    $(".confirm").addClass("disabled");
+  } else {
+    if ((elem != l1) && (elem != l2)) {
+      $(elem).addClass("lambact");
+      $(l1).removeClass("lambact");
+      $(l2).removeClass("lambact");
+      $(".confirm").removeClass("disabled");
+      select = 3;
+    } else if ((elem != l1) && (elem != l3)) {
+      $(elem).addClass("lambact");
+      $(l1).removeClass("lambact");
+      $(l3).removeClass("lambact");
+      $(".confirm").removeClass("disabled");
+      select = 2;
+    } else if ((elem != l2) && (elem != l3)) {
+      $(elem).addClass("lambact");
+      $(l2).removeClass("lambact");
+      $(l3).removeClass("lambact");
+      $(".confirm").removeClass("disabled");
+      select = 1;
     } else {
-      if ((elem != l1) && (elem != l2)) {
-        $(elem).addClass("lambact");
-        $(l1).removeClass("lambact");
-        $(l2).removeClass("lambact");
-        $(".confirm").removeClass("disabled");
-        select = 3;
-      } else if ((elem != l1) && (elem != l3)) {
-        $(elem).addClass("lambact");
-        $(l1).removeClass("lambact");
-        $(l3).removeClass("lambact");
-        $(".confirm").removeClass("disabled");
-        select = 2;
-      } else if ((elem != l2) && (elem != l3)) {
-        $(elem).addClass("lambact");
-        $(l2).removeClass("lambact");
-        $(l3).removeClass("lambact");
-        $(".confirm").removeClass("disabled");
-        select = 1;
-      } else {
-        select = 0;
-      }
+      select = 0;
     }
-
-    $(".confirm").click(function(){
-      confirmSelection(select);
-  });
   }
 
-  function confirmSelection(select) {
+  $(".confirm").click(function(){
+    confirmSelection(select);
+});
+}
 
-  }
+function confirmSelection(select) {
+
+}
+
+$("#modalbtn").click(function () {
+  $("#modalLogin").modal();
 });
 
 
 $(document).ready(function() {
-    $("#modalbtn").click(function () {
-        $("#modalLogin").modal();
-    });
+  checkPoints();
+  loadComments();
+  checkStageMiniGame();
+
+  var
+    $window = $(window),
+    $target = $("#panelbody"),
+    $h = $target.offset().top;
+    $window.on('scroll', function() {
+  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > $h) {
+      $("#panelbody1").addClass("show_block");
+    } else {
+      $("#panelbody1").removeClass("show_block");
+    }
+  });
 });

@@ -190,6 +190,39 @@
     </div>
   </div>
 
+  <div class="modal fade" id="modalComment" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="text-white">Написать отзыв</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <form class="form" method="post" action="{% url 'add_comments' %}">
+            {% csrf_token %}
+            <input id="stars" class="form__star">
+            <input class="form__star_yellow" name="star" type="text">
+
+            <input type="" name="">
+            <div class="raty"></div>
+
+            <label for="text-comment">Текст вашего отзыва</label>
+            <input type="text"
+                   name="comment-text"
+                   id="text-comment"
+                   placeholder="Текст отзыва">
+
+            <label>Я ознакомлен с правилами публикации отзыва</label>
+            <input type="checkbox" name="checkbox">
+
+            <button type="submit">Отправить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 <!-- Блок с экзаменом и тестами -->
 
@@ -321,7 +354,7 @@
             </div>
             <div class="col-12">
               <div class="row">
-                <div class="col-2 mr-auto item-comment">
+                <div class="col-2 mr-auto item-comment" onclick="addComment()">
                   <span>Написать отзыв</span>
                 </div>
                 <div class="col-2 ml-auto item-comment">
@@ -421,7 +454,61 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
   <script src="{% static 'js/base.js' %}"></script>
+  <script src="jquery.raty.js"></script>
+<script>
+  const starElement = document.querySelector('.form__star');
+  const yellowStarElement = document.querySelector('.form__star_yellow')
 
+  function onStarClick(event) {
+    const {target} = event;
+
+    yellowStarElement.removeEventListener('mousemove', onStarMoseMove);
+    starElement.removeEventListener('mousemove', onStarMoseMove);
+
+    const procentage = target.offsetWidth / event.srcElement.previousElementSibling.offsetWidth * 100;
+
+    if ((procentage <= 100) && (procentage > 80)) {
+      yellowStarElement.style.width = event.srcElement.previousElementSibling.offsetWidth + 'px';
+      yellowStarElement.textContent = ('value', 5);
+    } else if ((procentage <= 80) && (procentage > 60)) {
+      yellowStarElement.style.width = event.srcElement.previousElementSibling.offsetWidth / 5 * 4 + 'px';
+      yellowStarElement.setAttribute('value', 4);
+    } else if ((procentage <= 60) && (procentage > 40)) {
+      yellowStarElement.style.width = event.srcElement.previousElementSibling.offsetWidth / 5 * 3 + 'px';
+      yellowStarElement.setAttribute('value', 3);
+    } else if ((procentage <= 40) && (procentage > 20)) {
+      yellowStarElement.style.width = event.srcElement.previousElementSibling.offsetWidth / 5 * 2 + 'px';
+      yellowStarElement.setAttribute('value', 2);
+    } else if ((procentage <= 20) && (procentage > 0)) {
+      yellowStarElement.style.width = event.srcElement.previousElementSibling.offsetWidth / 5 + 'px';
+      yellowStarElement.setAttribute('value', 1);
+    } else {
+      yellowStarElement.style.width = 0 + 'px';
+      yellowStarElement.setAttribute('value', 0);
+    }
+
+    // target.setAttribute('disabled', true);
+    // starElement.setAttribute('disabled', true);
+  }
+
+  function onStarMoseMove(event) {
+    const mouseOn =  event.offsetX / event.srcElement.offsetWidth;
+    
+    yellowStarElement.style.width = mouseOn * event.srcElement.offsetWidth + 'px';
+  }
+
+  starElement.addEventListener('mousemove', onStarMoseMove);
+  yellowStarElement.addEventListener('click', onStarClick);
+  yellowStarElement.addEventListener('mousemove', onStarMoseMove);
+
+  // form.addEventListener('submit', event => {
+  //   event.preventDefault();
+  //   starElement.removeAttribute('disabled');
+  //   yellowStarElement.removeAttribute('disabled');
+  //   $(this).unbind('submit').submit();
+  // })
+
+</script>
   {% block javascript %}
 
 
