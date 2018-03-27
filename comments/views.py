@@ -28,21 +28,44 @@ def load_comments(request):
 
 def add_comments(request):
     if request.method == "POST":
-      print(request.POST)
-        # comment_form = CommentForm(request.POST)
-        # if request.method == 'POST':
-        #     formset = comment_form
-        #     if formset.is_valid():
-        #         author = formset.save(commit=False)
-        #         comment = Comment(user=author.user)
-        #         comment.comment_text = author.comment_text
-        #         comment.pub_date = datetime.datetime.now()
-        #         comment.rating = author.rating
-        #         comment.save()
-        # else:
-        #     formset = comment_form
-        # return render(request, "add_comment.html", {"formset": formset})
-      return redirect('home')
+      print('asd')
+      # comment_form = CommentForm(request.POST)
+      # print(comment_form)
+      # valid = [False, False, False]
+      # author = None
+
+      # checkb = request.POST['checkbox']
+      # rating = request.POST['rating']
+      # comment_text = request.POST['comment-text']
+
+      # if checkb == 'on':
+      #     valid[0] = True
+
+      #   if request.user.is_authenticated:
+      #     author = request.user
+
+      #     if valid[0] and rating.isdigit() and len(rating) == 1 and int(rating) >= 0 and int(rating) <= 5 :
+      #       print('hell')
+
+      # if valid[0] and 
+              
+      # print(request.POST['rating'])
+      # print(request.POST['checkbox'])
+      # print(request.POST['comment-text'])
+      # if request.method == 'POST':
+      #   comment_form = CommentForm(request.POST, instance=request.user.comment)
+      #     if comment_form.is_valid():
+      #         author = comment_form.save(commit=False)
+      #         comment = Comment(user=author.user)
+      #         comment.comment_text = author.comment_text
+      #         comment.pub_date = datetime.datetime.now()
+      #         comment.rating = author.rating
+      #         comment.save()
+      #         return redirect('home')
+      #   else:
+      #       formset = comment_form
+      # return render(request, "add_comment.html", {"forms": comment_form})
+      
 
 
 def to_json(comment):

@@ -6474,7 +6474,7 @@ body {
   cursor: pointer;
 }
 .form__star {
-  position: relative;
+  position: absolute;
   border: 0px;
   height: 32px;
   width: 160px;
@@ -6482,11 +6482,7 @@ body {
   cursor: pointer;
 }
 .form__star_yellow {
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  position: absolute;
-  transform: translateX(-163px);
+  position: relative;
   border: 0px;
   width: 32px;
   height: 32px;

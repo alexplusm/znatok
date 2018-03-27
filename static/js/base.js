@@ -259,22 +259,21 @@ function addComment() {
   $("#modalComment").modal();
 }
 
-
 //     *****************************************
 function checkPoints() {
-  $.ajax({
+$.ajax({
 
-      type: "GET",
+    type: "GET",
 
-      url: "/check_points/",
+    url: "/check_points/",
 
-      cache: false,
+    cache: false,
 
-      success: function (data) {
-        document.getElementById('bonus').textContent = data.points;
-        document.getElementById('bonus1').textContent = data.points;
-      }
-  });
+    success: function (data) {
+      document.getElementById('bonus').textContent = data.points;
+      document.getElementById('bonus1').textContent = data.points;
+    }
+});
 }
 
 var counter_for_theory = 0;

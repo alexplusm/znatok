@@ -27,4 +27,4 @@ class Comment(models.Model):
 class CommentForm(ModelForm):
     class Meta:
         model = Comment
-        fields = ['comment_text', 'rating', 'user']
+        fields = ['comment_text', 'rating']

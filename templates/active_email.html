@@ -1,3 +1,1 @@
-Здравствуйте {{ user.username }}!
-Чтобы завершить регистрацию, пожалуйста, перейдите по ссылке ниже:
-{{ protocol }}://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% autoescape off %} Здравствуйте {{ user.username }}, Пожалуйста нажмите на ссылку, чтобы активировать аккаунт: {{ protocol }}://{{ domain }}{% url 'activate' <slug:uidb64>=uid <slug:token>=token %} {% endautoescape %}
