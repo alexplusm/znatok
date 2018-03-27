@@ -24,6 +24,7 @@ class Profile(models.Model):
     birthday = models.DateField(blank=True, null=True)
     city = models.CharField(max_length=50, blank=True, null=True)
     last_mini_game = models.DateTimeField(default=timezone.now)
+    last_password_update = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return "profile: {}".format(self.user)
