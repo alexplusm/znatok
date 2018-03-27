@@ -26,11 +26,11 @@
 					</div>
 					<div class="col-12">
 						<br>
-						<div class="row" id="profile-body">
-							<div class="col-3 text-center">
-								<img src="/media/{{user.profile.user_avatar}}" width="100%" />
-							</div>
-							<div class="col-5">
+						<div class="row justify-content-between" id="profile-body">
+{#							<div class="col-3 text-center">#}
+{#								<img src="/media/{{user.profile.user_avatar}}" width="100%" />#}
+{#							</div>#}
+							<div class="col-7">
 								<div class="topp">
                                     <form method="post" enctype="multipart/form-data" novalidate>
                                         {% csrf_token %}
@@ -43,6 +43,7 @@
                                 </div>
 							</div>
 							<div class="col-4 text-center">
+                                <p><img src="/media/{{user.profile.user_avatar}}" width="100%" /></p>
 								<p>Для участия в розыгрыше призов вам должно быть не менее 18 лет.</p>
 								<p>При получении приза, указанные здесь данные, должны совпадать с паспортными данными.</p><br>
 							</div>
@@ -78,25 +79,19 @@
 						<br>
 						<div class="row" id="security-body">
 							<div class="col-6">
-								<table>
-									<tbody>
-										<tr>
-											<th class="text-right" scope="row">Старый пароль:</th>
-											<td class="card"><div>пароль</div></td>
-										</tr>
-										<tr>
-											<th class="text-right" scope="row">Новый пароль:</th>
-											<td class="card"><div>пароль</div></td>
-										</tr>
-										<tr>
-											<th class="text-right" scope="row">Подтвредите новый пароль:</th>
-											<td class="card"><div>пароль</div></td>
-										</tr>
-									</tbody>
-								</table>
+								<form method="post" novalidate>
+                                        {% csrf_token %}
+                                        {% for form in password_form %}
+                                            {% include 'includes/form.html' %}
+                                        {% endfor %}
+                                        <button type="submit" class="btn btn-primary btn-block">Изменить пароль</button>
+                                    </form>
+                            <br>
 							</div>
 							<div class="col-6">
-								<p>Последний раз пароль менялся <span class="text-danger">12.12.12</span></p>
+								<p>Последний раз пароль менялся <span class="text-danger">
+                                    {{user.profile.last_password_update}}
+                                </span></p>
 								<p>Предыдущее посещение <span class="text-primary">{{user.last_login}}</span></p>
 								<p>Двухкратная аутентификация</p>
 								<br><br>

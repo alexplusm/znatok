@@ -1,6 +1,6 @@
 from django import forms
-from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import get_user_model, password_validation
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.utils.translation import ugettext_lazy as _
 from .models import Profile
 
@@ -54,4 +54,13 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        exclude = ('user', 'points', 'last_mini_game')
+        fields = ('user_avatar', 'birthday', 'city',)
+
+
+class PasswordUpdateForm(PasswordChangeForm):
+    old_password = forms.CharField(label=_("Old password"), strip=False,
+                                   widget=forms.PasswordInput)
+    new_password1 = forms.CharField(label=_("New password"), widget=forms.PasswordInput,
+                                    strip=False, help_text=password_validation.password_validators_help_text_html())
+    new_password2 = forms.CharField(label=_("New password confirmation"), strip=False,
+                                    widget=forms.PasswordInput)
