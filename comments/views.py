@@ -1,12 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 
-
 from accounts.models import Profile
 from .models import Comment
-from .models import CommentForm
-
-import datetime
 
 
 def load_comments(request):
@@ -28,45 +24,20 @@ def load_comments(request):
 
 def add_comments(request):
     if request.method == "POST":
-      print('asd')
-      # comment_form = CommentForm(request.POST)
-      # print(comment_form)
-      # valid = [False, False, False]
-      # author = None
+        score = request.POST['score']
 
-      # checkb = request.POST['checkbox']
-      # rating = request.POST['rating']
-      # comment_text = request.POST['comment-text']
+        # ПИЗДА ПИЗДА ПИЗДА ПИЗДА ПИЗДА
+        # БД СНЕСУТ БИБКОИНЫ НАКРУТЯТ
+        # ПИЗДА ПИЗДА ПИЗДА ПИЗДА ПИЗДА
 
-      # if checkb == 'on':
-      #     valid[0] = True
-
-      #   if request.user.is_authenticated:
-      #     author = request.user
-
-      #     if valid[0] and rating.isdigit() and len(rating) == 1 and int(rating) >= 0 and int(rating) <= 5 :
-      #       print('hell')
-
-      # if valid[0] and 
-              
-      # print(request.POST['rating'])
-      # print(request.POST['checkbox'])
-      # print(request.POST['comment-text'])
-      # if request.method == 'POST':
-      #   comment_form = CommentForm(request.POST, instance=request.user.comment)
-      #     if comment_form.is_valid():
-      #         author = comment_form.save(commit=False)
-      #         comment = Comment(user=author.user)
-      #         comment.comment_text = author.comment_text
-      #         comment.pub_date = datetime.datetime.now()
-      #         comment.rating = author.rating
-      #         comment.save()
-      #         return redirect('home')
-      #   else:
-      #       formset = comment_form
-      # return render(request, "add_comment.html", {"forms": comment_form})
+        if score == '':
+            score = 5
+        comment = Comment(user=request.user)
+        comment.comment_text = request.POST['comment-text']
+        comment.rating = score
+        comment.save()
+    return redirect('home')
       
-
 
 def to_json(comment):
     # {'1 comment': {'user': asd, 'text': asfasd, 'rating': 1/2/3, 'date': asojd},

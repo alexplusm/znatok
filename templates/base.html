@@ -12,6 +12,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/jquery.raty.css' %}">
 
 {% endblock %}
 
@@ -201,29 +202,21 @@
         <div class="modal-body">
           <form class="form" method="post" action="{% url 'add_comments' %}">
             {% csrf_token %}
-            <div id="stars" class="form__star"></div>
-            <div class="form__star_yellow" name="star"></div>
-
-            <input name="rating"
-                   type="hidden"
-                   class="form__rating_star"
-                   pattern="\d{1}"
-                   value="1">
+            <div id="stars"></div>
 
             <label for="text-comment">Текст вашего отзыва</label>
             <input type="text"
                    name="comment-text"
                    id="text-comment"
                    placeholder="Текст отзыва"
-                   maxlength="500"
-                   reqired
+                   maxlength="200"
+                   required
                    autofocus>
 
             <label>Я ознакомлен с правилами публикации отзыва</label>
             <input type="checkbox"
                    name="checkbox"
-                   value="off"
-                   reqired>
+                   required>
 
             <button type="submit">Отправить</button>
           </form>
@@ -463,65 +456,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
   <script src="{% static 'js/base.js' %}"></script>
+  <script src="{% static 'js/jquery.raty.js' %}"></script>
 <script>
-  const starElement = document.querySelector('.form__star');
-  const yellowStarElement = document.querySelector('.form__star_yellow');
-  const ratingStar = document.querySelector('.form__rating_star');
-
-  function onStarClick(event) {
-    const {target} = event;
-    const procentage = yellowStarElement.offsetWidth / event.srcElement.previousElementSibling.offsetWidth * 100;
-    
-    if (target.getAttribute('disabled') === 'true') {
-      starElement.removeAttribute('disabled');
-      yellowStarElement.removeAttribute('disabled');
-      ratingStar.setAttribute('value', 0);
-    } else {
-      starElement.setAttribute('disabled', true);
-      yellowStarElement.setAttribute('disabled', true);
+  $('#stars').raty({
+    click: function(score) {
+      console.log(score);
     }
-
-    if ((procentage <= 100) && (procentage > 80)) {
-      yellowStarElement.style.width = event.srcElement.previousElementSibling.offsetWidth + 'px';
-      ratingStar.textContent = ('value', 5);
-    } else if ((procentage <= 80) && (procentage > 60)) {
-      yellowStarElement.style.width = event.srcElement.previousElementSibling.offsetWidth / 5 * 4 + 'px';
-      ratingStar.setAttribute('value', 4);
-    } else if ((procentage <= 60) && (procentage > 40)) {
-      yellowStarElement.style.width = event.srcElement.previousElementSibling.offsetWidth / 5 * 3 + 'px';
-      ratingStar.setAttribute('value', 3);
-    } else if ((procentage <= 40) && (procentage > 20)) {
-      yellowStarElement.style.width = event.srcElement.previousElementSibling.offsetWidth / 5 * 2 + 'px';
-      ratingStar.setAttribute('value', 2);
-    } else if ((procentage <= 20) && (procentage > 0)) {
-      yellowStarElement.style.width = event.srcElement.previousElementSibling.offsetWidth / 5 + 'px';
-      ratingStar.setAttribute('value', 1);
-    } else {
-      yellowStarElement.style.width = 0 + 'px';
-      ratingStar.setAttribute('value', 0);
-    }
-  }
-
-  function onStarMoseMove(event) {
-    if ((starElement.getAttribute('disabled') !== 'true') || (yellowStarElement.getAttribute('disabled') !== 'true')) {
-      const mouseOn =  event.offsetX / event.srcElement.offsetWidth;
-    
-      yellowStarElement.style.width = mouseOn * event.srcElement.offsetWidth + 'px';
-    }
-  }
-
-  starElement.addEventListener('mousemove', onStarMoseMove);
-  yellowStarElement.addEventListener('click', onStarClick);
-  starElement.addEventListener('click', onStarClick);
-  yellowStarElement.addEventListener('mousemove', onStarMoseMove);
-
-  // form.addEventListener('submit', event => {
-  //   event.preventDefault();
-  //   starElement.removeAttribute('disabled');
-  //   yellowStarElement.removeAttribute('disabled');
-  //   $(this).unbind('submit').submit();
-  // })
-
+  });
 </script>
   {% block javascript %}
 
