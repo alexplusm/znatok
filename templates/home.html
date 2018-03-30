@@ -2,1107 +2,1107 @@
 {% load static %}
 
 {% block main %}
-     <div class="conteiner text-center">
-      <div class="row" style="margin-right: auto;">
-       <div class="col-2 ml-auto text-uppercase">
+  <div class="conteiner text-center">
+    <div class="row" style="margin-right: auto;">
+      <div class="col-2 ml-auto text-uppercase">
         <div class="row">
-         <ul class="navleft nav flex-column">
-          <li class="nav-item2 ml-auto">
-            <a class="nav-link navitem1" id="block1">Теория</a>
-          </li>
-          <li class="nav-item2 ml-auto top b1">
-            <a class="nav-link navitem1 active" id="block2">Билеты</a>
-          </li>
-          <li class="nav-item2 ml-auto top b1">
-            <a class="nav-link navitem1" id="block3">Экзамен</a>
-          </li>
-          <li class="nav-item2 ml-auto top b1">
-            <a class="nav-link navitem1" id="block4">по темам</a>
-          </li>
-          <li class="nav-item2 ml-auto top b1">
-            <a class="nav-link navitem1" id="block5">марафон</a>
-          </li>
-          <li class="nav-item2 ml-auto top b1">
-            <a class="nav-link navitem1" id="block6">ошибки</a>
-          </li>
-          <li class="nav-item2 ml-auto top b2 hide">
-            <a class="nav-link navitem1 active" id="block7">Правила дорожного движения</a>
-          </li>
-          <li class="nav-item2 ml-auto top b2 hide">
-            <a class="nav-link navitem1" id="block8">Дорожные знаки</a>
-          </li>
-          <li class="nav-item2 ml-auto top b2 hide">
-            <a class="nav-link navitem1" id="block9">Дорожная разметка и её характеристики</a>
-          </li>
-          <li class="nav-item2 ml-auto top b2 hide">
-            <a class="nav-link navitem1" id="block10">основные положения по допуску транспортных средств к эксплуатации и обязанности должностных лиц по обеспечению безопасности дорожного движения</a>
-          </li>
-          <li class="nav-item2 ml-auto top b2 hide">
-            <a class="nav-link navitem1" id="block11">перечень неисправностей и условий, при которых запрещается эксплуатация транспортных средств</a>
-          </li>
-          <li class="nav-item2 ml-auto top b2 hide">
-            <a class="nav-link navitem1" id="block12">перечень штрафных санкций в соответствии с коап <br>глава 12. Административные правонарушения в области дорожного движения</a>
-          </li>
-          <br>
-        </ul>
+          <ul class="navleft nav flex-column">
+            <li class="nav-item2 ml-auto">
+              <a class="nav-link navitem1" id="block1">Теория</a>
+            </li>
+            <li class="nav-item2 ml-auto top b1">
+              <a class="nav-link navitem1 active" id="block2">Билеты</a>
+            </li>
+            <li class="nav-item2 ml-auto top b1">
+              <a class="nav-link navitem1" id="block3">Экзамен</a>
+            </li>
+            <li class="nav-item2 ml-auto top b1">
+              <a class="nav-link navitem1" id="block4">по темам</a>
+            </li>
+            <li class="nav-item2 ml-auto top b1">
+              <a class="nav-link navitem1" id="block5">марафон</a>
+            </li>
+            <li class="nav-item2 ml-auto top b1">
+              <a class="nav-link navitem1" id="block6">ошибки</a>
+            </li>
+            <li class="nav-item2 ml-auto top b2 hide">
+              <a class="nav-link navitem1 active" id="block7">Правила дорожного движения</a>
+            </li>
+            <li class="nav-item2 ml-auto top b2 hide">
+              <a class="nav-link navitem1" id="block8">Дорожные знаки</a>
+            </li>
+            <li class="nav-item2 ml-auto top b2 hide">
+              <a class="nav-link navitem1" id="block9">Дорожная разметка и её характеристики</a>
+            </li>
+            <li class="nav-item2 ml-auto top b2 hide">
+              <a class="nav-link navitem1" id="block10">основные положения по допуску транспортных средств к эксплуатации и обязанности должностных лиц по обеспечению безопасности дорожного движения</a>
+            </li>
+            <li class="nav-item2 ml-auto top b2 hide">
+              <a class="nav-link navitem1" id="block11">перечень неисправностей и условий, при которых запрещается эксплуатация транспортных средств</a>
+            </li>
+            <li class="nav-item2 ml-auto top b2 hide">
+              <a class="nav-link navitem1" id="block12">перечень штрафных санкций в соответствии с коап <br>глава 12. Административные правонарушения в области дорожного движения</a>
+            </li>
+            <br>
+          </ul>
+        </div>
+      </div>
+      <div class="col-6 text-uppercase">
+        <div class="row">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" id="cat1">Категории <strong>A, B, M</strong></a>
+            </li>
+            <li class="nav-item ml-auto">
+              <a class="nav-link" id="cat2">Категории <strong>C, D</strong></a>
+            </li>
+          </ul>
+        </div>
+        <div class="row" style="margin-left: 5px;">
+          {% block ticketmain %}
+            <div class="col-12 bordering text-center blockmain">
+              <div class="col-12">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle text-right" type="button" id="drop_for_ticket_info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%; border: 1px solid lightgrey;">
+                  </button>
+                  <div class="dropdown-menu text-center" aria-labelledby="drop_for_ticket_info" style="width: 100%;">
+                    asdasd
+                  </div>
+                </div>
+              </div>
+              <div class="row boxing top5">
+                <button class="btnticket ml-auto" id="btnticket1" type="button" value="1">1
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success1" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger1" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary1" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket2" type="button" value="2">2
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success2">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger2">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary2">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket3" type="button" value="3">3
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success3" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger3" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary3" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket4" type="button" value="4">4
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success4" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger4" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary4" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket5" type="button" value="5">5
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success5" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger5" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary5" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket6" type="button" value="6">6
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success6" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger6" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary6" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket7" type="button" value="7">7
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success7" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger7" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary7" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto mr-auto" id="btnticket8" type="button" value="8">8
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success8" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger8" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary8" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="row boxing top5">
+                <button class="btnticket ml-auto" id="btnticket9" type="button" value="9">9
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success9" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger9" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary9" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket10" type="button" value="10">10
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success10" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger10" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary10" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket11" type="button" value="11">11
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success11" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger11" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary11" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket12" type="button" value="12">12
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success12" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger12" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary12" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket13" type="button" value="13">13
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success13" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger13" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary13" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket14" type="button" value="14">14
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success14" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger14" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary14" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket15" type="button" value="15">15
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success15" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger15" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary15" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto mr-auto" id="btnticket16" type="button" value="16">16
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success16" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger16" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary16" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="row boxing top5">
+                <button class="btnticket ml-auto" id="btnticket17" type="button" value="17">17
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success17" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger17" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary17" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket18" type="button" value="18">18
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success18" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger18" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary18" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket19" type="button" value="19">19
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success19" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger19" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary19" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket20" type="button" value="20">20
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success20" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger20" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary20" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket21" type="button" value="21">21
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success21" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger21" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary21" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket22" type="button" value="22">22
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success22" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger22" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary22" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket23" type="button" value="23">23
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success23" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger23" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary23" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto mr-auto" id="btnticket24" type="button" value="24">24
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success24" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger24" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary24" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="row boxing top5">
+                <button class="btnticket ml-auto" id="btnticket25" type="button" value="25">25
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success25" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger25" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary25" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket26" type="button" value="26">26
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success26" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger26" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary26" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket27" type="button" value="27">27
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success27" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger27" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary27" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket28" type="button" value="28">28
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success28" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger28" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary28" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket29" type="button" value="29">29
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success29" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger29" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary29" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket30" type="button" value="30">30
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success30" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger30" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary30" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket31" type="button" value="31">31
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success31" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger31" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary31" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto mr-auto" id="btnticket32" type="button" value="32">32
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success32" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger32" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary32" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="row boxing top5">
+                <button class="btnticket ml-auto" id="btnticket33" type="button" value="33">33
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success33" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger33" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary33" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket34" type="button" value="34">34
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success34" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger34" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary34" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket35" type="button" value="35">35
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success35" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger35" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary35" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket36" type="button" value="36">36
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success36" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger36" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary36" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket37" type="button" value="37">37
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success37" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger37" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary37" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket38" type="button" value="38">38
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success38" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger38" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary38" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto" id="btnticket39" type="button" value="39">39
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success39" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger39" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary39" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+                <button class="btnticket ml-auto mr-auto" id="btnticket40" type="button" value="40">40
+                  <div class="progress" style="display: none;">
+                    <div class="progress-bar bg-success" id="success40" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-danger" id="danger40" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    <div class="progress-bar bg-white" id="secondary40" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="row boxing btnquest-box1" style="display:none">
+                <button class="btnquest btn btn-default ml-auto" id="btnquest1" value="1">1</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest2" type="button" value="2">2</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest3" type="button" value="3">3</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest4" type="button" value="4">4</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest5" type="button" value="5">5</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest6" value="6">6</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest7" type="button" value="7">7</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest8" type="button" value="8">8</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest9" type="button" value="9">9</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest10" type="button" value="10">10</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest11" type="button" value="11">11</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest12" type="button" value="12">12</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest13" type="button" value="13">13</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest14" type="button" value="14">14</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest15" type="button" value="15">15</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest16" type="button" value="16">16</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest17" type="button" value="17">17</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest18" type="button" value="18">18</button>
+                <button class="btnquest btn btn-default ml-auto" id="btnquest19" type="button" value="19">19</button>
+                <button class="btnquest btn btn-default ml-auto mr-auto" id="btnquest20" type="button" value="20">20</button>
+              </div>
+              <div class="row boxing top6 hide">
+                билеты по теории
+              </div>
+              <div id="result" class="result row boxing top5" style="display: none">
+                <div class="conteiner" style="width: 100%;">
+                  <div class="row boxing">
+                    <div class="col-12">
+                      <div class="col-12 text-left objquestion">
+                        <p id="quest"></p>
+                      </div>
+                      <div class="row">
+                        <img class="imgquestion" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="">
+                    <ul class="list-unstyled" style="padding-top: 0.5em;">
+                      <li>
+                        <button class="answbtn text-left btn btn-default" id="answer1"></button>
+                      </li>
+                      <li>
+                        <button class="answbtn text-left btn btn-default" id="answer2"></button>
+                      </li>
+                      <li>
+                        <button class="answbtn text-left btn btn-default" id="answer3"></button>
+                      </li>
+                      <li>
+                        <button class="answbtn text-left btn btn-default" id="answer4"></button>
+                      </li>
+                      <li>
+                        <button class="answbtn text-left btn btn-default" id="answer5"></button>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="conteiner help-box" style="display: none;">
+                    <div class="row">
+                      <div class="col-12 alert-success text-left">
+                        <ul class="list-inline">
+                          <li><button class="helpbtn btn btn-default">ПОЯСНЕНИЕ</button></li>
+                          <li><button class="penaltybtn btn btn-default">ШТРАФЫ</button></li>
+                          <li><button class="nextbtn btn btn-success">Далее</button></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <ul class="list-inline" id="help-text"></ul>
+				    
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endblock %}
+        </div>
+      </div>
+      <div class="col-2 mr-auto" id="leadres">
+        <div class="row">
+          <div class="col-12 w2">
+            <h4 class="text-uppercase text-primary">Лидеры недели</h4>
+            <div class="row padb" style="border-top: 1px solid lightgrey;">
+              <div class="col-4">
+                <img src="" class="js-leader-avatar0 leader-avatar" />
+              </div>
+              <div class="col-4">
+                <div class="row">
+                  <div class="col-12 text3">
+                    <p id="js-leader-name0"></p>
+                    <small id="js-leader-city0"></small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="row">
+                  <img src="{% static 'img/gold.png' %}" id="gold" style="margin-top: -2px;"/>
+                </div>
+              </div>
+              <div class="col-12 ml-auto text3" >
+                <div class="row">
+                  <div class="col-4 ml-auto">
+                    <span>Баллы</span>
+                  </div>
+                  <div class="col-4">
+                    <span class="coinslid" id="js-leader-coins0"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row padb">
+              <div class="col-4">
+                <img src="" class="js-leader-avatar1 leader-avatar" />
+              </div>
+              <div class="col-4">
+                <div class="row">
+                  <div class="col-12 text3">
+                    <p id="js-leader-name1"></p>
+                    <small id="js-leader-city1"></small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="row">
+                  <img src="{% static 'img/silver.png' %}" id="gold" style="margin-top: -1px;"/>
+                </div>
+              </div>
+              <div class="col-12 ml-auto text3">
+                <div class="row">
+                  <div class="col-4 ml-auto text-right">
+                    <span>Баллы</span>
+                  </div>
+                  <div class="col-4">
+                    <span class="coinslid" id="js-leader-coins1"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row padb">
+              <div class="col-4">
+                <img src="" class="js-leader-avatar2 leader-avatar" />
+              </div>
+              <div class="col-4">
+                <div class="row">
+                  <div class="col-12 text3">
+                    <p id="js-leader-name2"></p>
+                    <small id="js-leader-city2"></small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="row">
+                  <img src="{% static 'img/bronze.png' %}" id="gold" style="margin-top: -3px;"/>
+                </div>
+              </div>
+              <div class="col-12 ml-auto text3">
+                <div class="row">
+                  <div class="col-4 ml-auto text-right">
+                    <span>Баллы</span>
+                  </div>
+                  <div class="col-4">
+                    <span class="coinslid" id="js-leader-coins2"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-     <div class="col-6 text-uppercase">
-      <div class="row">
-       <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link" id="cat1">Категории <strong>A, B, M</strong></a>
-        </li>
-        <li class="nav-item ml-auto">
-          <a class="nav-link" id="cat2">Категории <strong>C, D</strong></a>
-        </li>
-      </ul>
-     </div>
-     <div class="row" style="margin-left: 5px;">
-     	{% block ticketmain %}
-      <div class="col-12 bordering text-center blockmain">
-      	<div class="col-12">
-      		<div class="dropdown">
-			  <button class="btn btn-default dropdown-toggle text-right" type="button" id="drop_for_ticket_info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%; border: 1px solid lightgrey;">
-			  </button>
-			  <div class="dropdown-menu text-center" aria-labelledby="drop_for_ticket_info" style="width: 100%;">
-			  	asdasd
-			  </div>
-			</div>
-      	</div>
-	       <div class="row boxing top5">
-		          <button class="btnticket ml-auto" id="btnticket1" type="button" value="1">1
-			          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success1" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger1" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary1" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			        </button>
-		          <button class="btnticket ml-auto" id="btnticket2" type="button" value="2">2
-		          	<div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success2">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger2">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary2">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket3" type="button" value="3">3
-		          	<div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success3" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger3" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary3" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket4" type="button" value="4">4
-		          	<div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success4" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger4" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary4" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket5" type="button" value="5">5
-		          	<div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success5" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger5" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary5" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket6" type="button" value="6">6
-		          	<div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success6" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger6" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary6" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket7" type="button" value="7">7
-		          	<div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success7" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger7" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary7" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto mr-auto" id="btnticket8" type="button" value="8">8
-		          	<div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success8" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger8" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary8" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		 	</div>
-		 	<div class="row boxing top5">
-		          <button class="btnticket ml-auto" id="btnticket9" type="button" value="9">9
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success9" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger9" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary9" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket10" type="button" value="10">10
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success10" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger10" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary10" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket11" type="button" value="11">11
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success11" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger11" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary11" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket12" type="button" value="12">12
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success12" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger12" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary12" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket13" type="button" value="13">13
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success13" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger13" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary13" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket14" type="button" value="14">14
-		          	<div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success14" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger14" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary14" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket15" type="button" value="15">15
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success15" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger15" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary15" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto mr-auto" id="btnticket16" type="button" value="16">16
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success16" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger16" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary16" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		 	</div>
-		 	<div class="row boxing top5">
-		          <button class="btnticket ml-auto" id="btnticket17" type="button" value="17">17
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success17" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger17" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary17" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket18" type="button" value="18">18
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success18" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger18" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary18" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket19" type="button" value="19">19
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success19" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger19" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary19" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket20" type="button" value="20">20
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success20" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger20" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary20" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket21" type="button" value="21">21
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success21" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger21" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary21" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket22" type="button" value="22">22
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success22" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger22" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary22" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket23" type="button" value="23">23
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success23" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger23" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary23" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto mr-auto" id="btnticket24" type="button" value="24">24
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success24" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger24" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary24" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		 	</div>
-		 	<div class="row boxing top5">
-		          <button class="btnticket ml-auto" id="btnticket25" type="button" value="25">25
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success25" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger25" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary25" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket26" type="button" value="26">26
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success26" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger26" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary26" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket27" type="button" value="27">27
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success27" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger27" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary27" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket28" type="button" value="28">28
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success28" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger28" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary28" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket29" type="button" value="29">29
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success29" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger29" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary29" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket30" type="button" value="30">30
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success30" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger30" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary30" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket31" type="button" value="31">31
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success31" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger31" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary31" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto mr-auto" id="btnticket32" type="button" value="32">32
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success32" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger32" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary32" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		 	</div>
-		 	<div class="row boxing top5">
-		          <button class="btnticket ml-auto" id="btnticket33" type="button" value="33">33
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success33" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger33" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary33" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket34" type="button" value="34">34
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success34" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger34" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary34" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket35" type="button" value="35">35
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success35" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger35" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary35" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket36" type="button" value="36">36
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success36" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger36" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary36" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket37" type="button" value="37">37
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success37" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger37" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary37" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket38" type="button" value="38">38
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success38" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger38" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary38" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto" id="btnticket39" type="button" value="39">39
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success39" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger39" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary39" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		          <button class="btnticket ml-auto mr-auto" id="btnticket40" type="button" value="40">40
-		          <div class="progress" style="display: none;">
-			          	<div class="progress-bar bg-success" id="success40" style="width: 30%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-danger" id="danger40" style="width: 15%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          	<div class="progress-bar bg-white" id="secondary40" style="width: 10%" aria-valuemin="0" aria-valuemax="100">
-			          	</div>
-			          </div>
-			      </button>
-		 	</div>
-		 	<div class="row boxing btnquest-box1" style="display:none">
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest1" value="1">1</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest2" type="button" value="2">2</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest3" type="button" value="3">3</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest4" type="button" value="4">4</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest5" type="button" value="5">5</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest6" value="6">6</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest7" type="button" value="7">7</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest8" type="button" value="8">8</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest9" type="button" value="9">9</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest10" type="button" value="10">10</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest11" type="button" value="11">11</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest12" type="button" value="12">12</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest13" type="button" value="13">13</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest14" type="button" value="14">14</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest15" type="button" value="15">15</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest16" type="button" value="16">16</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest17" type="button" value="17">17</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest18" type="button" value="18">18</button>
-		          <button class="btnquest btn btn-default ml-auto" id="btnquest19" type="button" value="19">19</button>
-		          <button class="btnquest btn btn-default ml-auto mr-auto" id="btnquest20" type="button" value="20">20</button>
-	      </div>
-	      <div class="row boxing top6 hide">
-            	билеты по теории
-            </div>
-			 <div id="result" class="result row boxing top5" style="display: none">
-                 <div class="conteiner" style="width: 100%;">
- 					<div class="row boxing">
- 						<div class="col-12">
- 							<div class="col-12 text-left objquestion">
-	 							<p id="quest"></p>
-	 						</div>
- 							<div class="row">
-								<img class="imgquestion" />
-							</div>
-						</div>
- 					</div>
- 				<div class="">
-					<ul class="list-unstyled" style="padding-top: 0.5em;">
-						<li>
-							<button class="answbtn text-left btn btn-default" id="answer1"></button>
-						</li>
-						<li>
-							<button class="answbtn text-left btn btn-default" id="answer2"></button>
-						</li>
-						<li>
-							<button class="answbtn text-left btn btn-default" id="answer3"></button>
-						</li>
-	                    <li>
-							<button class="answbtn text-left btn btn-default" id="answer4"></button>
-						</li>
-						<li>
-							<button class="answbtn text-left btn btn-default" id="answer5"></button>
-						</li>
-					</ul>
-				</div>
-
-			<div class="conteiner help-box" style="display: none;">
-				<div class="row">
-				        <div class="col-12 alert-success text-left">
-				            <ul class="list-inline">
-				                <li><button class="helpbtn btn btn-default">ПОЯСНЕНИЕ</button></li>
-				                <li><button class="penaltybtn btn btn-default">ШТРАФЫ</button></li>
-				          		<li><button class="nextbtn btn btn-success">Далее</button></li>
-				            </ul>
-				        </div>
-				    </div>
-				<ul class="list-inline" id="help-text"></ul>
-				    
-            </div>
-                 </div>
-	      </div>
-      </div>
-	      {% endblock %}
-     </div>
-       </div>
-       <div class="col-2 mr-auto" id="leadres">
-        <div class="row">
-         <div class="col-12 w2">
-          <h4 class="text-uppercase text-primary">Лидеры недели</h4>
-          <div class="row padb" style="border-top: 1px solid lightgrey;">
-           <div class="col-4">
-            <img src="" class="js-leader-avatar0 leader-avatar" />
-           </div>
-           <div class="col-4">
-            <div class="row">
-             <div class="col-12 text3">
-              <p id="js-leader-name0"></p>
-              <small id="js-leader-city0"></small>
-             </div>
-            </div>
-           </div>
-           <div class="col-4">
-            <div class="row">
-             <img src="{% static 'img/gold.png' %}" id="gold" style="margin-top: -2px;"/>
-            </div>
-           </div>
-           <div class="col-12 ml-auto text3" >
-            <div class="row">
-             <div class="col-4 ml-auto">
-              <span>Баллы</span>
-             </div>
-             <div class="col-4">
-              <span class="coinslid" id="js-leader-coins0"></span>
-             </div>
-            </div>
-           </div>
-          </div>
-
-          <div class="row padb">
-           <div class="col-4">
-            <img src="" class="js-leader-avatar1 leader-avatar" />
-           </div>
-           <div class="col-4">
-            <div class="row">
-             <div class="col-12 text3">
-              <p id="js-leader-name1"></p>
-              <small id="js-leader-city1"></small>
-             </div>
-            </div>
-           </div>
-           <div class="col-4">
-            <div class="row">
-             <img src="{% static 'img/silver.png' %}" id="gold" style="margin-top: -1px;"/>
-            </div>
-           </div>
-           <div class="col-12 ml-auto text3">
-            <div class="row">
-             <div class="col-4 ml-auto text-right">
-              <span>Баллы</span>
-             </div>
-             <div class="col-4">
-              <span class="coinslid" id="js-leader-coins1"></span>
-             </div>
-            </div>
-           </div>
-          </div>
-
-          <div class="row padb">
-           <div class="col-4">
-            <img src="" class="js-leader-avatar2 leader-avatar" />
-           </div>
-           <div class="col-4">
-            <div class="row">
-             <div class="col-12 text3">
-              <p id="js-leader-name2"></p>
-              <small id="js-leader-city2"></small>
-             </div>
-            </div>
-           </div>
-           <div class="col-4">
-            <div class="row">
-             <img src="{% static 'img/bronze.png' %}" id="gold" style="margin-top: -3px;"/>
-            </div>
-           </div>
-           <div class="col-12 ml-auto text3">
-            <div class="row">
-             <div class="col-4 ml-auto text-right">
-              <span>Баллы</span>
-            </div>
-             <div class="col-4">
-              <span class="coinslid" id="js-leader-coins2"></span>
-             </div>
-            </div>
-           </div>
-          </div>
-      </div>
-        </div>
-       </div>
-   </div>
- </div>
+  </div>
 {% endblock %}
 
 {% block online %}
-<div id="online" class="background2">
-	<div id="onlinecontent" class="conteiner onlinecontent">
-		<div class="col-6 mr-auto ml-auto text-center text-uppercase titletext">
-			<p>Примите участие в ON-LINE состязаниях с другими пользователями сайта	</p>
-		</div>
+  <div id="online" class="background2">
+    <div id="onlinecontent" class="conteiner onlinecontent">
+      <div class="col-6 mr-auto ml-auto text-center text-uppercase titletext">
+        <p>Примите участие в ON-LINE состязаниях с другими пользователями сайта	</p>
+      </div>
 
 
 
 <!-- Блок онлайн игры -->
-{% include "online_game/online_game_place.html" %}
-	</div>
+      {% include "online_game/online_game_place.html" %}
+    </div>
 
 
-	<div id="panellamb">
-		<div class="col-10 mr-auto ml-auto text-center text-uppercase titletext">
-			<p>присоединяйтесь к командной гонке за баллами</p>
-		</div>
-		<div class="panel panel-default">
-			<div class="conteiner-fluid">
-				<div class="row1 row">
-					<div class="col-8  ml-auto mr-auto">
-						<div class="dropdown">
-							<button class="btn btn-black dropdown-toggle text-right" type="button" id="drop_for_team_info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;">
-							  </button>
-							<div class="dropdown-menu text-center" aria-labelledby="drop_for_team_info" style="width: 100%;">
-								asd
-							</div>
-						</div>
-						<div class="row btnrow">
-							<div class="col-3">
-								<img src="{% static 'img/greenlamb.png' %}" class="lamb" id="lamb1" />
-							</div>
-							<div class="col-3">
-								<img src="{% static 'img/yellowlamb.png' %}" class="lamb" id="lamb2" />
-							</div>
-							<div class="col-3">
-								<img src="{% static 'img/redlamb.png' %}" class="lamb" id="lamb3" />
-							</div>
-							<div class="col-3 text-center">
-								<a class="btn btn-secondary text-uppercase confirm">Выбрать команду</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+    <div id="panellamb">
+      <div class="col-10 mr-auto ml-auto text-center text-uppercase titletext">
+        <p>присоединяйтесь к командной гонке за баллами</p>
+      </div>
+      <div class="panel panel-default">
+        <div class="conteiner-fluid">
+          <div class="row1 row">
+            <div class="col-8  ml-auto mr-auto">
+              <div class="dropdown">
+                <button class="btn btn-black dropdown-toggle text-right" type="button" id="drop_for_team_info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;">
+                </button>
+                <div class="dropdown-menu text-center" aria-labelledby="drop_for_team_info" style="width: 100%;">
+                  asd
+                </div>
+              </div>
+              <div class="row btnrow">
+                <div class="col-3">
+                  <img src="{% static 'img/greenlamb.png' %}" class="lamb" id="lamb1" />
+                </div>
+                <div class="col-3">
+                  <img src="{% static 'img/yellowlamb.png' %}" class="lamb" id="lamb2" />
+                </div>
+                <div class="col-3">
+                  <img src="{% static 'img/redlamb.png' %}" class="lamb" id="lamb3" />
+                </div>
+                <div class="col-3 text-center">
+                  <a class="btn btn-secondary text-uppercase confirm">Выбрать команду</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block javascript %}
 
-    <script type="text/javascript" src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
-    <script type="text/javascript" src="{% static '/js/onlineGame.js' %}"></script>
-    <script src="{% static "channels/js/websocketbridge.js" %}" type="text/javascript"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static '/js/onlineGame.js' %}"></script>
+  <script src="{% static "channels/js/websocketbridge.js" %}" type="text/javascript"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
-<script>
-var category = 0;
-var number_of_ticket = 0;
-var number_of_question = 1;
-var res = [];
+  <script>
+      var category = 0;
+      var number_of_ticket = 0;
+      var number_of_question = 1;
+      var res = [];
 
-function leadersFunction(leader) {
-  for (let i = 0; i < leader.leaders.length; i++) {
-    document.getElementById('js-leader-name' + i).innerText = leader.leaders[i].user_leader;
-    document.getElementById('js-leader-city' + i).innerText = leader.leaders[i].city;
-    document.getElementById('js-leader-coins' + i).innerText = leader.leaders[i].points;
-    const element = document.getElementsByClassName('js-leader-avatar' + i);
-    $(element).attr("src", leader.leaders[i].avatar);
-  }
-}
-
-$(document).ready(function() {
-    $.ajax({
-      type: "GET",
-      url: "/get_leaders/",
-      cache: false,
-      success: function(data){
-        leadersFunction(data);
+      function leadersFunction(leader) {
+          for (let i = 0; i < leader.leaders.length; i++) {
+              document.getElementById('js-leader-name' + i).innerText = leader.leaders[i].user_leader;
+              document.getElementById('js-leader-city' + i).innerText = leader.leaders[i].city;
+              document.getElementById('js-leader-coins' + i).innerText = leader.leaders[i].points;
+              const element = document.getElementsByClassName('js-leader-avatar' + i);
+              $(element).attr("src", leader.leaders[i].avatar);
+          }
       }
-    });
-});
-</script>
 
-{% if user.is_authenticated %}
+      $(document).ready(function() {
+          $.ajax({
+              type: "GET",
+              url: "/get_leaders/",
+              cache: false,
+              success: function(data){
+                  leadersFunction(data);
+              }
+          });
+      });
+  </script>
 
-<script>
-function checkResult () {
- $.ajax({
+  {% if user.is_authenticated %}
 
-        type: "GET",
-
-        url: "check_results/",
-
-        data: {
-            'category': category
-        },
-
-        cache: false,
-
-        success: function (data) {
-        	$(".progress").show();
-            for (var i = 0; i <= 39; i++) {
-                if (data.results[i]) {
-                    document.getElementById('success' + (i + 1)).style.width = (data.results[i].true * 5) + '%';
-                    document.getElementById('danger' + (i + 1)).style.width = (data.results[i].false * 5) + '%';
-                    document.getElementById('secondary' + (i + 1)).style.width = (100 - (data.results[i].true + data.results[i].false) * 5) + '%';
-                }
-            }
-        }
-    });
-}
-
-$(document).ready(function() {
-    checkResult();
-});
-
-$("#cat1").click(function () {
-    if (number_of_ticket === 0) {
-        category = 0;
-        $(this).addClass("active");
-        $('#cat2').removeClass("active");
-        checkResult();
-    }
-});
-
-$("#cat2").click(function () {
-    if (number_of_ticket === 0) {
-        category = 1;
-        $(this).addClass("active");
-        $('#cat1').removeClass("active");
-        checkResult();
-    }
-});
-
-
-</script>
-
-{% else %}
-
-<script>
-
-$("#cat1").click(function () {
-    if (number_of_ticket === 0) {
-        category = 0;
-        $(this).addClass("active");
-        $('#cat2').removeClass("active");
-    }
-});
-
-$("#cat2").click(function () {
-    if (number_of_ticket === 0) {
-        category = 1;
-        $(this).addClass("active");
-        $('#cat1').removeClass("active");
-    }
-});
-
-</script>
-
-{% endif %}
-
-<script>
-
-$("#navonlineitem1").addClass("active");
-
-$(".navonlineitem").click(function(){
-	var id = $(this).attr("id");
-	var e = document.getElementById(id);
-    $(".navonlineitem").removeClass("active");
-    $(e).addClass("active");
-});
-
-$(".btn_for_online").click(function(){
-	var id = $(this).attr("id");
-	var e = document.getElementById(id);
-    $(".btn_for_online").removeClass("btn_for_online_active");
-    $(e).addClass("btn_for_online_active");
-});
-
-function changeData(data) {
-	
-    $(".answbtn").removeClass("btn-success btn-danger");
-    document.getElementById('quest').textContent = data.questions[0].question;
-    $('.imgquestion').attr("src", "/media/" + data.questions[0].picture);
-    document.getElementById('help-text').textContent = data.questions[0].comment_for_question;
-    document.getElementById('answer1').textContent = data.answers[0];
-    document.getElementById('answer2').textContent = data.answers[1];
-    if (data.answers[2]) {
-        document.getElementById('answer3').textContent = data.answers[2];
-        $('#answer3').show();
-    }
-    else $('#answer3').hide();
-    if (data.answers[3]) {
-        document.getElementById('answer4').textContent = data.answers[3];
-        $('#answer4').show();
-    }
-    else $('#answer4').hide();
-    if (data.answers[4]) {
-        document.getElementById('answer5').textContent = data.answers[4];
-        $('#answer5').show();
-    }
-    else $('#answer5').hide();
-
-
-    if (res[number_of_question - 1].user_answer) {
-        var t_answ = getElementByClassAndtextContent("answbtn", res[number_of_question - 1].true_answer);
-        $(t_answ).addClass('btn-success');
-        if (res[number_of_question - 1].true_answer !== res[number_of_question -1].user_answer) {
-            var u_answ = getElementByClassAndtextContent("answbtn", res[number_of_question - 1].user_answer);
-            $(u_answ).addClass('btn-danger');
-        }
-        $('.answbtn').addClass('disabled');
-        $('.help-box').show();
-    } else {
-        $('.answbtn').removeClass('disabled');
-        $('.help-box').hide();
-    }
-
-
-    for (var i = 0; i <= 19; i++) {
-        var btnquest = document.getElementById("btnquest" + (i + 1));
-        $(btnquest).removeClass('btn-danger btn-success btn-primary disabled');
-        if (i + 1 === number_of_question) {
-            $(btnquest).addClass('btn-primary disabled');
-        } else if (res[i].user_answer) {
-            if (res[i].user_answer === res[i].true_answer) {
-                $(btnquest).addClass('btn-success');
-            } else $(btnquest).addClass('btn-danger');
-        }
-    }
-}
-
-function getElementByClassAndtextContent(className, text) {
-    var elements = document.getElementsByClassName(className);
-    for (var i = 0; i < elements.length; i++) {
-        if (elements[i].textContent === text)
-            return elements[i];
-    }
-}
-
-$('.btnticket').click(function() {
-    number_of_ticket = $(this).attr("value");
-    number_of_question = 1;
-    $.ajax({
-
-        type: "GET",
-
-        url: "load_ticket/",
-
-        data: {
-            'number_of_ticket': number_of_ticket,
-            'category': category
-        },
-
-        cache: false,
-
-        success: function (data) {
-            $('.btnticket').hide();
-            $('.result').show();
-            $('.btnquest-box1').show();
-            number_of_question = data.questions[0].number_of_question
-            res = data.results;
-            changeData(data);
-        }
-    });
-});
-
-// загрузка вопроса 
-$(".btnquest").click(function () {
-    number_of_question = Number($(this).attr("value"));
-    loadQuestion();
-});
-
-$(".nextbtn").click(function () {
-    if (number_of_question === 20) {
-        if (number_of_ticket != 40) {
-            number_of_question = 1;
-            number_of_ticket++;
-
+    <script>
+        function checkResult () {
             $.ajax({
 
                 type: "GET",
 
-                url: "load_ticket/",
+                url: "check_results/",
 
                 data: {
-                    'number_of_ticket': number_of_ticket,
                     'category': category
                 },
 
                 cache: false,
 
                 success: function (data) {
-                    $('.btnticket').hide();
-                    $('.result').show();
-                    $('.btnquest-box1').show();
-
-                    number_of_question = data.questions[0].number_of_question
-                    res = data.results;
-                    changeData(data);
+                    $(".progress").show();
+                    for (var i = 0; i <= 39; i++) {
+                        if (data.results[i]) {
+                            document.getElementById('success' + (i + 1)).style.width = (data.results[i].true * 5) + '%';
+                            document.getElementById('danger' + (i + 1)).style.width = (data.results[i].false * 5) + '%';
+                            document.getElementById('secondary' + (i + 1)).style.width = (100 - (data.results[i].true + data.results[i].false) * 5) + '%';
+                        }
+                    }
                 }
             });
         }
-    } else {
-        number_of_question++;
-        loadQuestion();
-    }
-});
 
-function checkAnsw(answbtn) {
-  var user_answ = answbtn.textContent || answbtn.innerText;
-  $.ajax({
+        $(document).ready(function() {
+            checkResult();
+        });
 
-        type: "GET",
-
-        url: "check_answer/",
-
-        data: {
-            'number_of_ticket': number_of_ticket,
-            'number_of_question': number_of_question,
-            'category': category,
-            'answer_by_user': user_answ
-        },
-        dataType: 'json',
-
-        cache: false,
-
-        success: function (data) {
-            $('.help-box').show();
-
-            $.ajax({
-
-                type: "GET",
-
-                url: "check_points/",
-
-                cache: false,
-
-                success: function (data) {
-                    document.getElementById('bonus').textContent = data.points;
-                    document.getElementById('bonus1').textContent = data.points;
-                }
-            });
-
-            if (user_answ === data.true_answer) {
-                $(answbtn).addClass("btn-success");
-            } else {
-                $(answbtn).addClass("btn-danger");
-                var true_answbtn = getElementByClassAndtextContent("answbtn", data.true_answer);
-                $(true_answbtn).addClass("btn-success");
+        $("#cat1").click(function () {
+            if (number_of_ticket === 0) {
+                category = 0;
+                $(this).addClass("active");
+                $('#cat2').removeClass("active");
+                checkResult();
             }
-            $('.answbtn').addClass("disabled");
-            res[number_of_question - 1].user_answer = user_answ;
-            res[number_of_question - 1].true_answer = data.true_answer;
+        });
 
-            if (number_of_ticket == 40) {
-                $(".nextbtn").addClass('disabled')
+        $("#cat2").click(function () {
+            if (number_of_ticket === 0) {
+                category = 1;
+                $(this).addClass("active");
+                $('#cat1').removeClass("active");
+                checkResult();
             }
+        });
 
-        }
-    });
-}
 
-function loadQuestion() {
-    $.ajax({
-
-        type: "GET",
-
-        url: "load_question/",
-
-        data: {
-            'number_of_ticket': number_of_ticket,
-            'number_of_question': number_of_question,
-            'category': category
-        },
-
-        cache: false,
-
-        success: function (data) {
-            changeData(data);
-        }
-    });
-}
-
-function isHide(elem) {
-  return (elem.style.display === 'none');
-}
-
-$("body").keydown(function(event) {
-    if (!res[number_of_question - 1].user_answer) {
-        let elem;
-        switch (event.which) {
-            // 1
-            case 49:
-                checkAnsw(document.getElementById("answer1"));
-                break;
-            // 2
-            case 50:
-                checkAnsw(document.getElementById("answer2"));
-                break;
-            // 3
-            case 51:
-                checkAnsw(document.getElementById("answer3"));
-                break;
-            // 4
-            case 52:
-                elem = document.getElementById("answer4");
-                if (!(isHide(elem))) {
-                    checkAnsw(elem);
-                }
-                break;
-            // 5
-            case 53:
-                elem = document.getElementById("answer5");
-                if (!(isHide(elem))) {
-                    checkAnsw(elem);
-                }
-                break;
-            default:
-                break;
-        }
-    }
-
-    switch (event.which) {
-        // left arrow
-        case 37:
-            if (number_of_question > 1) {
-                number_of_question--;
-                loadQuestion();
-            }
-            break;
-        // right arrow
-        case 39:
-            if (number_of_question < 20) {
-                number_of_question++;
-                loadQuestion();
-            }
-            break;
-
-    }
-});
-
-$(".answbtn").click(function () {
-    var answbtn_id = $(this).attr("id");
-    var answbtn = document.getElementById(answbtn_id);
-    checkAnsw(answbtn);
-});
 </script>
+
+  {% else %}
+
+    <script>
+
+        $("#cat1").click(function () {
+            if (number_of_ticket === 0) {
+                category = 0;
+                $(this).addClass("active");
+                $('#cat2').removeClass("active");
+            }
+        });
+
+        $("#cat2").click(function () {
+            if (number_of_ticket === 0) {
+                category = 1;
+                $(this).addClass("active");
+                $('#cat1').removeClass("active");
+            }
+        });
+
+    </script>
+
+  {% endif %}
+
+  <script>
+
+      $("#navonlineitem1").addClass("active");
+
+      $(".navonlineitem").click(function(){
+          var id = $(this).attr("id");
+          var e = document.getElementById(id);
+          $(".navonlineitem").removeClass("active");
+          $(e).addClass("active");
+      });
+
+      $(".btn_for_online").click(function(){
+          var id = $(this).attr("id");
+          var e = document.getElementById(id);
+          $(".btn_for_online").removeClass("btn_for_online_active");
+          $(e).addClass("btn_for_online_active");
+      });
+
+      function changeData(data) {
+	
+          $(".answbtn").removeClass("btn-success btn-danger");
+          document.getElementById('quest').textContent = data.questions[0].question;
+          $('.imgquestion').attr("src", "/media/" + data.questions[0].picture);
+          document.getElementById('help-text').textContent = data.questions[0].comment_for_question;
+          document.getElementById('answer1').textContent = data.answers[0];
+          document.getElementById('answer2').textContent = data.answers[1];
+          if (data.answers[2]) {
+              document.getElementById('answer3').textContent = data.answers[2];
+              $('#answer3').show();
+          }
+          else $('#answer3').hide();
+          if (data.answers[3]) {
+              document.getElementById('answer4').textContent = data.answers[3];
+              $('#answer4').show();
+          }
+          else $('#answer4').hide();
+          if (data.answers[4]) {
+              document.getElementById('answer5').textContent = data.answers[4];
+              $('#answer5').show();
+          }
+          else $('#answer5').hide();
+
+
+          if (res[number_of_question - 1].user_answer) {
+              var t_answ = getElementByClassAndtextContent("answbtn", res[number_of_question - 1].true_answer);
+              $(t_answ).addClass('btn-success');
+              if (res[number_of_question - 1].true_answer !== res[number_of_question -1].user_answer) {
+                  var u_answ = getElementByClassAndtextContent("answbtn", res[number_of_question - 1].user_answer);
+                  $(u_answ).addClass('btn-danger');
+              }
+              $('.answbtn').addClass('disabled');
+              $('.help-box').show();
+          } else {
+              $('.answbtn').removeClass('disabled');
+              $('.help-box').hide();
+          }
+
+
+          for (var i = 0; i <= 19; i++) {
+              var btnquest = document.getElementById("btnquest" + (i + 1));
+              $(btnquest).removeClass('btn-danger btn-success btn-primary disabled');
+              if (i + 1 === number_of_question) {
+                  $(btnquest).addClass('btn-primary disabled');
+              } else if (res[i].user_answer) {
+                  if (res[i].user_answer === res[i].true_answer) {
+                      $(btnquest).addClass('btn-success');
+                  } else $(btnquest).addClass('btn-danger');
+              }
+          }
+      }
+
+      function getElementByClassAndtextContent(className, text) {
+          var elements = document.getElementsByClassName(className);
+          for (var i = 0; i < elements.length; i++) {
+              if (elements[i].textContent === text)
+                  return elements[i];
+          }
+      }
+
+      $('.btnticket').click(function() {
+          number_of_ticket = $(this).attr("value");
+          number_of_question = 1;
+          $.ajax({
+
+              type: "GET",
+
+              url: "load_ticket/",
+
+              data: {
+                  'number_of_ticket': number_of_ticket,
+                  'category': category
+              },
+
+              cache: false,
+
+              success: function (data) {
+                  $('.btnticket').hide();
+                  $('.result').show();
+                  $('.btnquest-box1').show();
+                  number_of_question = data.questions[0].number_of_question
+                  res = data.results;
+                  changeData(data);
+              }
+          });
+      });
+
+// загрузка вопроса 
+      $(".btnquest").click(function () {
+          number_of_question = Number($(this).attr("value"));
+          loadQuestion();
+      });
+
+      $(".nextbtn").click(function () {
+          if (number_of_question === 20) {
+              if (number_of_ticket != 40) {
+                  number_of_question = 1;
+                  number_of_ticket++;
+
+                  $.ajax({
+
+                      type: "GET",
+
+                      url: "load_ticket/",
+
+                      data: {
+                          'number_of_ticket': number_of_ticket,
+                          'category': category
+                      },
+
+                      cache: false,
+
+                      success: function (data) {
+                          $('.btnticket').hide();
+                          $('.result').show();
+                          $('.btnquest-box1').show();
+
+                          number_of_question = data.questions[0].number_of_question
+                          res = data.results;
+                          changeData(data);
+                      }
+                  });
+              }
+          } else {
+              number_of_question++;
+              loadQuestion();
+          }
+      });
+
+      function checkAnsw(answbtn) {
+          var user_answ = answbtn.textContent || answbtn.innerText;
+          $.ajax({
+
+              type: "GET",
+
+              url: "check_answer/",
+
+              data: {
+                  'number_of_ticket': number_of_ticket,
+                  'number_of_question': number_of_question,
+                  'category': category,
+                  'answer_by_user': user_answ
+              },
+              dataType: 'json',
+
+              cache: false,
+
+              success: function (data) {
+                  $('.help-box').show();
+
+                  $.ajax({
+
+                      type: "GET",
+
+                      url: "check_points/",
+
+                      cache: false,
+
+                      success: function (data) {
+                          document.getElementById('bonus').textContent = data.points;
+                          document.getElementById('bonus1').textContent = data.points;
+                      }
+                  });
+
+                  if (user_answ === data.true_answer) {
+                      $(answbtn).addClass("btn-success");
+                  } else {
+                      $(answbtn).addClass("btn-danger");
+                      var true_answbtn = getElementByClassAndtextContent("answbtn", data.true_answer);
+                      $(true_answbtn).addClass("btn-success");
+                  }
+                  $('.answbtn').addClass("disabled");
+                  res[number_of_question - 1].user_answer = user_answ;
+                  res[number_of_question - 1].true_answer = data.true_answer;
+
+                  if (number_of_ticket == 40) {
+                      $(".nextbtn").addClass('disabled')
+                  }
+
+              }
+          });
+      }
+
+      function loadQuestion() {
+          $.ajax({
+
+              type: "GET",
+
+              url: "load_question/",
+
+              data: {
+                  'number_of_ticket': number_of_ticket,
+                  'number_of_question': number_of_question,
+                  'category': category
+              },
+
+              cache: false,
+
+              success: function (data) {
+                  changeData(data);
+              }
+          });
+      }
+
+      function isHide(elem) {
+          return (elem.style.display === 'none');
+      }
+
+      $("body").keydown(function(event) {
+          if (!res[number_of_question - 1].user_answer) {
+              let elem;
+              switch (event.which) {
+                  // 1
+                  case 49:
+                      checkAnsw(document.getElementById("answer1"));
+                      break;
+                  // 2
+                  case 50:
+                      checkAnsw(document.getElementById("answer2"));
+                      break;
+                  // 3
+                  case 51:
+                      checkAnsw(document.getElementById("answer3"));
+                      break;
+                  // 4
+                  case 52:
+                      elem = document.getElementById("answer4");
+                      if (!(isHide(elem))) {
+                          checkAnsw(elem);
+                      }
+                      break;
+                  // 5
+                  case 53:
+                      elem = document.getElementById("answer5");
+                      if (!(isHide(elem))) {
+                          checkAnsw(elem);
+                      }
+                      break;
+                  default:
+                      break;
+              }
+          }
+
+          switch (event.which) {
+              // left arrow
+              case 37:
+                  if (number_of_question > 1) {
+                      number_of_question--;
+                      loadQuestion();
+                  }
+                  break;
+              // right arrow
+              case 39:
+                  if (number_of_question < 20) {
+                      number_of_question++;
+                      loadQuestion();
+                  }
+                  break;
+
+          }
+      });
+
+      $(".answbtn").click(function () {
+          var answbtn_id = $(this).attr("id");
+          var answbtn = document.getElementById(answbtn_id);
+          checkAnsw(answbtn);
+      });
+  </script>
 
 {% endblock %}

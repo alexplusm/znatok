@@ -2,170 +2,174 @@
 {% load static %}
 
 {% block main %}
-<div class="conteiner" id="our_team">
-	<div class="col-12">
-		<div class="row">
-			<div class="col-3 ml-auto text-center">
-			      <ul class="list-unstyled nav navleft" style="padding-bottom: 2em;">
-			      	<li class="nav-item3"><a class="nav-link navitem3 text-uppercase active">настройки</a></li>
-			      	<li class="nav-item3 top"><a class="nav-link text-uppercase navitem3">достижения</a></li>
-			      	<li class="nav-item3 top"><a class="nav-link text-uppercase navitem3">сообщения</a></li>
-			      	<li class="nav-item3 top"><a class="nav-link text-uppercase navitem3">счета</a></li>
-			      	<li class="nav-item3 top"><a class="nav-link text-uppercase navitem3">покупки</a></li>
-			      	<li class="nav-item3 top"><a class="nav-link text-uppercase navitem3">розыгрыши</a></li>
-			      </ul>
-			</div>
-			<div class="col-7 mr-auto">
-				<div class="row">
-					<div class="col-12 card card-grey text-uppercase text-center cardblock" id="profile">
-						<div class="card-block">
-							<div class="card-title mb-3 mt-3">
-								<span>Личная информация</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-12">
-						<br>
-						<div class="row justify-content-between" id="profile-body">
-{#							<div class="col-3 text-center">#}
-{#								<img src="/media/{{user.profile.user_avatar}}" width="100%" />#}
-{#							</div>#}
-							<div class="col-7">
-								<div class="topp">
-                                    <form method="post" enctype="multipart/form-data" novalidate>
-                                        {% csrf_token %}
-                                        {% for form in forms %}
-                                            {% include 'includes/form.html' %}
-                                        {% endfor %}
-                                        <button type="submit" class="btn btn-primary btn-block">Сохранить профиль</button>
-                                    </form>
-                                <br>
-                                </div>
-							</div>
-							<div class="col-4 text-center">
-                                <p><img src="/media/{{user.profile.user_avatar}}" width="100%" /></p>
-								<p>Для участия в розыгрыше призов вам должно быть не менее 18 лет.</p>
-								<p>При получении приза, указанные здесь данные, должны совпадать с паспортными данными.</p><br>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 card card-grey text-uppercase text-center cardblock" id="social">
-						<div class="card-block">
-							<div class="card-title mb-3 mt-3">
-								<span>Социальные сети</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 text-center imga">
-						<br>
-						<div id="social-body">
-							<p>Привяжите аккаунты своих социальных сетей для быстрого входа</p>
-							<i class="fa fa-vk"></i>
-							<i class="fa fa-facebook-official"></i>
-							<i class="fa fa-odnoklassniki"></i>
-							<i class="fa fa-google-plus"></i>
-							<i class="fa fa-yahoo"></i>
-							<br><br><br>
-						</div>
-					</div>
-					<div class="col-12 card card-grey text-uppercase text-center cardblock" id="security">
-						<div class="card-block">
-							<div class="card-title mb-3 mt-3">
-								<span>Безопасность</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-12" style="font-size: 0.8em;">
-						<br>
-						<div class="row" id="security-body">
-							<div class="col-6">
-								<form method="post" novalidate>
-                                        {% csrf_token %}
-                                        {% for form in password_form %}
-                                            {% include 'includes/form.html' %}
-                                        {% endfor %}
-                                        <button type="submit" class="btn btn-primary btn-block">Изменить пароль</button>
-                                    </form>
-                            <br>
-							</div>
-							<div class="col-6">
-								<p>Последний раз пароль менялся <span class="text-danger">
-                                    {{user.profile.last_password_update}}
-                                </span></p>
-								<p>Предыдущее посещение <span class="text-primary">{{user.last_login}}</span></p>
-								<p>Двухкратная аутентификация</p>
-								<br><br>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 card card-grey text-uppercase text-center cardblock" id="other">
-						<div class="card-block">
-							<div class="card-title mb-3 mt-3">
-								<span>Прочее</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 text-center">
-						<br>
-						<div class="row" id="other-body">
-							<div class="col-6">
-								<div class="btn btn-danger text-uppercase">Сброс статистики</div>
-							</div>
-							<div class="col-6">
-								<div class="btn btn-danger text-uppercase">Удалить аккаунт</div>
-							</div>
-						</div>
-					</div>
-					<br><br><br><br><br>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+  <div class="conteiner" id="our_team">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-3 ml-auto text-center">
+          <ul class="list-unstyled nav navleft" style="padding-bottom: 2em;">
+            <li class="nav-item3"><a class="nav-link navitem3 text-uppercase active">настройки</a></li>
+            <li class="nav-item3 top"><a class="nav-link text-uppercase navitem3">достижения</a></li>
+            <li class="nav-item3 top"><a class="nav-link text-uppercase navitem3">сообщения</a></li>
+            <li class="nav-item3 top"><a class="nav-link text-uppercase navitem3">счета</a></li>
+            <li class="nav-item3 top"><a class="nav-link text-uppercase navitem3">покупки</a></li>
+            <li class="nav-item3 top"><a class="nav-link text-uppercase navitem3">розыгрыши</a></li>
+          </ul>
+        </div>
+        <div class="col-7 mr-auto">
+          <div class="row">
+            <div class="col-12 card card-grey text-uppercase text-center cardblock" id="profile">
+              <div class="card-block">
+                <div class="card-title mb-3 mt-3">
+                  <span>Личная информация</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <br>
+              <div class="row justify-content-between" id="profile-body">
+                {#							<div class="col-3 text-center">#}
+                {#								<img src="/media/{{user.profile.user_avatar}}" width="100%" />#}
+                {#							</div>#}
+                <div class="col-7">
+                  <div class="topp">
+                    <form method="post" enctype="multipart/form-data" novalidate>
+                      {% csrf_token %}
+                      {% for form in forms %}
+                        {% include 'includes/form.html' %}
+                      {% endfor %}
+                      <button type="submit" class="btn btn-primary btn-block">Сохранить профиль</button>
+                    </form>
+                    <br>
+                  </div>
+                </div>
+                <div class="col-4 text-center">
+                  <p><img src="/media/{{user.profile.user_avatar}}" width="100%" /></p>
+                  <p>Для участия в розыгрыше призов вам должно быть не менее 18 лет.</p>
+                  <p>При получении приза, указанные здесь данные, должны совпадать с паспортными данными.</p><br>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 card card-grey text-uppercase text-center cardblock" id="social">
+              <div class="card-block">
+                <div class="card-title mb-3 mt-3">
+                  <span>Социальные сети</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 text-center imga">
+              <br>
+              <div id="social-body">
+                <p>Привяжите аккаунты своих социальных сетей для быстрого входа</p>
+                <i class="fa fa-vk"></i>
+                <i class="fa fa-facebook-official"></i>
+                <i class="fa fa-odnoklassniki"></i>
+                <i class="fa fa-google-plus"></i>
+                <i class="fa fa-yahoo"></i>
+                <br><br><br>
+              </div>
+            </div>
+            <div class="col-12 card card-grey text-uppercase text-center cardblock" id="security">
+              <div class="card-block">
+                <div class="card-title mb-3 mt-3">
+                  <span>Безопасность</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12" style="font-size: 0.8em;">
+              <br>
+              <div class="row" id="security-body">
+                <div class="col-6">
+                  <form method="post" novalidate>
+                    {% csrf_token %}
+                    {% for form in password_form %}
+                      {% include 'includes/form.html' %}
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary btn-block">Изменить пароль</button>
+                  </form>
+                  <br>
+                </div>
+                <div class="col-6">
+                  <p>Последний раз пароль менялся <span class="text-danger">
+                    {{user.profile.last_password_update}}
+                  </span></p>
+                  <p>Предыдущее посещение <span class="text-primary">{{user.last_login}}</span></p>
+                  <p>Двухкратная аутентификация</p>
+                  <br><br>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 card card-grey text-uppercase text-center cardblock" id="other">
+              <div class="card-block">
+                <div class="card-title mb-3 mt-3">
+                  <span>Прочее</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 text-center">
+              <br>
+              <div class="row" id="other-body">
+                <div class="col-6">
+                  <div class="btn btn-danger text-uppercase">Сброс статистики</div>
+                </div>
+                <div class="col-6">
+                  <div class="btn btn-danger text-uppercase">Удалить аккаунт</div>
+                </div>
+              </div>
+            </div>
+            <br><br><br><br><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block javascript %}
-<script>
+  <script>
 
 
-  function isHide(elem) {
-    return elem.style.display === 'none';
-  }
-
-
-	$(document).ready(function() {
-    $(".cardblock").click(function () {
-
-      let id = $(this).attr("id");
-      let element;
-      switch(id) {
-        case "profile":
-        element = document.getElementById("profile-body");
-        if (isHide(element)) {
-          $(element).show();
-        } else $(element).hide();
-        break;
-        case "security":
-        element = document.getElementById("security-body");
-        if (isHide(element)) {
-          $(element).show();
-        } else $(element).hide();
-        break;
-        case "social":
-        element = document.getElementById("social-body");
-        if (isHide(element)) {
-          $(element).show();
-        } else $(element).hide();
-        break;
-        case "other":
-        element = document.getElementById("other-body");
-        if (isHide(element)) {
-          $(element).show();
-        } else $(element).hide();
-        break;
+      function isHide(elem) {
+          return elem.style.display === 'none';
       }
 
-    });
-	});
-</script>
+
+      $(document).ready(function() {
+          $(".cardblock").click(function () {
+
+              let id = $(this).attr("id");
+              let element;
+              switch(id) {
+                  case "profile":
+                      element = document.getElementById("profile-body");
+                      if (isHide(element)) {
+                          $(element).show();
+                      } else $(element).hide();
+                      break;
+                  case "security":
+                      element = document.getElementById("security-body");
+                      if (isHide(element)) {
+                          $(element).show();
+                      } else $(element).hide();
+                      break;
+                  case "social":
+                      element = document.getElementById("social-body");
+                      if (isHide(element)) {
+                          $(element).show();
+                      } else $(element).hide();
+                      break;
+                  case "other":
+                      element = document.getElementById("other-body");
+                      if (isHide(element)) {
+                          $(element).show();
+                      } else $(element).hide();
+                      break;
+              }
+
+          });
+          const element = document.querySelector('.is-invalid');
+          if (element) {
+              element.focus();
+          }
+      });
+  </script>
 {% endblock %}

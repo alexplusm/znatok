@@ -13,7 +13,6 @@ from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 
-
 def signup(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
@@ -64,7 +63,6 @@ def profile(request):
             user_form = UserUpdateForm(request.POST, instance=request.user)
             profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
             if user_form.is_valid() and profile_form.is_valid():
-                print('uuuuuuuuuuuuuuuuuuuuuu')
                 user_form.save()
                 profile_form.save()
                 return redirect('profile')
@@ -73,7 +71,6 @@ def profile(request):
         if 'old_password' in request.POST:
             password_form = PasswordUpdateForm(request.user, request.POST)
             if password_form.is_valid():
-                print('ppppppppppppppppppppp')
                 user = password_form.save()
                 update_session_auth_hash(request, user)  # Important!
                 messages.success(request, 'Your password was successfully updated!')
@@ -86,20 +83,3 @@ def profile(request):
         profile_form = ProfileForm(instance=request.user.profile)
         password_form = PasswordUpdateForm(request.user)
     return render(request, 'profile.html', {'forms': [user_form, profile_form], 'password_form':[password_form]})
-
-
-# def change_password(request):
-#     if request.method == 'POST':
-#         form = PasswordChangeForm(request.user, request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             update_session_auth_hash(request, user)  # Important!
-#             messages.success(request, 'Your password was successfully updated!')
-#             return redirect('change_password')
-#         else:
-#             messages.error(request, 'Please correct the error below.')
-#     else:
-#         form = PasswordChangeForm(request.user)
-#     return render(request, 'accounts/change_password.html', {
-#         'form': form
-#     })
