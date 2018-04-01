@@ -43,27 +43,3 @@ class Question(models.Model):
             picture=str(self.picture), 
             )
         return _json
-
-
-
-
-
-
-
-
-
-
-
-# GAME = {
-#     gameData,
-#     gameCNT,
-
-#     constructor(data) {
-#         this.gameData = data;
-#     }
-
-#     nextQuest() {
-#         this.gameCNT += 1;
-#     }
-
-# }

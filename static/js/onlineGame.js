@@ -10,6 +10,9 @@ $(document).ready( function() {
     let group = '';
     let timeStartGame = '';
 
+    let userPoints = 0;
+    let userRate = null;
+
 
     let requestToServer = {
         command: 'comm',
@@ -17,7 +20,62 @@ $(document).ready( function() {
         group: 'group',
         result: 'result',
         timeStartGame: '',
+        userRate,
     }
+
+    function retrievePoints() {
+        $.ajax({
+
+            type: "GET",
+
+            url: "check_points/",
+
+            cache: false,
+
+            success: function (data) {
+                userPoints = data.points;
+                renderButtons(userPoints);
+            }
+        });
+    }
+    retrievePoints();
+    function renderButtons(usPoints) {
+        const btn50 = document.getElementById('btn_for_online_2');
+        const btn100 = document.getElementById('btn_for_online_3');
+        const btn250 = document.getElementById('btn_for_online_4');
+        const btn500 = document.getElementById('btn_for_online_5');
+        const btn1000 = document.getElementById('btn_for_online_6');
+
+        if (usPoints < 50) {
+            btn50.setAttribute('disabled', true);
+        }
+        if (usPoints < 100) {
+            btn100.setAttribute('disabled', true);
+        }
+        if (usPoints < 250) {
+            btn250.setAttribute('disabled', true);
+        }
+        if (usPoints < 500) {
+            btn500.setAttribute('disabled', true);
+        }
+        if (usPoints < 1000) {
+            btn1000.setAttribute('disabled', true);
+        }
+
+    }
+
+
+    const btnForOnlineGame = document.querySelectorAll('.btn_for_online');
+
+    for (var i = 0; i < btnForOnlineGame.length; i++) {
+        btnForOnlineGame[i].addEventListener("click", function () {
+            userRate = Number(this.innerHTML)
+            console.log(userRate);
+        }, false);
+    }
+
+    // btn_for_online_active
+
 
     /*  
     *  LIST COMMANDS TO SERVER:
@@ -38,7 +96,11 @@ $(document).ready( function() {
 	    $("#waitconnection").show();
 
 	    webSocketBridge.connect(ws_path);
-	    console.log("Connecting to " + ws_path);
+        console.log("Connecting to " + ws_path);
+        
+
+        
+        
 
     	webSocketBridge.listen(function(data) {
         console.log('listen WS: ', data)
@@ -66,7 +128,7 @@ $(document).ready( function() {
         		break;
         	case 3:
             // Юзер получает персональные результаты
-                game.
+                // game.
 
                 console.log(data);
         		break;

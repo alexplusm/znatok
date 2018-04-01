@@ -188,7 +188,7 @@ def ws_disconnect(message):
 
 """
     Предстоит добавить фильтры по категорям и тема 
-    (Знания ПДД, Штрафы, Дорожные знаки, хуйцы)
+    (Знания ПДД, Штрафы, Дорожные знаки)
 """
 def retrieve_quests_from_DB(theme=None, category=None):
     pack_of_questions = []

@@ -18,14 +18,42 @@ class Result(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        primary_key=True)
     points = models.IntegerField(default=0)
-    user_avatar = models.ImageField(upload_to='profile_avatar/', default='profile_avatar/default.png', blank=True)
+    user_avatar = models.ImageField(
+        upload_to='profile_avatar/',
+        default='profile_avatar/default.png',
+        blank=True)
     birthday = models.DateField(blank=True, null=True)
     city = models.CharField(max_length=50, blank=True, null=True)
     last_mini_game = models.DateTimeField(default=timezone.now)
     last_password_update = models.DateTimeField(default=timezone.now)
+    online_game_total_games = models.IntegerField(default=0)
+    online_game_count_of_wins = models.IntegerField(default=0)
 
+# ----- function for online-game
+    def inc_points(self, points):
+        self.points += points
+
+    def dec_points(self, points):
+        if (self.points - points >= 0):
+            self.points -= points
+
+    def get_statistic(self):
+        return self.online_game_count_of_wins / self.online_game_total_games
+
+    def insert_results(self, winner, points):
+        self.online_game_total_games += 1
+        if winner:
+            self.online_game_count_of_wins += 1
+            self.inc_points(points)
+        else:
+             self.dec_points(points)            
+
+# -----
     def __str__(self):
         return "profile: {}".format(self.user)
 
