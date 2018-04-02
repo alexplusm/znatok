@@ -23,6 +23,7 @@ from django.contrib.auth import views as auth_views
 from exam import views as exam_views
 from game import views as game_views
 from comments import views as comments_views
+from online_game import views as online_game_views
 
 from django.views.generic import TemplateView
 
@@ -86,7 +87,7 @@ urlpatterns = [
     # urls for exam app
 
     # urls for online_game app
-    url(r'online_game/', include('online_game.urls')),
+    url(r'^get_statistic/', online_game_views.get_statistic, name='get_statistic'),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

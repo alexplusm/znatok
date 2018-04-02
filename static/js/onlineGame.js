@@ -74,6 +74,31 @@ $(document).ready( function() {
         }, false);
     }
 
+
+    const totalEl = document.getElementById('totalCount');
+    const winsEl = document.getElementById('countOfWins');
+    const statisticEl = document.getElementById('statictic');
+
+    function getStatistic() {
+        $.ajax({
+
+            type: "GET",
+
+            url: "get_statistic/",
+
+            cache: false,
+
+            success: function (data) {
+                console.log(data);
+                totalEl.textContent = data.total;
+                winsEl.textContent = data.wins;
+                statisticEl.textContent = data.statistic;
+
+            }
+        });
+    }
+    getStatistic();
+
     // btn_for_online_active
 
 

@@ -180,12 +180,6 @@ def ws_disconnect(message):
     print(games_list.print_games_list())
 
 
-
-
-
-
-
-
 """
     Предстоит добавить фильтры по категорям и тема 
     (Знания ПДД, Штрафы, Дорожные знаки)
