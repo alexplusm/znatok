@@ -790,6 +790,25 @@
             }
         });
 
+        $('#block6').click(function () {
+            $.ajax({
+
+                type: "GET",
+
+                url: "get_wrong_questions/",
+
+                data: {
+                    'category': category
+                },
+
+                cache: false,
+
+                success: function (data) {
+                    console.log(data)
+                }
+            });
+        });
+
 
 </script>
 
@@ -818,6 +837,27 @@
   {% endif %}
 
   <script>
+
+      $('#block4').click(function () {
+          let theme = 2;
+          $.ajax({
+
+              type: "GET",
+
+              url: "load_questions_by_theme/",
+
+              data: {
+                  'category': category,
+                  'theme':theme
+              },
+
+              cache: false,
+
+              success: function (data) {
+                  console.log(data)
+              }
+          });
+      });
 
       $("#navonlineitem1").addClass("active");
 

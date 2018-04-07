@@ -2,6 +2,7 @@ from .models import Question
 from django.http import JsonResponse
 from random import shuffle
 from django.db.models import Min
+from django.http import HttpResponseForbidden
 
 
 def random_answers(question):
@@ -70,6 +71,49 @@ def load_ticket(request):
             filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question, category=category)
         answers = random_answers(question)
         return JsonResponse({'questions': list(question.values()), 'results': results,  'answers': answers}, safe=False)
+
+
+def load_questions_by_theme(request):
+    if request.method == "GET" and request.is_ajax():
+        category = request.GET['category']
+        theme = request.GET['theme']
+        questions = Question.objects.filter(category=category, theme=theme)\
+            .order_by('number_of_ticket', 'number_of_question')\
+            .values('number_of_ticket',
+                    'number_of_question',
+                    'question',
+                    'answer1',
+                    'answer2',
+                    'answer3',
+                    'answer4',
+                    'answer5',
+                    'picture',
+                    'comment_for_question')
+        return JsonResponse({'questions': list(questions)}, safe=False)
+
+
+def get_wrong_questions(request):
+    if request.method == "GET" and request.is_ajax():
+        category = request.GET['category']
+        user = request.user
+        if user.is_authenticated:
+            questions = user.result_set.filter(question__category=category, is_true=False)\
+                .order_by('question__number_of_ticket', 'question__number_of_question')\
+                .values('question__picture',
+                        'question__question',
+                        'question__number_of_ticket',
+                        'question__number_of_question',
+                        'question__answer1',
+                        'question__answer2',
+                        'question__answer3',
+                        'question__answer4',
+                        'question__answer5',
+                        'question__comment_for_question',
+                        'true_answer',
+                        'user_answer')
+            return JsonResponse({'questions': list(questions)}, safe=False)
+        else:
+            return HttpResponseForbidden('You must be authenticated')
 
 
 def check_answer(request):
