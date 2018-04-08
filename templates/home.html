@@ -60,6 +60,7 @@
         </div>
         <div class="row" style="margin-left: 5px;">
             <div class="col-12 bordering text-center blockmain">
+
             </div>
         </div>
       </div>
@@ -226,8 +227,30 @@
     </div>
   </div>
 </template>
+
 <template id="countButton" style="display: none;">
   <button class="custombtn"></button>
+</template>
+
+<template id="blockTheme" style="display: none;">
+  <div class="themese">
+    <div class="col-12">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle text-right" type="button" id="drop_for_ticket_info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%; border: 1px solid lightgrey;">
+        </button>
+        <div class="dropdown-menu text-center" aria-labelledby="drop_for_ticket_info" style="width: 100%;">
+          asdasd
+        </div>
+      </div>
+    </div>
+    <div class="themebtn1">
+    </div>
+  </div>
+</template>
+<template id="themeBtnTemplate">
+  <div class="themebtncontent themebtn text-left">
+    <span class="theme-counter">123</span><span class="theme-text">Дорожные знаки</span>
+  </div>
 </template>
 {% endblock %}
 
@@ -602,7 +625,6 @@
           const btnNumber = event.currentTarget.textContent;
           changeWrongQuestions(templateContainer, data, btnNumber - 1);
         });
-
       }
 
       function loadWrongQuestions(data) {
@@ -622,13 +644,14 @@
             leadersFunction(data);
           }
         });
-
       });
+
   </script>
 
   {% if user.is_authenticated %}
 
   <script>
+
     function checkResult () {
         $.ajax({
 
@@ -658,17 +681,6 @@
     $(document).ready(function() {
       checkResult();
     });
-
-    $('#block2').click(() => {
-      clearInits();
-      initTickets = true;
-      if (!initTickets) {
-        return;
-      }
-
-      loadTickets();
-      checkResult();
-    })
 
     $("#cat1").click(function () {
       $(this).addClass("active");
@@ -703,8 +715,18 @@
         category = 1;
         getWrongQuestions(category);
       }
-      
     });
+
+    $('#block2').click(() => {
+      clearInits();
+      initTickets = true;
+      if (!initTickets) {
+        return;
+      }
+
+      loadTickets();
+      checkResult();
+    })
 
     $('#block6').click(function () {
       clearInits();
@@ -758,6 +780,24 @@
   {% endif %}
 
   <script>
+    
+    function changeDataByTheme(data) {
+      const mainblock = document.querySelector(".blockmain");
+      const firstThemeTemplate = document.getElementById('blockTheme');
+      const contentThemeBtnTemplate = document.getElementById('themeBtnTemplate');
+      const firstThemeTemplateContainer = 'content' in firstThemeTemplate ? firstThemeTemplate.content : firstThemeTemplate;
+      const contentThemeBtnContainer = 'content' in contentThemeBtnTemplate ? contentThemeBtnTemplate.content : contentThemeBtnTemplate;
+      const firstBlockBtnTheme = firstThemeTemplateContainer.querySelector('.themese').cloneNode(true);
+      const content = firstBlockBtnTheme.querySelector('.themebtn1');
+
+      for (let i = 0; i < 5; i++) {
+        const contentThemeBtn = contentThemeBtnContainer.querySelector('.themebtncontent').cloneNode(true);
+        content.appendChild(contentThemeBtn);
+      }
+      mainblock.innerHTML = '';
+      mainblock.appendChild(firstBlockBtnTheme);
+    }
+
     function loadQuestionByTheme(theme) {
       $.ajax({
 
@@ -773,38 +813,38 @@
           cache: false,
 
           success: function (data) {
-              console.log(data)
+            changeDataByTheme(data);
           }
       });
     }
 
-      $('#block4').click(function () {
-        clearInits();
-        intitThemes = true;
+    $('#block4').click(function () {
+      clearInits();
+      intitThemes = true;
 
-        let theme = 2;
+      let theme = 2;
 
-        if (!intitThemes) {
-          return;
-        }
+      if (!intitThemes) {
+        return;
+      }
 
-        loadQuestionByTheme(theme);
-      });
+      loadQuestionByTheme(theme);
+    });
 
-      $("#navonlineitem1").addClass("active");
+    $("#navonlineitem1").addClass("active");
 
-      $(".navonlineitem").click(function(){
-          var id = $(this).attr("id");
-          var e = document.getElementById(id);
-          $(".navonlineitem").removeClass("active");
-          $(e).addClass("active");
-      });
+    $(".navonlineitem").click(function(){
+        var id = $(this).attr("id");
+        var e = document.getElementById(id);
+        $(".navonlineitem").removeClass("active");
+        $(e).addClass("active");
+    });
 
-      $(".btn_for_online").click(function(){
-          var id = $(this).attr("id");
-          var e = document.getElementById(id);
-          $(".btn_for_online").removeClass("btn_for_online_active");
-          $(e).addClass("btn_for_online_active");
-      });
+    $(".btn_for_online").click(function(){
+        var id = $(this).attr("id");
+        var e = document.getElementById(id);
+        $(".btn_for_online").removeClass("btn_for_online_active");
+        $(e).addClass("btn_for_online_active");
+    });
   </script>
 {% endblock %}
