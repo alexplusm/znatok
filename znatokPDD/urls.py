@@ -72,6 +72,8 @@ urlpatterns = [
     url(r'check_answer/$', exam_views.check_answer, name='check_answer'),
     url(r'check_points/$', exam_views.check_points, name='check_points'),
     url(r'check_results/$', exam_views.check_results, name='check_results'),
+    url(r'get_wrong_questions/$', exam_views.get_wrong_questions, name='get_wrong_questions'),
+    url(r'load_questions_by_theme/$', exam_views.load_questions_by_theme, name='load_questions_by_theme'),
 
     url(r'load_picture/$', game_views.load_picture, name='load_picture'),
     url(r'next_mini_game/$', game_views.next_mini_game, name='next_mini_game'),
