@@ -6473,26 +6473,3 @@ body {
 .cardblock {
   cursor: pointer;
 }
-.form__star {
-  position: absolute;
-  border: 0px;
-  height: 32px;
-  width: 160px;
-  background: url(/static/img/star.png);
-  cursor: pointer;
-}
-.form__star_yellow {
-  position: relative;
-  border: 0px;
-  width: 32px;
-  height: 32px;
-  background: url(/static/img/star.png);
-  filter: invert(100%) sepia() saturate(10000%) hue-rotate(0deg);
-  cursor: pointer;
-}
-.form__star_yellow:active:focus {
-  border: 0px;
-}
-.form__star:active:focus {
-  border: 0px;
-}

@@ -3,6 +3,7 @@ from django.http import JsonResponse
 
 from accounts.models import Profile
 from .models import Comment
+import bleach
 
 
 def load_comments(request):
@@ -26,14 +27,11 @@ def add_comments(request):
     if request.method == "POST":
         score = request.POST['score']
 
-        # ПИЗДА ПИЗДА ПИЗДА ПИЗДА ПИЗДА
-        # БД СНЕСУТ БИБКОИНЫ НАКРУТЯТ
-        # ПИЗДА ПИЗДА ПИЗДА ПИЗДА ПИЗДА
-
         if score == '':
             score = 5
         comment = Comment(user=request.user)
-        comment.comment_text = request.POST['comment-text']
+        text = bleach.clean(request.POST['comment-text'])
+        comment.comment_text = text
         comment.rating = score
         comment.save()
     return redirect('home')

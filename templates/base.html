@@ -8,8 +8,7 @@
 {% block link %}
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{% static 'css/jquery.raty.css' %}">
@@ -202,10 +201,11 @@
         <div class="modal-body">
           <form class="form" method="post" action="{% url 'add_comments' %}">
             {% csrf_token %}
-            <div id="stars"></div>
+            <div id="stars" class="modal__stars"></div>
 
             <label for="text-comment">Текст вашего отзыва</label>
             <input type="text"
+                   class="modal__input"
                    name="comment-text"
                    id="text-comment"
                    placeholder="Текст отзыва"
@@ -216,9 +216,10 @@
             <label>Я ознакомлен с правилами публикации отзыва</label>
             <input type="checkbox"
                    name="checkbox"
+                   class="modal__checkbox"
                    required>
 
-            <button type="submit">Отправить</button>
+            <button type="submit" class="modal__btn">Отправить</button>
           </form>
         </div>
       </div>

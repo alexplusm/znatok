@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'channels',
     'widget_tweaks',
     'import_export',
+    'bleach',
 
 
     'exam',
