@@ -4,6 +4,8 @@
 let user_answer = ['0', '0', '0'];
 let counter = 0;
 
+let commentsCounter = 0;
+
 function contentMiniGame(data) {
   $('.js-game-not-ready').hide();
   $('.js-game-ready').show();
@@ -235,12 +237,62 @@ function checkStageMiniGame() {
 function commentsData(objects) {
   for (let i = 0; i < objects.comments.length; i++) {
     document.getElementById("js-user" + i).innerText = objects.comments[i].user;
+    $("#js-user" + i).attr("title", objects.comments[i].user);
     document.getElementById("js-text" + i).innerText = objects.comments[i].text;
-    document.getElementById("js-date" + i).innerText = objects.comments[i].date.match(/\d*-\d*-\d*/g);
+    const date = objects.comments[i].date.match(/\d*-\d*-\d*/g).toString();
+    const newDate = new Date();
+    const commentDate = new Date(date);
+    if (commentDate.getMonth() === newDate.getUTCMonth() && commentDate.getDate() === newDate.getUTCDate() && commentDate.getFullYear() === newDate.getUTCFullYear()) {
+      document.getElementById("js-date" + i).innerText = 'Сегодня';
+    } else {
+      document.getElementById("js-date" + i).innerText = `${date.slice(8.10)}.${date.slice(5,7)}.${date.slice(0,4)}`;
+    }
+    
     document.getElementById("js-city" + i).innerText = objects.comments[i].city;
-    document.getElementById("js-rating" + i).innerText = objects.comments[i].rating;
+    $("#js-city" + i).attr("title", objects.comments[i].city);
+    $('#js-rating' + i).raty({
+      score: () => objects.comments[i].rating,
+      readOnly: () => true
+    });
     const element = document.getElementById('js-avatar' + i);
     $(element).attr("src", objects.comments[i].avatar);
+  }
+}
+
+function moreCommentsData(comments) {
+  const commentHTML = document.querySelector('.comments');
+  const templateComment = document.getElementById('templateComment');
+  const templateContainer = 'content' in templateComment ? templateComment.content : templateComment;
+  const comment = comments;
+
+  for (let i = 0; i < comment.length; i++) {
+    const newElementComment = templateContainer.querySelector('.table-comment').cloneNode(true);
+
+    const date = comment[i].date.match(/\d*-\d*-\d*/g).toString();
+    const newDate = new Date();
+    const commentDate = new Date(date);
+    if (commentDate.getMonth() === newDate.getUTCMonth() && commentDate.getDate() === newDate.getUTCDate() && commentDate.getFullYear() === newDate.getUTCFullYear()) {
+      newElementComment.querySelector('.js-date').textContent = 'Сегодня';
+    } else {
+      newElementComment.querySelector('.js-date').textContent = `${date.slice(8.10)}.${date.slice(5,7)}.${date.slice(0,4)}`;
+    }
+
+    newElementComment.querySelector('.js-user').textContent = comment[i].user;
+    newElementComment.querySelector('.js-user').setAttribute("title", comment[i].user);
+
+    newElementComment.querySelector('.js-city').textContent = comment[i].city;
+
+    const element = newElementComment.querySelector('.js-avatar');
+    $(element).attr('src', comment[i].avatar);
+
+    newElementComment.querySelector('.js-text').textContent = comment[i].text;
+
+    commentHTML.appendChild(newElementComment);
+
+    $(newElementComment.querySelector('.js-rating')).raty({
+      score: () => comment[i].rating,
+      readOnly: () => true
+    });
   }
 }
 
@@ -249,10 +301,48 @@ function loadComments() {
     type: "GET",
     url: "/get_comments/",
     cache: false, 
-    success: function(data){
+    success: function(data) {
       commentsData(data);
     }
   });
+}
+
+
+(function() {
+     let timer;
+
+     $('#moreComments').click(function() {
+         if (timer) {
+             clearTimeout(timer);
+         }
+         
+         timer = setTimeout(loadMoreComments, 200);
+     });
+}());
+
+function loadMoreComments() {
+  if (commentsCounter === true) {
+    $('.moreComments').addClass('disabled text-muted');
+    return;
+  }
+
+  $.ajax({
+    type: 'GET',
+    url: '/get_more_comments/',
+    cache: false,
+    data: {number: commentsCounter},
+    success: function(data) {
+      moreCommentsData(data.more_comments);
+
+      if (data.bool) {
+        commentsCounter = data.bool;
+        $('.moreComments').addClass('disabled text-muted');
+        return;
+      }
+
+      commentsCounter += 1;
+    }
+  })
 }
 
 function addComment() {
@@ -276,10 +366,24 @@ $.ajax({
 });
 }
 
+function include(url) {
+  var script = document.createElement('script');
+  script.src = url;
+  document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+$.getScript("static/js/jquery.raty.js");
+
 $(document).ready(function() {
   checkPoints();
   loadComments();
   checkStageMiniGame();
+
+  $('#stars').raty({
+    click: function(score) {
+      console.log(score);
+    }
+  });
 
   var
     $window = $(window),
@@ -293,4 +397,6 @@ $(document).ready(function() {
       $("#panelbody1").removeClass("show_block");
     }
   });
-});
+}); 
+
+

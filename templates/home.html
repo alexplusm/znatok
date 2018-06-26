@@ -66,94 +66,77 @@
       </div>
       <div class="col-2 mr-auto" id="leadres">
         <div class="row">
-          <div class="col-12 w2">
-            <h4 class="text-uppercase text-primary">Лидеры недели</h4>
-            <div class="row padb" style="border-top: 1px solid lightgrey;">
-              <div class="col-4">
-                <img src="" class="js-leader-avatar0 leader-avatar" />
-              </div>
-              <div class="col-4">
-                <div class="row">
-                  <div class="col-12 text3">
-                    <p id="js-leader-name0"></p>
-                    <small id="js-leader-city0"></small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="row">
-                  <img src="{% static 'img/gold.png' %}" id="gold" style="margin-top: -2px;"/>
-                </div>
-              </div>
-              <div class="col-12 ml-auto text3" >
-                <div class="row">
-                  <div class="col-4 ml-auto">
-                    <span>Баллы</span>
-                  </div>
-                  <div class="col-4">
-                    <span class="coinslid" id="js-leader-coins0"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="col-10 mr-auto ml-auto">
+            <table class="leaders-table">
+              <tr class="leader-header">
+                <td colspan="3" class="text-uppercase text-primary text-center h4">
+                  Лидеры недели
+                </td>
+              </tr>
+              <tr class="leader-table">
+                <td rowspan="2">
+                  <img src="" class="js-leader-avatar0 leader-avatar" />
+                </td>
+                <td class="h5 leader-text">
+                  <p id="js-leader-name0"></p>
+                  <small id="js-leader-city0"></small>
+                </td>
+                <td>
+                  <img src="{% static 'img/gold.png' %}" class="gold" />
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right leader-coins text-primary text-uppercase">
+                  Баллы
+                </td>
+                <td class="leader-coins">
+                  <span class="leader-coins-counter" id="js-leader-coins0"></span>
+                </td>
+              </tr>
 
-            <div class="row padb">
-              <div class="col-4">
-                <img src="" class="js-leader-avatar1 leader-avatar" />
-              </div>
-              <div class="col-4">
-                <div class="row">
-                  <div class="col-12 text3">
-                    <p id="js-leader-name1"></p>
-                    <small id="js-leader-city1"></small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="row">
-                  <img src="{% static 'img/silver.png' %}" id="gold" style="margin-top: -1px;"/>
-                </div>
-              </div>
-              <div class="col-12 ml-auto text3">
-                <div class="row">
-                  <div class="col-4 ml-auto text-right">
-                    <span>Баллы</span>
-                  </div>
-                  <div class="col-4">
-                    <span class="coinslid" id="js-leader-coins1"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
+              <tr class="leader-table">
+                <td rowspan="2">
+                  <img src="" class="js-leader-avatar1 leader-avatar" />
+                </td>
+                <td class="h5 leader-text">
+                  <p id="js-leader-name1"></p>
+                  <small id="js-leader-city1"></small>
+                </td>
+                <td>
+                  <img src="{% static 'img/silver.png' %}" class="gold" />
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right leader-coins text-primary text-uppercase">
+                  Баллы
+                </td>
+                <td class="leader-coins">
+                  <span class="leader-coins-counter" id="js-leader-coins1"></span>
+                </td>
+              </tr>
 
-            <div class="row padb">
-              <div class="col-4">
-                <img src="" class="js-leader-avatar2 leader-avatar" />
-              </div>
-              <div class="col-4">
-                <div class="row">
-                  <div class="col-12 text3">
-                    <p id="js-leader-name2"></p>
-                    <small id="js-leader-city2"></small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="row">
-                  <img src="{% static 'img/bronze.png' %}" id="gold" style="margin-top: -3px;"/>
-                </div>
-              </div>
-              <div class="col-12 ml-auto text3">
-                <div class="row">
-                  <div class="col-4 ml-auto text-right">
-                    <span>Баллы</span>
-                  </div>
-                  <div class="col-4">
-                    <span class="coinslid" id="js-leader-coins2"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
+              <tr class="leader-table">
+                <td rowspan="2">
+                  <img src="" class="js-leader-avatar2 leader-avatar" />
+                </td>
+                <td class="h5 leader-text">
+                  <p id="js-leader-name2"></p>
+                  <small id="js-leader-city2"></small>
+                </td>
+                <td>
+                  <img src="{% static 'img/bronze.png' %}" class="gold" />
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right leader-coins text-primary text-uppercase">
+                  Баллы
+                </td>
+                <td class="leader-coins">
+                  <span class="leader-coins-counter" id="js-leader-coins2"></span>
+                </td>
+              </tr>
+
+            </table>
           </div>
         </div>
       </div>
@@ -581,7 +564,9 @@
       function leadersFunction(leader) {
           for (let i = 0; i < leader.leaders.length; i++) {
               document.getElementById('js-leader-name' + i).innerText = leader.leaders[i].user_leader;
+              $('#js-leader-name' + i).attr('title', leader.leaders[i].user_leader);
               document.getElementById('js-leader-city' + i).innerText = leader.leaders[i].city;
+              $('#js-leader-city' + i).attr('title', leader.leaders[i].city);
               document.getElementById('js-leader-coins' + i).innerText = leader.leaders[i].points;
               const element = document.getElementsByClassName('js-leader-avatar' + i);
               $(element).attr("src", leader.leaders[i].avatar);

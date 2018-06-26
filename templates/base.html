@@ -201,7 +201,7 @@
         <div class="modal-body">
           <form class="form" method="post" action="{% url 'add_comments' %}">
             {% csrf_token %}
-            <div id="stars" class="modal__stars"></div>
+            <div id="stars"></div>
 
             <label for="text-comment">Текст вашего отзыва</label>
             <input type="text"
@@ -272,107 +272,98 @@
     {% block online %}
     {% endblock %}
   </div>
-
+ <!-- class="col-6 text-over" -->
   <div id="panel-footer">
     <div class="panel-header">
-      <div class="conteiner">
-        <div class="row" style="margin-right: 15px;">
-          <div class="col-8 mr-auto ml-auto">
-            <div class="col-12">
-              <p class="text-comment">Отзывы пользователей</p>
-            </div>
-            <div class="row align-items-center">
-              <div class="col-2 text-center">
-                <p id="js-rating0"></p>
-                <i id="js-date0"></i>
-              </div>
-              <div class="col-2 text-center">
-                <img src="" class="comment-avatar" id="js-avatar0">
-              </div>
-              <div class="col-8">
-                <div class="row">
-                  <div class="col-7 ml-auto" id="js-user0"></div>
-                  <div class="col-3">
-                    <p class="text-right" id="js-city0"></p>
-                  </div>
-                </div>
-                  <div class="h-divider">
-                  </div>
-                  <div class="row">
-                    <div class="col-8 ml-auto mr-auto usercomment">
-                    <i id="js-text0"></i>
-                  </div>
-                  </div>
-              </div>
-            </div>
-            <div class="row align-items-center">
-              <div class="col-2 text-center">
-                <p id="js-rating1"></p>
-                <i id="js-date1"></i>
-              </div>
-              <div class="col-2 text-center">
-                <img src="" class="comment-avatar" id="js-avatar1">
-              </div>
-              <i id="js-date1"></i>
-              <div class="col-8">
-                <div class="row">
-                  <div class="col-7 ml-auto" id="js-user1"></div>
-                  <div class="col-3">
-                    <p class="text-right" id="js-city1"></p>
-                  </div>
-                </div>
-                  <div class="h-divider">
-                  </div>
-                  <div class="row">
-                    <div class="col-8 ml-auto mr-auto usercomment">
-                    <i id="js-text1"></i>
-                  </div>
-                  </div>
-              </div>
-            </div>
-            <div class="row align-items-center">
-              <div class="col-2 text-center">
-                <p id="js-rating2"></p>
-                <i id="js-date2"></i>
-              </div>
-              <div class="col-2 text-center">
-                <img src="" class="comment-avatar" id="js-avatar2">
-              </div>
-              <i id="js-date3"></i>
-              <div class="col-8">
-                <div class="row">
-                  <div class="col-7 ml-auto" id="js-user2"></div>
-                  <div class="col-3">
-                    <p class="text-right" id="js-city2"></p>
-                  </div>
-                </div>
-                  <div class="h-divider">
-                  </div>
-                  <div class="row">
-                    <div class="col-8 ml-auto mr-auto usercomment">
-                    <i id="js-text2"></i>
-                  </div>
-                  </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="row">
-                <div class="col-2 mr-auto item-comment" onclick="addComment()">
-                  <span>Написать отзыв</span>
-                </div>
-                <div class="col-2 ml-auto item-comment">
-                  <span>Еще отзывы</span>
-                </div>
-              </div>
-            </div>
-            <br>
-            <br>
+      <div class="col-8 mr-auto ml-auto text-center comments">
+        <table class="table-comment">
+          <tr>
+            <span class="text-uppercase text-primary h2 font-italic">Отзывы пользователей</span>
+          </tr>
+
+          <tr>
+            <td rowspan="2" class="comment-tr">
+              <div id="js-rating0" class="modal__stars"></div>
+              <span id="js-date0"></span>
+            </td>
+            <td rowspan="2" class="comment-tr text-center">
+              <img src="" class="comment-avatar" id="js-avatar0">
+            </td>
+            <td class="text-left comment-border-bottom">
+              <span id="js-user0" title=""></span>
+            </td>
+            <td class="text-right comment-tr comment-border-bottom text-over">
+              <span id="js-city0" title=""></span>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-left usercomment">
+              <i id="js-text0" class="user-comment"></i>
+            </td>
+          </tr>
+        </table>
+
+        <table class="table-comment">
+         <tr>
+            <td rowspan="2" class="comment-tr">
+              <div id="js-rating1" class="modal__stars"></div>
+              <span id="js-date1"></span>
+            </td>
+            <td rowspan="2" class="comment-tr text-center">
+              <img src="" class="comment-avatar" id="js-avatar1">
+            </td>
+            <td class="text-left comment-border-bottom">
+              <span id="js-user1" title=""></span>
+            </td>
+            <td class="text-right comment-tr comment-border-bottom text-over">
+              <span id="js-city1" title=""></span>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-left usercomment">
+              <i id="js-text1" class="user-comment" ></i>
+            </td>
+          </tr> 
+        </table>
+
+        <table class="table-comment">
+          <tr>
+            <td rowspan="2" class="comment-tr">
+              <div id="js-rating2" class="modal__stars"></div>
+              <span id="js-date2"></span>
+            </td>
+            <td rowspan="2" class="comment-tr text-center">
+              <img src="" class="comment-avatar" id="js-avatar2">
+            </td>
+            <td class="text-left comment-border-bottom">
+              <span id="js-user2" title=""></span>
+            </td>
+            <td class="text-right comment-tr comment-border-bottom text-over">
+              <span id="js-city2" title=""></span>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-left usercomment ">
+              <i id="js-text2" class="user-comment"></i>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-8 mr-auto ml-auto">
+        <div class="row">
+          <div class="col-3 mr-auto item-comment" onclick="addComment()">
+            <span>Написать отзыв</span>
+          </div>
+          <div class="col-3 ml-auto item-comment moreComments" id="moreComments">
+            <span>Еще отзывы</span>
           </div>
         </div>
       </div>
+
     </div>
+
+
     <div class="panel-body gradient">
-     <div class="conteiner">
       <div class="row">
        <div class="col-8 ml-auto mr-auto">
         <div class="row">
@@ -423,9 +414,8 @@
          </ul>
         </div>
        </div>
-     </div>
       </div>
-     </div>
+      </div>
     </div>
     <div class="panel-footer">
      <div class="conteiner">
@@ -440,7 +430,34 @@
      </div>
     </div>
   </div>
-  </body>
+
+<template style="display: none;" id="templateComment">
+  <table class="table-comment">
+    <tr>
+      <td rowspan="2" class="comment-tr">
+        <div class="js-rating modal__stars" class=""></div>
+        <span class="js-date"></span>
+      </td>
+      <td rowspan="2" class="comment-tr text-center">
+        <img src="" class="comment-avatar js-avatar">
+      </td>
+      <td class="text-left comment-border-bottom">
+        <span class="js-user" title=""></span>
+      </td>
+      <td class="text-right comment-tr comment-border-bottom text-over">
+        <span class="js-city" title=""></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-left usercomment">
+        <i class="js-text user-comment" ></i>
+      </td>
+    </tr> 
+  </table>
+</template>
+
+</body>
+
 
 
   <script type="text/javascript" src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
@@ -457,14 +474,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
   <script src="{% static 'js/base.js' %}"></script>
-  <script src="{% static 'js/jquery.raty.js' %}"></script>
-<script>
-  $('#stars').raty({
-    click: function(score) {
-      console.log(score);
-    }
-  });
-</script>
+
   {% block javascript %}
 
 

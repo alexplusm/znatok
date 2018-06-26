@@ -5,7 +5,7 @@ from django.forms import ModelForm
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    comment_text = models.CharField(max_length=2000)
+    comment_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField(default=0)
 

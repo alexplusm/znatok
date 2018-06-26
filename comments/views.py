@@ -8,18 +8,19 @@ import bleach
 
 def load_comments(request):
     if request.method == "GET":
-        result, comment_4, comment_3, comment_2, comment_1 = [], [], [], [], []
-        comment_5 = Comment.objects.filter(rating=5)[:3]
-        for i in comment_5:
-            result.append(to_json(i))
-        if len(comment_5) < 3:
-            comment_4 = Comment.objects.filter(rating=4)[:3-len(comment_5)]
-            for k in comment_4:
-                result.append(to_json(k))
-        if (len(comment_5) + len(comment_4)) < 3:
-            comment_3 = Comment.objects.filter(rating=3)[:3-(len(comment_5) + len(comment_4))]
-            for j in comment_3:
-                result.append(to_json(j))
+        result = []
+        comment = Comment.objects.all()[:3]
+
+        for i in comment:
+            result.append({
+                'user': i.user.first_name,
+               'text': i.comment_text,
+               'rating': i.rating,
+               'date': i.pub_date,
+               'city': i.user.profile.city,
+               'avatar': i.user.profile.user_avatar.url
+              })
+
         return JsonResponse({'comments': result}, safe=False)
 
 
@@ -35,42 +36,42 @@ def add_comments(request):
         comment.rating = score
         comment.save()
     return redirect('home')
-      
-
-def to_json(comment):
-    # {'1 comment': {'user': asd, 'text': asfasd, 'rating': 1/2/3, 'date': asojd},
-    # '2 comment': {},
-    # '3 comment': {},
-    # '4 comment': {},
-    # '5 comment': {}}
-    results = {'user': comment.user.first_name,
-               'text': comment.comment_text,
-               'rating': comment.rating,
-               'date': comment.pub_date,
-               'city': comment.user.profile.city,
-               'avatar': comment.user.profile.user_avatar.url
-              }
-    return results
-
-
-def to_json_2(leader):
-    # {'1 comment': {'user': asd, 'text': asfasd, 'rating': 1/2/3, 'date': asojd},
-    # '2 comment': {},
-    # '3 comment': {},
-    # '4 comment': {},
-    # '5 comment': {}}
-    results = {'user_leader': leader.user.first_name,
-               'points': leader.points,
-               'city': leader.user.profile.city,
-               'avatar': leader.user.profile.user_avatar.url
-              }
-    return results
 
 
 def get_leaders(request):
     if request.method == "GET" and request.is_ajax():
-        leaders = Profile.objects.filter()[:3]
+        leaders = Profile.objects.all()[:3]
+
         results_leaders = []
+
         for i in leaders:
-            results_leaders.append(to_json_2(i))
+            results_leaders.append({
+                'user_leader': i.user.first_name,
+               'points': i.points,
+               'city': i.user.profile.city,
+               'avatar': i.user.profile.user_avatar.url
+              })
         return JsonResponse({'leaders': results_leaders})
+
+
+def get_more_comments(request):
+    if request.method == "GET" and request.is_ajax():
+        comment_num = int(request.GET["number"])
+        result = []
+        bool = False
+        comment = Comment.objects.all()[3 * (comment_num + 1):3 * (comment_num + 1) + 3]
+
+        if len(comment) != 3:
+            bool = True
+
+        for i in comment:
+            result.append({
+                'user': i.user.first_name,
+               'text': i.comment_text,
+               'rating': i.rating,
+               'date': i.pub_date,
+               'city': i.user.profile.city,
+               'avatar': i.user.profile.user_avatar.url
+              })
+
+        return JsonResponse({'more_comments': result, 'bool': bool})
