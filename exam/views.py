@@ -95,6 +95,7 @@ def load_questions_by_theme(request):
 def get_wrong_questions(request):
     if request.method == "GET" and request.is_ajax():
         category = request.GET['category']
+        counter = int(request.GET['counter'])
         user = request.user
         if user.is_authenticated:
             questions = user.result_set.filter(question__category=category, is_true=False)\
@@ -111,7 +112,8 @@ def get_wrong_questions(request):
                         'question__comment_for_question',
                         'true_answer',
                         'user_answer')
-            return JsonResponse({'questions': list(questions)}, safe=False)
+            count = questions.count()
+            return JsonResponse({'questions': list(questions[5*counter:5*counter+5]), 'questions_count': count}, safe=False)
         else:
             return HttpResponseForbidden('You must be authenticated')
 

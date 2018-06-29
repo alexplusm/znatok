@@ -50,7 +50,7 @@ $(".navitem1").click(function(){
     $(".img_team").addClass("hide");
     $("#agencies").removeClass("hide");
   }
-});
+  });
 
 
 

@@ -96,7 +96,6 @@ function playerAction(elem, id) {
 
             success: function (data) {
               document.getElementById('bonus').textContent = data.points;
-              document.getElementById('bonus1').textContent = data.points;
             }
           });
           setTimeout(() => {
@@ -310,6 +309,15 @@ function loadComments() {
 
 (function() {
      let timer;
+     let timer2;
+
+     $('#js-skip-game').click(function() {
+      if (timer2) {
+        clearTimeout(timer2);
+      }
+
+      timer2 = setTimeout(skipGame, 200);
+     });
 
      $('#moreComments').click(function() {
          if (timer) {
@@ -320,9 +328,32 @@ function loadComments() {
      });
 }());
 
+const throttle = (func, limit) => {
+  let inThrottle = false;
+  return function() {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  };
+}
+
 function loadMoreComments() {
-  if (commentsCounter === true) {
-    $('.moreComments').addClass('disabled text-muted');
+  if (commentsCounter === true || commentsCounter === 3) {
+    const comments = document.getElementsByClassName('table-comment');
+
+    for (let i = 3; i < comments.length; i++) {
+      $(comments[i]).toggleClass('hide');
+    }
+
+    if ($(comments[3]).hasClass('hide')) {
+      $('.moreComments').text('Еще отзывы');
+    } else {
+      $('.moreComments').text('Скрыть отзывы');
+    }
     return;
   }
 
@@ -334,9 +365,9 @@ function loadMoreComments() {
     success: function(data) {
       moreCommentsData(data.more_comments);
 
-      if (data.bool) {
+      if (data.bool || commentsCounter === 2) {
         commentsCounter = data.bool;
-        $('.moreComments').addClass('disabled text-muted');
+        $('.moreComments').text('Скрыть отзывы');
         return;
       }
 
@@ -361,7 +392,6 @@ $.ajax({
 
     success: function (data) {
       document.getElementById('bonus').textContent = data.points;
-      document.getElementById('bonus1').textContent = data.points;
     }
 });
 }
@@ -373,30 +403,28 @@ function include(url) {
 }
 
 $.getScript("static/js/jquery.raty.js");
+$.getScript("static/js/jquery.sticky.js");
 
 $(document).ready(function() {
   checkPoints();
   loadComments();
   checkStageMiniGame();
 
+  $('#add-comment').click(function () {
+    $(this).popover('toggle');
+  });  
+
   $('#stars').raty({
     click: function(score) {
       console.log(score);
-    }
+    },
+    hints: ['Ужасно', 'Плохо', 'Нормально', 'Хорошо', 'Отлично!'],
+    target: '#target',
+    targetKeep : true,
   });
 
-  var
-    $window = $(window),
-    $target = $("#panelbody"),
-    $h = $target.offset().top;
-    $window.on('scroll', function() {
-  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollTop > $h) {
-      $("#panelbody1").addClass("show_block");
-    } else {
-      $("#panelbody1").removeClass("show_block");
-    }
-  });
+  $('#panelbody').sticky({topSpacing:0, zIndex:9});
+
 }); 
 
 

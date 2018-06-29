@@ -70,20 +70,23 @@
 												<p class="text1">Выиграно</p><p class="text1">% побед</p>
 											</td>
 											<td class= "text-right">
+											{% if user.is_authenticated %}
+
 												<p class="text2">
-													<span class="g" id="countOfWins">11</span>/<span id="totalCount" class="g">15</span>
+													<span class="g" id="countOfWins">-</span>/<span id="totalCount" class="g">-</span>
 												</p>
-												<p class="text2 g" id="statictic">73</p>
+												<p class="text2 g" id="statictic">-</p>
+
+											{% else %}
+
+											<p class="text2">
+													<span class="g" id="countOfWins">-</span>
+												</p>
+												<p class="text2 g" id="statictic">-</p>
+
+											{% endif %}
 											</td>
 										</tr>
-										<!-- <tr>
-											<td>
-												<span class="text1">В рейтинге</span>
-											</td>
-											<td class="text-right">
-												<span class="text2 g">1000+</span>
-											</td>
-										</tr> -->
 									</tbody>
 								</table>
 							</li>
@@ -93,15 +96,19 @@
 					<div class="col-8">
 						<div class="row" id="profile">
 							<div class="col-4 text-center ml-auto" id="first_profile">
-								<img src="/media/{{ user.profile.user_avatar }}" id="img_profile"/>
-								{{ user.username }}
+								{% if user.is_authenticated %}
+								<img src="/media/{{ user.profile.user_avatar }}" class="img_profile"/>
+								<span class="text-capitalize">{{ user.username }}</span>
+								{% else %}
+								<img src="{% static 'img/21.png' %}" class="img_profile"/>
+								{% endif %}
 							</div>
 							<div class="col-4">
-								<img src="{% static 'img/vs.png' %}" id="img_profile"/>
+								<img src="{% static 'img/vs.png' %}" class="img_profile"/>
 								<div class="text-center" id="waitconnection" style="display:none;">Ожидание...</div>
 							</div>
 							<div class="col-4 mr-auto" id="second_profile">
-								<img src="{% static 'img/21.png' %}" id="img_profile"/>
+								<img src="{% static 'img/21.png' %}" class="img_profile"/>
 							</div>
 						</div>
 					</div>

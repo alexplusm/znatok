@@ -14,16 +14,20 @@
               <a class="nav-link navitem1 active" id="block2">Билеты</a>
             </li>
             <li class="nav-item2 ml-auto top b1">
-              <a class="nav-link navitem1" id="block3">Экзамен</a>
+              {% if user.is_authenticated %}
+              <a class="nav-link navitem1" id="block3"  data-toggle="popover" data-trigger="focus" data-content="Возможно скоро будет готово">Экзамен</a>
+              {% else %}
+              <a class="nav-link navitem1" id="block3"  data-toggle="popover" data-trigger="focus" data-content="Вам необходимо зарегистрироваться">Экзамен</a>
+              {% endif %}
             </li>
             <li class="nav-item2 ml-auto top b1">
               <a class="nav-link navitem1" id="block4">по темам</a>
             </li>
             <li class="nav-item2 ml-auto top b1">
-              <a class="nav-link navitem1" id="block5">марафон</a>
+              <a class="nav-link navitem1" id="block5" data-toggle="popover" data-trigger="focus" data-content="Вам необходимо зарегистрироваться">марафон</a>
             </li>
             <li class="nav-item2 ml-auto top b1">
-              <a class="nav-link navitem1" id="block6">ошибки</a>
+              <a class="nav-link navitem1" id="block6" data-toggle="popover" data-trigger="focus" data-content="Вам необходимо зарегистрироваться">ошибки</a>
             </li>
             <li class="nav-item2 ml-auto top b2 hide">
               <a class="nav-link navitem1 active" id="block7">Правила дорожного движения</a>
@@ -211,8 +215,90 @@
   </div>
 </template>
 
+<template id="templateMarathon" style="display: none;">
+  <div class="col-12 marathon">
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle text-right" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%; border: 1px solid lightgrey;">
+      </button>
+      <div class="dropdown-menu text-center" aria-labelledby="drop_for_ticket_info" style="width: 100%;">Марафон
+      </div>
+    </div>
+    <div class="boxing top5 d-flex justify-content-between">
+      <p class="text-uppercase">Пройдено вопросов <span class="text-primary font-weight-bold js-marathon-count-questions h3">-</span><span class="h3 font-weight-bold"> / 800</span></p>
+      <p>Ошибок <span class="text-danger font-weight-bold js-marathon-wrong h3">-</span> <span class="h3">/</span> <span class="text-primary font-weight-bold js-marathon-count-questions h3">-</span></p>
+      <p>Знаний <span class="text-danger font-weight-bold js-marathon-knowledge h3">-</span></p>
+    </div>
+    <div class="boxing d-flex justify-content-between">
+      <p class="text-uppercase">Время прохождения <span class="text-primary font-weight-bold js-marathon-time h3">-</p>
+      <p>В среднем на один вопрос <span class="text-danger font-weight-bold js-marathon-time-average h3">-</span></p>
+    </div>
+    <div class="container marathon">
+      <div class="row d-flex justify-content-center">
+        <div class= "alert alert-primary h1 mr-auto" data-id="1">
+          50<br><span class="h5">баллов</span>
+        </div>
+        <div class="alert alert-primary h1 ml-auto mr-auto" data-id="2">
+          60<br><span class="h5">баллов</span>
+        </div>
+        <div class="alert alert-primary h1 ml-auto mr-auto" data-id="3">
+          70<br><span class="h5">баллов</span>
+        </div>
+        <div class="alert alert-primary h1 ml-auto mr-auto" data-id="4">
+          80<br><span class="h5">баллов</span>
+        </div>
+        <div class="alert alert-primary h1 ml-auto mr-auto" data-id="5">
+          90<br><span class="h5">баллов</span>
+        </div>
+        <div class="alert alert-primary h1 ml-auto mr-auto" data-id="6">
+          100<br><span class="h5">баллов</span>
+        </div>
+        <div class="alert alert-primary h1 ml-auto mr-auto" data-id="7">
+          110<br><span class="h5">баллов</span>
+        </div>
+        <div class="alert alert-primary h1 ml-auto" data-id="8">
+          120<br><span class="h5">баллов</span>
+        </div>
+      </div>
+      <!-- alert-secondary text-muted -->
+      <div class="row d-flex justify-content-center">
+        <div class="alert alert-primary h1 mr-auto" data-id="9">
+          130<br><span class="h5">баллов</span>
+        </div>
+        <div class="alert alert-primary h1 ml-auto mr-auto" data-id="10">
+          140<br><span class="h5">баллов</span>
+        </div>
+        <div class="alert alert-primary h1 ml-auto mr-auto" data-id="11">
+          150<br><span class="h5">баллов</span>
+        </div>
+        <div class="alert alert-primary h1 ml-auto mr-auto" data-id="12">
+          160<br><span class="h5">баллов</span>
+        </div>
+        <div class="alert alert-primary h1 ml-auto mr-auto" data-id="13">
+          170<br><span class="h5">баллов</span>
+        </div>
+        <div class="alert alert-primary h1 ml-auto mr-auto" data-id="14">
+          180<br><span class="h5">баллов</span>
+        </div>
+        <div class="alert alert-primary h1 ml-auto mr-auto" data-id="15">
+          190<br><span class="h5">баллов</span>
+        </div>
+        <div class="alert alert-primary h1 ml-auto" data-id="16">
+          200<br><span class="h5">баллов</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-5 mr-auto ml-auto">
+          <div class="btn btn-success text-uppercase">
+            Начать марафон
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <template id="countButton" style="display: none;">
-  <button class="custombtn"></button>
+  <button class="custombtn" data-id=""></button>
 </template>
 
 <template id="blockTheme" style="display: none;">
@@ -252,15 +338,20 @@
       let initTicketsInside = false;
       let intitThemes = false;
       let initWrong = false;
+      let initMarathon = false;
+      let counterWrongQuestion = 0;
+      let initBool = true;
 
       function clearInits() {
         initWrong = false;
         initTickets = false;
         intitThemes = false;
         initTicketsInside = false;
+        initMarathon = false;
+        initBool = true;
       }
 
-      function getWrongQuestions(category) {
+      function getWrongQuestions(category, counterWrong) {
 
         $.ajax({
 
@@ -269,7 +360,8 @@
           url: "get_wrong_questions/",
 
           data: {
-              'category': category
+              'category': category,
+              'counter': counterWrong
           },
 
           cache: false,
@@ -443,7 +535,6 @@
 
                         success: function (data) {
                             document.getElementById('bonus').textContent = data.points;
-                            document.getElementById('bonus1').textContent = data.points;
                         }
                     });
 
@@ -557,7 +648,7 @@
 
       function loadTickets() {
         document.querySelector(".blockmain").innerHTML = '';
-        document.querySelector(".blockmain").innerHTML = '<div class="col-12"> <div class="dropdown"> <button class="btn btn-default dropdown-toggle text-right" type="button" id="drop_for_ticket_info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%; border: 1px solid lightgrey;"> </button> <div class="dropdown-menu text-center" aria-labelledby="drop_for_ticket_info" style="width: 100%;"> asdasd </div> </div> </div> <div class="row boxing top5"> <button class="btnticket ml-auto" id="btnticket1" type="button" value="1">1 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success1" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger1" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary1" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket2" type="button" value="2">2 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success2"> </div> <div class="progress-bar bg-danger" id="danger2"> </div> <div class="progress-bar bg-white" id="secondary2"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket3" type="button" value="3">3 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success3" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger3" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary3" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket4" type="button" value="4">4 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success4" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger4" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary4" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket5" type="button" value="5">5 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success5" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger5" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary5" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket6" type="button" value="6">6 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success6" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger6" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary6" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket7" type="button" value="7">7 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success7" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger7" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary7" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto mr-auto" id="btnticket8" type="button" value="8">8 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success8" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger8" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary8" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> </div> <div class="row boxing top5"> <button class="btnticket ml-auto" id="btnticket9" type="button" value="9">9 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success9" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger9" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary9" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket10" type="button" value="10">10 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success10" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger10" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary10" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket11" type="button" value="11">11 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success11" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger11" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary11" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket12" type="button" value="12">12 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success12" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger12" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary12" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket13" type="button" value="13">13 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success13" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger13" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary13" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket14" type="button" value="14">14 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success14" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger14" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary14" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket15" type="button" value="15">15 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success15" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger15" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary15" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto mr-auto" id="btnticket16" type="button" value="16">16 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success16" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger16" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary16" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> </div> <div class="row boxing top5"> <button class="btnticket ml-auto" id="btnticket17" type="button" value="17">17 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success17" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger17" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary17" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket18" type="button" value="18">18 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success18" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger18" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary18" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket19" type="button" value="19">19 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success19" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger19" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary19" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket20" type="button" value="20">20 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success20" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger20" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary20" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket21" type="button" value="21">21 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success21" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger21" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary21" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket22" type="button" value="22">22 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success22" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger22" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary22" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket23" type="button" value="23">23 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success23" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger23" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary23" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto mr-auto" id="btnticket24" type="button" value="24">24 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success24" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger24" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary24" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> </div> <div class="row boxing top5"> <button class="btnticket ml-auto" id="btnticket25" type="button" value="25">25 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success25" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger25" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary25" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket26" type="button" value="26">26 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success26" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger26" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary26" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket27" type="button" value="27">27 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success27" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger27" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary27" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket28" type="button" value="28">28 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success28" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger28" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary28" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket29" type="button" value="29">29 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success29" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger29" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary29" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket30" type="button" value="30">30 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success30" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger30" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary30" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket31" type="button" value="31">31 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success31" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger31" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary31" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto mr-auto" id="btnticket32" type="button" value="32">32 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success32" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger32" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary32" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> </div> <div class="row boxing top5"> <button class="btnticket ml-auto" id="btnticket33" type="button" value="33">33 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success33" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger33" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary33" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket34" type="button" value="34">34 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success34" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger34" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary34" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket35" type="button" value="35">35 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success35" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger35" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary35" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket36" type="button" value="36">36 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success36" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger36" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary36" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket37" type="button" value="37">37 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success37" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger37" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary37" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket38" type="button" value="38">38 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success38" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger38" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary38" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket39" type="button" value="39">39 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success39" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger39" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary39" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto mr-auto" id="btnticket40" type="button" value="40">40 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success40" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger40" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary40" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> </div> <div class="row boxing btnquest-box1" style="display:none"> <button class="btnquest btn btn-default ml-auto" id="btnquest1" value="1">1</button> <button class="btnquest btn btn-default ml-auto" id="btnquest2" type="button" value="2">2</button> <button class="btnquest btn btn-default ml-auto" id="btnquest3" type="button" value="3">3</button> <button class="btnquest btn btn-default ml-auto" id="btnquest4" type="button" value="4">4</button> <button class="btnquest btn btn-default ml-auto" id="btnquest5" type="button" value="5">5</button> <button class="btnquest btn btn-default ml-auto" id="btnquest6" value="6">6</button> <button class="btnquest btn btn-default ml-auto" id="btnquest7" type="button" value="7">7</button> <button class="btnquest btn btn-default ml-auto" id="btnquest8" type="button" value="8">8</button> <button class="btnquest btn btn-default ml-auto" id="btnquest9" type="button" value="9">9</button> <button class="btnquest btn btn-default ml-auto" id="btnquest10" type="button" value="10">10</button> <button class="btnquest btn btn-default ml-auto" id="btnquest11" type="button" value="11">11</button> <button class="btnquest btn btn-default ml-auto" id="btnquest12" type="button" value="12">12</button> <button class="btnquest btn btn-default ml-auto" id="btnquest13" type="button" value="13">13</button> <button class="btnquest btn btn-default ml-auto" id="btnquest14" type="button" value="14">14</button> <button class="btnquest btn btn-default ml-auto" id="btnquest15" type="button" value="15">15</button> <button class="btnquest btn btn-default ml-auto" id="btnquest16" type="button" value="16">16</button> <button class="btnquest btn btn-default ml-auto" id="btnquest17" type="button" value="17">17</button> <button class="btnquest btn btn-default ml-auto" id="btnquest18" type="button" value="18">18</button> <button class="btnquest btn btn-default ml-auto" id="btnquest19" type="button" value="19">19</button> <button class="btnquest btn btn-default ml-auto mr-auto" id="btnquest20" type="button" value="20">20</button> </div> <div class="row boxing top6 hide"> билеты по теории </div> <div id="result" class="result row boxing top5" style="display: none"> <div class="conteiner" style="width: 100%;"> <div class="row boxing"> <div class="col-12"> <div class="col-12 text-left objquestion"> <p id="quest"></p> </div> <div class="row"> <img class="imgquestion" /> </div> </div> </div> <div class=""> <ul class="list-unstyled" style="padding-top: 0.5em;"> <li> <button class="answbtn text-left btn btn-default" id="answer1"></button> </li> <li> <button class="answbtn text-left btn btn-default" id="answer2"></button> </li> <li> <button class="answbtn text-left btn btn-default" id="answer3"></button> </li> <li> <button class="answbtn text-left btn btn-default" id="answer4"></button> </li> <li> <button class="answbtn text-left btn btn-default" id="answer5"></button> </li> </ul> </div> <div class="conteiner help-box" style="display: none;"> <div class="row"> <div class="col-12 alert-success text-left"> <ul class="list-inline"> <li><button class="helpbtn btn btn-default">ПОЯСНЕНИЕ</button></li> <li><button class="penaltybtn btn btn-default">ШТРАФЫ</button></li> <li><button class="nextbtn btn btn-success">Далее</button></li> </ul> </div> </div> <ul class="list-inline" id="help-text"></ul> </div> </div> </div>';
+        document.querySelector(".blockmain").innerHTML = '<div class="col-12"> <div class="dropdown"> <button class="btn btn-default dropdown-toggle text-right" type="button" id="drop_for_ticket_info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%; border: 1px solid lightgrey;"> </button> <div class="dropdown-menu text-center" aria-labelledby="drop_for_ticket_info" style="width: 100%;"> asdasd </div> </div> </div> <div class="row boxing top5"> <button class="btnticket ml-auto" id="btnticket1" type="button" value="1">1 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success1" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger1" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary1" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket2" type="button" value="2">2 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success2"> </div> <div class="progress-bar bg-danger" id="danger2"> </div> <div class="progress-bar bg-white" id="secondary2"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket3" type="button" value="3">3 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success3" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger3" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary3" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket4" type="button" value="4">4 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success4" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger4" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary4" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket5" type="button" value="5">5 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success5" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger5" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary5" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket6" type="button" value="6">6 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success6" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger6" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary6" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket7" type="button" value="7">7 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success7" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger7" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary7" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto mr-auto" id="btnticket8" type="button" value="8">8 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success8" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger8" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary8" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> </div> <div class="row boxing top5"> <button class="btnticket ml-auto" id="btnticket9" type="button" value="9">9 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success9" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger9" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary9" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket10" type="button" value="10">10 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success10" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger10" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary10" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket11" type="button" value="11">11 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success11" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger11" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary11" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket12" type="button" value="12">12 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success12" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger12" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary12" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket13" type="button" value="13">13 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success13" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger13" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary13" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket14" type="button" value="14">14 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success14" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger14" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary14" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket15" type="button" value="15">15 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success15" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger15" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary15" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto mr-auto" id="btnticket16" type="button" value="16">16 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success16" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger16" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary16" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> </div> <div class="row boxing top5"> <button class="btnticket ml-auto" id="btnticket17" type="button" value="17">17 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success17" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger17" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary17" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket18" type="button" value="18">18 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success18" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger18" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary18" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket19" type="button" value="19">19 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success19" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger19" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary19" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket20" type="button" value="20">20 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success20" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger20" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary20" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket21" type="button" value="21">21 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success21" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger21" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary21" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket22" type="button" value="22">22 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success22" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger22" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary22" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket23" type="button" value="23">23 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success23" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger23" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary23" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto mr-auto" id="btnticket24" type="button" value="24">24 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success24" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger24" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary24" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> </div> <div class="row boxing top5"> <button class="btnticket ml-auto" id="btnticket25" type="button" value="25">25 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success25" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger25" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary25" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket26" type="button" value="26">26 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success26" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger26" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary26" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket27" type="button" value="27">27 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success27" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger27" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary27" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket28" type="button" value="28">28 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success28" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger28" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary28" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket29" type="button" value="29">29 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success29" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger29" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary29" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket30" type="button" value="30">30 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success30" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger30" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary30" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket31" type="button" value="31">31 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success31" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger31" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary31" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto mr-auto" id="btnticket32" type="button" value="32">32 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success32" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger32" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary32" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> </div> <div class="row boxing top5"> <button class="btnticket ml-auto" id="btnticket33" type="button" value="33">33 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success33" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger33" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary33" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket34" type="button" value="34">34 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success34" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger34" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary34" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket35" type="button" value="35">35 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success35" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger35" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary35" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket36" type="button" value="36">36 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success36" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger36" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary36" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket37" type="button" value="37">37 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success37" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger37" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary37" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket38" type="button" value="38">38 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success38" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger38" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary38" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto" id="btnticket39" type="button" value="39">39 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success39" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger39" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary39" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> <button class="btnticket ml-auto mr-auto" id="btnticket40" type="button" value="40">40 <div class="progress" style="display: none;"> <div class="progress-bar bg-success" id="success40" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-danger" id="danger40" aria-valuemin="0" aria-valuemax="100"> </div> <div class="progress-bar bg-white" id="secondary40" aria-valuemin="0" aria-valuemax="100"> </div> </div> </button> </div> <div class="row boxing btnquest-box1" style="display:none"> <button class="btnquest btn btn-default ml-auto" id="btnquest1" value="1">1</button> <button class="btnquest btn btn-default ml-auto" id="btnquest2" type="button" value="2">2</button> <button class="btnquest btn btn-default ml-auto" id="btnquest3" type="button" value="3">3</button> <button class="btnquest btn btn-default ml-auto" id="btnquest4" type="button" value="4">4</button> <button class="btnquest btn btn-default ml-auto" id="btnquest5" type="button" value="5">5</button> <button class="btnquest btn btn-default ml-auto" id="btnquest6" value="6">6</button> <button class="btnquest btn btn-default ml-auto" id="btnquest7" type="button" value="7">7</button> <button class="btnquest btn btn-default ml-auto" id="btnquest8" type="button" value="8">8</button> <button class="btnquest btn btn-default ml-auto" id="btnquest9" type="button" value="9">9</button> <button class="btnquest btn btn-default ml-auto" id="btnquest10" type="button" value="10">10</button> <button class="btnquest btn btn-default ml-auto" id="btnquest11" type="button" value="11">11</button> <button class="btnquest btn btn-default ml-auto" id="btnquest12" type="button" value="12">12</button> <button class="btnquest btn btn-default ml-auto" id="btnquest13" type="button" value="13">13</button> <button class="btnquest btn btn-default ml-auto" id="btnquest14" type="button" value="14">14</button> <button class="btnquest btn btn-default ml-auto" id="btnquest15" type="button" value="15">15</button> <button class="btnquest btn btn-default ml-auto" id="btnquest16" type="button" value="16">16</button> <button class="btnquest btn btn-default ml-auto" id="btnquest17" type="button" value="17">17</button> <button class="btnquest btn btn-default ml-auto" id="btnquest18" type="button" value="18">18</button> <button class="btnquest btn btn-default ml-auto" id="btnquest19" type="button" value="19">19</button> <button class="btnquest btn btn-default ml-auto mr-auto" id="btnquest20" type="button" value="20">20</button> </div> <div class="row boxing top6 hide"> билеты по теории </div> <div id="result" class="result row boxing top5" style="display: none"> <div class="conteiner" style="width: 100%;"> <div class="row boxing"> <div class="col-12"> <div class="col-12 text-left objquestion"> <p id="quest"></p> </div> <div class="row"> <img class="imgquestion" /> </div> </div> </div> <div class=""> <ul class="list-unstyled" style="padding-top: 0.5em;"> <li> <div class="answbtn text-left btn btn-default" id="answer1"></div> </li> <li> <div class="answbtn text-left btn btn-default" id="answer2"></div> </li> <li> <div class="answbtn text-left btn btn-default" id="answer3"></div> </li> <li> <div class="answbtn text-left btn btn-default" id="answer4"></div> </li> <li> <div class="answbtn text-left btn btn-default" id="answer5"></div> </li> </ul> </div> <div class="conteiner help-box" style="display: none;"> <div class="row"> <div class="col-12 text-left"> <ul class="list-inline"> <li><button class="helpbtn btn btn-default">ПОЯСНЕНИЕ</button></li> <li><button class="penaltybtn btn btn-default">ШТРАФЫ</button></li> <li><button class="nextbtn btn btn-success">Далее</button></li> </ul> </div> </div> <ul class="list-inline" id="help-text"></ul> </div> </div> </div>';
         initBtnForTickets();
       }
 
@@ -580,13 +671,12 @@
         const templateButton = document.getElementById('countButton');
         const templateContainer = 'content' in templateElement ? templateElement.content : templateElement;
         const btnContainer = 'content' in templateButton ? templateButton.content : templateButton;
-        const countButton = Math.ceil(data.questions.length / 5);
+        const countButton = Math.ceil(data.questions_count / 5);
 
-        function changeWrongQuestions(container, data, counter = 0) {
+        function changeWrongQuestions(container, data) {
           wrongQuestionHTML.innerHTML = '';
-          const count = counter * 5;
 
-          for (let i = count; i < count + 5; i++) {
+          for (let i = 0; i < data.questions.length; i++) {
             if (!data.questions[i]) {
               return;
             }
@@ -600,21 +690,72 @@
 
         changeWrongQuestions(templateContainer, data);
 
-        for (let k = 0; k < countButton; k++) {
-          const newElementBtn = btnContainer.querySelector('.custombtn').cloneNode(true);
-          newElementBtn.textContent = k + 1;
-          btnListHTML.appendChild(newElementBtn);
+        if (initBool) {
+          reloadBtn(0);
+          initBool = false;
         }
 
-        $('.custombtn').click(event => {
-          const btnNumber = event.currentTarget.textContent;
-          changeWrongQuestions(templateContainer, data, btnNumber - 1);
-        });
+        function reloadBtn(start = 0, end = 0) {
+          let count = countButton > start + 9 ? start + 9 : countButton;
+
+          if (end !== 0) {
+            count = end;
+          }
+
+          document.querySelector('.buttonbox').innerHTML = '';
+
+          if (start !== 0) {
+            const newElementBtn = btnContainer.querySelector('.custombtn').cloneNode(true);
+            newElementBtn.textContent = '...';
+            newElementBtn.dataset.id = 'getLess';
+            btnListHTML.appendChild(newElementBtn);
+          }
+
+          for (let k = start; k < count; k++) {
+            const newElementBtn = btnContainer.querySelector('.custombtn').cloneNode(true);
+            newElementBtn.textContent = k + 1;
+            newElementBtn.dataset.id = k + 1;
+
+            if (k === start + 8) {
+              newElementBtn.textContent = '...';
+              newElementBtn.dataset.id = 'getMore';
+            }
+
+            btnListHTML.appendChild(newElementBtn);
+          }
+
+          $('.custombtn').click(event => {
+            if (!isNaN(event.target.dataset.id)) {
+              getWrongQuestions(category, event.target.dataset.id - 1);
+              return;
+            }
+
+            if (event.target.dataset.id === 'getMore') {
+              reloadBtn(count - 1);
+            }
+
+            if (event.target.dataset.id === 'getLess') {
+              let min = count;
+
+              [...document.getElementsByClassName('custombtn')].map(elem => {
+                if (min > parseInt(elem.dataset.id) && !isNaN(elem.dataset.id)) {
+                  min = elem.dataset.id;
+                }
+              });
+              reloadBtn(min - 9,min);
+            }
+          });
+        }
       }
 
       function loadWrongQuestions(data) {
-        document.querySelector(".blockmain").innerHTML = '';
-        document.querySelector(".blockmain").innerHTML = '<div class="col-12"> <div class="dropdown"> <button class="btn btn-default dropdown-toggle text-right" type="button" id="drop_for_ticket_info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%; border: 1px solid lightgrey;"> </button> <div class="dropdown-menu text-center" aria-labelledby="drop_for_ticket_info" style="width: 100%;"> Ваши неправильные ответы </div> </div> <br><h2 class="text-danger"><i>Ваши ошибки</i></h2><div class="row boxing top5 wrong-question"> </div> </div> <div class="buttonbox"> </div>';
+        if (initBool) {
+          document.querySelector(".blockmain").innerHTML = '';
+          document.querySelector(".blockmain").innerHTML = '<div class="col-12"> <div class="dropdown"> <button class="btn btn-default dropdown-toggle text-right" type="button" id="drop_for_ticket_info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%; border: 1px solid lightgrey;"> </button> <div class="dropdown-menu text-center" aria-labelledby="drop_for_ticket_info" style="width: 100%;"> Ваши неправильные ответы </div> </div> <br><h2 class="text-danger"><i>Ваши ошибки</i></h2><div class="row boxing top5 wrong-question"> </div> </div> <div class="buttonbox"> </div>';
+        } else {
+          document.querySelector(".wrong-question").innerHTML = '';
+        }
+
         changeDataWrongQuestions(data);
       }
 
@@ -636,6 +777,14 @@
   {% if user.is_authenticated %}
 
   <script>
+
+    function renderMarathon() {
+      const html = document.querySelector('.blockmain');
+      html.innerHTML = '';
+      const templateElement = document.getElementById('templateMarathon');
+      const templateContainer = 'content' in templateElement ? templateElement.content : templateElement;
+      html.append(templateContainer.querySelector('.marathon').cloneNode(true));
+    }
 
     function checkResult () {
         $.ajax({
@@ -680,7 +829,7 @@
 
       if (initWrong) {
         category = 0;
-        getWrongQuestions(category);
+        getWrongQuestions(category, counterWrongQuestion);
       }
     });
 
@@ -698,7 +847,7 @@
 
       if (initWrong) {
         category = 1;
-        getWrongQuestions(category);
+        getWrongQuestions(category, counterWrongQuestion);
       }
     });
 
@@ -717,12 +866,15 @@
       clearInits();
       initWrong = true;
 
-      if (!initWrong) {
-        return;
-      }
-
-      getWrongQuestions(category);
+      getWrongQuestions(category, counterWrongQuestion);
     });
+
+    $('#block5').click(function () {
+      clearInits();
+      initMarathon = true;
+
+      renderMarathon();
+    })
 
 
 </script>
@@ -730,6 +882,19 @@
   {% else %}
 
     <script>
+
+    $('#block5').click(function () {
+      $('#block3').popover('hide');
+      $('#block6').popover('hide');
+      $(this).popover('toggle');
+    });
+
+    $('#block6').click(function () {
+      $('#block3').popover('hide');
+      $('#block5').popover('hide');
+      $(this).popover('toggle');
+    })
+
 
     $("#cat1").click(function () {
       $(this).addClass("active");
@@ -753,12 +918,8 @@
       clearInits();
       initTickets = true;
 
-      if (!initTickets) {
-        return;
-      }
-
       loadTickets();
-    })
+    });
 
     </script>
 
@@ -830,6 +991,12 @@
         var e = document.getElementById(id);
         $(".btn_for_online").removeClass("btn_for_online_active");
         $(e).addClass("btn_for_online_active");
+    });
+
+    $('#block3').click(function () {
+      $('#block5').popover('hide');
+      $('#block6').popover('hide');
+      $(this).popover('toggle');
     });
   </script>
 {% endblock %}

@@ -13,4 +13,4 @@ class Comment(models.Model):
         return "id: {}, user: {}, text: {}".format(self.id, self.user, self.comment_text[0:200])
 
     class Meta:
-        ordering = ['-rating']
+        ordering = ['-rating', '-pub_date']

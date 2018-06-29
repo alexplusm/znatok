@@ -6040,10 +6040,13 @@ body {
 }
 #maincontent .answbtn {
   font-size: 10px;
-  width: 100%;
   border: 1px solid lightgrey;
   padding-top: 10px;
   padding-bottom: 10px;
+  width: 100%;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow: hidden;
 }
 #maincontent .objquestion {
   padding-top: 20px;
@@ -6273,7 +6276,7 @@ body {
 #online #second_profile {
   margin-left: -2em;
 }
-#online #img_profile {
+#online .img_profile {
   width: 80%;
 }
 #panellamb .panel {
@@ -6459,10 +6462,13 @@ body {
 }
 #online-game-place-2 .game-answbtn {
   font-size: 10px;
-  width: 100%;
   border: 1px solid lightgrey;
   padding-top: 10px;
   padding-bottom: 10px;
+  width: 100%;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow: hidden;
 }
 .leader-avatar {
   width: 100%;
@@ -6598,7 +6604,160 @@ body {
 .modal__stars {
   transform: translateY(-50%);
 }
-.disabled {
-  background: rgba(250, 250, 250, 0.2) !important;
-  cursor: not-allowed !important;
+.icons {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%) rotate(180deg);
+  padding-right: 20px;
+  padding-left: 20px;
+  color: grey;
+  transition: .5s;
+}
+.icons-disactive {
+  transform: translateY(-50%);
+  color: black;
+}
+.cardblock:hover {
+  background: lightgrey !important;
+}
+.news-date {
+  position: absolute;
+  left: 15px;
+  right: 0;
+}
+.news {
+  margin-top: 10px;
+}
+.news .card-title {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.news .fa-circle {
+  position: absolute;
+  right: 0;
+  right: 25px;
+}
+.news .news-img {
+  width: 100%;
+}
+.news:last-child {
+  margin-bottom: 10px;
+}
+.marathon .alert {
+  padding: .3em;
+  cursor: pointer;
+}
+.marathon .alert-success:hover {
+  background: #b0debb;
+}
+.marathon .alert-danger:hover {
+  background: #f0acb2;
+}
+.marathon .alert-primary:hover {
+  background: #99cbff;
+}
+.marathon .btn-success {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#modalComment {
+  /* Create a custom checkbox */
+  /* When the checkbox is checked, add a blue background */
+  /* Create the checkmark/indicator (hidden when not checked) */
+  /* Show the checkmark when checked */
+  /* Style the checkmark/indicator */
+}
+#modalComment .modal-dialog {
+  min-width: 30em;
+  max-width: 30em;
+}
+#modalComment .modal-body {
+  padding: 20px 30px 20px 30px;
+}
+#modalComment table td:not(:first-child) {
+  width: calc(25%);
+}
+#modalComment .form__hints {
+  padding-left: 10px;
+}
+#modalComment .form__stars {
+  margin-right: 0;
+}
+#modalComment .modal__input {
+  width: 100%;
+  height: 100px;
+}
+#modalComment textarea:-moz-placeholder {
+  font-size: 15px;
+  font-style: italic;
+}
+#modalComment textarea::-webkit-input-placeholder {
+  font-size: 15px;
+  font-style: italic;
+}
+#modalComment textarea {
+  font-size: 17px;
+}
+#modalComment .btn-success {
+  padding: 10px;
+  margin-right: -15px;
+  font-size: 13px;
+}
+#modalComment .container {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  padding-top: 7px;
+  font-style: italic;
+  font-weight: normal;
+  margin-bottom: 10px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#modalComment .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+#modalComment .checkmark {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 2px blue;
+  border: 1px solid blue;
+}
+#modalComment .container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+#modalComment .checkmark:after {
+  content: "✔";
+  font-size: 25px;
+  color: black;
+  position: absolute;
+  display: none;
+}
+#modalComment .container input:checked ~ .checkmark:after {
+  display: block;
+}
+#modalComment .container .checkmark:after {
+  left: -3px;
+  top: -10px;
+}
+.popover .arrow {
+  display: none !important;
+}
+.popover .popover-body {
+  font-size: 11px;
 }
