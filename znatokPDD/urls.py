@@ -24,6 +24,7 @@ from exam import views as exam_views
 from game import views as game_views
 from comments import views as comments_views
 from online_game import views as online_game_views
+from accounts import views as account_views
 
 from django.views.generic import TemplateView
 
@@ -86,6 +87,11 @@ urlpatterns = [
     url(r'add_comments/$', comments_views.add_comments, name='add_comments'),
     url(r'get_leaders/$', comments_views.get_leaders, name='get_leaders'),
     url(r'get_more_comments/$', comments_views.get_more_comments, name='get_more_comments'),
+
+    url(r'take_point/$', account_views.take_point, name='take_point'),
+
+    url(r'get_block_achievement/$', account_views.get_block_achievement, name='get_block_achievement'),
+    url(r'get_block_information/$', account_views.get_block_information, name='get_block_information'),
     # urls for exam app
 
     # urls for online_game app
@@ -94,8 +100,3 @@ urlpatterns = [
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns = [
-        url(r'^__debug__/', include(debug_toolbar.urls)),
-    ] + urlpatterns

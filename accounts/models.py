@@ -17,6 +17,23 @@ class Result(models.Model):
         return "user: {}, quest: {}, is_true: {}".format(self.user, self.question, self.is_true)
 
 
+class Rank(models.Model):
+    rank_img = models.ImageField(
+        upload_to='rank_img/',
+        blank=True
+    )
+    rank_img_disable = models.ImageField(
+        upload_to='rank_img/',
+        blank=True
+    )
+    rank_title = models.CharField(max_length=200)
+    rank_description = models.CharField(max_length=200)
+    rank_reward_point = models.IntegerField(default=0)
+
+    def __str__(self):
+        return "{}".format(self.rank_title)
+
+
 class Profile(models.Model):
     user = models.OneToOneField(
         User,
@@ -33,6 +50,8 @@ class Profile(models.Model):
     last_password_update = models.DateTimeField(default=timezone.now)
     online_game_total_games = models.IntegerField(default=0)
     online_game_count_of_wins = models.IntegerField(default=0)
+    rank = models.ForeignKey(Rank, on_delete=models.CASCADE, default=1)
+    rank_progress = models.IntegerField(default=100)
 
 # ----- function for online-game
     def inc_points(self, points):
@@ -51,7 +70,7 @@ class Profile(models.Model):
             self.online_game_count_of_wins += 1
             self.inc_points(points)
         else:
-             self.dec_points(points)            
+             self.dec_points(points)
 
 # -----
     def __str__(self):

@@ -7,11 +7,15 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
-from .models import Result
+from .models import Result, Rank
 from exam.models import Question
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
+from django.http import JsonResponse
+from django.shortcuts import render_to_response
+from django.template.loader import get_template
+
 
 def signup(request):
     if request.method == 'POST':
@@ -82,4 +86,35 @@ def profile(request):
         user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
         password_form = PasswordUpdateForm(request.user)
-    return render(request, 'profile.html', {'forms': [user_form, profile_form], 'password_form':[password_form]})
+        ranks = list(Rank.objects.all().values())
+    return render(request, 'profile.html', {'forms': [user_form, profile_form], 'password_form':[password_form], 'ranks': ranks})
+
+
+def take_point(request):
+    if request.method == 'POST' and request.is_ajax():
+        rank = Rank.objects.filter(rank_title=request.user.profile.rank).values("rank_reward_point")[0]
+        points = 0
+
+        for key in rank:
+            points = rank[key]
+
+        request.user.profile.points += points
+        if request.user.profile.rank_id != 8:
+            request.user.profile.rank_id += 1
+        request.user.profile.rank_progress = 0
+        request.user.save()
+
+        ranks = Rank.objects.all()
+
+        return render(request, 'achievement.html', {'ranks': ranks})
+
+
+def get_block_achievement(request):
+    if request.method == 'POST' and request.is_ajax():
+        ranks = Rank.objects.all()
+        return render(request, 'achievement.html', {'ranks': ranks})
+
+
+def get_block_information(request):
+    if request.method == 'POST' and request.is_ajax():
+        return render(request, 'information.html')

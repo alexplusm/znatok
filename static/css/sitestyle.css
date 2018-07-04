@@ -6658,6 +6658,15 @@ body {
 .marathon .alert-primary:hover {
   background: #99cbff;
 }
+.marathon .alert-dark:hover {
+  background: #bcbfc0;
+}
+.marathon .alert-secondary {
+  color: #868e96!important;
+}
+.marathon .alert-secondary:hover {
+  background: #ccced2;
+}
 .marathon .btn-success {
   width: 100%;
   padding: 10px;
@@ -6760,4 +6769,58 @@ body {
 }
 .popover .popover-body {
   font-size: 11px;
+}
+.achievement #levels-body {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.achievement #levels-body .card {
+  cursor: pointer;
+  width: calc(24.3902439%);
+  height: 250px;
+  margin-bottom: 20px;
+}
+.achievement #levels-body .card-active {
+  box-shadow: 0 5px 10px grey;
+  border: 1px solid blue;
+}
+.achievement #levels-body .card-done {
+  border: 1px solid #9999ff;
+}
+.achievement #levels-body .card-img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.achievement #levels-body .card:hover {
+  background: #f5f5f5;
+}
+.achievement #levels-body .card-btn {
+  padding: 5px;
+  font-size: 13px;
+}
+.achievement #levels-body .progress {
+  height: 15px;
+  position: relative;
+  border: none;
+}
+.achievement #levels-body .progress-bar {
+  height: 100%;
+}
+.achievement #levels-body .grid {
+  position: absolute;
+  top: 0;
+  left: -5px;
+  width: 100%;
+  height: inherit;
+}
+.achievement #levels-body .grid__col {
+  display: inline-table;
+  margin-left: 0;
+  padding: 0;
+  width: 9.5%;
+  border-right: 1px solid white;
+  height: inherit;
+}
+.achievement #levels-body .grid__col:last-child {
+  border: none;
 }

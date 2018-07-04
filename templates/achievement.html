@@ -1,0 +1,99 @@
+<div class="row achievement">
+  <div class="col-12 card card-grey text-uppercase text-center cardblock" id="levels">
+    <div class="card-block">
+      <div class="card-title mb-3 mt-3">
+        <span>Уровни</span>
+        <i class="fa fa-angle-down icons" style="font-size: 40px;"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-12" id="levels-body">
+    <div class="row">
+      {% for i in ranks %}
+        {% if user.profile.rank_id > i.id %}
+          <div class="card card-done mr-auto">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title text-center text-uppercase text-success mb-auto">Выполнено</h5>
+              <p class="text-center font-italic h5 mb-auto mt-auto">{{ i.rank_description }}</p>
+              <img src="/media/{{ i.rank_img  }}" class="card-img card-img-active mt-auto" />
+
+              <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="grid">
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% elif user.profile.rank_id == i.id %}
+          <div class="card card-active mr-auto text-center">
+            <div class="card-body d-flex flex-column">
+              {% if user.profile.rank_progress == 100 %}
+                <div class="btn btn-success card-btn text-uppercase mb-auto js-take-point">Получить {{ i.rank_reward_point }}</div>
+              {% else %}
+                <div class="btn btn-success card-btn text-uppercase mb-auto">Повысить</div>
+              {% endif %}
+              <p class="text-center font-italic h5 mb-auto mt-auto">{{ i.rank_description }}</p>
+              <img src="/media/{{ i.rank_img  }}" class="card-img card-img-active mt-auto" />
+
+              <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ user.profile.rank_progress }}%" aria-valuenow="{{ user.profile.rank_progress }}" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="grid">
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                  <div class="grid__col"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <div class="card mr-auto">
+            <div class="card-body text-center d-flex flex-column">
+              <h5 class="card-title text-success text-uppercase mb-auto">+{{ i.rank_reward_point }} Баллов</h5>
+              <p class="display-1 text-muted mt-auto">?</p>
+              <img src="/media/{{ i.rank_img_disable }}" class="card-img mt-auto" />
+
+              <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <br>
+  <div class="col-12 card card-grey text-uppercase text-center cardblock" id="achiev">
+    <div class="card-block">
+      <div class="card-title mb-3 mt-3">
+        <span>Грамоты</span>
+        <i class="fa fa-angle-down icons" style="font-size: 40px;"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12" id="achiev-body">
+    <div class="card">
+      <div class="card-body">
+        asd
+      </div>
+    </div>
+  </div>
+  <br>
+</div>

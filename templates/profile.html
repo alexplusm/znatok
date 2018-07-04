@@ -130,94 +130,6 @@
   </div>
 </template>
 
-
-<!-- ***************************** -->
-<!-- ШАБЛОН ДЛЯ ВКЛАДКИ ДОСТИЖЕНИЯ -->
-<!-- ***************************** -->
-<template style="display: none;" id="achievement">
-  
-</template>
-
-<!-- ***************************** -->
-<!-- ШАБЛОН ДЛЯ ВКЛАДКИ ДОСТИЖЕНИЯ -->
-<!-- ***************************** -->
-<template style="display: none;" id="informationTemplate">
-  <div class="row information">
-
-      <div class="col-12 card card-grey text-uppercase text-center cardblock" id="pdd">
-        <div class="card-block">
-          <div class="card-title mb-3 mt-3">
-            <span>Изменения пдд</span>
-            <i class="fa fa-angle-down icons" style="font-size: 40px;"></i>
-          </div>
-        </div>
-      </div>
-      <div class="col-12">
-        <br>
-      </div>
-
-
-      <div class="col-12 card card-grey text-uppercase text-center cardblock" id="tickets">
-        <div class="card-block">
-          <div class="card-title mb-3 mt-3">
-            <span>Изменения в билетах</span>
-            <i class="fa fa-angle-down icons" style="font-size: 40px;"></i>
-          </div>
-        </div>
-      </div>
-      <div class="col-12">
-        <br>
-      </div>
-
-
-      <div class="col-12 card card-grey text-uppercase text-center cardblock" id="penalty">
-        <div class="card-block">
-          <div class="card-title mb-3 mt-3">
-            <span>новые штрафы</span>
-            <i class="fa fa-angle-down icons" style="font-size: 40px;"></i>
-          </div>
-        </div>
-      </div>
-      <div class="col-12">
-        <br>
-      </div>
-
-      <div class="col-12 card card-grey text-uppercase text-center cardblock" id="news">
-        <div class="card-block">
-          <div class="card-title mb-3 mt-3">
-            <span>новостная лента</span>
-            <i class="fa fa-angle-down icons" style="font-size: 40px;"></i>
-          </div>
-        </div>
-      </div>
-      <div class="col-12">
-        <div class="row card news">
-          <div class="card-body">
-            <span class="news-date text-muted">27.03.2017</span>
-            <i class="fa fa-circle text-success" aria-hidden="true"></i>
-            <div class="card-title text-center">
-              <span class="text-primary news-title font-weight-bold font-italic">Какой-то заголовок текста ооооооооооооооооооооооооооasdadsasdda длинный</span>
-            </div>
-            <br>
-            <div class="col-12">
-              <div class="row">
-                <div class="col-3">
-                  <img class="card-img-left news-img" src="/media/{{user.profile.user_avatar}}" alt="Card image cap">
-                </div>
-                <div class="col-9 text-right">
-                  <p class="text-left">
-                    Разум — это Будда, а прекращение умозрительного мышления — это путь. Перестав мыслить понятиями и размышлять о путях существования и небытия, о душе и плоти, о пассивном и активном и о других подобных вещах, начинаешь осознавать, что разум — это Будда, что Будда — это сущность разума, и что разум подобен бесконечности.
-                  </p>
-                  <a href="" class="news-link font-italic">Подробнее</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div>
-</template>
-
 {% endblock %}
 
 {% block javascript %}
@@ -239,11 +151,11 @@
       $('.navitem3').removeClass('active');
     }
 
-    function reloadMainBlock() {
+    function reloadMainBlock(data = undefined) {
       const profileHTML = document.querySelector('#main-block-profile');
 
       profileHTML.innerHTML = '';
-      
+
       if (settingsInit) {
         const templateSettings = document.getElementById('settings-block');
         const templateContainer = 'content' in templateSettings ? templateSettings.content : templateSettings;
@@ -285,16 +197,75 @@
 
       if (achievementsInit) {
 
+        if (data !== undefined) {
+          profileHTML.innerHTML = data;
+
         $($('.navitem3')[1]).addClass('active');
+
+        $(".cardblock").click(function () {
+
+            let id = $(this).attr("id");
+            let element;
+            switch(id) {
+                case "levels":
+                    element = document.getElementById("levels-body");
+                    $(element).toggleClass('hide');
+                    $(document.getElementById('levels').querySelector('.icons')).toggleClass('icons-disactive');
+                    break;
+                case "achiev":
+                    element = document.getElementById("achiev-body");
+                    $(element).toggleClass('hide');
+                    $(document.getElementById('achiev').querySelector('.icons')).toggleClass('icons-disactive');
+                    break;
+                // case "social":
+                //     element = document.getElementById("social-body");
+                //     $(element).toggleClass('hide');
+                //     $(document.getElementById('social').querySelector('.icons')).toggleClass('icons-disactive');
+                //     break;
+                // case "other":
+                //     element = document.getElementById("other-body");
+                //     $(element).toggleClass('hide');
+                //     $(document.getElementById('other').querySelector('.icons')).toggleClass('icons-disactive');
+                //     break;
+            }
+        });
+        }
+
+
+        function takePoint() {
+          $.ajax({
+            type: "POST",
+
+            url: "/take_point/",
+
+            data: {
+              csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+
+            success: function (data) {
+              reloadMainBlock(data);
+            }
+          });
+        }
+
+        (function() {
+          let timer;
+
+          $('.js-take-point').click(function() {
+            if (timer) {
+              clearTimeout(timer);
+            }
+          timer = setTimeout(takePoint, 200);
+          });
+        }());
+
+
         return;
       }
 
       if (informationInit) {
-        const templateInformation = document.getElementById('informationTemplate');
-        const templateContainer = 'content' in templateInformation ? templateInformation.content : templateInformation;
-        const newElementInformation = templateContainer.querySelector('.information').cloneNode(true);
 
-        profileHTML.append(newElementInformation);
+        profileHTML.innerHTML = data;
 
         $($('.navitem3')[2]).addClass('active');
 
@@ -324,7 +295,6 @@
                     break;
             }
         });
-
         return;
       }
 
@@ -377,12 +347,38 @@
             case 2:
               resetInit();
               achievementsInit = true;
-              reloadMainBlock();
+
+              $.ajax({
+                type: "POST",
+
+                url: "/get_block_achievement/",
+
+                data: {
+                  csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+
+                success: function (data) {
+                  reloadMainBlock(data);
+                }
+              });
+
               break;
             case 3:
               resetInit();
               informationInit = true;
-              reloadMainBlock();
+              $.ajax({
+                type: "POST",
+
+                url: "/get_block_information/",
+
+                data: {
+                  csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+
+                success: function (data) {
+                  reloadMainBlock(data);
+                }
+              });
               break;
             case 4:
               resetInit();
