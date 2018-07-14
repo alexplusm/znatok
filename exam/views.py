@@ -96,10 +96,31 @@ def get_wrong_questions(request):
     if request.method == "GET" and request.is_ajax():
         category = request.GET['category']
         counter = int(request.GET['counter'])
+        next_question = request.GET["next"]
+        value = int(request.GET["value_next"])
         user = request.user
         if user.is_authenticated:
-            questions = user.result_set.filter(question__category=category, is_true=False)\
-                .order_by('question__number_of_ticket', 'question__number_of_question')\
+            if next_question == "true":
+                quest = user.result_set.filter(question__category=category, is_true=False, question_id__gt=value) \
+                    .order_by('question__number_of_ticket', 'question__number_of_question') \
+                    .values('question__picture',
+                            'question__question',
+                            'question__number_of_ticket',
+                            'question__number_of_question',
+                            'question__answer1',
+                            'question__answer2',
+                            'question__answer3',
+                            'question__answer4',
+                            'question__answer5',
+                            'question__comment_for_question',
+                            'true_answer',
+                            'user_answer',
+                            'question__category',
+                            'question_id')
+                print(quest[0])
+                return JsonResponse({'question': quest[0]})
+            questions = user.result_set.filter(question__category=category, is_true=False) \
+                .order_by('question__number_of_ticket', 'question__number_of_question') \
                 .values('question__picture',
                         'question__question',
                         'question__number_of_ticket',
@@ -111,7 +132,9 @@ def get_wrong_questions(request):
                         'question__answer5',
                         'question__comment_for_question',
                         'true_answer',
-                        'user_answer')
+                        'user_answer',
+                        'question__category',
+                        'question_id')
             count = questions.count()
             return JsonResponse({'questions': list(questions[5*counter:5*counter+5]), 'questions_count': count}, safe=False)
         else:
@@ -124,6 +147,7 @@ def check_answer(request):
         number_of_ticket = request.GET["number_of_ticket"]
         number_of_question = int(request.GET["number_of_question"])
         category = request.GET["category"]
+        wrong = request.GET["wrong"]
         user = request.user
         obj = Question.objects.filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question, category=category)[0]
         true_answer = obj.answer1
@@ -143,6 +167,23 @@ def check_answer(request):
                 user.save()
             else:
                 request.session['points'] += 1
+        if wrong and true_of_false:
+            question = user.result_set.filter(question__category=category, is_true=False) \
+                .order_by('question__number_of_ticket', 'question__number_of_question') \
+                .values('question__picture',
+                        'question__question',
+                        'question__number_of_ticket',
+                        'question__number_of_question',
+                        'question__answer1',
+                        'question__answer2',
+                        'question__answer3',
+                        'question__answer4',
+                        'question__answer5',
+                        'question__comment_for_question',
+                        'true_answer',
+                        'user_answer',
+                        'question__category')[0]
+            return JsonResponse({'next_question': question})
         return JsonResponse({'true_answer': true_answer})
 
 

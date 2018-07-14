@@ -321,6 +321,63 @@
     <span class="theme-counter">123</span><span class="theme-text">Дорожные знаки</span>
   </div>
 </template>
+
+<template id="templateQuestion" style="display: none">
+  <div class="row boxing top6 hide"> 
+    билеты по теории 
+  </div>
+  <div id="result" class="result row boxing top5"> 
+  <div class="conteiner" style="width: 100%;"> 
+    <div class="row boxing"> 
+      <div class="col-12"> 
+      <div class="col-12 text-left objquestion"> 
+        <p id="quest" class="js-question"></p> 
+      </div> 
+      <div class="row"> 
+        <img class="imgquestion js-img-question" /> 
+      </div> 
+    </div> 
+  </div> 
+  <div class=""> 
+    <ul class="list-unstyled" style="padding-top: 0.5em;"> 
+      <li> 
+        <div class="answbtn text-left btn btn-default" id="answer1"></div> 
+      </li> 
+      <li> 
+        <div class="answbtn text-left btn btn-default" id="answer2"></div> 
+      </li> 
+      <li> 
+        <div class="answbtn text-left btn btn-default" id="answer3"></div> 
+      </li> 
+      <li> <div class="answbtn text-left btn btn-default" id="answer4"></div>
+       </li>
+        <li> 
+          <div class="answbtn text-left btn btn-default" id="answer5"></div> 
+        </li> 
+      </ul> 
+    </div> 
+    <div class="conteiner help-box" style="display: none;"> 
+      <div class="row"> 
+        <div class="col-12 text-left"> 
+          <ul class="list-inline"> 
+            <li>
+              <button class="helpbtn btn btn-default">ПОЯСНЕНИЕ</button>
+            </li> 
+            <li>
+              <button class="penaltybtn btn btn-default">ШТРАФЫ</button>
+            </li> 
+            <li>
+              <button class="nextbtn btn btn-success">Далее</button>
+            </li> 
+          </ul> 
+        </div> 
+      </div> 
+      <ul class="list-inline" id="help-text">
+      </ul> 
+    </div> 
+  </div> 
+</div>
+</template>
 {% endblock %}
 
 {% block javascript %}
@@ -341,6 +398,7 @@
       let initMarathon = false;
       let counterWrongQuestion = 0;
       let initBool = true;
+      let initWrongQuestionReload = false;
 
       function clearInits() {
         initWrong = false;
@@ -349,6 +407,7 @@
         initTicketsInside = false;
         initMarathon = false;
         initBool = true;
+        initWrongQuestionReload = false;
       }
 
       function getWrongQuestions(category, counterWrong) {
@@ -361,7 +420,9 @@
 
           data: {
               'category': category,
-              'counter': counterWrong
+              'counter': counterWrong,
+              'next': false,
+              'value_next': 0
           },
 
           cache: false,
@@ -381,7 +442,7 @@
       }
 
       function changeData(data) {
-  
+
           $(".answbtn").removeClass("btn-success btn-danger");
           document.getElementById('quest').textContent = data.questions[0].question;
           $('.imgquestion').attr("src", "/media/" + data.questions[0].picture);
@@ -682,9 +743,138 @@
             }
 
             const newElement = container.querySelector('.wrongblock').cloneNode(true);
+            newElement.dataset.id = i;
             newElement.querySelector('.wrong-question-text').textContent = data.questions[i].question__question;
             newElement.querySelector('.wrong-question-img').src = '/media/' + data.questions[i].question__picture;
             wrongQuestionHTML.appendChild(newElement);
+          }
+
+          $('.wrongblock').click(function() {
+            const id = this.dataset.id;
+            
+            if (isNaN(id)) {
+              return;
+            }
+
+            changeWrongQuestion(data.questions[id]);
+          });
+
+          function changeWrongQuestion(data) {
+            initWrongQuestionReload = false;
+            wrongQuestionHTML.innerHTML = '';
+            btnListHTML.innerHTML = '';
+            const templateContainerSingleQuestion = document.getElementById('templateQuestion');
+            const templateContainerQuestion = 'content' in templateContainerSingleQuestion ? templateContainerSingleQuestion.content : templateContainerSingleQuestion;
+            const newElementQuestion = templateContainerQuestion.getElementById('result').cloneNode(true);
+            const i = document.createElement('i');
+            $(i).addClass('fa fa-refresh js-wrong-question-refresh wrong-question-refresh fa-lg');
+            i.setAttribute('aria-hidden', 'true');
+            newElementQuestion.querySelector('.objquestion').appendChild(i);
+            newElementQuestion.querySelector('.js-question').textContent = data.question__question;
+            newElementQuestion.querySelector('.js-img-question').src = '/media/' + data.question__picture;
+            newElementQuestion.querySelector('#answer1').textContent = data.question__answer1;
+            newElementQuestion.querySelector('#answer2').textContent = data.question__answer2;
+            newElementQuestion.querySelector('#answer3').textContent = data.question__answer3;
+
+            if (data.question__answer4) {
+              newElementQuestion.querySelector('#answer4').textContent = data.question__answer4;
+            } else {
+              $(newElementQuestion.querySelector('#answer4')).hide();
+            }
+
+            if (data.question__answer5) {
+              newElementQuestion.querySelector('#answer5').textContent = data.question__answer5;
+            } else {
+              $(newElementQuestion.querySelector('#answer5')).hide();
+            }
+
+            newElementQuestion.querySelector('.help-box').style.display = 'block';
+            newElementQuestion.querySelector('#help-text').textContent = data.question__comment_for_question;
+
+            for(let i = 1; i < 6; i++) {
+              const item = newElementQuestion.querySelector('#answer' + i);
+
+              if (!item) {
+                return;
+              }
+
+              $(item).addClass('disabled');
+
+              if (item.textContent === data.user_answer) {
+                $(item).addClass('btn-danger');
+              }
+            }
+
+            wrongQuestionHTML.appendChild(newElementQuestion);
+            let timer;
+
+            $('.js-wrong-question-refresh').click(function() {
+              $(newElementQuestion.querySelector('.help-box')).hide();
+              for (let i = 1; i < 6; i++) {
+                const items = newElementQuestion.querySelector('#answer' + i);
+                $(items).removeClass('disabled');
+                $(items).removeClass('btn-danger');
+              }
+              initWrongQuestionReload = true;
+
+              $('.answbtn').click(function() {
+                const user_answ = this.textContent;
+                const btn = this;
+                if (!initWrongQuestionReload) {
+                  return;
+                }
+                console.log(data);
+
+                $.ajax({
+                  type: "GET",
+                  url: "/check_answer/",
+                  data: {
+                    'number_of_ticket': data.question__number_of_ticket,
+                    'number_of_question': data.question__number_of_question,
+                    'category': data.question__category,
+                    'answer_by_user': user_answ,
+                    'wrong': true
+                  },
+                  success: function (data) {
+                    if (data.true_answer) {
+                      $(getElementByClassAndtextContent('answbtn', user_answ)).addClass('btn-danger');
+                      return;
+                    }
+                    $(newElementQuestion.querySelector('.help-box')).show();
+                    const helpText = newElementQuestion.querySelector('#help-text');
+                    helpText.textContent = 'Правильно';
+                    $(helpText).addClass('text-success');
+                    $(btn).addClass('btn-success');
+                    timer = setTimeout(function() {
+                      changeWrongQuestion(data.next_question);
+                    }, 1500);
+                  }
+                });
+              });
+            });
+
+            $('.nextbtn').click(function() {
+              clearTimeout(timer);
+              console.log(data);
+              $.ajax({
+                type: "GET",
+
+                url: "get_wrong_questions/",
+
+                data: {
+                    'category': category,
+                    'counter': 0,
+                    'next': true,
+                    'value_next': data.question_id
+                },
+
+                cache: false,
+
+                success: function (data) {
+                  changeWrongQuestion(data.question);
+                }
+              });
+            });
           }
         }
 
@@ -751,7 +941,7 @@
       function loadWrongQuestions(data) {
         if (initBool) {
           document.querySelector(".blockmain").innerHTML = '';
-          document.querySelector(".blockmain").innerHTML = '<div class="col-12"> <div class="dropdown"> <button class="btn btn-default dropdown-toggle text-right" type="button" id="drop_for_ticket_info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%; border: 1px solid lightgrey;"> </button> <div class="dropdown-menu text-center" aria-labelledby="drop_for_ticket_info" style="width: 100%;"> Ваши неправильные ответы </div> </div> <br><h2 class="text-danger"><i>Ваши ошибки</i></h2><div class="row boxing top5 wrong-question"> </div> </div> <div class="buttonbox"> </div>';
+          document.querySelector(".blockmain").innerHTML = '<div class="col-12"> <div class="dropdown"> <button class="btn btn-default dropdown-toggle text-right" type="button" id="drop_for_ticket_info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%; border: 1px solid lightgrey;"> </button> <div class="dropdown-menu text-center" aria-labelledby="drop_for_ticket_info" style="width: 100%;"> Ваши неправильные ответы </div> </div> <br><h2 class="text-danger"><i class="js-wrong-title">Ваши ошибки</i></h2><div class="row boxing top5 wrong-question"> </div> </div> <div class="buttonbox"> </div>';
         } else {
           document.querySelector(".wrong-question").innerHTML = '';
         }
