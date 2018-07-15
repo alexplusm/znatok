@@ -14,7 +14,7 @@ class Result(models.Model):
     is_true = models.NullBooleanField(null=True)
 
     def __str__(self):
-        return "user: {}, quest: {}, is_true: {}".format(self.user, self.question, self.is_true)
+        return "user: {}, quest: {}, is_true: {}, quest_id: {}".format(self.user, self.question, self.is_true, self.question.id)
 
 
 class Rank(models.Model):
