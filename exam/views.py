@@ -79,7 +79,8 @@ def load_questions_by_theme(request):
         theme = request.GET['theme']
         questions = Question.objects.filter(category=category, theme=theme)\
             .order_by('number_of_ticket', 'number_of_question')\
-            .values('number_of_ticket',
+            .values('theme',
+                    'number_of_ticket',
                     'number_of_question',
                     'question',
                     'answer1',

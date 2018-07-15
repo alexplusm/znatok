@@ -92,11 +92,7 @@ def profile(request):
 
 def take_point(request):
     if request.method == 'POST' and request.is_ajax():
-        rank = Rank.objects.filter(rank_title=request.user.profile.rank).values("rank_reward_point")[0]
-        points = 0
-
-        for key in rank:
-            points = rank[key]
+        points = request.user.profile.rank.rank_reward_point
 
         request.user.profile.points += points
         if request.user.profile.rank_id != 8:
