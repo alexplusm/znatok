@@ -89,7 +89,7 @@ def load_questions_by_theme(request):
                     'answer5',
                     'picture',
                     'comment_for_question')
-        return JsonResponse({'questions': list(questions)}, safe=False)
+        return JsonResponse({'questions': questions}, safe=False)
 
 
 def get_wrong_questions(request):
@@ -117,7 +117,6 @@ def get_wrong_questions(request):
                             'user_answer',
                             'question__category',
                             'question_id')
-                print(quest[0])
                 return JsonResponse({'question': quest[0]})
             questions = user.result_set.filter(question__category=category, is_true=False) \
                 .order_by('question__number_of_ticket', 'question__number_of_question') \

@@ -308,17 +308,20 @@
         <button class="btn btn-default dropdown-toggle text-right" type="button" id="drop_for_ticket_info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%; border: 1px solid lightgrey;">
         </button>
         <div class="dropdown-menu text-center" aria-labelledby="drop_for_ticket_info" style="width: 100%;">
-          asdasd
+          Отвечая на вопросы по темам на результат в 100%, в личном кабинете (блок Достижения) появятся похвальные грамоты по пройденым темам. Так же, в процессе прохождения, Вам будут начислятся баллы за верные ответы
         </div>
       </div>
     </div>
-    <div class="themebtn1">
+    <div class="themebtn1 col-12">
     </div>
   </div>
 </template>
 <template id="themeBtnTemplate">
-  <div class="themebtncontent themebtn text-left">
-    <span class="theme-counter">123</span><span class="theme-text">Дорожные знаки</span>
+  <div class="themebtncontent">
+    <div class="theme text-left">
+      <span class="theme-text">Дорожные знаки</span>
+    </div>
+    <div class="theme-gradient"></div>
   </div>
 </template>
 
@@ -1126,32 +1129,39 @@
       const firstBlockBtnTheme = firstThemeTemplateContainer.querySelector('.themese').cloneNode(true);
       const content = firstBlockBtnTheme.querySelector('.themebtn1');
 
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 4; i++) {
         const contentThemeBtn = contentThemeBtnContainer.querySelector('.themebtncontent').cloneNode(true);
+        $(contentThemeBtn).attr('value', i);
+        contentThemeBtn.querySelector('.theme-text').textContent = i + 'тема';
         content.appendChild(contentThemeBtn);
       }
       mainblock.innerHTML = '';
       mainblock.appendChild(firstBlockBtnTheme);
-    }
 
-    function loadQuestionByTheme(theme) {
-      $.ajax({
+      $('.themebtncontent').click(function() {
+        const value = $(this).attr('value');
 
+        $.ajax({
           type: "GET",
 
           url: "load_questions_by_theme/",
 
           data: {
               'category': category,
-              'theme':theme
+              'theme': value + 1
           },
 
           cache: false,
 
           success: function (data) {
-            changeDataByTheme(data);
+            console.log(data);
           }
+        });
       });
+    }
+
+    function loadQuestionByTheme(theme) {
+      changeDataByTheme();
     }
 
     $('#block4').click(function () {
