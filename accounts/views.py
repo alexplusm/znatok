@@ -11,10 +11,6 @@ from .models import Result, Rank
 from exam.models import Question
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.forms import PasswordChangeForm
-from django.http import JsonResponse
-from django.shortcuts import render_to_response
-from django.template.loader import get_template
 
 
 def signup(request):

@@ -1,0 +1,66 @@
+<div class="button-list js-btn-list">
+  {% if bool.0 %}
+  <button class="button-list__button btn btn-default js-btnquest" data-id="after">...</button>
+  {% endif %}
+  {% for i in counter %}
+    <button class="button-list__button btn btn-default js-btnquest" data-id="{{ i }}">{{ i }}</button>
+  {% endfor %}
+  {% if bool.1 %}
+  <button class="button-list__button btn btn-default js-btnquest" data-id="next">...</button>
+  {% endif %}
+</div>
+
+<div class="row boxing">
+  <div class="col-12">
+    <div class="col-12 text-left objquestion">
+      <p id="quest" class="js-question">{{ quest.question }}</p>
+    </div>
+    <div class="row">
+      <img class="imgquestion js-img-question" src="/media/{{ quest.picture }}"/>
+    </div>
+  </div>
+</div>
+<div>
+<ul class="list-unstyled" style="padding-top: 0.5em;">
+  <li>
+    <div class="answbtn text-left btn btn-default" id="answer1">{{ quest.answer1 }}</div>
+  </li>
+  <li>
+    <div class="answbtn text-left btn btn-default" id="answer2">{{ quest.answer2 }}</div>
+  </li>
+  <li>
+    <div class="answbtn text-left btn btn-default" id="answer3">{{ quest.answer3 }}</div>
+  </li>
+{% if quest.answer4 %}
+  <li>
+    <div class="answbtn text-left btn btn-default" id="answer4">{{ quest.answer4 }}</div>
+   </li>
+{% endif %}
+{% if quest.answer5 %}
+  <li>
+    <div class="answbtn text-left btn btn-default" id="answer5">{{ quest.answer5 }}</div>
+  </li>
+{% endif %}
+  </ul>
+</div>
+
+<div class="conteiner help-box" style="display: none">
+  <div class="row">
+    <div class="col-12 text-left">
+      <ul class="list-inline">
+        <li>
+          <button class="helpbtn btn btn-default">ПОЯСНЕНИЕ</button>
+        </li>
+        <li>
+          <button class="penaltybtn btn btn-default">ШТРАФЫ</button>
+        </li>
+        <li>
+          <button class="nextbtn btn btn-success">Далее</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <ul class="list-inline" id="help-text">
+    {{ quest.comment_for_question }}
+  </ul>
+</div>

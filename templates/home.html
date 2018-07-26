@@ -198,16 +198,16 @@
     </div>
   </div>
 
-<template id="templateWrongQuestion" style="display: none">
-  <div class="wrongblock col-12">
+<template id="templateQuestionList" style="display: none">
+  <div class="wrongblock js-question-block col-12">
     <div class="row blockwrong">
       <div class="col-6">
       <div class="row">
-        <img src=" " class="wrong-question-img">
+        <img src=" " class="wrong-question-img js-question-img">
       </div>
     </div>
     <div class="col-6 mt-auto mb-auto">
-      <p class="text-primary"><i class="wrong-question-text"></i></p>
+      <p class="text-primary"><i class="wrong-question-text js-question-text"></i></p>
     </div>
     </div>
     <div class="borderbtn">
@@ -313,9 +313,16 @@
       </div>
     </div>
     <div class="themebtn1 col-12">
+      <div class="button-list js-btn-list"></div>
+      <div class="js-question"></div>
     </div>
   </div>
 </template>
+
+<template id="templateBtnForQuestion">
+  <button class="button-list__button btn btn-default js-btnquest">1</button>
+</template>
+
 <template id="themeBtnTemplate">
   <div class="themebtncontent">
     <div class="theme text-left">
@@ -329,7 +336,7 @@
   <div class="row boxing top6 hide"> 
     билеты по теории 
   </div>
-  <div id="result" class="result row boxing top5"> 
+  <div id="result" class="result js-result row boxing top5">
   <div class="conteiner" style="width: 100%;"> 
     <div class="row boxing"> 
       <div class="col-12"> 
@@ -381,6 +388,12 @@
   </div> 
 </div>
 </template>
+
+<template id="listQuestionsTemplate">
+  <div>
+
+  </div>
+</template>
 {% endblock %}
 
 {% block javascript %}
@@ -411,6 +424,60 @@
         initMarathon = false;
         initBool = true;
         initWrongQuestionReload = false;
+      }
+
+      function singleQuestionTemplate(data) {
+        const templateContainerSingleQuestion = document.getElementById('templateQuestion');
+        const templateContainerQuestion = 'content' in templateContainerSingleQuestion ? templateContainerSingleQuestion.content : templateContainerSingleQuestion;
+        const newElementQuestion = templateContainerQuestion.getElementById('result').cloneNode(true);
+
+        if (!data.picture) {
+          const i = document.createElement('i');
+          $(i).addClass('fa fa-refresh js-wrong-question-refresh wrong-question-refresh fa-lg');
+          i.setAttribute('aria-hidden', 'true');
+          newElementQuestion.querySelector('.objquestion').appendChild(i);
+        }
+
+        newElementQuestion.querySelector('.js-question').textContent = data.question__question || data.question;
+        newElementQuestion.querySelector('.js-img-question').src = '/media/' + (data.question__picture ? data.question__picture : data.picture);
+        newElementQuestion.querySelector('#answer1').textContent = data.question__answer1 || data.answer1;
+        newElementQuestion.querySelector('#answer2').textContent = data.question__answer2 || data.answer2;
+        newElementQuestion.querySelector('#answer3').textContent = data.question__answer3 || data.answer3;
+
+        if (data.question__answer4 || data.answer4) {
+          newElementQuestion.querySelector('#answer4').textContent = data.question__answer4 || data.answer4;
+        } else {
+          $(newElementQuestion.querySelector('#answer4')).hide();
+        }
+
+        if (data.question__answer5 || data.answer5) {
+          newElementQuestion.querySelector('#answer5').textContent = data.question__answer5 || data.answer5;
+        } else {
+          $(newElementQuestion.querySelector('#answer5')).hide();
+        }
+
+        newElementQuestion.querySelector('.help-box').style.display = 'block';
+
+
+        if (!data.picture) {
+          newElementQuestion.querySelector('#help-text').textContent = data.question__comment_for_question || data.comment_for_question;
+
+          for(let i = 1; i < 6; i++) {
+          const item = newElementQuestion.querySelector('#answer' + i);
+
+          if (!item) {
+            return;
+          }
+
+          $(item).addClass('disabled');
+
+          if (item.textContent === data.user_answer) {
+            $(item).addClass('btn-danger');
+          }
+        }
+        }
+
+        return newElementQuestion;
       }
 
       function getWrongQuestions(category, counterWrong) {
@@ -532,6 +599,7 @@
             number_of_question = Number($(this).attr("value"));
             loadQuestion();
         });
+
         $(".nextbtn").click(function () {
             if (number_of_question === 20) {
                 if (number_of_ticket != 40) {
@@ -568,7 +636,7 @@
             }
         });
 
-        function checkAnsw(answbtn) {
+        function checkAnsw(answbtn, theme=false) {
             var user_answ = answbtn.textContent || answbtn.innerText;
             $.ajax({
 
@@ -580,7 +648,9 @@
                     'number_of_ticket': number_of_ticket,
                     'number_of_question': number_of_question,
                     'category': category,
-                    'answer_by_user': user_answ
+                    'answer_by_user': user_answ,
+                    'theme': theme,
+                    'wrong': false
                 },
                 dataType: 'json',
 
@@ -731,7 +801,7 @@
       function changeDataWrongQuestions(data) {
         const wrongQuestionHTML = document.querySelector('.wrong-question');
         const btnListHTML = document.querySelector('.buttonbox');
-        const templateElement = document.getElementById('templateWrongQuestion');
+        const templateElement = document.getElementById('templateQuestionList');
         const templateButton = document.getElementById('countButton');
         const templateContainer = 'content' in templateElement ? templateElement.content : templateElement;
         const btnContainer = 'content' in templateButton ? templateButton.content : templateButton;
@@ -745,14 +815,14 @@
               return;
             }
 
-            const newElement = container.querySelector('.wrongblock').cloneNode(true);
+            const newElement = container.querySelector('.js-question-block').cloneNode(true);
             newElement.dataset.id = i;
-            newElement.querySelector('.wrong-question-text').textContent = data.questions[i].question__question;
-            newElement.querySelector('.wrong-question-img').src = '/media/' + data.questions[i].question__picture;
+            newElement.querySelector('.js-question-text').textContent = data.questions[i].question__question;
+            newElement.querySelector('.js-question-img').src = '/media/' + data.questions[i].question__picture;
             wrongQuestionHTML.appendChild(newElement);
           }
 
-          $('.wrongblock').click(function() {
+          $('.js-question-block').click(function() {
             const id = this.dataset.id;
             
             if (isNaN(id)) {
@@ -766,49 +836,10 @@
             initWrongQuestionReload = false;
             wrongQuestionHTML.innerHTML = '';
             btnListHTML.innerHTML = '';
-            const templateContainerSingleQuestion = document.getElementById('templateQuestion');
-            const templateContainerQuestion = 'content' in templateContainerSingleQuestion ? templateContainerSingleQuestion.content : templateContainerSingleQuestion;
-            const newElementQuestion = templateContainerQuestion.getElementById('result').cloneNode(true);
-            const i = document.createElement('i');
-            $(i).addClass('fa fa-refresh js-wrong-question-refresh wrong-question-refresh fa-lg');
-            i.setAttribute('aria-hidden', 'true');
-            newElementQuestion.querySelector('.objquestion').appendChild(i);
-            newElementQuestion.querySelector('.js-question').textContent = data.question__question;
-            newElementQuestion.querySelector('.js-img-question').src = '/media/' + data.question__picture;
-            newElementQuestion.querySelector('#answer1').textContent = data.question__answer1;
-            newElementQuestion.querySelector('#answer2').textContent = data.question__answer2;
-            newElementQuestion.querySelector('#answer3').textContent = data.question__answer3;
-
-            if (data.question__answer4) {
-              newElementQuestion.querySelector('#answer4').textContent = data.question__answer4;
-            } else {
-              $(newElementQuestion.querySelector('#answer4')).hide();
-            }
-
-            if (data.question__answer5) {
-              newElementQuestion.querySelector('#answer5').textContent = data.question__answer5;
-            } else {
-              $(newElementQuestion.querySelector('#answer5')).hide();
-            }
-
-            newElementQuestion.querySelector('.help-box').style.display = 'block';
-            newElementQuestion.querySelector('#help-text').textContent = data.question__comment_for_question;
-
-            for(let i = 1; i < 6; i++) {
-              const item = newElementQuestion.querySelector('#answer' + i);
-
-              if (!item) {
-                return;
-              }
-
-              $(item).addClass('disabled');
-
-              if (item.textContent === data.user_answer) {
-                $(item).addClass('btn-danger');
-              }
-            }
+            const newElementQuestion = singleQuestionTemplate(data);
 
             wrongQuestionHTML.appendChild(newElementQuestion);
+
             let timer;
 
             $('.js-wrong-question-refresh').click(function() {
@@ -826,7 +857,6 @@
                 if (!initWrongQuestionReload) {
                   return;
                 }
-                console.log(data);
 
                 $.ajax({
                   type: "GET",
@@ -836,7 +866,8 @@
                     'number_of_question': data.question__number_of_question,
                     'category': data.question__category,
                     'answer_by_user': user_answ,
-                    'wrong': true
+                    'wrong': true,
+                    'theme': false,
                   },
                   success: function (data) {
                     if (data.true_answer) {
@@ -1119,9 +1150,89 @@
   {% endif %}
 
   <script>
-    
-    function changeDataByTheme(data) {
-      const mainblock = document.querySelector(".blockmain");
+
+  let theme = 1;
+
+  function renderQuestion(data) {
+    const mainblock = document.querySelector('.themebtn1');
+
+    mainblock.innerHTML = data;
+
+    $('.js-btnquest').click(function() {
+      let id = this.dataset.id;
+
+      if (id === 'after') {
+        const min = document.getElementsByClassName('js-btnquest')[1].dataset.id;
+
+        $.ajax({
+          type: "GET",
+
+          url: "load_questions_by_theme/",
+
+          data: {
+              'category': category,
+              'theme': theme,
+              'counter': min
+          },
+
+          cache: false,
+
+          success: function (data) {
+            renderQuestion(data);
+          }
+        });
+        return;
+      }
+
+      if (id === 'next') {
+        const btns = document.getElementsByClassName('js-btnquest');
+        const max = btns[btns.length - 2].dataset.id;
+
+        $.ajax({
+          type: "GET",
+
+          url: "load_questions_by_theme/",
+
+          data: {
+              'category': category,
+              'theme': theme,
+              'counter': max
+          },
+
+          cache: false,
+
+          success: function (data) {
+            renderQuestion(data);
+          }
+        });
+        return;
+      }
+
+      $.ajax({
+          type: "GET",
+
+          url: "load_questions_by_theme/",
+
+          data: {
+              'category': category,
+              'theme': theme,
+              'counter': id
+          },
+
+          cache: false,
+
+          success: function (data) {
+            renderQuestion(data);
+          }
+        });
+    });
+
+    $('.answbtn').click(function() {
+        const user_answ = this.textContent || this.innerText;
+    });
+  }
+    function changeDataByTheme() {
+      const mainblock = document.querySelector('.blockmain');
       const firstThemeTemplate = document.getElementById('blockTheme');
       const contentThemeBtnTemplate = document.getElementById('themeBtnTemplate');
       const firstThemeTemplateContainer = 'content' in firstThemeTemplate ? firstThemeTemplate.content : firstThemeTemplate;
@@ -1139,7 +1250,7 @@
       mainblock.appendChild(firstBlockBtnTheme);
 
       $('.themebtncontent').click(function() {
-        const value = $(this).attr('value');
+        theme = parseInt($(this).attr('value'), 10) + 1;
 
         $.ajax({
           type: "GET",
@@ -1148,33 +1259,28 @@
 
           data: {
               'category': category,
-              'theme': value + 1
+              'theme': theme,
+              'counter': 1
           },
 
           cache: false,
 
           success: function (data) {
-            console.log(data);
+            renderQuestion(data);
           }
         });
       });
-    }
-
-    function loadQuestionByTheme(theme) {
-      changeDataByTheme();
     }
 
     $('#block4').click(function () {
       clearInits();
       intitThemes = true;
 
-      let theme = 2;
-
       if (!intitThemes) {
         return;
       }
 
-      loadQuestionByTheme(theme);
+      changeDataByTheme();
     });
 
     $("#navonlineitem1").addClass("active");

@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from random import shuffle
 from django.db.models import Min
 from django.http import HttpResponseForbidden
+from django.shortcuts import render
 
 
 def random_answers(question):
@@ -77,6 +78,8 @@ def load_questions_by_theme(request):
     if request.method == "GET" and request.is_ajax():
         category = request.GET['category']
         theme = request.GET['theme']
+        counter = int(request.GET["counter"])
+
         questions = Question.objects.filter(category=category, theme=theme)\
             .order_by('number_of_ticket', 'number_of_question')\
             .values('number_of_ticket',
@@ -89,7 +92,24 @@ def load_questions_by_theme(request):
                     'answer5',
                     'picture',
                     'comment_for_question')
-        return JsonResponse({'questions': questions}, safe=False)
+
+        count = questions.count()
+        after = False
+        next = True
+        start = 1
+        end = 14
+
+        if counter > 8:
+            after = True
+            start = counter - 7
+            end = counter + 7
+
+        if count - counter < 7:
+            next = False
+            start = count - 14
+            end = count
+        return render(request, 'theme.html', {'quest': questions[counter - 1], 'bool': [after, next], 'counter': range(start, end)})
+        # return JsonResponse({'questions': list(questions[counter:counter+15]), 'count': count}, safe=False)
 
 
 def get_wrong_questions(request):
@@ -101,7 +121,7 @@ def get_wrong_questions(request):
         user = request.user
         if user.is_authenticated:
             if next_question == "true":
-                quest = user.result_set.filter(question__category=category, is_true=False, question_id__gt=value) \
+                quest = user.result_set.filter(question__category=category, is_true=False, question_id__gt=value)\
                     .order_by('question__number_of_ticket', 'question__number_of_question') \
                     .values('question__picture',
                             'question__question',
@@ -147,6 +167,7 @@ def check_answer(request):
         number_of_question = int(request.GET["number_of_question"])
         category = request.GET["category"]
         wrong = request.GET["wrong"]
+        theme = request.GET["theme"]
         user = request.user
         obj = Question.objects.filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question, category=category)[0]
         true_answer = obj.answer1
@@ -166,7 +187,7 @@ def check_answer(request):
                 user.save()
             else:
                 request.session['points'] += 1
-        if wrong and true_of_false:
+        if wrong == 'true' and true_of_false:
             question = user.result_set.filter(question__category=category, is_true=False) \
                 .order_by('question__number_of_ticket', 'question__number_of_question') \
                 .values('question__picture',
@@ -181,8 +202,23 @@ def check_answer(request):
                         'question__comment_for_question',
                         'true_answer',
                         'user_answer',
-                        'question__category')[0]
-            return JsonResponse({'next_question': question})
+                        'question__category')
+            return JsonResponse({'next_question': question[0]})
+
+        if wrong == 'false' and true_of_false and theme != 'false':
+            questions = Question.objects.filter(category=category, theme=theme, number_of_ticket__gt=int(number_of_ticket)) \
+                .order_by('number_of_ticket', 'number_of_question') \
+                .values('number_of_ticket',
+                        'number_of_question',
+                        'question',
+                        'answer1',
+                        'answer2',
+                        'answer3',
+                        'answer4',
+                        'answer5',
+                        'picture',
+                        'comment_for_question')
+            return JsonResponse({'next_question': questions[0]})
         return JsonResponse({'true_answer': true_answer})
 
 
