@@ -1157,9 +1157,8 @@
     const mainblock = document.querySelector('.themebtn1');
 
     mainblock.innerHTML = data;
-
     $('.js-btnquest').click(function() {
-      let id = this.dataset.id;
+      const id = this.dataset.id;
 
       if (id === 'after') {
         const min = document.getElementsByClassName('js-btnquest')[1].dataset.id;
@@ -1276,6 +1275,27 @@
                   $(true_answbtn).addClass("btn-success");
               }
               $('.answbtn').addClass("disabled");
+
+              $('.nextbtn').click(function() {
+                const id = document.querySelector('.js-img-question').dataset.next;
+                $.ajax({
+                  type: "GET",
+
+                  url: "load_questions_by_theme/",
+
+                  data: {
+                      'category': category,
+                      'theme': theme,
+                      'counter': parseInt(id, 10) + 1
+                  },
+
+                  cache: false,
+
+                  success: function (data) {
+                    renderQuestion(data);
+                  }
+                });
+              });
             }
         });
     });

@@ -6864,3 +6864,6 @@ body {
   padding-bottom: 8px;
   border: 1px solid lightgrey;
 }
+.button-list .btn-active {
+  border: 1px solid black;
+}

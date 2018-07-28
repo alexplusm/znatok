@@ -109,7 +109,7 @@ def load_questions_by_theme(request):
             next = False
             start = count - 14
             end = count
-        return render(request, 'theme.html', {'quest': questions[counter - 1], 'bool': [after, next], 'counter': range(start, end)})
+        return render(request, 'theme.html', {'quest': questions[counter - 1], 'bool': [after, next], 'counter': range(start, end), 'next': counter})
         # return JsonResponse({'questions': list(questions[counter:counter+15]), 'count': count}, safe=False)
 
 

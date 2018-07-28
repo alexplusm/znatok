@@ -3,7 +3,7 @@
   <button class="button-list__button btn btn-default js-btnquest" data-id="after">...</button>
   {% endif %}
   {% for i in counter %}
-    <button class="button-list__button btn btn-default js-btnquest" data-id="{{ i }}">{{ i }}</button>
+    <button class="button-list__button btn btn-default js-btnquest{% if i == next %} btn-primary {% endif %}" data-id="{{ i }}">{{ i }}</button>
   {% endfor %}
   {% if bool.1 %}
   <button class="button-list__button btn btn-default js-btnquest" data-id="next">...</button>
@@ -20,7 +20,8 @@
            src="/media/{{ quest.picture }}"
            data-ticket="{{ quest.number_of_ticket }}"
            data-question="{{ quest.number_of_question }}"
-           data-theme="{{ quest.theme }}"/>
+           data-theme="{{ quest.theme }}"
+           data-next="{{ next }}"/>
     </div>
   </div>
 </div>
