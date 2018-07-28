@@ -1228,7 +1228,56 @@
     });
 
     $('.answbtn').click(function() {
+      const answbtn = this;
         const user_answ = this.textContent || this.innerText;
+        const img = document.querySelector('.js-img-question');
+        const number_of_ticket = img.dataset.ticket;
+        const number_of_question = img.dataset.question;
+        const theme = img.dataset.theme;
+
+        $.ajax({
+
+          type: "GET",
+
+          url: "check_answer/",
+
+          data: {
+              'number_of_ticket': number_of_ticket,
+              'number_of_question': number_of_question,
+              'category': category,
+              'answer_by_user': user_answ,
+              'theme': false,
+              'wrong': false
+          },
+          dataType: 'json',
+
+          cache: false,
+
+          success: function (data) {
+            $('.help-box').show();
+              $.ajax({
+
+                type: "GET",
+
+                url: "check_points/",
+
+                cache: false,
+
+                success: function (data) {
+                    document.getElementById('bonus').textContent = data.points;
+                }
+            });
+
+              if (user_answ === data.true_answer) {
+                  $(answbtn).addClass("btn-success");
+              } else {
+                  $(answbtn).addClass("btn-danger");
+                  var true_answbtn = getElementByClassAndtextContent("answbtn", data.true_answer);
+                  $(true_answbtn).addClass("btn-success");
+              }
+              $('.answbtn').addClass("disabled");
+            }
+        });
     });
   }
     function changeDataByTheme() {

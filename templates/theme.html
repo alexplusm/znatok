@@ -16,7 +16,11 @@
       <p id="quest" class="js-question">{{ quest.question }}</p>
     </div>
     <div class="row">
-      <img class="imgquestion js-img-question" src="/media/{{ quest.picture }}"/>
+      <img class="imgquestion js-img-question"
+           src="/media/{{ quest.picture }}"
+           data-ticket="{{ quest.number_of_ticket }}"
+           data-question="{{ quest.number_of_question }}"
+           data-theme="{{ quest.theme }}"/>
     </div>
   </div>
 </div>
