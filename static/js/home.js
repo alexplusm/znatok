@@ -7,6 +7,43 @@ $(".navitem").click(function(){
   $(e).addClass("active");
 });
 
+function renderTheoryInside(data) {
+  const block = document.querySelector('.blockmain');
+  block.innerHTML = '';
+  block.innerHTML = data;
+}
+
+function renderTheory(data) {
+  const block = document.querySelector('.blockmain');
+  block.innerHTML = '';
+  block.innerHTML = data;
+
+  $('.themebtncontent').click(function() {
+    const dataset = this.dataset.theory.split('/');
+    const id = dataset[0];
+    const num = dataset[1];
+
+    $.ajax({
+
+      type: "GET",
+
+      url: "get_block_theory_inside/",
+
+      data: {
+        id: id,
+        num: num
+      },
+
+      cache: false,
+
+      success: function (data) {
+        renderTheoryInside(data);
+      }
+    });
+
+  })
+}
+
 $(".navitem1").click(function(){
   var id = $(this).attr("id");
   var e = document.getElementById(id);
@@ -15,11 +52,10 @@ $(".navitem1").click(function(){
 
   if ((id === "block1") && (counter_for_theory === 0)) {
     counter_for_theory++;
-    $(".btnquest").addClass("hide");
-    $(".top5").addClass("hide");
-    $(".top6").removeClass("hide");
     $(".b1").addClass("hide");
     $(".b2").removeClass("hide");
+    $('#block7').addClass('active');
+    $(e).removeClass('active');
   } else if((id === "block1") && (counter_for_theory === 1)) {
     $(".btnquest").removeClass("hide");
     $(".top5").removeClass("hide");
@@ -29,6 +65,8 @@ $(".navitem1").click(function(){
     counter_for_theory = 0;
     $("#block2").addClass("active");
     $("#block1").removeClass("active");
+    loadTickets();
+    return;
   }
 
   if (id === "block1_team") {
@@ -50,7 +88,26 @@ $(".navitem1").click(function(){
     $(".img_team").addClass("hide");
     $("#agencies").removeClass("hide");
   }
-  });
+
+  if (this.dataset.id) {
+    $.ajax({
+
+      type: "GET",
+
+      url: "get_block_theory_pdd/",
+
+      data: {
+        id: this.dataset.id
+      },
+
+      cache: false,
+
+      success: function (data) {
+        renderTheory(data);
+      }
+    });
+  }
+});
 
 
 

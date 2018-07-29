@@ -4,6 +4,7 @@ from random import shuffle
 from django.db.models import Min
 from django.http import HttpResponseForbidden
 from django.shortcuts import render
+from exam.dict_themes_content import themes_0, markup,pdd,sign,auto1,auto2
 
 
 def random_answers(question):
@@ -243,3 +244,37 @@ def check_results(request):
             false = len(request.user.result_set.filter(question__category=category, is_true=False, question__number_of_ticket=i))
             res_list.insert(i-1, {'true': true, 'false': false})
         return JsonResponse({'results': res_list}, safe=False)
+
+
+def get_block_theory_pdd(request):
+    if request.method == "GET" and request.is_ajax():
+        id = int(request.GET["id"])
+        theory = []
+
+        if id == 0:
+            theory = pdd
+        if id == 1:
+            theory = pdd
+        if id == 2:
+            theory = sign
+        if id == 3:
+            theory = markup
+        if id == 4:
+            theory = auto1
+        if id == 5:
+            theory = auto2
+        # if id == 6:
+        #     theory = 0
+        return render(request, 'theory themes.html', {'body': theory, 'id': id})
+
+
+def get_block_theory_inside(request):
+    if request.method == "GET" and request.is_ajax():
+        id = int(request.GET["id"])
+        number = int(request.GET["num"])
+        theory = []
+
+        if id == 0 or id == 1:
+            theory = themes_0[number - 1]
+
+        return render(request, 'pdd theme inside.html', {'theory_dict': theory})
