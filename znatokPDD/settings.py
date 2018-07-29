@@ -105,14 +105,15 @@ WSGI_APPLICATION = 'znatokPDD.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'znatok',
+        'USER': 'znatok',
+        'PASSWORD': '1znatok1',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
-
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -156,26 +157,23 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-# redis_host = os.environ.get('REDIS_HOST', 'localhost')
-
-# Channel layer definitions
-# http://channels.readthedocs.org/en/latest/deploying.html#setting-up-a-channel-backend
-# CHANNEL_LAYERS = {
-#     "default": {
-#         # This example app uses the Redis channel layer implementation asgi_redis
-#         "BACKEND": "asgi_redis.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [(redis_host, 6379)],
-#         },
-#        "ROUTING": "znatokPDD.routing.channel_routing", # We will create it in a moment
-#     },
-# }
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "asgiref.inmemory.ChannelLayer",
-        "ROUTING": "znatokPDD.routing.channel_routing",
+        # This example app uses the Redis channel layer implementation asgi_redis
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [('localhost', 6379)],
+        },
+       "ROUTING": "znatokPDD.routing.channel_routing", # We will create it in a moment
     },
 }
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "asgiref.inmemory.ChannelLayer",
+#         "ROUTING": "znatokPDD.routing.channel_routing",
+#     },
+# }
+
 
 
 MEDIA_URL = '/media/'
