@@ -9,8 +9,8 @@ from django.utils import timezone
 class Result(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    user_answer = models.CharField(max_length=250, blank=True, null=True)
-    true_answer = models.CharField(max_length=250, blank=True, null=True)
+    user_answer = models.CharField(max_length=500, blank=True, null=True)
+    true_answer = models.CharField(max_length=500, blank=True, null=True)
     is_true = models.NullBooleanField(null=True)
 
     def __str__(self):
