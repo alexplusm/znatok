@@ -1,0 +1,10 @@
+<div class="themebtn1 col-12">
+  {% for theory in body %}
+    <div class="themebtncontent" data-theory="{{ id }}/{{ forloop.counter }}">
+      <div class="theme text-left">
+        <span class="theme-text">{{ theory }}</span>
+      </div>
+      <div class="theme-gradient"></div>
+    </div>
+  {% endfor %}
+</div>

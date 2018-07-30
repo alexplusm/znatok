@@ -1,0 +1,28 @@
+{% load static %}
+<div class="text-transform_none text-left themes-block">
+{% for theory in theory_dict %}
+  <p class="text-left">
+    <b>{{ theory.bold }} </b>
+    {{ theory.content }}
+  </p>
+  {% if theory.ul %}
+    <ul>
+    {% for item in theory.ul %}
+    <li>{{ item }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  {% if theory.img %}
+  <img src="{% static 'img/signs for themes/' %}{{ theory.img }}"
+       class="image-theme {% for class in theory.img_class %}{{ class }} {% endfor %}">
+  {% endif %}
+  {% if theory.img1 %}
+    <img src="{% static 'img/signs for themes/' %}{{ theory.img1 }}"
+       class="image-theme">
+  {% endif %}
+
+  {% if theory.description %}
+    <p class="text-muted font-italic text-description">{{ theory.description }}</p>
+  {% endif %}
+{% endfor %}
+</div>

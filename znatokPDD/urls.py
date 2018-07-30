@@ -93,6 +93,9 @@ urlpatterns = [
     url(r'get_block_achievement/$', account_views.get_block_achievement, name='get_block_achievement'),
     url(r'get_block_information/$', account_views.get_block_information, name='get_block_information'),
 
+    url(r'get_block_theory_pdd/$', exam_views.get_block_theory_pdd, name='get_block_theory_pdd'),
+    url(r'get_block_theory_inside', exam_views.get_block_theory_inside, name='get_block_theory_inside'),
+
     # urls for exam app
 
     # urls for online_game app
