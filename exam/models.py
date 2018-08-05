@@ -1,5 +1,6 @@
 from django.db import models
 from random import shuffle
+from django.contrib.postgres.fields import ArrayField
 
 
 class Question(models.Model):
@@ -43,3 +44,23 @@ class Question(models.Model):
             picture=str(self.picture), 
             )
         return _json
+
+
+class TheoryTheme(models.Model):
+    theme_name = models.TextField(default=None)
+    themes = ArrayField(ArrayField(models.TextField(default=None)))
+
+    def __str__(self):
+        return "{0}".format(self.theme_name)
+
+
+class Theory(models.Model):
+    bold = models.TextField()
+    content = models.TextField()
+    img = models.TextField()
+    img1 = models.TextField()
+    number_of_theme = models.IntegerField()
+    number_of_question = models.IntegerField()
+
+    def __str__(self):
+        return "№theme - {0}, №question - {1}".format(self.number_of_theme, self.number_of_question)

@@ -276,5 +276,8 @@ def get_block_theory_inside(request):
 
         if id == 0 or id == 1:
             theory = themes_0[number - 1]
+            return render(request, 'pdd theme inside.html', {'theory_dict': theory})
 
-        return render(request, 'pdd theme inside.html', {'theory_dict': theory})
+        if id == 2:
+            theory = ''
+            return render(request, '', {'theory_dict': theory})
