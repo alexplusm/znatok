@@ -11,6 +11,9 @@ from .models import Result, Rank
 from exam.models import Question
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
+import smtplib
+
+from email.mime.text import MIMEText
 
 
 def signup(request):
@@ -25,16 +28,23 @@ def signup(request):
             Result.objects.bulk_create(results)
             domain = get_current_site(request).domain
             protocol = 'https' if request.is_secure() else 'http'
-            message = render_to_string('active_email.html', {
+
+            msg = MIMEText(render_to_string('active_email.html', {
                 'domain': domain,
                 'protocol': protocol,
                 'user': user,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
-            })
-            subject = 'Активация аккаунта'
-            to_email = form.cleaned_data.get('email')
-            send_mail(subject, message, 'znatokPDD', [to_email], fail_silently=False)
+            }))
+            msg['Subject'] = "Активация аккаунта"
+            msg['From'] = "znatok@mail.znatok-pdd.ru"
+            msg['To'] = form.cleaned_data.get('email')
+
+            s = smtplib.SMTP('smtp.mailgun.org', 587)
+
+            s.login('postmaster@mail.znatok-pdd.ru', '')
+            s.sendmail(msg['From'], msg['To'], msg.as_string())
+            s.quit()
             return redirect('confirm')
     else:
         form = RegistrationForm()
