@@ -29,10 +29,14 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'spelsapp@gmail.com'
-EMAIL_HOST_PASSWORD = '1spelsapp1'
+EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_HOST_USER = 'postmaster@mail.znatok-pdd.ru'
+EMAIL_HOST_PASSWORD = '4d1fab3b92de718e2eb8b2f01d2b4a42-a5d1a068-0aa83006'
 EMAIL_PORT = 587
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FORM_EMAIL = 'Знаток ПДД <noreply@mail.znatok-pdd.ru>'
+EMAIL_SUBJECT_PREFIX = 'Знаток_'
+SERVER_EMAIL = 'postmaster@mail.znatok-pdd.ru'
 
 # Application definition
 
