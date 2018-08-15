@@ -265,7 +265,7 @@ def get_block_theory_pdd(request):
             theory = auto2
         # if id == 6:
         #     theory = 0
-        return render(request, 'theory themes.html', {'body': theory, 'id': id})
+        return render(request, 'theory_themes.html', {'body': theory, 'id': id})
 
 
 def get_block_theory_inside(request):
@@ -276,12 +276,12 @@ def get_block_theory_inside(request):
 
         if id == 0 or id == 1:
             theory = themes_0[number - 1]
-            return render(request, 'pdd theme inside.html', {'theory_dict': theory})
+            return render(request, 'pdd_theme_inside.html', {'theory_dict': theory})
 
         if id == 2:
             theory = themes_1[number - 1]
-            return render(request, 'pdd theme inside 2.html', {'theory_dict': theory})
+            return render(request, 'pdd_theme_inside_2.html', {'theory_dict': theory})
 
         if id == 3:
             theory = themes_2[number - 1]
-            return render(request, 'pdd theme inside 2.html', {'theory_dict': theory})
+            return render(request, 'pdd_theme_inside_2.html', {'theory_dict': theory})
