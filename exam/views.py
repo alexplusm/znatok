@@ -4,7 +4,7 @@ from random import shuffle
 from django.db.models import Min
 from django.http import HttpResponseForbidden
 from django.shortcuts import render
-from exam.dict_themes_content import themes_0, markup,pdd,sign,auto1,auto2
+from exam.dict_themes_content import themes_0, markup,pdd,sign,auto1,auto2, themes_1, themes_2
 
 
 def random_answers(question):
@@ -279,5 +279,9 @@ def get_block_theory_inside(request):
             return render(request, 'pdd theme inside.html', {'theory_dict': theory})
 
         if id == 2:
-            theory = ''
-            return render(request, '', {'theory_dict': theory})
+            theory = themes_1[number - 1]
+            return render(request, 'pdd theme inside 2.html', {'theory_dict': theory})
+
+        if id == 3:
+            theory = themes_2[number - 1]
+            return render(request, 'pdd theme inside 2.html', {'theory_dict': theory})

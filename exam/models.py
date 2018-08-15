@@ -48,7 +48,7 @@ class Question(models.Model):
 
 class TheoryTheme(models.Model):
     theme_name = models.TextField(default=None)
-    themes = ArrayField(ArrayField(models.TextField(default=None)))
+    theme = models.TextField(default=None)
 
     def __str__(self):
         return "{0}".format(self.theme_name)
