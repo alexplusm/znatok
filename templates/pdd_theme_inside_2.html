@@ -1,41 +1,67 @@
 {% load static %}
+{% load img_number %}
 <div class="text-transform_none text-left themes-block">
 {% for theory in theory_dict %}
   <div class="theme_inside_row themes-block_padding_top">
-    <p class="text-left">
-      <b>{{ theory.bold }} </b>
-      {{ theory.content }}
-    </p>
     <div class="img_mini">
       {% if theory.img %}
       <img src="{% static 'img/signs_for_themes/' %}{{ theory.img }}"
            class="image-theme image-theme_mini {% for class in theory.img_class %}{{ class }} {% endfor %}">
+        {%  sign_number theory.img as number %}
+        {% if number != '' %}
+          <span class="text-center h6 font-weight-bold">{{ number }}</span>
+        {% endif %}
+      {% else %}
+        <div class="image-theme image-theme_mini"></div>
       {% endif %}
       {% if theory.img1 %}
         <img src="{% static 'img/signs_for_themes/' %}{{ theory.img1 }}"
            class="image-theme image-theme_mini">
+        {% sign_number theory.img1 as number1 %}
+        {% if number1 != '' %}
+          <span class="text-center h6 font-weight-bold">{{ number1 }}</span>
+        {% endif %}
       {% endif %}
       {% if theory.img2 %}
         <img src="{% static 'img/signs_for_themes/' %}{{ theory.img2 }}"
            class="image-theme image-theme_mini">
+        {% sign_number theory.img2 as number2 %}
+        {% if number2 != '' %}
+          <span class="text-center h6 font-weight-bold">{{ number2 }}</span>
+        {% endif %}
       {% endif %}
       {% if theory.img3 %}
         <img src="{% static 'img/signs_for_themes/' %}{{ theory.img3 }}"
            class="image-theme image-theme_mini">
+      {%  sign_number theory.img3 as number3 %}
+        {% if number3 != '' %}
+          <span class="text-center h6 font-weight-bold">{{ number3 }}</span>
+        {% endif %}
       {% endif %}
       {% if theory.img4 %}
         <img src="{% static 'img/signs_for_themes/' %}{{ theory.img4 }}"
            class="image-theme image-theme_mini">
+        {%  sign_number theory.img4 as number4 %}
+        {% if number4 != '' %}
+          <span class="text-center h6 font-weight-bold">{{ number4 }}</span>
+        {% endif %}
       {% endif %}
     </div>
-  </div>
-  {% if theory.ul %}
+  <div class="themes-block_content">
+    <p class="text-left">
+      <b>{{ theory.bold }} </b>
+      {{ theory.content }}
+    </p>
+
+    {% if theory.ul %}
       <ul class="list-unstyled" style="padding-top: 10px;">
-      {% for item in theory.ul %}
-      <li>{{ item }}</li>
-      {% endfor %}
+        {% for item in theory.ul %}
+          <li>{{ item|safe }}</li>
+        {% endfor %}
       </ul>
     {% endif %}
+  </div>
+  </div>
 
   {% if theory.description %}
     <p class="text-muted font-italic text-description">{{ theory.description }}</p>
