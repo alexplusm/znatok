@@ -35,7 +35,7 @@ def signup(request):
             })
             subject = 'Активация аккаунта'
             to_email = form.cleaned_data.get('email')
-            send_mail(subject, message, None, [to_email], fail_silently=False)
+            send_mail(subject, message, 'Знаток ПДД', [to_email], fail_silently=False)
 
             return redirect('confirm')
     else:

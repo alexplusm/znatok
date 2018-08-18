@@ -1,0 +1,939 @@
+List of users in WS -  []
+add user [<User: serega>] {<User: serega>: <channels.channel.Channel object at 0x7f4662845c50>}
+----------
+disconnect AnonymousUser
+{<User: serega>: <channels.channel.Channel object at 0x7f4662845c50>} [<User: serega>]
+----------
+{<User: serega>: <channels.channel.Channel object at 0x7f4662845c50>} [<User: serega>]
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+----------
+disconnect serega
+{<User: serega>: <channels.channel.Channel object at 0x7f4662845c50>} [<User: serega>]
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+----------
+disconnect serega
+{} []
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+----------
+disconnect serega
+{} []
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+----------
+disconnect AnonymousUser
+{} []
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+----------
+disconnect serega
+{} []
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+List of users in WS -  []
+add user [<User: serg>] {<User: serg>: <channels.channel.Channel object at 0x7f4662806dd8>}
+----------
+disconnect serega
+{<User: serg>: <channels.channel.Channel object at 0x7f4662806dd8>} [<User: serg>]
+----------
+{<User: serg>: <channels.channel.Channel object at 0x7f4662806dd8>} [<User: serg>]
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+List of users in WS -  [<User: serg>]
+List of users in WS -  [<User: serg>]
+----------
+disconnect serega
+{<User: serg>: <channels.channel.Channel object at 0x7f4662806dd8>} [<User: serg>]
+----------
+{<User: serg>: <channels.channel.Channel object at 0x7f4662806dd8>} [<User: serg>]
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+List of users in WS -  [<User: serg>]
+add user [<User: serg>, <User: serega>] {<User: serg>: <channels.channel.Channel object at 0x7f4662806dd8>, <User: serega>: <channels.channel.Channel object at 0x7f46627a9208>}
+create_room!!!!! ['64_67', <channels.channel.Channel object at 0x7f46627a9208>, <channels.channel.Channel object at 0x7f4662806dd8>]
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {}}
+dict_of_games_status:  {'64_67': {'status': 0, 'winner': None}}
+['Не работает указатель температуры охлаждающей жидкости.', 'Содержание вредных веществ в отработавших газах или их дымность.', 'Уровень внешнего шума превышает установленные нормы.', 'Нарушена герметичность системы питания (топливной системы).']
+['Выехав на перекресток, уступите дорогу встречному грузовому автомобилю и завершите поворот.', 'Уступите дорогу обоим грузовым автомобилям.', 'Проедете перекресток первым.']
+['Уменьшается, так как прицеп оказывает дополнительное сопротивление движению.', 'Не изменяется.', 'Увеличивается.']
+['Одно.', 'Два.', 'Четыре.']
+['Только встречному автомобилю.', 'Никому.', 'Встречному автомобилю и пешеходам.\n']
+['Дождетесь выключения бело-лунного мигающего сигнала и проедете переезд.', 'Остановитесь у светофора, а затем проедете переезд.', 'Проедете переезд, убедившись в отсутствии приближающегося поезда.']
+['Разрешено, если при этом не будут созданы помехи движению маршрутных транспортных средств.', 'Разрешено.', 'Запрещено.']
+['При выезде из жилой зоны.', 'При выезде с дворовой территории.', 'В обоих перечисленных случаях.']
+['Разрешено только при видимости дороги не менее 100 м.', 'Запрещено.', 'Разрешено.']
+['Вы должны считать, что находитесь на второстепенной дороге.', 'Вам следует считать, что находитесь на равнозначной дороге.', 'Вы имеете право считать, что находитесь на главной дороге.']
+List of users in WS -  []
+add user [<User: serega>] {<User: serega>: <channels.channel.Channel object at 0x7f46627a9908>}
+List of users in WS -  [<User: serega>]
+add user [<User: serega>, <User: serg>] {<User: serega>: <channels.channel.Channel object at 0x7f46627a9908>, <User: serg>: <channels.channel.Channel object at 0x7f46627bc630>}
+create_room!!!!! ['67_64', <channels.channel.Channel object at 0x7f46627bc630>, <channels.channel.Channel object at 0x7f46627a9908>]
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {}}
+dict_of_games_status:  {'64_67': {'status': 0, 'winner': None}}
+['Разрешается, если при этом не будут созданы помехи другим участникам движения.', 'Запрещается.', 'Разрешается.']
+['Дневные ходовые огни.', 'Задние противотуманные фонари.', 'Габаритные огни.']
+['Б или В.', 'В любом.', 'Только В.']
+['Не можете.', 'Можете.', 'Можете после того, как грузовой автомобиль начнет выполнять поворот налево.']
+['О наличии транспортного средства, приближающегося слева.', 'О его намерении продолжить движение прямо или налево.', 'О его намерении повернуть налево или выполнить разворот.']
+['Только транспортным средствам с включенным проблесковым маячком.', 'Только транспортным средствам, приближающимся слева.', 'Всем транспортным средствам.', 'Только транспортным средствам, приближающимся справа.']
+['Только при выполнении обгона. ', 'В обоих перечисленных случаях.', 'Только если установлены дорожные знаки, разрешающие движение со скоростью более 60 км/ч.']
+['Уступить дорогу встречному автомобилю.', 'Действовать по взаимной договоренности с водителем встречного автомобиля.', 'Проехать первым.']
+['Не работают предусмотренные конструкцией стеклоомыватели.', 'Не работают в установленном режиме стеклоочистители.', 'Не работает стеклоподъемник.']
+['Сразу же после перестроения на полосу, предназначенную для встречного движения.', 'По усмотрению водителя.', 'После опережения обгоняемого транспортного средства.']
+----------
+disconnect serega
+{} []
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {}}
+dict_of_games_status:  {'64_67': {'status': 0, 'winner': None}}
+None
+List of users in WS -  []
+add user [<User: serega>] {<User: serega>: <channels.channel.Channel object at 0x7f46627b13c8>}
+----------
+disconnect serg
+{<User: serega>: <channels.channel.Channel object at 0x7f46627b13c8>}List of users in WS -  []
+add user [<User: serega>] {<User: serega>: <channels.channel.Channel object at 0x7fc1ce19bba8>}
+List of users in WS -  [<User: serega>]
+List of users in WS -  [<User: serega>]
+List of users in WS -  [<User: serega>]
+List of users in WS -  [<User: serega>]
+List of users in WS -  [<User: serega>]
+----------
+disconnect serega
+{<User: serega>: <channels.channel.Channel object at 0x7fc1ce19bba8>} [<User: serega>]
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+----------
+disconnect serega
+{} []
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+List of users in WS -  []
+add user [<User: serega>] {<User: serega>: <channels.channel.Channel object at 0x7fc1ce100cc0>}
+----------
+disconnect serg
+{<User: serega>: <channels.channel.Channel object at 0x7fc1ce100cc0>} [<User: serega>]
+----------
+{<User: serega>: <channels.channel.Channel object at 0x7fc1ce100cc0>} [<User: serega>]
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+List of users in WS -  [<User: serega>]
+----------
+disconnect serg
+{<User: serega>: <channels.channel.Channel object at 0x7fc1ce100cc0>} [<User: serega>]
+----------
+{<User: serega>: <channels.channel.Channel object at 0x7fc1ce100cc0>} [<User: serega>]
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+----------
+disconnect serega
+{<User: serega>: <channels.channel.Channel object at 0x7fc1ce100cc0>} [<User: serega>]
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+----------
+disconnect serg
+{} []
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+END_GAME
+0:00:14.424893
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+############### CLIENT ANSWER
+{'command': 'END_GAME', 'user': 67, 'group': '67_64', 'result': 2, 'timeStartGame': '2018-08-05 13:45:39.907485', 'userRate': None}
+####################
+END_GAME
+0:00:27.707359
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+############### CLIENT ANSWER
+{'command': 'END_GAME', 'user': 64, 'group': '67_64', 'result': 2, 'timeStartGame': '2018-08-05 13:45:39.907485', 'userRate': None}
+####################
+----------
+disconnect serg
+{} []
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+List of users in WS -  []
+add user [<User: serg>] {<User: serg>: <channels.channel.Channel object at 0x7fc1ce1193c8>}
+----------
+disconnect serega
+{<User: serg>: <channels.channel.Channel object at 0x7fc1ce1193c8>} [<User: serg>]
+----------
+{<User: serg>: <channels.channel.Channel object at 0x7fc1ce1193c8>} [<User: serg>]
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+----------
+disconnect serega
+{<User: serg>: <channels.channel.Channel object at 0x7fc1ce1193c8>} [<User: serg>]
+----------
+{<User: serg>: <channels.channel.Channel object at 0x7fc1ce1193c8>} [<User: serg>]
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+List of users in WS -  [<User: serg>]
+add user [<User: serg>, <User: serega>] {<User: serg>: <channels.channel.Channel object at 0x7fc1ce1193c8>, <User: serega>: <channels.channel.Channel object at 0x7fc1ce119ac8>}
+create_room!!!!! ['64_67', <channels.channel.Channel object at 0x7fc1ce119ac8>, <channels.channel.Channel object at 0x7fc1ce1193c8>]
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {}}
+dict_of_games_status:  {'64_67': {'status': 0, 'winner': None}}
+['Только перед перекрестком — по траектории Б.', 'Только на перекрестке — по траектории А.', 'По любой из указанных.', 'По указанным траекториям разворот запрещен.']
+['Уменьшается, так как прицеп оказывает дополнительное сопротивление движению.', 'Не изменяется.', 'Увеличивается.']
+['Только прямо.', 'Прямо и направо.', 'Во всех направлениях.']
+['Разрешено.', 'Разрешено, если при этом не будут созданы помехи движению маршрутных транспортных средств.', 'Запрещено.']
+['По любой полосе.', 'По правой или средней полосе.', 'Только по правой полосе.']
+['По любой траектории из указанных.', 'Только по траектории А.', 'Только по траектории Б.']
+['Запрещается.', 'Разрешается, если Вы поворачиваете направо.', 'Разрешается.']
+['Только после окончания маневра.', 'После начала маневра.', 'Непосредственно перед началом маневра.']
+['Осуществить кратковременное переключение фар с ближнего на дальний свет.', 'Подать перечисленные световые сигналы одновременно.', 'Включить световые указатели поворота налево.']
+['За передачу управления транспортным средством лицу, заведомо не имеющему права управления (за исключением учебной езды) или лишенному такого права.', 'За управление транспортным средством водителем, лишенным права управления транспортными средствами.', 'За управление транспортным средством водителем, не имеющим права управления транспортным средством (за исключением учебной езды).', 'За все перечисленные правонарушения.']
+END_GAME
+0:00:45.209464
+----------
+disconnect serg
+{} []
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {}}
+dict_of_games_status:  {'64_67': {'status': 0, 'winner': None}}
+None
+----------
+disconnect serega
+{} []
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {}}
+dict_of_games_status:  {'64_67': {'status': 0, 'winner': None}}
+None
+List of users in WS -  []
+add user [<User: serg>] {<User: serg>: <channels.channel.Channel object at 0x7fc1ce119a58>}
+----------
+disconnect serg
+{<User: serg>: <channels.channel.Channel object at 0x7fc1ce119a58>} [<User: serg>]
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {}}
+dict_of_games_status:  {'64_67': {'status': 0, 'winner': None}}
+None
+List of users in WS -  []
+add user [<User: serega>] {<User: serega>: <channels.channel.Channel object at 0x7fc1ce1246d8>}
+List of users in WS -  [<User: serega>]
+add user [<User: serega>, <User: serg>] {<User: serega>: <channels.channel.Channel object at 0x7fc1ce1246d8>, <User: serg>: <channels.channel.Channel object at 0x7fc1ce124898>}
+create_room!!!!! ['67_64', <channels.channel.Channel object at 0x7fc1ce124898>, <channels.channel.Channel object at 0x7fc1ce1246d8>]
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {}}
+dict_of_games_status:  {'64_67': {'status': 0, 'winner': None}}
+['Разрешено.', 'Запрещено.', 'Разрешено только на дорогах с искусственным освещением.']
+['Должны уступить дорогу автомобилю с включенными проблесковым маячком и специальным звуковым сигналом, а также пешеходам.', 'Должны уступить дорогу только пешеходам.', 'Имеете право проехать перекресток первым.']
+['Только водитель автомобиля.', 'Только водитель мотоцикла, поворачивающего налево.', 'Оба.', 'Никто не нарушает.']
+['Разрешается.', 'Запрещается.', 'Разрешается, если Вы проживаете рядом с этим местом.']
+['Остановитесь у светофора, а затем проедете переезд.', 'Дождетесь выключения бело-лунного мигающего сигнала и проедете переезд.', 'Проедете переезд, убедившись в отсутствии приближающегося поезда.']
+['О приближении к железнодорожному переезду.', 'О приближении к опасному перекрестку.', 'О движении по опасному участку дороги.']
+['Не обязаны.', 'Не обязаны, если Вы управляете легковым такси.', 'Обязаны.']
+['Нельзя.', 'Можно.', 'Можно, если скорость грузового автомобиля менее 30 км/ч.']
+['Нельзя.', 'Можно, если разрешенная максимальная масса автомобиля не более 3,5 т.', 'Можно.']
+['Обоим транспортным средствам.', 'Только легковому автомобилю.', 'Только автобусу.', 'Никому.']
+List of users in WS -  []
+add user [<User: serg>] {<User: serg>: <channels.channel.Channel object at 0x7fc1ce100828>}
+----------
+disconnect serega
+{<User: serg>: <channels.channel.Channel object at 0x7fc1ce100828>} [<User: serg>]
+----------
+{<User: serg>: <channels.channel.Channel object at 0x7fc1ce100828>} [<User: serg>]
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {}}
+dict_of_games_status:  {'64_67': {'status': 0, 'winner': None}}
+None
+List of users in WS -  [<User: serg>]
+add user [<User: serg>, <User: serega>] {<User: serg>: <channels.channel.Channel object at 0x7fc1ce100828>, <User: serega>: <channels.channel.Channel object at 0x7fc1ce100ef0>}
+create_room!!!!! ['64_67', <channels.channel.Channel object at 0x7fc1ce100ef0>, <channels.channel.Channel object at 0x7fc1ce100828>]
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {}}
+dict_of_games_status:  {'64_67': {'status': 0, 'winner': None}}
+['На левом рисунке.', 'На обоих рисунках.', 'На правом рисунке.']
+['Стояночная тормозная система не обеспечивает неподвижное состояние транспортного средства с полной нагрузкой на уклоне до 16 % включительно.', 'Уменьшен свободный ход педали тормоза.', 'Не включается контрольная лампа стояночной тормозной системы.']
+['Остановиться у стоп-линии и дождаться сигнала регулировщика, разрешающего поворот.', 'Выехав на перекресток, остановиться и дождаьбся сигнала регулировщика, разрешающего поворот.', 'Повернуть, уступив дорогу встречному автомобилю.']
+['Фары ближнего света или габаритные огни.', 'Фары ближнего света или дневные ходовые огни.', 'Фары ближнего или дальнего света.']
+['Не более 50 км/ч.', 'Не менее 50 км/ч и не более 90 км/ч.', 'Не менее 50 км/ч и не более 70 км/ч.']
+['На обоих рисунках.', 'Только на правом рисунке.', 'Только на левом рисунке.']
+['Фары ближнего света или габаритные огни.', 'Фары ближнего или дальнего света.', 'Фары ближнего света или дневные ходовые огни.']
+['Уступить дорогу трамваю и легковому автомобилю.', 'Проехать перекресток первым.', 'Уступить дорогу только трамваю.']
+['Только при повороте налево.', 'Только при повороте направо.', 'В любом направлении из перечисленных.']
+['Будете действовать по взаимной договоренности с водителем легкового автомобиля.', 'Развернетесь первым.', 'Выедете на перекресток и, уступив дорогу легковому автомобилю, завершите разворот.']
+END_GAME
+0:00:12.312225
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+############### CLIENT ANSWER
+{'command': 'END_GAME', 'user': 64, 'group': '64_67', 'result': 5, 'timeStartGame': '2018-08-05 14:24:00.142923', 'userRate': None}
+####################
+List of users in WS -  []
+add user [<User: serg>] {<User: serg>: <channels.channel.Channel object at 0x7fc1ce19b898>}
+List of users in WS -  [<User: serg>]
+add user [<User: serg>, <User: serega>] {<User: serg>: <channels.channel.Channel object at 0x7fc1ce19b898>, <User: serega>: <channels.channel.Channel object at 0x7fc1ce100a58>}
+create_room!!!!! ['64_67', <channels.channel.Channel object at 0x7fc1ce100a58>, <channels.channel.Channel object at 0x7fc1ce19b898>]
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+['Водителям следует действовать по взаимной договоренности.', 'Водитель грузового автомобиля.', 'Водитель легкового автомобиля.']
+['Дефект проезжей части.', 'Неисправное или поврежденное транспортное средство', 'Транспортное средство, остановившееся на этой полосе из-за образования затора.', 'Посторонний предмет.']
+['Только водитель автомобиля А.', 'Только водитель автомобиля Б.', 'Никто не нарушил.', 'Оба.']
+['Легковому автомобилю и автобусу.', 'Только легковому автомобилю.', 'Всем транспортным средствам.']
+['Увеличить скорость.', 'Снизить скорость резким нажатием на педаль тормоза.', 'Снизить скорость, применяя торможение двигателем.']
+['Запрещена.', 'Разрешена.', 'Разрешена только с включенной аварийной сигнализацией.']
+['Движение разрешается с особой осторожностью.', 'Светофорная сигнализация неисправна.', 'Движение запрещено.']
+['Стоянка с работающим двигателем.', 'Все перечисленные действия.', 'Учебная езда.', 'Сквозное движение.']
+['Только противотуманных фар.', 'Противотуманных фар совместно с ближним светом фар.', 'Противотуманных фар совместно с дальним светом фар.']
+['До конца населенного пункта.', 'До места установки знака «Конец зоны с ограничением максимальной скорости».', 'До ближайшего по ходу движения перекрестка.']
+----------
+disconnect serg
+{} []
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  [<User: serega>]
+----------
+{<User: serega>: <channels.channel.Channel object at 0x7f46627b13c8>} [<User: serega>]
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {}}
+dict_of_games_status:  {'64_67': {'status': 0, 'winner': None}}
+None
+List of users in WS -  [<User: serega>]
+List of users in WS -  [<User: serega>]
+add user [<User: serega>, <User: serg>] {<User: serega>: <channels.channel.Channel object at 0x7f46627b13c8>, <User: serg>: <channels.channel.Channel object at 0x7f4662806b38>}
+create_room!!!!! ['67_64', <channels.channel.Channel object at 0x7f4662806b38>, <channels.channel.Channel object at 0x7f46627b13c8>]
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {}}
+dict_of_games_status:  {'64_67': {'status': 0, 'winner': None}}
+['Разрешено, если при этом не будут созданы помехи для других участников дорожного движения.', 'Запрещено.', 'Разрешено.']
+['Только по правой.', 'По любой.', 'Только по левой.']
+['Уступите дорогу только трамваю.', 'Проедете первым.', 'Уступите дорогу обоим транспортным средствам.', 'Уступите дорогу только автомобилю.']
+['В обоих перечисленных случаях.', 'Только при повороте направо.', 'Только при повороте налево или развороте.']
+['На транспортном средстве спереди установлены световые приборы с огнями оранжевого цвета.', 'Регулировка фар не соответствует установленным требованиям.', 'На световых приборах используются рассеиватели и лампы, не соответствующие типу данного светового прибора.', 'Загрязнены внешние световые приборы.']
+['О наличии через 500 м опасных поворотов.', 'О наличии через 500 м опасных поворотов.', 'О том, что на расстоянии 150 – 300 м за дорожным знаком начнется участок дороги протяженностью 500 м с опасными поворотами.']
+['Легкого вреда здоровью человека либо незначительного материального ущерба.', 'Легкого или средней тяжести вреда здоровью человека.', 'Легкого или средней тяжести вреда здоровью человека либо материального ущерба.']
+['Является безопасным, поскольку предельная допустимая скорость соответствует требованиям Правил.', 'Является безопасным при малой интенсивности движения.', 'Не является безопасным, поскольку остановочный путь превышает расстояние видимости.']
+['Только легковому автомобилю.\n', 'Легковому автомобилю и мотоциклу.', 'Никому.']
+['Вы будете иметь преимущество перед легковым автомобилем, въезжающим на него.', 'Вам следует действовать по взаимной договоренности с водителем легкового автомобиля.', 'Вы должны уступить дорогу легковому автомобилю, въезжающему на него.']
+END_GAME
+0:00:15.440130
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [4, datetime.timedelta(0, 15, 440130)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+############### CLIENT ANSWER
+{'command': 'END_GAME', 'user': 64, 'group': '64_67', 'result': 4, 'timeStartGame': '2018-08-05 13:47:25.120043', 'userRate': None}
+####################
+END_GAME
+0:04:52.528729
+END_GAME
+0:05:52.535551
+----------
+disconnect serg
+{} []
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [4, datetime.timedelta(0, 15, 440130)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+END_GAME
+0:00:24.980478
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [4, datetime.timedelta(0, 15, 440130)], 67: [2, datetime.timedelta(0, 24, 980478)]}}
+dict_of_games_status:  {'64_67': {'status': 2, 'winner': 64}}
+SATTUS2
+----------
+Смотрим что происходит в гейм-листе
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [4, datetime.timedelta(0, 15, 440130)], 67: [2, datetime.timedelta(0, 24, 980478)]}}
+dict_of_games_status:  {'64_67': {'status': 2, 'winner': 64}}
+None
+----------
+############### CLIENT ANSWER
+{'command': 'END_GAME', 'user': 67, 'group': '64_67', 'result': 2, 'timeStartGame': '2018-08-05 14:24:00.142923', 'userRate': None}
+####################
+----------
+disconnect serg
+{} []
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+----------
+disconnect serega
+{} []
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+END_GAME
+0:00:14.417444
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+############### CLIENT ANSWER
+{'command': 'END_GAME', 'user': 64, 'group': '64_67', 'result': 3, 'timeStartGame': '2018-08-05 14:25:15.751013', 'userRate': None}
+####################
+END_GAME
+0:00:27.127944
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+############### CLIENT ANSWER
+{'command': 'END_GAME', 'user': 67, 'group': '64_67', 'result': 5, 'timeStartGame': '2018-08-05 14:25:15.751013', 'userRate': None}
+####################
+List of users in WS -  []
+add user [<User: serega>] {<User: serega>: <channels.channel.Channel object at 0x7f46627a9cc0>}
+List of users in WS -  [<User: serega>]
+add user [<User: serega>, <User: serg>] {<User: serega>: <channels.channel.Channel object at 0x7f46627a9cc0>, <User: serg>: <channels.channel.Channel object at 0x7f4662806cf8>}
+create_room!!!!! ['67_64', <channels.channel.Channel object at 0x7f4662806cf8>, <channels.channel.Channel object at 0x7f46627a9cc0>]
+list_of_groups :  ['67_64']
+dict_of_results:  {'67_64': {}}
+dict_of_games_status:  {'67_64': {'status': 0, 'winner': None}}
+['Проедете перекресток первым.', 'Уступите дорогу обоим грузовым автомобилям.', 'Выехав на перекресток, уступите дорогу встречному грузовому автомобилю и завершите поворот.']
+['Не менее 30 м.', 'Не менее 15 м.', 'Не менее 20 м.', 'Не менее 10 м.']
+['Только нерегулируемый.', 'Только регулируемый.', 'Любой.']
+['Перед краем пересекаемой проезжей части (В).', 'Перед знаком (А).', 'Перед перекрестком (Б).']
+['Разрешен.', 'Запрещен.', 'Разрешен только при технической неисправности транспортного средства.']
+['Не ближе 5 м до пешеходного перехода.', 'На пешеходном переходе, если нет пешеходов.', 'Непосредственно перед пешеходным переходом.']
+['Повернуть направо.', 'Выехать за стоп-линию, перестроиться на левую полосу и остановиться перед пересекаемой проезжей частью.\n', 'Остановиться перед стоп-линией и дождаться зеленого сигнала светофора.\n']
+['Автобусы (в том числе маломестные, междугородние и школьные).', 'Автобусы, троллейбусы и трамваи, предназначенные для перевозки людей и движущиеся по установленному маршруту с обозначенными местами остановок.', 'Любые транспортные средства, перевозящие пассажиров.']
+['Разрешено, если при этом не будут созданы помехи маршрутным транспортным средствам.', 'Разрешено.', 'Запрещено.']
+['Не изменяя скорости, сместиться ближе к центру дороги.', 'Уменьшить скорость и быть готовым к возможному отклонению автомобиля от заданного курса.', 'Не изменяя скорости, сместиться ближе к обочине.']
+END_GAME
+0:00:26.745461
+list_of_groups :  ['67_64']
+dict_of_results:  {'67_64': {64: [3, datetime.timedelta(0, 26, 745461)]}}
+dict_of_games_status:  {'67_64': {'status': 1, 'winner': None}}
+############### CLIENT ANSWER
+{'command': 'END_GAME', 'user': 64, 'group': '67_64', 'result': 3, 'timeStartGame': '2018-08-05 14:29:09.561410', 'userRate': None}
+####################
+List of users in WS -  []
+add user [<User: serega>] {<User: serega>: <channels.channel.Channel object at 0x7f4662806cf8>}
+----------
+disconnect serg
+{<User: serega>: <channels.channel.Channel object at 0x7f4662806cf8>} [<User: serega>]
+----------
+{<User: serega>: <channels.channel.Channel object at 0x7f4662806cf8>} [<User: serega>]
+----------
+list_of_groups :  ['67_64']
+dict_of_results:  {'67_64': {64: [3, datetime.timedelta(0, 26, 745461)]}}
+dict_of_games_status:  {'67_64': {'status': 1, 'winner': None}}
+None
+List of users in WS -  [<User: serega>]
+add user [<User: serega>, <User: serg>] {<User: serega>: <channels.channel.Channel object at 0x7f4662806cf8>, <User: serg>: <channels.channel.Channel object at 0x7f46627a9780>}
+create_room!!!!! ['67_64', <channels.channel.Channel object at 0x7f46627a9780>, <channels.channel.Channel object at 0x7f4662806cf8>]
+list_of_groups :  ['67_64']
+dict_of_results:  {'67_64': {64: [3, datetime.timedelta(0, 26, 745461)]}}
+dict_of_games_status:  {'67_64': {'status': 1, 'winner': None}}
+['На левом рисунке.', 'На правом рисунке.', 'На обоих рисунках.']
+['В любом из указанных.', 'Б и В.', 'Только В.']
+['Обоим транспортным средствам.', 'Только автобусу.', 'Только легковому автомобилю.', 'Никому.']
+['В любом.', 'Прямо и направо.', 'Только прямо.']
+['Можно, если скорость грузовых автомобилей менее 30 км/ч.', 'Можно.', 'Нельзя.']
+['Только проверка знания водителем Правил дорожного движения.', 'Проверка знания водителем Правил дорожного движения и уплата наложенных на него штрафов за административные правонарушения в области дорожного движения.', 'Проверка знания водителем Правил дорожного движения и медицинское освидетельствование его на наличие медицинских противопоказаний к управлению транспортным средством.']
+['Дальнейшее движение возможно только по проезжей части встречного направления.', 'Дальнейшее движение возможно только по второй полосе.', 'Дальнейшее движение возможно только по другой дороге.']
+['Разрешено.', 'Запрещено.', 'Разрешено, если при этом не будут созданы помехи движению маршрутных транспортных средств.']
+['Только трамваю.', 'Только легковому автомобилю.', 'Обоим транспортным средствам.']
+['Разрешено.', 'Разрешено, если при этом не будут созданы помехи для других участников дорожного движения.', 'Запрещено.']
+END_GAME
+0:00:09.623754
+list_of_groups :  ['67_64']
+dict_of_results:  {'67_64': {64: [3, datetime.timedelta(0, 26, 745461)], 67: [5, datetime.timedelta(0, 9, 623754)]}}
+dict_of_games_status:  {'67_64': {'status': 2, 'winner': 67}}
+SATTUS2
+----------
+Смотрим что происходит в гейм-листе
+list_of_groups :  ['67_64']
+dict_of_results:  {'67_64': {64: [3, datetime.timedelta(0, 26, 745461)], 67: [5, datetime.timedelta(0, 9, 623754)]}}
+dict_of_games_status:  {'67_64': {'status': 2, 'winner': 67}}
+None
+----------
+############### CLIENT ANSWER
+{'command': 'END_GAME', 'user': 67, 'group': '67_64', 'result': 5, 'timeStartGame': '2018-08-05 14:30:03.787893', 'userRate': None}
+####################
+END_GAME
+0:00:19.520117
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+############### CLIENT ANSWER
+{'command': 'END_GAME', 'user': 64, 'group': '67_64', 'result': 5, 'timeStartGame': '2018-08-05 14:30:03.787893', 'userRate': None}
+####################
+----------
+disconnect serega
+{} []
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+List of users in WS -  []
+add user [<User: serg>] {<User: serg>: <channels.channel.Channel object at 0x7f46627d4cc0>}
+List of users in WS -  [<User: serg>]
+add user [<User: serg>, <User: serega>] {<User: serg>: <channels.channel.Channel object at 0x7f46627d4cc0>, <User: serega>: <channels.channel.Channel object at 0x7f46627d4ef0>}
+create_room!!!!! ['64_67', <channels.channel.Channel object at 0x7f46627d4ef0>, <channels.channel.Channel object at 0x7f46627d4cc0>]
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {}}
+dict_of_games_status:  {'64_67': {'status': 0, 'winner': None}}
+['Содержание вредных веществ в отработавших газах или их дымность.', 'Не работает указатель температуры охлаждающей жидкости.', 'Нарушена герметичность системы питания (топливной системы).', 'Уровень внешнего шума превышает установленные нормы.']
+['Направо, налево и в обратном направлении.', 'Только налево.', 'Налево и в обратном направлении.']
+['Запрещается.', 'Разрешается.', 'Разрешается, если водитель намерен проехать перекресток только в прямом направлении.']
+['Указать точное место совершенного ДТП (назвать улицу, номер дома и общеизвестные ориентиры, ближайшие к месту ДТП). Сообщить о количестве пострадавших, их пол, примерный возраст и о наличии у них признаков жизни, а также сильного кровотечения.', 'Указать улицу и номер дома, ближайшего к месту ДТП. Сообщить, кто пострадал в ДТП (пешеход, водитель автомобиля или пассажиры), и описать травмы, которые они получили.', 'Указать общеизвестные ориентиры, ближайшие к месту ДТП. Сообщить о количестве пострадавших, указать их пол и возраст.']
+['Должны уступить дорогу всем транспортным средствам, движущимся по пересекаемой дороге.', 'Должны уступить дорогу только транспортным средствам, приближающимся справа.', 'Имеете право преимущественного проезда.']
+['Разрешено, если обгон будет завершен до перекрестка.', 'Запрещено.', 'Разрешено.'] {'64_67': {'status': 1, 'winner': None}}
+None
+----------
+disconnect serega
+{} []
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+END_GAME
+0:00:11.364633
+----------
+disconnect serega
+{} []
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+List of users in WS -  []
+add user [<User: serg>] {<User: serg>: <channels.channel.Channel object at 0x7fc1ce0c0668>}
+----------
+disconnect serg
+{<User: serg>: <channels.channel.Channel object at 0x7fc1ce0c0668>} [<User: serg>]
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+----------
+disconnect serg
+{} []
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+END_GAME
+0:04:54.478016
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+############### CLIENT ANSWER
+{'command': 'END_GAME', 'user': 64, 'group': '64_67', 'result': 4, 'timeStartGame': '2018-08-05 19:32:27.151797', 'userRate': None}
+####################
+----------
+disconnect serg
+{} []
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+List of users in WS -  []
+add user [<User: serega>] {<User: serega>: <channels.channel.Channel object at 0x7fc1ce0d1438>}
+----------
+disconnect serg
+{<User: serega>: <channels.channel.Channel object at 0x7fc1ce0d1438>} [<User: serega>]
+----------
+{<User: serega>: <channels.channel.Channel object at 0x7fc1ce0d1438>} [<User: serega>]
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+List of users in WS -  [<User: serega>]
+----------
+disconnect serega
+{<User: serega>: <channels.channel.Channel object at 0x7fc1ce0d1438>} [<User: serega>]
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+List of users in WS -  []
+add user [<User: serg>] {<User: serg>: <channels.channel.Channel object at 0x7fc1ce0d95c0>}
+----------
+disconnect serega
+{<User: serg>: <channels.channel.Channel object at 0x7fc1ce0d95c0>} [<User: serg>]
+----------
+{<User: serg>: <channels.channel.Channel object at 0x7fc1ce0d95c0>} [<User: serg>]
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+----------
+disconnect serg
+{<User: serg>: <channels.channel.Channel object at 0x7fc1ce0d95c0>} [<User: serg>]
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+List of users in WS -  []
+add user [<User: serega>] {<User: serega>: <channels.channel.Channel object at 0x7fc1ce0d95c0>}
+List of users in WS -  [<User: serega>]
+add user [<User: serega>, <User: serg>] {<User: serega>: <channels.channel.Channel object at 0x7fc1ce0d95c0>, <User: serg>: <channels.channel.Channel object at 0x7fc1ce0d9dd8>}
+create_room!!!!! ['67_64', <channels.channel.Channel object at 0x7fc1ce0d9dd8>, <channels.channel.Channel object at 0x7fc1ce0d95c0>]
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+['Проедете перекресток, уступив дорогу грузовому автомобилю.', 'Проедете перекресток вместе с трамваем, не уступая дорогу грузовому автомобилю.']
+['А.', 'Б.', 'В.']
+['Может во всех перечисленных случаях.', 'Может при наличии у этого лица водительского удостоверения на право управления транспортным средством категории «A» или подкатегории «А1».', 'Может при наличии у этого лица водительского удостоверения на право управления транспортным средством категории «М».', 'Может при наличии у этого лица водительского удостоверения на право управления транспортным средством подкатегории «B1».']
+['Только автомобиля Б.', 'Автомобилей Б и В.', 'Всех автомобилей.']
+['Запрещено.', 'Разрешено.', 'Разрешено, если скорость мотоцикла не более 30 км/ч.']
+['А и Б.', 'Только Б.', 'Всех.']
+['Выехав на перекресток, остановиться перед пешеходным переходом, чтобы пропустить пешеходов.\n', 'Остановиться перед стоп линией и, пропустив пешеходов, повернуть направо.\n', 'Продолжить движение без остановки на перекрестке.\n']
+['Только водитель легкового автомобиля.', 'Только водитель мотоцикла.', 'Оба.', 'Никто не нарушит.']
+['Не нарушил.', 'Нарушил, если не выставил знак аварийной остановки.', 'Нарушил.']
+['Если они перевозятся в возрасте от 7 до 11 лет (включительно) на переднем сиденье.', 'В обоих перечисленных случаях.', 'Если они перевозятся в возрасте младше 7 лет.']
+List of users in WS -  []
+add user [<User: serega>] {<User: serega>: <channels.channel.Channel object at 0x7fc1ce0d14a8>}
+List of users in WS -  [<User: serega>]
+List of users in WS -  [<User: serega>]
+----------
+disconnect serg
+{<User: serega>: <channels.channel.Channel object at 0x7fc1ce0d14a8>} [<User: serega>]
+----------
+{<User: serega>: <channels.channel.Channel object at 0x7fc1ce0d14a8>} [<User: serega>]
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+List of users in WS -  [<User: serega>]
+add user [<User: serega>, <User: serg>] {<User: serega>: <channels.channel.Channel object at 0x7fc1ce0d14a8>, <User: serg>: <channels.channel.Channel object at 0x7fc1ce100da0>}
+create_room!!!!! ['67_64', <channels.channel.Channel object at 0x7fc1ce100da0>, <channels.channel.Channel object at 0x7fc1ce0d14a8>]
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+['Уступить дорогу встречному автомобилю.', 'Действовать по взаимной договоренности с водителем встречного автомобиля.', 'Проехать первым.']
+['Выехать за стоп-линию и остановиться на перекрестке, чтобы уступить дорогу встречному автомобилю.', 'Проехать перекресток первым.', 'Остановиться перед стоп линией и после проезда легкового автомобиля повернуть налево.']
+['Дает преимущество.', 'Не дает преимущества.', 'Дает преимущество только при завершении обгона.']
+['Не менее 30 м.', 'Не менее 10 м.', 'Не менее 20 м.', 'Не менее 15 м.']
+['Штраф в размере 1500 рублей или лишение права управления транспортными средствами на срок от 1 до 3 месяцев.', 'Задержание транспортного средства и штраф в размере 1000 рублей.', 'Штраф в размере 500 рублей.']
+['Примерно 15 м.', 'Примерно 25 м.', 'Примерно 35 м.']
+END_GAME
+0:04:38.731574
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {67: [4, datetime.timedelta(0, 278, 731574)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+############### CLIENT ANSWER
+{'command': 'END_GAME', 'user': 67, 'group': '64_67', 'result': 4, 'timeStartGame': '2018-08-05 19:32:27.151797', 'userRate': None}
+####################
+----------
+disconnect serega
+{} []
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {67: [4, datetime.timedelta(0, 278, 731574)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+List of users in WS -  []
+add user [<User: serg>] {<User: serg>: <channels.channel.Channel object at 0x7f46627696d8>}
+----------
+disconnect serega
+{<User: serg>: <channels.channel.Channel object at 0x7f46627696d8>} [<User: serg>]
+----------
+{<User: serg>: <channels.channel.Channel object at 0x7f46627696d8>} [<User: serg>]
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {67: [4, datetime.timedelta(0, 278, 731574)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+List of users in WS -  [<User: serg>]
+----------
+disconnect serg
+{<User: serg>: <channels.channel.Channel object at 0x7f46627696d8>} [<User: serg>]
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {67: [4, datetime.timedelta(0, 278, 731574)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+List of users in WS -  []
+add user [<User: serega>] {<User: serega>: <channels.channel.Channel object at 0x7f46627699e8>}
+List of users in WS -  [<User: serega>]
+----------
+disconnect serega
+{<User: serega>: <channels.channel.Channel object at 0x7f46627699e8>} [<User: serega>]
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {67: [4, datetime.timedelta(0, 278, 731574)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+List of users in WS -  []
+add user [<User: serg>] {<User: serg>: <channels.channel.Channel object at 0x7f46627c85f8>}
+----------
+disconnect serega
+{<User: serg>: <channels.channel.Channel object at 0x7f46627c85f8>} [<User: serg>]
+----------
+{<User: serg>: <channels.channel.Channel object at 0x7f46627c85f8>} [<User: serg>]
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {67: [4, datetime.timedelta(0, 278, 731574)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+----------
+disconnect serg
+{<User: serg>: <channels.channel.Channel object at 0x7f46627c85f8>} [<User: serg>]
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {67: [4, datetime.timedelta(0, 278, 731574)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+----------
+disconnect serega
+{} []
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {67: [4, datetime.timedelta(0, 278, 731574)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+----------
+disconnect serega
+{} []
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {67: [4, datetime.timedelta(0, 278, 731574)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+----------
+disconnect serega
+{} []
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {67: [4, datetime.timedelta(0, 278, 731574)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+List of users in WS -  []
+add user [<User: serega>] {<User: serega>: <channels.channel.Channel object at 0x7f4662779438>}
+
+['Только налево.', 'В любом.', 'Налево и в обратном направлении.']
+['Только по траектории Б.', 'Только по траектории А', 'По любой траектории из указанных.']
+['Должны уступить дорогу, так как встречный автомобиль движется на спуск.', 'Имеете право проехать первым, так как Вы движетесь на подъем.', 'Должны уступить дорогу, так как препятствие находится на Вашей полосе движения.']
+['Уступите дорогу обоим транспортным средствам.', 'Проедете перекресток первым.', 'Выедете на перекресток первым и, уступив дорогу мотоциклу, завершите поворот.']
+['Запрещено.', 'Разрешено.', 'Разрешено только после 19 часов.']
+['Указать улицу и номер дома, ближайшего к месту ДТП. Сообщить, кто пострадал в ДТП (пешеход, водитель автомобиля или пассажиры), и описать травмы, которые они получили.', 'Указать общеизвестные ориентиры, ближайшие к месту ДТП. Сообщить о количестве пострадавших, указать их пол и возраст.', 'Указать точное место совершенного ДТП (назвать улицу, номер дома и общеизвестные ориентиры, ближайшие к месту ДТП). Сообщить о количестве пострадавших, их пол, примерный возраст и о наличии у них признаков жизни, а также сильного кровотечения.']
+['В обоих перечисленных случаях.', 'Только если двигаются по дороге без застегнутого мотошлема.', 'Только если управляют мопедом, не держась за руль хотя бы одной рукой.']
+['Дефект проезжей части.', 'Неисправное или поврежденное транспортное средство', 'Транспортное средство, остановившееся на этой полосе из-за образования затора.', 'Посторонний предмет.']
+----------
+disconnect serega
+{} []
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+----------
+disconnect serg
+{} []
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+List of users in WS -  []
+add user [<User: serg>] {<User: serg>: <channels.channel.Channel object at 0x7fc1ce124ef0>}
+----------
+disconnect serg
+{<User: serg>: <channels.channel.Channel object at 0x7fc1ce124ef0>} [<User: serg>]
+----------
+{} []
+----------
+list_of_groups :  ['64_67']
+dict_of_results:  {'64_67': {64: [5, datetime.timedelta(0, 12, 312225)]}}
+dict_of_games_status:  {'64_67': {'status': 1, 'winner': None}}
+None
+List of users in WS -  []
+----------
+disconnect AnonymousUser
+{} []
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+List of users in WS -  []
+----------
+disconnect AnonymousUser
+{} []
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+----------
+disconnect AnonymousUser
+{} []
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+List of users in WS -  []
+List of users in WS -  []
+----------
+disconnect AnonymousUser
+{} []
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+----------
+disconnect AnonymousUser
+{} []
+----------
+{} []
+----------
+list_of_groups :  []
+dict_of_results:  {}
+dict_of_games_status:  {}
+None
+List of users in WS -  []

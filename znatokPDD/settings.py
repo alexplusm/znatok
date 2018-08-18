@@ -28,15 +28,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.mailgun.org'
-EMAIL_HOST_USER = 'postmaster@mail.znatok-pdd.ru'
-EMAIL_HOST_PASSWORD = '4d1fab3b92de718e2eb8b2f01d2b4a42-a5d1a068-0aa83006'
-EMAIL_PORT = 587
+EMAIL_USE_TLS = False
+EMAIL_HOST = 'smtp.eu.mailgun.org'
+EMAIL_HOST_USER = 'postmaster@email.znatok-pdd.ru'
+EMAIL_HOST_PASSWORD = 'bb4ab4c6aeea319066a272551b370c4b-6b60e603-76d5bf41'
+EMAIL_PORT = 2525
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FORM_EMAIL = 'Знаток ПДД <noreply@mail.znatok-pdd.ru>'
-EMAIL_SUBJECT_PREFIX = 'Знаток_'
-SERVER_EMAIL = 'postmaster@mail.znatok-pdd.ru'
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = f'Знаток ПДД <{EMAIL_HOST_USER}>'
 
 # Application definition
 
