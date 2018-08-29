@@ -409,7 +409,6 @@ function include(url) {
 }
 
 $.getScript("static/js/jquery.raty.js");
-$.getScript("static/js/jquery.sticky.js");
 
 $(document).ready(function() {
   checkPoints();
@@ -418,19 +417,16 @@ $(document).ready(function() {
 
   $('#add-comment').click(function () {
     $(this).popover('toggle');
-  });  
+  });
 
-  $('#stars').raty({
+  $('.form__stars').raty({
     click: function(score) {
       console.log(score);
     },
     hints: ['Ужасно', 'Плохо', 'Нормально', 'Хорошо', 'Отлично!'],
     target: '#target',
-    targetKeep : true,
+    targetKeep : true
   });
-
-  $('#panelbody').sticky({topSpacing:0, zIndex:9});
-
-}); 
+});
 
 
