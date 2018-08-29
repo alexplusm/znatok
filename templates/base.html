@@ -102,37 +102,37 @@
         </div>
         {% endblock %}
       </div>
+    </div>
 
-      <div id="panel2">
+    <div id="panel2">
         {% block panelbody %}
         <div class="panel-body" id="panelbody">
-    <div class="conteiner">
-        <div class="row">
-          {% block coins %}
-            <form class="form-inline col-12">
-                <div class="form-group ml-auto">
-                    <label for="bonus">БАЛЛЫ</label>
-                    <div class="card card-body justify-content-center align-items-center" id="bonus" style="height: 35px; width: 80px">
-                    </div>
-                </div>
+          <div class="conteiner">
+              <div class="row">
+                {% block coins %}
+                  <form class="form-inline col-12">
+                      <div class="form-group ml-auto">
+                          <label for="bonus">БАЛЛЫ</label>
+                          <div class="card card-body justify-content-center align-items-center" id="bonus" style="height: 35px; width: 80px">
+                          </div>
+                      </div>
 
-                <div class="form-group ml-auto">
-                    <label for="team">КОМАНДНЫЕ</label>
-                    <input type="team" class="form-control" id="team" readonly="123">
-                </div>
+                      <div class="form-group ml-auto">
+                          <label for="team">КОМАНДНЫЕ</label>
+                          <input type="team" class="form-control" id="team" readonly="123">
+                      </div>
 
-                <div class="form-group ml-auto mr-auto">
-                    <label for="coins">BEEPCOIN</label>
-                    <input type="coins" class="form-control" id="coins" readonly="123">
-                </div>
-            </form>
-            {% endblock %}
-        </div>
-    </div>
-</div>
+                      <div class="form-group ml-auto mr-auto">
+                          <label for="coins">BEEPCOIN</label>
+                          <input type="coins" class="form-control" id="coins" readonly="123">
+                      </div>
+                  </form>
+                  {% endblock %}
+              </div>
+          </div>
+      </div>
         {% endblock %}
       </div>
-    </div>
 
   <div class="modal fade" id="modalLogin" role="dialog">
     <div class="modal-dialog modal-sm">

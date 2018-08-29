@@ -11,6 +11,7 @@ from .models import Result, Rank
 from exam.models import Question
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
+from znatokPDD.settings import DEFAULT_FORM_EMAIL
 
 
 def signup(request):
@@ -35,7 +36,7 @@ def signup(request):
             })
             subject = 'Активация аккаунта'
             to_email = form.cleaned_data.get('email')
-            send_mail(subject, message, 'Знаток ПДД', [to_email], fail_silently=False)
+            send_mail(subject, message, DEFAULT_FORM_EMAIL, [to_email], fail_silently=False)
 
             return redirect('confirm')
     else:
