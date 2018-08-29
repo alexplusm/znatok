@@ -8,24 +8,52 @@ from django.shortcuts import render
 from exam.dict_themes_content import themes_0, markup,pdd,sign,auto1,auto2, themes_1, themes_2
 
 
-def random_answers(question):
-    quest_list = [question[0].answer1, question[0].answer2]
-    if question[0].answer3:
-        quest_list.append(question[0].answer3)
-    if question[0].answer4:
-        quest_list.append(question[0].answer4)
-    if question[0].answer5:
-        quest_list.append(question[0].answer5)
-    shuffle(quest_list)
-    question[0].answer1 = quest_list[0]
-    question[0].answer2 = quest_list[1]
-    if question[0].answer3:
-        question[0].answer3 = quest_list[2]
-    if question[0].answer4:
-        question[0].answer4 = quest_list[3]
-    if question[0].answer5:
-        question[0].answer5 = quest_list[4]
-    return quest_list
+def random_answers(question, type_):
+    if type_ == 1:
+        quest_list = [question[0].answer1, question[0].answer2]
+        if question[0].answer3:
+            quest_list.append(question[0].answer3)
+        if question[0].answer4:
+            quest_list.append(question[0].answer4)
+        if question[0].answer5:
+            quest_list.append(question[0].answer5)
+
+        shuffle(quest_list)
+
+        question[0].answer1 = quest_list[0]
+        question[0].answer2 = quest_list[1]
+
+        if question[0].answer3:
+            question[0].answer3 = quest_list[2]
+        if question[0].answer4:
+            question[0].answer4 = quest_list[3]
+        if question[0].answer5:
+            question[0].answer5 = quest_list[4]
+        return quest_list
+
+    else:
+        quest_list = [question['question__answer1'], question['question__answer2']]
+
+        if question['question__answer3']:
+            quest_list.append(question['question__answer3'])
+        if question['question__answer4']:
+            quest_list.append(question['question__answer4'])
+        if question['question__answer5']:
+            quest_list.append(question['question__answer5'])
+
+        shuffle(quest_list)
+
+        question['question__answer1'] = quest_list[0]
+        question['question__answer2'] = quest_list[1]
+
+        if question['question__answer3']:
+            question['question__answer3'] = quest_list[2]
+        if question['question__answer4']:
+            question['question__answer4'] = quest_list[3]
+        if question['question__answer5']:
+            question['question__answer5'] = quest_list[4]
+
+        return quest_list
 
 
 # для ajax запроса
@@ -36,7 +64,7 @@ def load_question(request):
         category = int(request.GET["category"])
         question = Question.objects.\
             filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question, category=category)
-        answers = random_answers(question)
+        answers = random_answers(question, 1)
         return JsonResponse({'questions': list(question.values()), "answers": answers}, safe=False)
 
 
@@ -72,7 +100,7 @@ def load_ticket(request):
 
         question = Question.objects. \
             filter(number_of_ticket=number_of_ticket, number_of_question=number_of_question, category=category)
-        answers = random_answers(question)
+        answers = random_answers(question, 1)
         return JsonResponse({'questions': list(question.values()), 'results': results,  'answers': answers}, safe=False)
 
 
@@ -140,7 +168,12 @@ def get_wrong_questions(request):
                             'user_answer',
                             'question__category',
                             'question_id')
-                return JsonResponse({'question': quest[0]})
+
+                if quest:
+                    question = random_answers(quest, 2)
+                    return JsonResponse({'question': question})
+                return JsonResponse({'done': True})
+
             questions = user.result_set.filter(question__category=category, is_true=False) \
                 .order_by('question__number_of_ticket', 'question__number_of_question') \
                 .values('question__picture',
@@ -158,6 +191,11 @@ def get_wrong_questions(request):
                         'question__category',
                         'question_id')
             count = questions.count()
+
+            for i in range(5):
+                if questions and 5 * counter + i < count:
+                    random_answers(questions[5*counter + i], 2)
+
             return JsonResponse({'questions': list(questions[5*counter:5*counter+5]), 'questions_count': count}, safe=False)
         else:
             return HttpResponseForbidden('You must be authenticated')
@@ -206,7 +244,10 @@ def check_answer(request):
                         'true_answer',
                         'user_answer',
                         'question__category')
-            return JsonResponse({'next_question': question[0]})
+            if question:
+                quest = random_answers(question, 2)
+                return JsonResponse({'next_question': quest})
+            return JsonResponse({'done': True})
 
         if wrong == 'false' and true_of_false and theme != 'false':
             questions = Question.objects.filter(category=category, theme=theme, number_of_ticket__gt=int(number_of_ticket)) \
@@ -221,7 +262,8 @@ def check_answer(request):
                         'answer5',
                         'picture',
                         'comment_for_question')
-            return JsonResponse({'next_question': questions[0]})
+            quest = random_answers(questions, 1)
+            return JsonResponse({'next_question': quest})
         return JsonResponse({'true_answer': true_answer})
 
 

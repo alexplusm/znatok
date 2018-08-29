@@ -440,9 +440,15 @@
 
         newElementQuestion.querySelector('.js-question').textContent = data.question__question || data.question;
         newElementQuestion.querySelector('.js-img-question').src = '/media/' + (data.question__picture ? data.question__picture : data.picture);
+
         newElementQuestion.querySelector('#answer1').textContent = data.question__answer1 || data.answer1;
         newElementQuestion.querySelector('#answer2').textContent = data.question__answer2 || data.answer2;
-        newElementQuestion.querySelector('#answer3').textContent = data.question__answer3 || data.answer3;
+
+        if (data.question__answer3 || data.answer3) {
+          newElementQuestion.querySelector('#answer3').textContent = data.question__answer3 || data.answer3;
+        } else {
+          $(newElementQuestion.querySelector('#answer3')).hide();
+        }
 
         if (data.question__answer4 || data.answer4) {
           newElementQuestion.querySelector('#answer4').textContent = data.question__answer4 || data.answer4;
@@ -634,7 +640,7 @@
                             $('.result').show();
                             $('.btnquest-box1').show();
 
-                            number_of_question = data.questions[0].number_of_question
+                            number_of_question = data.questions[0].number_of_question;
                             res = data.results;
                             changeData(data);
                         }
@@ -845,13 +851,19 @@
             changeWrongQuestion(data.questions[id]);
           });
 
-          function changeWrongQuestion(data) {
+          function changeWrongQuestion(data, clear = false) {
             initWrongQuestionReload = false;
             wrongQuestionHTML.innerHTML = '';
             btnListHTML.innerHTML = '';
+
+            if (clear) {
+              return;
+            }
+
             const newElementQuestion = singleQuestionTemplate(data);
 
             wrongQuestionHTML.appendChild(newElementQuestion);
+
 
             let timer;
 
@@ -867,6 +879,9 @@
               $('.answbtn').click(function() {
                 const user_answ = this.textContent;
                 const btn = this;
+
+                $('.answbtn').addClass('disabled');
+
                 if (!initWrongQuestionReload) {
                   return;
                 }
@@ -880,20 +895,24 @@
                     'category': data.question__category,
                     'answer_by_user': user_answ,
                     'wrong': true,
-                    'theme': false,
+                    'theme': false
                   },
                   success: function (data) {
                     if (data.true_answer) {
                       $(getElementByClassAndtextContent('answbtn', user_answ)).addClass('btn-danger');
+                      $('.answbtn').removeClass('disabled');
+
                       return;
                     }
+
                     $(newElementQuestion.querySelector('.help-box')).show();
                     const helpText = newElementQuestion.querySelector('#help-text');
                     helpText.textContent = 'Правильно';
                     $(helpText).addClass('text-success');
                     $(btn).addClass('btn-success');
+
                     timer = setTimeout(function() {
-                      changeWrongQuestion(data.next_question);
+                      changeWrongQuestion(data.next_question, data.done);
                     }, 1500);
                   }
                 });
