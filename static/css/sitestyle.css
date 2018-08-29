@@ -5825,6 +5825,10 @@ body {
   font-family: 'Open Sans', Arial, sans-serif !important;
   -webkit-font-smoothing: antialiased;
 }
+.btn {
+  white-space: normal !important;
+  word-break: normal !important;
+}
 .modal {
   position: absolute;
   margin-top: 100px;
@@ -6078,6 +6082,7 @@ body {
   margin-top: 20px;
 }
 #maincontent #help-text {
+  display: none;
   font-size: 0.8em;
   border: 1px solid lightgrey;
   padding: 0.5em;
