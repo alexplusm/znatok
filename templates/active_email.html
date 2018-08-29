@@ -1,3 +1,3 @@
-Здравствуйте {{ user.username }}!
+Здравствуйте, {{ user.username }}!
 Чтобы завершить регистрацию, пожалуйста, перейдите по ссылке ниже:
 {{ protocol }}://{{ domain }}{% url 'activate' uidb64=uid token=token %}
