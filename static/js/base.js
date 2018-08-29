@@ -114,7 +114,7 @@ function playerAction(elem, id) {
                 checkStageMiniGame();
               }
             });
-           }, 1000)
+           }, 1000);
          
         } else {
           $('.js-alert-error').addClass('game__alert_opacity-1');
@@ -134,7 +134,7 @@ function playerAction(elem, id) {
                 checkStageMiniGame();
               }
             });
-          }, 1000)
+          }, 1000);
           
         }
       }
