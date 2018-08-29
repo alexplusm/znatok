@@ -518,6 +518,12 @@
           $('.js-nextbtn').text('Далее');
         }
 
+        if (number_of_ticket === 40 && number_of_question === 20) {
+            $(".nextbtn").addClass('disabled');
+        } else {
+            $('.nextbtn').removeClass('disabled');
+        }
+
           $(".answbtn").removeClass("btn-success btn-danger");
           document.getElementById('quest').textContent = data.questions[0].question;
           $('.imgquestion').attr("src", "/media/" + data.questions[0].picture);
@@ -571,7 +577,7 @@
 
       function initBtnForTickets() {
         $('.btnticket').click(event => {
-          number_of_ticket = event.currentTarget.value;
+          number_of_ticket = parseInt(event.currentTarget.value, 10);
           number_of_question = 1;
           $.ajax({
 
@@ -591,7 +597,7 @@
                 $('.btnticket').hide();
                 $('.result').show();
                 $('.btnquest-box1').show();
-                number_of_question = data.questions[0].number_of_question
+                number_of_question = data.questions[0].number_of_question;
                 res = data.results;
                 changeData(data);
               }
@@ -606,7 +612,7 @@
 
         $(".nextbtn").click(function () {
             if (number_of_question === 20) {
-                if (number_of_ticket != 40) {
+                if (number_of_ticket !== 40) {
                     number_of_question = 1;
                     number_of_ticket++;
 
@@ -694,11 +700,6 @@
                     $('.answbtn').addClass("disabled");
                     res[number_of_question - 1].user_answer = user_answ;
                     res[number_of_question - 1].true_answer = data.true_answer;
-
-                    if (number_of_ticket == 40) {
-                        $(".nextbtn").addClass('disabled')
-                    }
-
                 }
             });
         }
