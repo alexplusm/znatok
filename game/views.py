@@ -16,6 +16,11 @@ def generatePictures(number_of_game, request):
     question = 'Мини-Игра'
     result, true_result = [], []
 
+    if number_of_game == 5:
+        new_number_of_game = list(range(1,5))
+        random.shuffle(new_number_of_game)
+        number_of_game = new_number_of_game[0]
+
     if number_of_game == 1:
         picture = list(range(1, 30))
         question = 'Выделите три запрещающих знака'
@@ -63,6 +68,7 @@ def generatePictures(number_of_game, request):
             k = random.randint(1, 3)
             main[counter] = k
             counter += 1
+
     else:
         question = 'ноуп'
 
@@ -152,7 +158,6 @@ def next_mini_game(request):
 
 def reload_mini_game(request):
     if request.method == "GET" and request.is_ajax():
-        bool_next = False
         request.session['number_of_try'] -= 1
         bool_next = True
 
@@ -273,7 +278,7 @@ def game_is_ready(request):
             request.session['number_of_game'] = game_skip[0]
 
         # Если решено все правильно
-        if game_is_ready_ == 1 and game_try > 1 and game_number == 5 and len(game_skip) == 0:
+        if game_is_ready_ == 1 and game_try > 0 and game_number > 5 and len(game_skip) == 0:
             game_is_ready_ = 0
             request.session['game_ready'] = 0
             request.session['number_of_try'] = 1

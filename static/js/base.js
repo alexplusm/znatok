@@ -84,20 +84,8 @@ function playerAction(elem, id) {
       success: function (data) {
         if (data.bool) {
           $('.js-alert-success').addClass('game__alert_opacity-1');
-          $.ajax({
+          getPoints();
 
-            type: "GET",
-
-            url: "/check_points/",
-
-            dataType: 'json',
-
-            cache: false,
-
-            success: function (data) {
-              document.getElementById('bonus').textContent = data.points;
-            }
-          });
           setTimeout(() => {
              $.ajax({
 
@@ -114,7 +102,7 @@ function playerAction(elem, id) {
                 checkStageMiniGame();
               }
             });
-           }, 1000)
+           }, 1000);
          
         } else {
           $('.js-alert-error').addClass('game__alert_opacity-1');
@@ -134,7 +122,7 @@ function playerAction(elem, id) {
                 checkStageMiniGame();
               }
             });
-          }, 1000)
+          }, 1000);
           
         }
       }
@@ -221,6 +209,24 @@ function checkStageMiniGame() {
       } else {
         miniGameNotReady('starttimer');
       }
+      getPoints();
+    }
+  });
+}
+
+function getPoints() {
+  $.ajax({
+
+    type: "GET",
+
+    url: "/check_points/",
+
+    dataType: 'json',
+
+    cache: false,
+
+    success: function (data) {
+      document.getElementById('bonus').textContent = data.points;
     }
   });
 }
