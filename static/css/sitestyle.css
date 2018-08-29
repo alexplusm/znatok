@@ -6078,6 +6078,7 @@ body {
   margin-top: 20px;
 }
 #maincontent #help-text {
+  display: none;
   font-size: 0.8em;
   border: 1px solid lightgrey;
   padding: 0.5em;
