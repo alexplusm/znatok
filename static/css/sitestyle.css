@@ -6129,6 +6129,11 @@ body {
   max-width: 1920px;
   min-width: 1260px;
 }
+#panel2 {
+  position: sticky;
+  z-index: 3;
+  top: 0;
+}
 #panel2 .panel-body {
   padding-top: 10px;
   background: blue;
