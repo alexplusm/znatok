@@ -5825,6 +5825,10 @@ body {
   font-family: 'Open Sans', Arial, sans-serif !important;
   -webkit-font-smoothing: antialiased;
 }
+.btn {
+  white-space: normal !important;
+  word-break: normal !important;
+}
 .modal {
   position: absolute;
   margin-top: 100px;
@@ -6078,6 +6082,7 @@ body {
   margin-top: 20px;
 }
 #maincontent #help-text {
+  display: none;
   font-size: 0.8em;
   border: 1px solid lightgrey;
   padding: 0.5em;
@@ -6123,6 +6128,11 @@ body {
   display: block !important;
   max-width: 1920px;
   min-width: 1260px;
+}
+#panel2 {
+  position: sticky;
+  z-index: 3;
+  top: 0;
 }
 #panel2 .panel-body {
   padding-top: 10px;
