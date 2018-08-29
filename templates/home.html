@@ -514,6 +514,8 @@
       function changeData(data) {
         if (number_of_question === 20) {
           $('.js-nextbtn').text('Следующий билет');
+        } else {
+          $('.js-nextbtn').text('Далее');
         }
 
           $(".answbtn").removeClass("btn-success btn-danger");
@@ -633,8 +635,16 @@
                     });
                 }
             } else {
-                number_of_question++;
-                loadQuestion();
+              let next_question = number_of_question;
+              const btnList = $('.btnquest');
+
+              while(next_question < 19 && ([].indexOf.call(btnList[next_question].classList, 'btn-success') > 0 || [].indexOf.call(btnList[next_question].classList, 'btn-danger') > 0) ) {
+                next_question += 1;
+              }
+
+
+              number_of_question = next_question + 1;
+              loadQuestion();
             }
         });
 
