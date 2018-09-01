@@ -84,20 +84,8 @@ function playerAction(elem, id) {
       success: function (data) {
         if (data.bool) {
           $('.js-alert-success').addClass('game__alert_opacity-1');
-          $.ajax({
+          getPoints();
 
-            type: "GET",
-
-            url: "/check_points/",
-
-            dataType: 'json',
-
-            cache: false,
-
-            success: function (data) {
-              document.getElementById('bonus').textContent = data.points;
-            }
-          });
           setTimeout(() => {
              $.ajax({
 
@@ -114,8 +102,8 @@ function playerAction(elem, id) {
                 checkStageMiniGame();
               }
             });
-           }, 1000)
-         
+           }, 1000);
+
         } else {
           $('.js-alert-error').addClass('game__alert_opacity-1');
           setTimeout(() => {
@@ -134,8 +122,8 @@ function playerAction(elem, id) {
                 checkStageMiniGame();
               }
             });
-          }, 1000)
-          
+          }, 1000);
+
         }
       }
     });
@@ -221,6 +209,24 @@ function checkStageMiniGame() {
       } else {
         miniGameNotReady('starttimer');
       }
+      getPoints();
+    }
+  });
+}
+
+function getPoints() {
+  $.ajax({
+
+    type: "GET",
+
+    url: "/check_points/",
+
+    dataType: 'json',
+
+    cache: false,
+
+    success: function (data) {
+      document.getElementById('bonus').textContent = data.points;
     }
   });
 }
@@ -246,7 +252,7 @@ function commentsData(objects) {
     } else {
       document.getElementById("js-date" + i).innerText = `${date.slice(8.10)}.${date.slice(5,7)}.${date.slice(0,4)}`;
     }
-    
+
     document.getElementById("js-city" + i).innerText = objects.comments[i].city;
     $("#js-city" + i).attr("title", objects.comments[i].city);
     $('#js-rating' + i).raty({
@@ -299,7 +305,7 @@ function loadComments() {
   $.ajax({
     type: "GET",
     url: "/get_comments/",
-    cache: false, 
+    cache: false,
     success: function(data) {
       commentsData(data);
     }
@@ -323,7 +329,7 @@ function loadComments() {
          if (timer) {
              clearTimeout(timer);
          }
-         
+
          timer = setTimeout(loadMoreComments, 200);
      });
 }());
@@ -411,7 +417,7 @@ $(document).ready(function() {
 
   $('#add-comment').click(function () {
     $(this).popover('toggle');
-  });  
+  });
 
   $('#stars').raty({
     click: function(score) {
@@ -419,9 +425,8 @@ $(document).ready(function() {
     },
     hints: ['Ужасно', 'Плохо', 'Нормально', 'Хорошо', 'Отлично!'],
     target: '#target',
-    targetKeep : true,
+    targetKeep : true
   });
 
-}); 
-
+});
 
