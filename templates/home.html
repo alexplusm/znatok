@@ -914,6 +914,7 @@
                     helpText.textContent = 'Правильно';
                     $(helpText).addClass('text-success');
                     $(btn).addClass('btn-success');
+                    console.log(btn);
 
                     timer = setTimeout(function() {
                       changeWrongQuestion(data.next_question, data.done);

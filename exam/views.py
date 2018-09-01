@@ -32,26 +32,26 @@ def random_answers(question, type_):
         return quest_list
 
     else:
-        quest_list = [question['question__answer1'], question['question__answer2']]
+        quest_list = [question[0]['question__answer1'], question[0]['question__answer2']]
 
-        if question['question__answer3']:
-            quest_list.append(question['question__answer3'])
-        if question['question__answer4']:
-            quest_list.append(question['question__answer4'])
-        if question['question__answer5']:
-            quest_list.append(question['question__answer5'])
+        if question[0]['question__answer3']:
+            quest_list.append(question[0]['question__answer3'])
+        if question[0]['question__answer4']:
+            quest_list.append(question[0]['question__answer4'])
+        if question[0]['question__answer5']:
+            quest_list.append(question[0]['question__answer5'])
 
         shuffle(quest_list)
 
-        question['question__answer1'] = quest_list[0]
-        question['question__answer2'] = quest_list[1]
+        question[0]['question__answer1'] = quest_list[0]
+        question[0]['question__answer2'] = quest_list[1]
 
-        if question['question__answer3']:
-            question['question__answer3'] = quest_list[2]
-        if question['question__answer4']:
-            question['question__answer4'] = quest_list[3]
-        if question['question__answer5']:
-            question['question__answer5'] = quest_list[4]
+        if question[0]['question__answer3']:
+            question[0]['question__answer3'] = quest_list[2]
+        if question[0]['question__answer4']:
+            question[0]['question__answer4'] = quest_list[3]
+        if question[0]['question__answer5']:
+            question[0]['question__answer5'] = quest_list[4]
 
         return quest_list
 
@@ -246,7 +246,7 @@ def check_answer(request):
                         'question__category')
             if question:
                 quest = random_answers(question, 2)
-                return JsonResponse({'next_question': quest})
+                return JsonResponse({'next_question': question})
             return JsonResponse({'done': True})
 
         if wrong == 'false' and true_of_false and theme != 'false':
