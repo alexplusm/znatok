@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
+from decouple import config, Csv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,22 +22,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0$$0u4eulb*lysajwi&h&b$_&(nmt9-i(1mxa(a_ec!!kbjd@o'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.mailgun.org'
-EMAIL_HOST_USER = 'postmaster@mail.znatok-pdd.ru'
-EMAIL_HOST_PASSWORD = '4d1fab3b92de718e2eb8b2f01d2b4a42-a5d1a068-0aa83006'
-EMAIL_PORT = 587
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 2525
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FORM_EMAIL = 'Знаток ПДД <noreply@mail.znatok-pdd.ru>'
-EMAIL_SUBJECT_PREFIX = 'Знаток_'
-SERVER_EMAIL = 'postmaster@mail.znatok-pdd.ru'
+DEFAULT_FORM_EMAIL = 'Знаток ПДД <{}>'.format(EMAIL_HOST_USER)
+SERVER_EMAIL = EMAIL_HOST_USER
 
 # Application definition
 
@@ -111,22 +111,10 @@ WSGI_APPLICATION = 'znatokPDD.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'znatok',
-#         'USER': 'znatok',
-#         'PASSWORD': '1znatok1',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 
 
