@@ -31,6 +31,30 @@ def random_answers(question, type_):
             question[0].answer5 = quest_list[4]
         return quest_list
 
+    elif type_ == 2:
+        quest_list = [question['question__answer1'], question['question__answer2']]
+
+        if question['question__answer3']:
+            quest_list.append(question['question__answer3'])
+        if question['question__answer4']:
+            quest_list.append(question['question__answer4'])
+        if question['question__answer5']:
+            quest_list.append(question['question__answer5'])
+
+        shuffle(quest_list)
+
+        question['question__answer1'] = quest_list[0]
+        question['question__answer2'] = quest_list[1]
+
+        if question['question__answer3']:
+            question['question__answer3'] = quest_list[2]
+        if question['question__answer4']:
+            question['question__answer4'] = quest_list[3]
+        if question['question__answer5']:
+            question['question__answer5'] = quest_list[4]
+
+        return quest_list
+
     else:
         quest_list = [question[0]['question__answer1'], question[0]['question__answer2']]
 
@@ -170,8 +194,8 @@ def get_wrong_questions(request):
                             'question_id')
 
                 if quest:
-                    question = random_answers(quest, 2)
-                    return JsonResponse({'question': question})
+                    random_answers(quest, 3)
+                    return JsonResponse({'question': quest[0]})
                 return JsonResponse({'done': True})
 
             questions = user.result_set.filter(question__category=category, is_true=False) \
@@ -245,8 +269,8 @@ def check_answer(request):
                         'user_answer',
                         'question__category')
             if question:
-                quest = random_answers(question, 2)
-                return JsonResponse({'next_question': question})
+                random_answers(question, 3)
+                return JsonResponse({'next_question': question[0]})
             return JsonResponse({'done': True})
 
         if wrong == 'false' and true_of_false and theme != 'false':
@@ -262,8 +286,8 @@ def check_answer(request):
                         'answer5',
                         'picture',
                         'comment_for_question')
-            quest = random_answers(questions, 1)
-            return JsonResponse({'next_question': quest})
+            random_answers(questions, 1)
+            return JsonResponse({'next_question': list(questions)})
         return JsonResponse({'true_answer': true_answer})
 
 
